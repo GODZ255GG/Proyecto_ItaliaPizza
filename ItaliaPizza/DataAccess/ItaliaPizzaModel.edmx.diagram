@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c20266df164a4f09a51afbd9312ce311" Name="Diagram1">
+        <EntityTypeShape EntityType="ItaliaPizzaModel.Pedidos" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ItaliaPizzaModel.Productos" Width="1.5" PointX="8.125" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ItaliaPizzaModel.Usuarios" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ItaliaPizzaModel.Detalle_Pedido" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <AssociationConnector Association="ItaliaPizzaModel.FK_dbo_Detalle_Pedidos_dbo_Pedidos_idPedidos" ManuallyRouted="false" />
+        <AssociationConnector Association="ItaliaPizzaModel.FK_dbo_Pedidos_dbo_Usuarios_idUsuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="ItaliaPizzaModel.FK_dbo_Detalle_Pedidos_dbo_Productos_idProductos" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

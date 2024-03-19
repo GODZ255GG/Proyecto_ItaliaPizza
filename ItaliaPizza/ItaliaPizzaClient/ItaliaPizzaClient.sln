@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34024.191
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ItaliaPizzaClient", "ItaliaPizzaClient.csproj", "{B2ADD666-FA74-48BD-9D92-8697FE3C4F65}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "..\Domain\Domain.csproj", "{1CBE76C7-3CF3-4B12-8AA9-BAA9C0B8F88F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Security", "..\Security\Security.csproj", "{109883FD-63BD-4513-B6E3-456D862044F9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B2ADD666-FA74-48BD-9D92-8697FE3C4F65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2ADD666-FA74-48BD-9D92-8697FE3C4F65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2ADD666-FA74-48BD-9D92-8697FE3C4F65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2ADD666-FA74-48BD-9D92-8697FE3C4F65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CBE76C7-3CF3-4B12-8AA9-BAA9C0B8F88F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CBE76C7-3CF3-4B12-8AA9-BAA9C0B8F88F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CBE76C7-3CF3-4B12-8AA9-BAA9C0B8F88F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CBE76C7-3CF3-4B12-8AA9-BAA9C0B8F88F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{109883FD-63BD-4513-B6E3-456D862044F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{109883FD-63BD-4513-B6E3-456D862044F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{109883FD-63BD-4513-B6E3-456D862044F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{109883FD-63BD-4513-B6E3-456D862044F9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8B42BC90-24EA-423B-B357-38FE0AB3F5BE}
+	EndGlobalSection
+EndGlobal

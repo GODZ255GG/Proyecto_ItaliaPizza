@@ -1,0 +1,49 @@
+﻿<Window x:Class="ItaliaPizzaClient.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ItaliaPizzaClient"
+        mc:Ignorable="d"
+        Title="Log In" Height="834" Width="1200"
+        WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="LightGray" />
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="BorderBrush" Value="Gray" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Padding" Value="10" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="border" Background="{TemplateBinding Background}" 
+                BorderBrush="{TemplateBinding BorderBrush}" 
+                BorderThickness="{TemplateBinding BorderThickness}" 
+                CornerRadius="10">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="DarkGray" />
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="Silver" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid Background="#FF7CA886">
+        <Rectangle HorizontalAlignment="Left" Height="834" VerticalAlignment="Center" Width="600" Margin="600,0,0,0" Fill="White"/>
+        <Image Source="/image/logo.png" HorizontalAlignment="Left" Height="642" Margin="0,91,0,0" VerticalAlignment="Top" Width="600"/>
+        <Label Content="Correo Electrónico" HorizontalAlignment="Left" Margin="668,149,0,0" VerticalAlignment="Top" FontFamily="Segoe UI Black" FontSize="50"/>
+        <TextBox x:Name="tbCorreo" HorizontalAlignment="Left" Margin="668,262,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="464" Height="73" FontSize="30" BorderThickness="0,0,0,2" BorderBrush="Black" VerticalContentAlignment="Center"/>
+        <Label Content="Contraseña" HorizontalAlignment="Left" Margin="757,391,0,0" VerticalAlignment="Top" FontFamily="Segoe UI Black" FontSize="50"/>
+        <PasswordBox x:Name="pbContraseña" HorizontalAlignment="Left" Margin="668,502,0,0" VerticalAlignment="Top" Width="464" Height="73" FontSize="30" BorderBrush="Black" BorderThickness="0,0,0,2" VerticalContentAlignment="Center"/>
+        <Button x:Name="btnSalir" Content="Salir" HorizontalAlignment="Left" Margin="668,652,0,0" VerticalAlignment="Top" Height="68" Width="179" BorderThickness="2,2,2,2" BorderBrush="Black" Foreground="White" Background="Red" FontSize="30" FontFamily="Arial Narrow" Click="BtnSalir_Click"/>
+        <Button x:Name="btnIniciarSesion" Content="Ingresar" HorizontalAlignment="Left" Margin="953,652,0,0" VerticalAlignment="Top" Height="68" Width="179" BorderThickness="2,2,2,2" BorderBrush="Black" Foreground="White" Background="#FF7CA886" FontSize="30" FontFamily="Arial Narrow" Click="BtnIniciarSesion_Click"/>
+    </Grid>
+</Window>

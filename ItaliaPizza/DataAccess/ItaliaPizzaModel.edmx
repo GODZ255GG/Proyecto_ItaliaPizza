@@ -1,0 +1,320 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ItaliaPizzaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'ItaliaPizza.dbo.Detalle_Pedido' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="Detalle_Pedido">
+          <Key>
+            <PropertyRef Name="idPedidos" />
+            <PropertyRef Name="idProductos" />
+          </Key>
+          <Property Name="nombreDelCliente" Type="nvarchar" MaxLength="60" />
+          <Property Name="domicilioDeEntrega" Type="nvarchar" MaxLength="60" />
+          <Property Name="tipoDePedido" Type="nvarchar" MaxLength="45" />
+          <Property Name="estadoDelPedido" Type="nvarchar" MaxLength="45" />
+          <Property Name="idPedidos" Type="int" Nullable="false" />
+          <Property Name="idProductos" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pedidos">
+          <Key>
+            <PropertyRef Name="idPedidos" />
+          </Key>
+          <Property Name="idPedidos" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="total" Type="float" />
+          <Property Name="idUsuarios" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Productos">
+          <Key>
+            <PropertyRef Name="idProductos" />
+          </Key>
+          <Property Name="idProductos" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="45" />
+          <Property Name="marca" Type="nvarchar" MaxLength="45" />
+          <Property Name="tipo" Type="nvarchar" MaxLength="45" />
+          <Property Name="foto" Type="nvarchar(max)" />
+          <Property Name="precio" Type="float" />
+          <Property Name="stock" Type="int" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="idUsuarios" />
+          </Key>
+          <Property Name="idUsuarios" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="nvarchar" MaxLength="45" />
+          <Property Name="apellidoPaterno" Type="nvarchar" MaxLength="45" />
+          <Property Name="apellidoMaterno" Type="nvarchar" MaxLength="45" />
+          <Property Name="telefono" Type="bigint" />
+          <Property Name="correo" Type="nvarchar" MaxLength="50" />
+          <Property Name="contraseña" Type="nvarchar(max)" />
+          <Property Name="foto" Type="nvarchar(max)" />
+          <Property Name="rol" Type="nvarchar" MaxLength="12" />
+        </EntityType>
+        <Association Name="FK_dbo_Detalle_Pedidos_dbo_Pedidos_idPedidos">
+          <End Role="Pedidos" Type="Self.Pedidos" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Detalle_Pedido" Type="Self.Detalle_Pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pedidos">
+              <PropertyRef Name="idPedidos" />
+            </Principal>
+            <Dependent Role="Detalle_Pedido">
+              <PropertyRef Name="idPedidos" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Detalle_Pedidos_dbo_Productos_idProductos">
+          <End Role="Productos" Type="Self.Productos" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Detalle_Pedido" Type="Self.Detalle_Pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Productos">
+              <PropertyRef Name="idProductos" />
+            </Principal>
+            <Dependent Role="Detalle_Pedido">
+              <PropertyRef Name="idProductos" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Pedidos_dbo_Usuarios_idUsuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Pedidos" Type="Self.Pedidos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="idUsuarios" />
+            </Principal>
+            <Dependent Role="Pedidos">
+              <PropertyRef Name="idUsuarios" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ItaliaPizzaModelStoreContainer">
+          <EntitySet Name="Pedidos" EntityType="Self.Pedidos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Productos" EntityType="Self.Productos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Detalle_Pedido" EntityType="Self.Detalle_Pedido" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Detalle_Pedido].[nombreDelCliente] AS [nombreDelCliente], 
+    [Detalle_Pedido].[domicilioDeEntrega] AS [domicilioDeEntrega], 
+    [Detalle_Pedido].[tipoDePedido] AS [tipoDePedido], 
+    [Detalle_Pedido].[estadoDelPedido] AS [estadoDelPedido], 
+    [Detalle_Pedido].[idPedidos] AS [idPedidos], 
+    [Detalle_Pedido].[idProductos] AS [idProductos]
+    FROM [dbo].[Detalle_Pedido] AS [Detalle_Pedido]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_dbo_Detalle_Pedidos_dbo_Pedidos_idPedidos" Association="Self.FK_dbo_Detalle_Pedidos_dbo_Pedidos_idPedidos">
+            <End Role="Pedidos" EntitySet="Pedidos" />
+            <End Role="Detalle_Pedido" EntitySet="Detalle_Pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Detalle_Pedidos_dbo_Productos_idProductos" Association="Self.FK_dbo_Detalle_Pedidos_dbo_Productos_idProductos">
+            <End Role="Productos" EntitySet="Productos" />
+            <End Role="Detalle_Pedido" EntitySet="Detalle_Pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Pedidos_dbo_Usuarios_idUsuarios" Association="Self.FK_dbo_Pedidos_dbo_Usuarios_idUsuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Pedidos" EntitySet="Pedidos" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ItaliaPizzaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Pedidos">
+          <Key>
+            <PropertyRef Name="idPedidos" />
+          </Key>
+          <Property Name="idPedidos" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="total" Type="Double" />
+          <Property Name="idUsuarios" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Detalle_Pedido" Relationship="Self.FK_dbo_Detalle_Pedidos_dbo_Pedidos_idPedidos" FromRole="Pedidos" ToRole="Detalle_Pedido" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.FK_dbo_Pedidos_dbo_Usuarios_idUsuarios" FromRole="Pedidos" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="Productos">
+          <Key>
+            <PropertyRef Name="idProductos" />
+          </Key>
+          <Property Name="idProductos" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
+          <Property Name="marca" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
+          <Property Name="tipo" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
+          <Property Name="foto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="precio" Type="Double" />
+          <Property Name="stock" Type="Int32" />
+          <NavigationProperty Name="Detalle_Pedido" Relationship="Self.FK_dbo_Detalle_Pedidos_dbo_Productos_idProductos" FromRole="Productos" ToRole="Detalle_Pedido" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="idUsuarios" />
+          </Key>
+          <Property Name="idUsuarios" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
+          <Property Name="apellidoPaterno" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
+          <Property Name="apellidoMaterno" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
+          <Property Name="telefono" Type="Int64" />
+          <Property Name="correo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="contraseña" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="foto" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="rol" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Pedidos" Relationship="Self.FK_dbo_Pedidos_dbo_Usuarios_idUsuarios" FromRole="Usuarios" ToRole="Pedidos" />
+        </EntityType>
+        <EntityType Name="Detalle_Pedido">
+          <Key>
+            <PropertyRef Name="idPedidos" />
+            <PropertyRef Name="idProductos" />
+          </Key>
+          <Property Name="nombreDelCliente" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="domicilioDeEntrega" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="tipoDePedido" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
+          <Property Name="estadoDelPedido" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
+          <Property Name="idPedidos" Type="Int32" Nullable="false" />
+          <Property Name="idProductos" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Pedidos" Relationship="Self.FK_dbo_Detalle_Pedidos_dbo_Pedidos_idPedidos" FromRole="Detalle_Pedido" ToRole="Pedidos" />
+          <NavigationProperty Name="Productos" Relationship="Self.FK_dbo_Detalle_Pedidos_dbo_Productos_idProductos" FromRole="Detalle_Pedido" ToRole="Productos" />
+        </EntityType>
+        <Association Name="FK_dbo_Detalle_Pedidos_dbo_Pedidos_idPedidos">
+          <End Role="Pedidos" Type="Self.Pedidos" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Detalle_Pedido" Type="Self.Detalle_Pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pedidos">
+              <PropertyRef Name="idPedidos" />
+            </Principal>
+            <Dependent Role="Detalle_Pedido">
+              <PropertyRef Name="idPedidos" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Pedidos_dbo_Usuarios_idUsuarios">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Pedidos" Type="Self.Pedidos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="idUsuarios" />
+            </Principal>
+            <Dependent Role="Pedidos">
+              <PropertyRef Name="idUsuarios" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Detalle_Pedidos_dbo_Productos_idProductos">
+          <End Role="Productos" Type="Self.Productos" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Detalle_Pedido" Type="Self.Detalle_Pedido" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Productos">
+              <PropertyRef Name="idProductos" />
+            </Principal>
+            <Dependent Role="Detalle_Pedido">
+              <PropertyRef Name="idProductos" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ItaliaPizzaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Pedidos" EntityType="Self.Pedidos" />
+          <EntitySet Name="Productos" EntityType="Self.Productos" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
+          <EntitySet Name="Detalle_Pedido" EntityType="Self.Detalle_Pedido" />
+          <AssociationSet Name="FK_dbo_Detalle_Pedidos_dbo_Pedidos_idPedidos" Association="Self.FK_dbo_Detalle_Pedidos_dbo_Pedidos_idPedidos">
+            <End Role="Pedidos" EntitySet="Pedidos" />
+            <End Role="Detalle_Pedido" EntitySet="Detalle_Pedido" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Pedidos_dbo_Usuarios_idUsuarios" Association="Self.FK_dbo_Pedidos_dbo_Usuarios_idUsuarios">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="Pedidos" EntitySet="Pedidos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Detalle_Pedidos_dbo_Productos_idProductos" Association="Self.FK_dbo_Detalle_Pedidos_dbo_Productos_idProductos">
+            <End Role="Productos" EntitySet="Productos" />
+            <End Role="Detalle_Pedido" EntitySet="Detalle_Pedido" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ItaliaPizzaModelStoreContainer" CdmEntityContainer="ItaliaPizzaEntities">
+          <EntitySetMapping Name="Pedidos">
+            <EntityTypeMapping TypeName="ItaliaPizzaModel.Pedidos">
+              <MappingFragment StoreEntitySet="Pedidos">
+                <ScalarProperty Name="idPedidos" ColumnName="idPedidos" />
+                <ScalarProperty Name="total" ColumnName="total" />
+                <ScalarProperty Name="idUsuarios" ColumnName="idUsuarios" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Productos">
+            <EntityTypeMapping TypeName="ItaliaPizzaModel.Productos">
+              <MappingFragment StoreEntitySet="Productos">
+                <ScalarProperty Name="idProductos" ColumnName="idProductos" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="marca" ColumnName="marca" />
+                <ScalarProperty Name="tipo" ColumnName="tipo" />
+                <ScalarProperty Name="foto" ColumnName="foto" />
+                <ScalarProperty Name="precio" ColumnName="precio" />
+                <ScalarProperty Name="stock" ColumnName="stock" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="ItaliaPizzaModel.Usuarios">
+              <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="idUsuarios" ColumnName="idUsuarios" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellidoPaterno" ColumnName="apellidoPaterno" />
+                <ScalarProperty Name="apellidoMaterno" ColumnName="apellidoMaterno" />
+                <ScalarProperty Name="telefono" ColumnName="telefono" />
+                <ScalarProperty Name="correo" ColumnName="correo" />
+                <ScalarProperty Name="contraseña" ColumnName="contraseña" />
+                <ScalarProperty Name="foto" ColumnName="foto" />
+                <ScalarProperty Name="rol" ColumnName="rol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Detalle_Pedido">
+            <EntityTypeMapping TypeName="ItaliaPizzaModel.Detalle_Pedido">
+              <MappingFragment StoreEntitySet="Detalle_Pedido">
+                <ScalarProperty Name="nombreDelCliente" ColumnName="nombreDelCliente" />
+                <ScalarProperty Name="domicilioDeEntrega" ColumnName="domicilioDeEntrega" />
+                <ScalarProperty Name="tipoDePedido" ColumnName="tipoDePedido" />
+                <ScalarProperty Name="estadoDelPedido" ColumnName="estadoDelPedido" />
+                <ScalarProperty Name="idPedidos" ColumnName="idPedidos" />
+                <ScalarProperty Name="idProductos" ColumnName="idProductos" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
