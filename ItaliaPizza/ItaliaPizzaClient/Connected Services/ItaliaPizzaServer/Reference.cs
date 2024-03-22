@@ -15,6 +15,147 @@ namespace ItaliaPizzaClient.ItaliaPizzaServer {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Productos", Namespace="http://schemas.datacontract.org/2004/07/Logic")]
+    [System.SerializableAttribute()]
+    public partial class Productos : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FotoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdProductosField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MarcaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NombreField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private double PrecioField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int StockField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TipoField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Foto {
+            get {
+                return this.FotoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FotoField, value) != true)) {
+                    this.FotoField = value;
+                    this.RaisePropertyChanged("Foto");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IdProductos {
+            get {
+                return this.IdProductosField;
+            }
+            set {
+                if ((this.IdProductosField.Equals(value) != true)) {
+                    this.IdProductosField = value;
+                    this.RaisePropertyChanged("IdProductos");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Marca {
+            get {
+                return this.MarcaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MarcaField, value) != true)) {
+                    this.MarcaField = value;
+                    this.RaisePropertyChanged("Marca");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Nombre {
+            get {
+                return this.NombreField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NombreField, value) != true)) {
+                    this.NombreField = value;
+                    this.RaisePropertyChanged("Nombre");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public double Precio {
+            get {
+                return this.PrecioField;
+            }
+            set {
+                if ((this.PrecioField.Equals(value) != true)) {
+                    this.PrecioField = value;
+                    this.RaisePropertyChanged("Precio");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Stock {
+            get {
+                return this.StockField;
+            }
+            set {
+                if ((this.StockField.Equals(value) != true)) {
+                    this.StockField = value;
+                    this.RaisePropertyChanged("Stock");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Tipo {
+            get {
+                return this.TipoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TipoField, value) != true)) {
+                    this.TipoField = value;
+                    this.RaisePropertyChanged("Tipo");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Usuarios", Namespace="http://schemas.datacontract.org/2004/07/Logic")]
     [System.SerializableAttribute()]
     public partial class Usuarios : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -207,10 +348,28 @@ namespace ItaliaPizzaClient.ItaliaPizzaServer {
     public interface IProductManager {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductManager/RegistrarProducto", ReplyAction="http://tempuri.org/IProductManager/RegistrarProductoResponse")]
-        bool RegistrarProducto();
+        bool RegistrarProducto(ItaliaPizzaClient.ItaliaPizzaServer.Productos producto);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductManager/RegistrarProducto", ReplyAction="http://tempuri.org/IProductManager/RegistrarProductoResponse")]
-        System.Threading.Tasks.Task<bool> RegistrarProductoAsync();
+        System.Threading.Tasks.Task<bool> RegistrarProductoAsync(ItaliaPizzaClient.ItaliaPizzaServer.Productos producto);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductManager/ProductoYaRegistrado", ReplyAction="http://tempuri.org/IProductManager/ProductoYaRegistradoResponse")]
+        bool ProductoYaRegistrado(string nombre);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductManager/ProductoYaRegistrado", ReplyAction="http://tempuri.org/IProductManager/ProductoYaRegistradoResponse")]
+        System.Threading.Tasks.Task<bool> ProductoYaRegistradoAsync(string nombre);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductManager/ObtenerListaProductos", ReplyAction="http://tempuri.org/IProductManager/ObtenerListaProductosResponse")]
+        ItaliaPizzaClient.ItaliaPizzaServer.Productos[] ObtenerListaProductos();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductManager/ObtenerListaProductos", ReplyAction="http://tempuri.org/IProductManager/ObtenerListaProductosResponse")]
+        System.Threading.Tasks.Task<ItaliaPizzaClient.ItaliaPizzaServer.Productos[]> ObtenerListaProductosAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductManager/EliminarProducto", ReplyAction="http://tempuri.org/IProductManager/EliminarProductoResponse")]
+        bool EliminarProducto(int idProducto);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductManager/EliminarProducto", ReplyAction="http://tempuri.org/IProductManager/EliminarProductoResponse")]
+        System.Threading.Tasks.Task<bool> EliminarProductoAsync(int idProducto);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -240,12 +399,36 @@ namespace ItaliaPizzaClient.ItaliaPizzaServer {
                 base(binding, remoteAddress) {
         }
         
-        public bool RegistrarProducto() {
-            return base.Channel.RegistrarProducto();
+        public bool RegistrarProducto(ItaliaPizzaClient.ItaliaPizzaServer.Productos producto) {
+            return base.Channel.RegistrarProducto(producto);
         }
         
-        public System.Threading.Tasks.Task<bool> RegistrarProductoAsync() {
-            return base.Channel.RegistrarProductoAsync();
+        public System.Threading.Tasks.Task<bool> RegistrarProductoAsync(ItaliaPizzaClient.ItaliaPizzaServer.Productos producto) {
+            return base.Channel.RegistrarProductoAsync(producto);
+        }
+        
+        public bool ProductoYaRegistrado(string nombre) {
+            return base.Channel.ProductoYaRegistrado(nombre);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ProductoYaRegistradoAsync(string nombre) {
+            return base.Channel.ProductoYaRegistradoAsync(nombre);
+        }
+        
+        public ItaliaPizzaClient.ItaliaPizzaServer.Productos[] ObtenerListaProductos() {
+            return base.Channel.ObtenerListaProductos();
+        }
+        
+        public System.Threading.Tasks.Task<ItaliaPizzaClient.ItaliaPizzaServer.Productos[]> ObtenerListaProductosAsync() {
+            return base.Channel.ObtenerListaProductosAsync();
+        }
+        
+        public bool EliminarProducto(int idProducto) {
+            return base.Channel.EliminarProducto(idProducto);
+        }
+        
+        public System.Threading.Tasks.Task<bool> EliminarProductoAsync(int idProducto) {
+            return base.Channel.EliminarProductoAsync(idProducto);
         }
     }
     

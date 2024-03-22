@@ -27,7 +27,7 @@ namespace ItaliaPizzaClient
 
         private void BtnProductos_Click(object sender, RoutedEventArgs e)
         {
-            contentControl.Content = new Productos();
+            contentControl.Content = new ListaProductos();
         }
     }
 }

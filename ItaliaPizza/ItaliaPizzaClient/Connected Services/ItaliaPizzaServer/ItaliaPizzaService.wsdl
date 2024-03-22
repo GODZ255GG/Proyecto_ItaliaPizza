@@ -29,6 +29,24 @@
   <wsdl:message name="IProductManager_RegistrarProducto_OutputMessage">
     <wsdl:part name="parameters" element="tns:RegistrarProductoResponse" />
   </wsdl:message>
+  <wsdl:message name="IProductManager_ProductoYaRegistrado_InputMessage">
+    <wsdl:part name="parameters" element="tns:ProductoYaRegistrado" />
+  </wsdl:message>
+  <wsdl:message name="IProductManager_ProductoYaRegistrado_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ProductoYaRegistradoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductManager_ObtenerListaProductos_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerListaProductos" />
+  </wsdl:message>
+  <wsdl:message name="IProductManager_ObtenerListaProductos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerListaProductosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductManager_EliminarProducto_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarProducto" />
+  </wsdl:message>
+  <wsdl:message name="IProductManager_EliminarProducto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarProductoResponse" />
+  </wsdl:message>
   <wsdl:message name="IUserManager_IniciarSesion_InputMessage">
     <wsdl:part name="parameters" element="tns:IniciarSesion" />
   </wsdl:message>
@@ -39,6 +57,18 @@
     <wsdl:operation name="RegistrarProducto">
       <wsdl:input wsaw:Action="http://tempuri.org/IProductManager/RegistrarProducto" message="tns:IProductManager_RegistrarProducto_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IProductManager/RegistrarProductoResponse" message="tns:IProductManager_RegistrarProducto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ProductoYaRegistrado">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductManager/ProductoYaRegistrado" message="tns:IProductManager_ProductoYaRegistrado_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductManager/ProductoYaRegistradoResponse" message="tns:IProductManager_ProductoYaRegistrado_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerListaProductos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductManager/ObtenerListaProductos" message="tns:IProductManager_ObtenerListaProductos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductManager/ObtenerListaProductosResponse" message="tns:IProductManager_ObtenerListaProductos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarProducto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductManager/EliminarProducto" message="tns:IProductManager_EliminarProducto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductManager/EliminarProductoResponse" message="tns:IProductManager_EliminarProducto_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IUserManager">
@@ -52,6 +82,33 @@
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
     <wsdl:operation name="RegistrarProducto">
       <soap12:operation soapAction="http://tempuri.org/IProductManager/RegistrarProducto" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProductoYaRegistrado">
+      <soap12:operation soapAction="http://tempuri.org/IProductManager/ProductoYaRegistrado" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerListaProductos">
+      <soap12:operation soapAction="http://tempuri.org/IProductManager/ObtenerListaProductos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarProducto">
+      <soap12:operation soapAction="http://tempuri.org/IProductManager/EliminarProducto" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

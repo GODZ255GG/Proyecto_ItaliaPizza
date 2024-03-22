@@ -1,8 +1,11 @@
 ﻿using Logic;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity.Core;
+using System.Data.SqlClient;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
@@ -43,6 +46,36 @@ namespace Services
             try
             {
                 status = registro.ProductoYaRegistrado(nombre);
+            }
+            catch (EntityException e)
+            {
+
+            }
+            return status;
+        }
+
+
+        public List<Productos> ObtenerListaProductos()
+        {
+            List<Productos> productos = new List<Productos>();
+            try
+            {
+                ListaProductos lista = new ListaProductos();
+                productos = lista.CargarProductos();
+            }catch (EntityException e)
+            {
+
+            }
+            return productos;
+        }
+
+        public bool EliminarProducto(int idProducto)
+        {
+            ActualizarProductocs eliminar = new ActualizarProductocs();
+            var status = false;
+            try
+            {
+                status = eliminar.EliminarProducto(idProducto);
             }
             catch (EntityException e)
             {

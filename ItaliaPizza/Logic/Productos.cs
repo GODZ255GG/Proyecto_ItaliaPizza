@@ -14,7 +14,7 @@ namespace Logic
         private string _marca;
         private string _tipo;
         private string _foto;
-        private float _precio;
+        private double _precio;
         private int _stock;
 
         #region Propiedades
@@ -29,7 +29,7 @@ namespace Logic
         [DataMember]
         public string Foto { get { return _foto; } set { _foto = value; } }
         [DataMember]
-        public float Precio { get { return _precio; } set { _precio = value; } }
+        public double Precio { get { return _precio; } set { _precio = value; } }
         [DataMember]
         public int Stock { get { return _stock; } set { _stock = value; } }
         #endregion
