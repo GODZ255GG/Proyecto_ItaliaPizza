@@ -49,7 +49,7 @@ namespace ItaliaPizzaClient
                         }
                         catch (EndpointNotFoundException ex)
                         {
-                            MessageBox.Show("No se pudo acceder al punto final (endpoint) requerido. Intente de nuevo", "Error de conexión", MessageBoxButton.OK, MessageBoxImage.Error);
+                            MessageBox.Show("Por el momento no hay conexión con la base de datos, por favor inténtelo más tarde", "Error de conexión con base de datos", MessageBoxButton.OK, MessageBoxImage.Error);
                         }
                         catch (CommunicationException ex)
                         {
