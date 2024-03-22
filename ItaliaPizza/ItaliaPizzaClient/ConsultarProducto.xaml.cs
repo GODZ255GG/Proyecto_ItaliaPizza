@@ -47,11 +47,11 @@ namespace ItaliaPizzaClient
 
         private void BtnEliminar_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult resultado = MessageBox.Show("¿Está seguro que desea eliminar este producto?", "Confirmar eliminación", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            MessageBoxResult resultado = MessageBox.Show("¿Quieres eliminar el producto?", "Confirmar eliminación", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (resultado == MessageBoxResult.Yes)
             {
                 client.EliminarProducto(idProducto);
-                MessageBox.Show("Producto eliminado correctamente", "Eliminación exitosa", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Producto eliminado exitosamente", "Eliminación exitosa", MessageBoxButton.OK, MessageBoxImage.Information);
                 this.Close();
             }
         }

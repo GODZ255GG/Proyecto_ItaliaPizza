@@ -14,8 +14,8 @@ namespace ItaliaPizzaClient
         private string nombre = "";
         private string marca = "";
         private string tipo = "";
-        private float precio = 0;
-        private int stock = 0;
+        private string precio = "";
+        private string stock = "";
 
         public RegistrarProducto()
         {
@@ -46,15 +46,15 @@ namespace ItaliaPizzaClient
             }
             catch (EndpointNotFoundException ex)
             {
-                MessageBox.Show("NO jala", "EndPonit", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("No se pudo acceder al punto final (endpoint) requerido. Intente de nuevo", "Error de conexión", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             catch (CommunicationException ex)
             {
-                MessageBox.Show("NO jala", "Communication", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Se produjo un error de comunicación al intentar acceder a un recurso remoto. Intente de nuevo", "Problema de comunicación", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             catch (TimeoutException ex)
             {
-                MessageBox.Show("NO jala", "Time", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("La operación que intentaba realizar ha superado el tiempo de espera establecido y no pudo completarse en el tiempo especificado. Intente de nuevo", "Tiempo de espera agotado", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -63,8 +63,8 @@ namespace ItaliaPizzaClient
             nombre = tbxNombre.Text;
             marca = tbxMarca.Text;
             tipo = cbxTipo.Text;
-            precio = float.Parse(tbxPrecio.Text);
-            stock = int.Parse(tbxStock.Text);
+            precio = tbxPrecio.Text;
+            stock = tbxStock.Text;
             ItaliaPizzaServer.ProductManagerClient client = new ItaliaPizzaServer.ProductManagerClient();
 
             ItaliaPizzaServer.Productos nuevoProducto = new ItaliaPizzaServer.Productos()
@@ -72,29 +72,38 @@ namespace ItaliaPizzaClient
                 Nombre = nombre,
                 Marca = marca,
                 Tipo = tipo,
-                Precio = precio,
-                Stock = stock,
+                Precio = double.Parse(precio),
+                Stock = int.Parse(stock),
             };
 
             var result = false;
 
-            if (!client.ProductoYaRegistrado(nombre))
+            if (CamposVacios())
             {
                 result = true;
-            }
-            else
-            {
-                MessageBox.Show("Este producto ya se encuentra registrado en el sistema, intente con otro", "Producto duplicado", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
 
-            if (result)
-            {
-                var aux = client.RegistrarProducto(nuevoProducto);
-                if (aux)
+                if (!client.ProductoYaRegistrado(nombre))
                 {
-                    MessageBox.Show("El producto se ha registrado exitosamente", "Registro exitoso", MessageBoxButton.OK, MessageBoxImage.Information);
-                    this.Close();
-                    
+                    result = true;
+                }
+                else
+                {
+                    MessageBox.Show("Este producto ya se encuentra registrado en el sistema, intente con otro", "Producto duplicado", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+
+                if (result)
+                {
+                    var aux = client.RegistrarProducto(nuevoProducto);
+                    if (aux)
+                    {
+                        MessageBox.Show("El producto se ha registrado exitosamente", "Registro exitoso", MessageBoxButton.OK, MessageBoxImage.Information);
+                        this.Close();
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se pudo registrar el producto", "Registro fallido", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
                 }
                 else
                 {
@@ -103,8 +112,18 @@ namespace ItaliaPizzaClient
             }
             else
             {
-                MessageBox.Show("No se pudo registrar el producto", "Registro fallido", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Ingrese la información solicitada para continuar.", "Campos Vacios", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
+        }
+
+        public bool CamposVacios()
+        {
+            if(tbxNombre.Text == string.Empty || tbxMarca.Text == string.Empty || tbxPrecio.Text == string.Empty 
+                || tbxStock.Text == string.Empty || cbxTipo.Text == string.Empty)
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

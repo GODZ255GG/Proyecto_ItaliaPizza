@@ -49,15 +49,15 @@ namespace ItaliaPizzaClient
                         }
                         catch (EndpointNotFoundException ex)
                         {
-                            MessageBox.Show("NO jala", "EndPonit", MessageBoxButton.OK, MessageBoxImage.Error);
+                            MessageBox.Show("No se pudo acceder al punto final (endpoint) requerido. Intente de nuevo", "Error de conexión", MessageBoxButton.OK, MessageBoxImage.Error);
                         }
                         catch (CommunicationException ex)
                         {
-                            MessageBox.Show("NO jala", "Communication", MessageBoxButton.OK, MessageBoxImage.Error);
+                            MessageBox.Show("Se produjo un error de comunicación al intentar acceder a un recurso remoto. Intente de nuevo", "Problema de comunicación", MessageBoxButton.OK, MessageBoxImage.Error);
                         }
                         catch (TimeoutException ex)
                         {
-                            MessageBox.Show("NO jala", "Time", MessageBoxButton.OK, MessageBoxImage.Error);
+                            MessageBox.Show("La operación que intentaba realizar ha superado el tiempo de espera establecido y no pudo completarse en el tiempo especificado. Intente de nuevo", "Tiempo de espera agotado", MessageBoxButton.OK, MessageBoxImage.Error);
                         }
                         finally
                         {
@@ -66,17 +66,17 @@ namespace ItaliaPizzaClient
                     }
                     else
                     {
-                        MessageBox.Show("Es el tamaño","String largos", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        MessageBox.Show("El correo o la contraseña no son validos. Verifique sus datos","Datos Invalidos", MessageBoxButton.OK, MessageBoxImage.Warning);
                     }
                 }
                 else
                 {
-                    MessageBox.Show("No son los string validos","String validos", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    MessageBox.Show("El correo o la contraseña no son validos. Verifique sus datos", "Datos Invalidos", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
             }
             else
             {
-                MessageBox.Show("No jalo la contra o correo", "F mano", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Ingrese la información solicitada para continuar", "Campos Vaciíos", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
 

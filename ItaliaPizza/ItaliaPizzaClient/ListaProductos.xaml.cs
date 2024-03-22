@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -48,9 +49,17 @@ namespace ItaliaPizzaClient
 
                 lbxProductos.ItemsSource = productos;
             }
-            catch (Exception ex)
+            catch (EndpointNotFoundException ex)
             {
-                Console.WriteLine("Error al recuperar la información de los pedidos: " + ex.Message);
+                MessageBox.Show("No se pudo acceder al punto final (endpoint) requerido. Intente de nuevo", "Error de conexión", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch (CommunicationException ex)
+            {
+                MessageBox.Show("Se produjo un error de comunicación al intentar acceder a un recurso remoto. Intente de nuevo", "Problema de comunicación", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch (TimeoutException ex)
+            {
+                MessageBox.Show("La operación que intentaba realizar ha superado el tiempo de espera establecido y no pudo completarse en el tiempo especificado. Intente de nuevo", "Tiempo de espera agotado", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
