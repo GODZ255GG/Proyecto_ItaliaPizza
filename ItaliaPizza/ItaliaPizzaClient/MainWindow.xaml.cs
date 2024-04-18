@@ -49,34 +49,30 @@ namespace ItaliaPizzaClient
                         }
                         catch (EndpointNotFoundException ex)
                         {
-                            MessageBox.Show("NO jala", "EndPonit", MessageBoxButton.OK, MessageBoxImage.Error);
+                            MessageBox.Show("Por el momento no hay conexión con la base de datos, por favor inténtelo más tarde", "Error de conexión con base de datos", MessageBoxButton.OK, MessageBoxImage.Error);
                         }
                         catch (CommunicationException ex)
                         {
-                            MessageBox.Show("NO jala", "Communication", MessageBoxButton.OK, MessageBoxImage.Error);
+                            MessageBox.Show("Se produjo un error de comunicación al intentar acceder a un recurso remoto. Intente de nuevo", "Problema de comunicación", MessageBoxButton.OK, MessageBoxImage.Error);
                         }
                         catch (TimeoutException ex)
                         {
-                            MessageBox.Show("NO jala", "Time", MessageBoxButton.OK, MessageBoxImage.Error);
-                        }
-                        finally
-                        {
-                            client.Abort();
+                            MessageBox.Show("La operación que intentaba realizar ha superado el tiempo de espera establecido y no pudo completarse en el tiempo especificado. Intente de nuevo", "Tiempo de espera agotado", MessageBoxButton.OK, MessageBoxImage.Error);
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Es el tamaño","String largos", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        MessageBox.Show("El correo o la contraseña no son validos. Verifique sus datos","Datos Invalidos", MessageBoxButton.OK, MessageBoxImage.Warning);
                     }
                 }
                 else
                 {
-                    MessageBox.Show("No son los string validos","String validos", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    MessageBox.Show("El correo o la contraseña no son validos. Verifique sus datos", "Datos Invalidos", MessageBoxButton.OK, MessageBoxImage.Warning);
                 }
             }
             else
             {
-                MessageBox.Show("No jalo la contra o correo", "F mano", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Ingrese la información solicitada para continuar", "Campos Vacíos", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
 
@@ -87,9 +83,9 @@ namespace ItaliaPizzaClient
             {
                 if (usuarioInicioSesion.Status)
                 {
-                    Domain.Usuarios.UsuariosClient = new Domain.Usuarios()
+                    Domain.Empleados.EmpleadosClient = new Domain.Empleados()
                     {
-                        IdUsuarios = usuarioInicioSesion.IdUsuarios,
+                        IdEmpleados = usuarioInicioSesion.IdEmpleados,
                         Nombre = usuarioInicioSesion.Nombre,
                         ApellidoPaterno = usuarioInicioSesion.ApellidoPaterno,
                         ApellidoMaterno = usuarioInicioSesion.ApellidoMaterno,
@@ -99,7 +95,7 @@ namespace ItaliaPizzaClient
                         Rol = usuarioInicioSesion.Rol
                     };
 
-                    string nombre = Domain.Usuarios.UsuariosClient.Nombre;
+                    string nombre = Domain.Empleados.EmpleadosClient.Nombre;
                     MessageBox.Show("Bienvenido " + nombre, "Inicio de Sesión exitoso", MessageBoxButton.OK, MessageBoxImage.Information);
 
                     VentanaPrincipal ventanaPrincipal = new VentanaPrincipal();
@@ -116,21 +112,19 @@ namespace ItaliaPizzaClient
         #region Validaciones
         private bool StringValidos(string correo, string contraseña)
         {
-            var esValido = false;
             if(Regex.IsMatch(correo, "^[a-zA-Z0-9._%+-]+@(hotmail|outlook|gmail)\\.com$") && Regex.IsMatch(contraseña, "^[a-zA-Z0-9]*$"))
             {
-                esValido = true;
+                return true;
             }
-            return esValido;
+            return false;
         }
         private bool StringLargos(string correo, string contraseña)
         {
-            var noSonLargos = false;
             if (correo.Length <= 50 || contraseña.Length <=13 )
             {
-                noSonLargos = true;
+                return true;
             }
-            return noSonLargos;
+            return false;
         }
         #endregion
     }

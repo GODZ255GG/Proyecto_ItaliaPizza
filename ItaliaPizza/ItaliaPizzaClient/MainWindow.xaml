@@ -36,14 +36,14 @@
             </Setter>
         </Style>
     </Window.Resources>
-    <Grid Background="#FF7CA886">
-        <Rectangle HorizontalAlignment="Left" Height="834" VerticalAlignment="Center" Width="600" Margin="600,0,0,0" Fill="White"/>
-        <Image Source="/image/logo.png" HorizontalAlignment="Left" Height="642" Margin="0,91,0,0" VerticalAlignment="Top" Width="600"/>
+    <Grid Background="#FFFCF3F3">
+        <Rectangle HorizontalAlignment="Left" Height="834" VerticalAlignment="Center" Width="600" Margin="600,0,0,0" Fill="#FF7CA886"/>
+        <Image Source="/image/logoP.jpeg" HorizontalAlignment="Left" Height="481" Margin="73,192,0,0" VerticalAlignment="Top" Width="475"/>
         <Label Content="Correo Electrónico" HorizontalAlignment="Left" Margin="668,149,0,0" VerticalAlignment="Top" FontFamily="Segoe UI Black" FontSize="50"/>
-        <TextBox x:Name="tbCorreo" HorizontalAlignment="Left" Margin="668,262,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="464" Height="73" FontSize="30" BorderThickness="0,0,0,2" BorderBrush="Black" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="tbCorreo" HorizontalAlignment="Left" Margin="668,262,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="464" Height="73" FontSize="30" BorderThickness="0,0,0,2" BorderBrush="Black" VerticalContentAlignment="Center" Background="#FF7CA886"/>
         <Label Content="Contraseña" HorizontalAlignment="Left" Margin="757,391,0,0" VerticalAlignment="Top" FontFamily="Segoe UI Black" FontSize="50"/>
-        <PasswordBox x:Name="pbContraseña" HorizontalAlignment="Left" Margin="668,502,0,0" VerticalAlignment="Top" Width="464" Height="73" FontSize="30" BorderBrush="Black" BorderThickness="0,0,0,2" VerticalContentAlignment="Center"/>
+        <PasswordBox x:Name="pbContraseña" HorizontalAlignment="Left" Margin="668,502,0,0" VerticalAlignment="Top" Width="464" Height="73" FontSize="30" BorderBrush="Black" BorderThickness="0,0,0,2" VerticalContentAlignment="Center" Background="#FF7CA886"/>
         <Button x:Name="btnSalir" Content="Salir" HorizontalAlignment="Left" Margin="668,652,0,0" VerticalAlignment="Top" Height="68" Width="179" BorderThickness="2,2,2,2" BorderBrush="Black" Foreground="White" Background="Red" FontSize="30" FontFamily="Arial Narrow" Click="BtnSalir_Click"/>
-        <Button x:Name="btnIniciarSesion" Content="Ingresar" HorizontalAlignment="Left" Margin="953,652,0,0" VerticalAlignment="Top" Height="68" Width="179" BorderThickness="2,2,2,2" BorderBrush="Black" Foreground="White" Background="#FF7CA886" FontSize="30" FontFamily="Arial Narrow" Click="BtnIniciarSesion_Click"/>
+        <Button x:Name="btnIniciarSesion" Content="Ingresar" HorizontalAlignment="Left" Margin="953,652,0,0" VerticalAlignment="Top" Height="68" Width="179" BorderThickness="2,2,2,2" BorderBrush="Black" Foreground="Black" Background="#FFFAFAFA" FontSize="30" FontFamily="Arial Narrow" Click="BtnIniciarSesion_Click" IsDefault="True"/>
     </Grid>
 </Window>

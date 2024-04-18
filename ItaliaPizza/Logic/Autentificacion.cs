@@ -13,23 +13,23 @@ namespace Logic
         {
         }
 
-        public Logic.Usuarios IniciarSesion(string correo, string contraseña)
+        public Logic.Empleados IniciarSesion(string correo, string contraseña)
         {
-            Logic.Usuarios usuario = new Logic.Usuarios();
-            using(var context = new ItaliaPizzaEntities())
+            Logic.Empleados usuario = new Logic.Empleados();
+            using(var context = new BDItaliaPizzaEntities())
             {
-                var cuentas = (from usuarios in context.Usuarios
-                               where usuarios.correo == correo && usuarios.contraseña == contraseña
-                               select usuarios);
+                var cuentas = (from empleado in context.Empleados
+                               where empleado.correo == correo && empleado.contraseña == contraseña
+                               select empleado);
                 if (cuentas.Any())
                 {
-                    usuario.IdUsuarios = cuentas.First().idUsuarios;
+                    usuario.IdEmpleados = cuentas.First().idEmpleados;
                     usuario.Nombre = cuentas.First().nombre;
                     usuario.ApellidoPaterno = cuentas.First().apellidoPaterno;
                     usuario.ApellidoMaterno = cuentas.First().apellidoMaterno;
-                    usuario.Telefono = (int)cuentas.First().telefono;
+                    usuario.Telefono = cuentas.First().telefono;
                     usuario.Correo = cuentas.First().correo;
-                    usuario.Contraseña = "";
+                    usuario.Contraseña = cuentas.First().contraseña;
                     usuario.Foto = cuentas.First().foto;
                     usuario.Rol = cuentas.First().rol;
                     usuario.Status = true;
@@ -37,5 +37,7 @@ namespace Logic
             }
             return usuario;
         }
+
+
     }
 }

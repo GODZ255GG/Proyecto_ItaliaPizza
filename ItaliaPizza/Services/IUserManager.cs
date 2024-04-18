@@ -12,6 +12,6 @@ namespace Services
     public interface IUserManager
     {
         [OperationContract]
-        Logic.Usuarios IniciarSesion(String correo, String contraseña);
+        Logic.Empleados IniciarSesion(String correo, String contraseña);
     }
 }

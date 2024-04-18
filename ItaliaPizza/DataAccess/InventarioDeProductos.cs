@@ -12,16 +12,14 @@ namespace DataAccess
     using System;
     using System.Collections.Generic;
     
-    public partial class Detalle_Pedido
+    public partial class InventarioDeProductos
     {
-        public string nombreDelCliente { get; set; }
-        public string domicilioDeEntrega { get; set; }
-        public string tipoDePedido { get; set; }
-        public string estadoDelPedido { get; set; }
-        public int idPedidos { get; set; }
-        public int idProductos { get; set; }
+        public int idInventarioDeProductos { get; set; }
+        public int Inventario_idInventario { get; set; }
+        public int Productos_idProductos { get; set; }
+        public Nullable<int> cantidadTotal { get; set; }
     
-        public virtual Pedidos Pedidos { get; set; }
+        public virtual Inventario Inventario { get; set; }
         public virtual Productos Productos { get; set; }
     }
 }

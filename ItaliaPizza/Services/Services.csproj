@@ -64,6 +64,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DataAccess\DataAccess.csproj">
+      <Project>{a9cdee95-9d2d-49ea-8a47-25ee951df544}</Project>
+      <Name>DataAccess</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Logic\Logic.csproj">
       <Project>{984736a9-92b0-4082-9f0c-98d8f3e80d86}</Project>
       <Name>Logic</Name>

@@ -12,28 +12,26 @@ namespace DataAccess
     using System;
     using System.Collections.Generic;
     
-    public partial class Productos
+    public partial class Insumos
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Productos()
+        public Insumos()
         {
-            this.InventarioDeProductos = new HashSet<InventarioDeProductos>();
-            this.PedidoProducto = new HashSet<PedidoProducto>();
-            this.Receta = new HashSet<Receta>();
+            this.IngredientesReceta = new HashSet<IngredientesReceta>();
+            this.InventarioDeInsumo = new HashSet<InventarioDeInsumo>();
         }
     
-        public int idProductos { get; set; }
+        public int idInsumos { get; set; }
         public string nombre { get; set; }
         public string marca { get; set; }
         public string tipo { get; set; }
-        public Nullable<double> precio { get; set; }
-        public string codigoProducto { get; set; }
+        public string cantidadDeEmpaque { get; set; }
+        public int Proveedores_idProveedores { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<InventarioDeProductos> InventarioDeProductos { get; set; }
+        public virtual ICollection<IngredientesReceta> IngredientesReceta { get; set; }
+        public virtual Proveedores Proveedores { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PedidoProducto> PedidoProducto { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Receta> Receta { get; set; }
+        public virtual ICollection<InventarioDeInsumo> InventarioDeInsumo { get; set; }
     }
 }

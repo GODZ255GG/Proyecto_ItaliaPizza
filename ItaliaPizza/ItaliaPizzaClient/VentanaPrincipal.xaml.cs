@@ -27,13 +27,7 @@ namespace ItaliaPizzaClient
 
         private void MostrarInformacionUsuario()
         {
-            lbNombreUsuario.Content = ("Hola " + Domain.Usuarios.UsuariosClient.Nombre);
-        }
-
-        private void ImgConfiguracion_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            Configuracion confi = new Configuracion();
-            confi.Show();
+            lbNombreUsuario.Content = ("Hola " + Domain.Empleados.EmpleadosClient.Nombre);
         }
 
         private void BtnUsuarios_Click(object sender, RoutedEventArgs e)
@@ -44,6 +38,13 @@ namespace ItaliaPizzaClient
         private void BtnInventario_Click(object sender, RoutedEventArgs e)
         {
             contentControl.Content = new Inventario();
+        }
+
+        private void BtnCerrarSesion_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close();
         }
     }
 }
