@@ -12,26 +12,25 @@ namespace DataAccess
     using System;
     using System.Collections.Generic;
     
-    public partial class Pedidos
+    public partial class Empleados
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Pedidos()
+        public Empleados()
         {
             this.DetallesPedido = new HashSet<DetallesPedido>();
-            this.PedidoProducto = new HashSet<PedidoProducto>();
         }
     
-        public int idPedidos { get; set; }
-        public string tipoDePedido { get; set; }
-        public string domicilioDeEntrega { get; set; }
-        public string estadoDelPedido { get; set; }
-        public int Clientes_idClientes { get; set; }
-        public Nullable<decimal> precioTotal { get; set; }
+        public int idEmpleados { get; set; }
+        public string nombre { get; set; }
+        public string apellidoPaterno { get; set; }
+        public string apellidoMaterno { get; set; }
+        public string telefono { get; set; }
+        public string correo { get; set; }
+        public string contraseña { get; set; }
+        public string foto { get; set; }
+        public string rol { get; set; }
     
-        public virtual Clientes Clientes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DetallesPedido> DetallesPedido { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PedidoProducto> PedidoProducto { get; set; }
     }
 }

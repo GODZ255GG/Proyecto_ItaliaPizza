@@ -39,15 +39,15 @@
     <Grid Background="#FFD2D2D2">
         <Button x:Name="btnCancelar" Content="Cancelar" HorizontalAlignment="Left" Margin="71,356,0,0" VerticalAlignment="Top" Height="43" Width="118" Foreground="White" Background="#7CA886" FontSize="25" BorderThickness="0,0,0,0" Padding="10,10,10,10" UseLayoutRounding="True" ScrollViewer.CanContentScroll="True" FontWeight="Bold" Click="BtnCancelar_Click"/>
         <Button x:Name="btnAceptar" Content="Aceptar" HorizontalAlignment="Left" Margin="406,356,0,0" VerticalAlignment="Top" Height="43" Width="118" Foreground="White" Background="#7CA886" FontSize="25" BorderThickness="0,0,0,0" Padding="10,10,10,10" UseLayoutRounding="True" ScrollViewer.CanContentScroll="True" FontWeight="Bold" Click="BtnAceptar_Click"/>
-        <TextBox x:Name="tbxNombre" HorizontalAlignment="Left" Margin="39,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="214" Height="34" FontSize="16" VerticalContentAlignment="Center"/>
-        <Label Content="Nombre: " HorizontalAlignment="Left" Margin="39,38,0,0" VerticalAlignment="Top" FontSize="18"/>
-        <TextBox x:Name="tbxMarca" HorizontalAlignment="Left" Margin="343,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="214" Height="34" FontSize="16" VerticalContentAlignment="Center"/>
-        <Label Content="Marca: " HorizontalAlignment="Left" Margin="343,38,0,0" VerticalAlignment="Top" FontSize="18"/>
-        <TextBox x:Name="tbxStock" HorizontalAlignment="Left" Margin="191,285,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="214" Height="34" FontSize="16" VerticalContentAlignment="Center"/>
-        <Label Content="Precio: " HorizontalAlignment="Left" Margin="343,144,0,0" VerticalAlignment="Top" FontSize="18"/>
-        <TextBox x:Name="tbxPrecio" HorizontalAlignment="Left" Margin="343,183,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="214" Height="34" FontSize="16" VerticalContentAlignment="Center"/>
-        <Label Content="Stock: " HorizontalAlignment="Left" Margin="191,246,0,0" VerticalAlignment="Top" FontSize="18"/>
-        <Label Content="Tipo de producto: " HorizontalAlignment="Left" Margin="34,144,0,0" VerticalAlignment="Top" FontSize="18"/>
-        <ComboBox x:Name="cbxTipo" HorizontalAlignment="Left" Margin="39,184,0,0" VerticalAlignment="Top" Width="214" Height="33" Loaded="CbxTipo_Loaded" FontSize="16"/>
+        <TextBox x:Name="tbxNombre" HorizontalAlignment="Left" Margin="41,159,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="214" Height="34" FontSize="16" VerticalContentAlignment="Center"/>
+        <Label Content="Nombre: " HorizontalAlignment="Left" Margin="41,125,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <TextBox x:Name="tbxMarca" HorizontalAlignment="Left" Margin="345,159,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="214" Height="34" FontSize="16" VerticalContentAlignment="Center"/>
+        <Label Content="Marca: " HorizontalAlignment="Left" Margin="345,125,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <TextBox x:Name="tbxCodigoProducto" HorizontalAlignment="Left" Margin="199,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="214" Height="34" FontSize="16" VerticalContentAlignment="Center"/>
+        <Label Content="Precio: " HorizontalAlignment="Left" Margin="345,231,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <TextBox x:Name="tbxPrecio" HorizontalAlignment="Left" Margin="345,270,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="214" Height="34" FontSize="16" VerticalContentAlignment="Center"/>
+        <Label Content="Código del Producto: " HorizontalAlignment="Left" Margin="199,25,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <Label Content="Tipo de producto: " HorizontalAlignment="Left" Margin="36,231,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <ComboBox x:Name="cbxTipo" HorizontalAlignment="Left" Margin="41,271,0,0" VerticalAlignment="Top" Width="214" Height="33" Loaded="CbxTipo_Loaded" FontSize="16"/>
     </Grid>
 </Window>

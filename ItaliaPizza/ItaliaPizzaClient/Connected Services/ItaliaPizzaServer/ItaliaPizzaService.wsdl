@@ -47,6 +47,12 @@
   <wsdl:message name="IProductManager_EliminarProducto_OutputMessage">
     <wsdl:part name="parameters" element="tns:EliminarProductoResponse" />
   </wsdl:message>
+  <wsdl:message name="IProductManager_ActualizarProducto_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarProducto" />
+  </wsdl:message>
+  <wsdl:message name="IProductManager_ActualizarProducto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarProductoResponse" />
+  </wsdl:message>
   <wsdl:message name="IUserManager_IniciarSesion_InputMessage">
     <wsdl:part name="parameters" element="tns:IniciarSesion" />
   </wsdl:message>
@@ -69,6 +75,10 @@
     <wsdl:operation name="EliminarProducto">
       <wsdl:input wsaw:Action="http://tempuri.org/IProductManager/EliminarProducto" message="tns:IProductManager_EliminarProducto_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IProductManager/EliminarProductoResponse" message="tns:IProductManager_EliminarProducto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarProducto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductManager/ActualizarProducto" message="tns:IProductManager_ActualizarProducto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductManager/ActualizarProductoResponse" message="tns:IProductManager_ActualizarProducto_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IUserManager">
@@ -109,6 +119,15 @@
     </wsdl:operation>
     <wsdl:operation name="EliminarProducto">
       <soap12:operation soapAction="http://tempuri.org/IProductManager/EliminarProducto" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarProducto">
+      <soap12:operation soapAction="http://tempuri.org/IProductManager/ActualizarProducto" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

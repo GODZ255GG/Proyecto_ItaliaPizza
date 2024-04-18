@@ -55,6 +55,25 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="ActualizarProducto">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idProducto" type="xs:int" />
+        <xs:element minOccurs="0" name="nombre" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="codigoProducto" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="marca" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="tipo" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="precio" type="xs:double" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ActualizarProductoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ActualizarProductoResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="IniciarSesion">
     <xs:complexType>
       <xs:sequence>
@@ -66,7 +85,7 @@
   <xs:element name="IniciarSesionResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Logic" minOccurs="0" name="IniciarSesionResult" nillable="true" type="q3:Usuarios" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Logic" minOccurs="0" name="IniciarSesionResult" nillable="true" type="q3:Empleados" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

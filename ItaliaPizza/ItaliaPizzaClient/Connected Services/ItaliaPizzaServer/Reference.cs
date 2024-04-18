@@ -23,7 +23,7 @@ namespace ItaliaPizzaClient.ItaliaPizzaServer {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string FotoField;
+        private string CodigoProductoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int IdProductosField;
@@ -36,9 +36,6 @@ namespace ItaliaPizzaClient.ItaliaPizzaServer {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private double PrecioField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int StockField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string TipoField;
@@ -54,14 +51,14 @@ namespace ItaliaPizzaClient.ItaliaPizzaServer {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Foto {
+        public string CodigoProducto {
             get {
-                return this.FotoField;
+                return this.CodigoProductoField;
             }
             set {
-                if ((object.ReferenceEquals(this.FotoField, value) != true)) {
-                    this.FotoField = value;
-                    this.RaisePropertyChanged("Foto");
+                if ((object.ReferenceEquals(this.CodigoProductoField, value) != true)) {
+                    this.CodigoProductoField = value;
+                    this.RaisePropertyChanged("CodigoProducto");
                 }
             }
         }
@@ -119,19 +116,6 @@ namespace ItaliaPizzaClient.ItaliaPizzaServer {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Stock {
-            get {
-                return this.StockField;
-            }
-            set {
-                if ((this.StockField.Equals(value) != true)) {
-                    this.StockField = value;
-                    this.RaisePropertyChanged("Stock");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
         public string Tipo {
             get {
                 return this.TipoField;
@@ -156,9 +140,9 @@ namespace ItaliaPizzaClient.ItaliaPizzaServer {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Usuarios", Namespace="http://schemas.datacontract.org/2004/07/Logic")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Empleados", Namespace="http://schemas.datacontract.org/2004/07/Logic")]
     [System.SerializableAttribute()]
-    public partial class Usuarios : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class Empleados : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
@@ -179,7 +163,7 @@ namespace ItaliaPizzaClient.ItaliaPizzaServer {
         private string FotoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdUsuariosField;
+        private int IdEmpleadosField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string NombreField;
@@ -191,7 +175,7 @@ namespace ItaliaPizzaClient.ItaliaPizzaServer {
         private bool StatusField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int TelefonoField;
+        private string TelefonoField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -269,14 +253,14 @@ namespace ItaliaPizzaClient.ItaliaPizzaServer {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int IdUsuarios {
+        public int IdEmpleados {
             get {
-                return this.IdUsuariosField;
+                return this.IdEmpleadosField;
             }
             set {
-                if ((this.IdUsuariosField.Equals(value) != true)) {
-                    this.IdUsuariosField = value;
-                    this.RaisePropertyChanged("IdUsuarios");
+                if ((this.IdEmpleadosField.Equals(value) != true)) {
+                    this.IdEmpleadosField = value;
+                    this.RaisePropertyChanged("IdEmpleados");
                 }
             }
         }
@@ -321,12 +305,12 @@ namespace ItaliaPizzaClient.ItaliaPizzaServer {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Telefono {
+        public string Telefono {
             get {
                 return this.TelefonoField;
             }
             set {
-                if ((this.TelefonoField.Equals(value) != true)) {
+                if ((object.ReferenceEquals(this.TelefonoField, value) != true)) {
                     this.TelefonoField = value;
                     this.RaisePropertyChanged("Telefono");
                 }
@@ -370,6 +354,12 @@ namespace ItaliaPizzaClient.ItaliaPizzaServer {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductManager/EliminarProducto", ReplyAction="http://tempuri.org/IProductManager/EliminarProductoResponse")]
         System.Threading.Tasks.Task<bool> EliminarProductoAsync(int idProducto);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductManager/ActualizarProducto", ReplyAction="http://tempuri.org/IProductManager/ActualizarProductoResponse")]
+        bool ActualizarProducto(int idProducto, string nombre, string codigoProducto, string marca, string tipo, double precio);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductManager/ActualizarProducto", ReplyAction="http://tempuri.org/IProductManager/ActualizarProductoResponse")]
+        System.Threading.Tasks.Task<bool> ActualizarProductoAsync(int idProducto, string nombre, string codigoProducto, string marca, string tipo, double precio);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -430,6 +420,14 @@ namespace ItaliaPizzaClient.ItaliaPizzaServer {
         public System.Threading.Tasks.Task<bool> EliminarProductoAsync(int idProducto) {
             return base.Channel.EliminarProductoAsync(idProducto);
         }
+        
+        public bool ActualizarProducto(int idProducto, string nombre, string codigoProducto, string marca, string tipo, double precio) {
+            return base.Channel.ActualizarProducto(idProducto, nombre, codigoProducto, marca, tipo, precio);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ActualizarProductoAsync(int idProducto, string nombre, string codigoProducto, string marca, string tipo, double precio) {
+            return base.Channel.ActualizarProductoAsync(idProducto, nombre, codigoProducto, marca, tipo, precio);
+        }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -437,10 +435,10 @@ namespace ItaliaPizzaClient.ItaliaPizzaServer {
     public interface IUserManager {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/IniciarSesion", ReplyAction="http://tempuri.org/IUserManager/IniciarSesionResponse")]
-        ItaliaPizzaClient.ItaliaPizzaServer.Usuarios IniciarSesion(string correo, string contraseña);
+        ItaliaPizzaClient.ItaliaPizzaServer.Empleados IniciarSesion(string correo, string contraseña);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/IniciarSesion", ReplyAction="http://tempuri.org/IUserManager/IniciarSesionResponse")]
-        System.Threading.Tasks.Task<ItaliaPizzaClient.ItaliaPizzaServer.Usuarios> IniciarSesionAsync(string correo, string contraseña);
+        System.Threading.Tasks.Task<ItaliaPizzaClient.ItaliaPizzaServer.Empleados> IniciarSesionAsync(string correo, string contraseña);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -470,11 +468,11 @@ namespace ItaliaPizzaClient.ItaliaPizzaServer {
                 base(binding, remoteAddress) {
         }
         
-        public ItaliaPizzaClient.ItaliaPizzaServer.Usuarios IniciarSesion(string correo, string contraseña) {
+        public ItaliaPizzaClient.ItaliaPizzaServer.Empleados IniciarSesion(string correo, string contraseña) {
             return base.Channel.IniciarSesion(correo, contraseña);
         }
         
-        public System.Threading.Tasks.Task<ItaliaPizzaClient.ItaliaPizzaServer.Usuarios> IniciarSesionAsync(string correo, string contraseña) {
+        public System.Threading.Tasks.Task<ItaliaPizzaClient.ItaliaPizzaServer.Empleados> IniciarSesionAsync(string correo, string contraseña) {
             return base.Channel.IniciarSesionAsync(correo, contraseña);
         }
     }

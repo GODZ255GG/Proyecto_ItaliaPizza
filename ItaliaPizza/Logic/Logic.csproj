@@ -53,12 +53,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ActualizarProductocs.cs" />
     <Compile Include="Autentificacion.cs" />
-    <Compile Include="ListaProductos.cs" />
     <Compile Include="Productos.cs" />
-    <Compile Include="RegistrarProducto.cs" />
-    <Compile Include="Usuarios.cs" />
+    <Compile Include="GestionarProductos.cs" />
+    <Compile Include="Empleados.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

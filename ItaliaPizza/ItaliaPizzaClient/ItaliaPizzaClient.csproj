@@ -145,10 +145,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="Connected Services\ItaliaPizzaServer\ItaliaPizzaClient.ItaliaPizzaServer.Productos.datasource">
+    <None Include="Connected Services\ItaliaPizzaServer\ItaliaPizzaClient.ItaliaPizzaServer.Empleados.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ItaliaPizzaServer\ItaliaPizzaClient.ItaliaPizzaServer.Usuarios.datasource">
+    <None Include="Connected Services\ItaliaPizzaServer\ItaliaPizzaClient.ItaliaPizzaServer.Productos.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ItaliaPizzaServer\ItaliaPizzaService.wsdl" />
@@ -195,9 +195,6 @@
     <Resource Include="Image\foto.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Image\Logo.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Image\Settings.png" />
   </ItemGroup>
   <ItemGroup>
@@ -226,6 +223,12 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\logout.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\logoP.jpeg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

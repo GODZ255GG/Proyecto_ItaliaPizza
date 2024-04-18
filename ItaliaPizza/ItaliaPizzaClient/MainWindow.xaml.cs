@@ -59,10 +59,6 @@ namespace ItaliaPizzaClient
                         {
                             MessageBox.Show("La operación que intentaba realizar ha superado el tiempo de espera establecido y no pudo completarse en el tiempo especificado. Intente de nuevo", "Tiempo de espera agotado", MessageBoxButton.OK, MessageBoxImage.Error);
                         }
-                        finally
-                        {
-                            client.Abort();
-                        }
                     }
                     else
                     {
@@ -76,7 +72,7 @@ namespace ItaliaPizzaClient
             }
             else
             {
-                MessageBox.Show("Ingrese la información solicitada para continuar", "Campos Vaciíos", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Ingrese la información solicitada para continuar", "Campos Vacíos", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
 
@@ -87,9 +83,9 @@ namespace ItaliaPizzaClient
             {
                 if (usuarioInicioSesion.Status)
                 {
-                    Domain.Usuarios.UsuariosClient = new Domain.Usuarios()
+                    Domain.Empleados.EmpleadosClient = new Domain.Empleados()
                     {
-                        IdUsuarios = usuarioInicioSesion.IdUsuarios,
+                        IdEmpleados = usuarioInicioSesion.IdEmpleados,
                         Nombre = usuarioInicioSesion.Nombre,
                         ApellidoPaterno = usuarioInicioSesion.ApellidoPaterno,
                         ApellidoMaterno = usuarioInicioSesion.ApellidoMaterno,
@@ -99,7 +95,7 @@ namespace ItaliaPizzaClient
                         Rol = usuarioInicioSesion.Rol
                     };
 
-                    string nombre = Domain.Usuarios.UsuariosClient.Nombre;
+                    string nombre = Domain.Empleados.EmpleadosClient.Nombre;
                     MessageBox.Show("Bienvenido " + nombre, "Inicio de Sesión exitoso", MessageBoxButton.OK, MessageBoxImage.Information);
 
                     VentanaPrincipal ventanaPrincipal = new VentanaPrincipal();
@@ -116,21 +112,19 @@ namespace ItaliaPizzaClient
         #region Validaciones
         private bool StringValidos(string correo, string contraseña)
         {
-            var esValido = false;
             if(Regex.IsMatch(correo, "^[a-zA-Z0-9._%+-]+@(hotmail|outlook|gmail)\\.com$") && Regex.IsMatch(contraseña, "^[a-zA-Z0-9]*$"))
             {
-                esValido = true;
+                return true;
             }
-            return esValido;
+            return false;
         }
         private bool StringLargos(string correo, string contraseña)
         {
-            var noSonLargos = false;
             if (correo.Length <= 50 || contraseña.Length <=13 )
             {
-                noSonLargos = true;
+                return true;
             }
-            return noSonLargos;
+            return false;
         }
         #endregion
     }

@@ -12,28 +12,22 @@ namespace DataAccess
     using System;
     using System.Collections.Generic;
     
-    public partial class Productos
+    public partial class Inventario
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Productos()
+        public Inventario()
         {
+            this.InventarioDeInsumo = new HashSet<InventarioDeInsumo>();
             this.InventarioDeProductos = new HashSet<InventarioDeProductos>();
-            this.PedidoProducto = new HashSet<PedidoProducto>();
-            this.Receta = new HashSet<Receta>();
         }
     
-        public int idProductos { get; set; }
-        public string nombre { get; set; }
-        public string marca { get; set; }
-        public string tipo { get; set; }
-        public Nullable<double> precio { get; set; }
-        public string codigoProducto { get; set; }
+        public int idInventario { get; set; }
+        public Nullable<int> cantidadMaxima { get; set; }
+        public Nullable<int> cantidadMinima { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<InventarioDeInsumo> InventarioDeInsumo { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<InventarioDeProductos> InventarioDeProductos { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PedidoProducto> PedidoProducto { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Receta> Receta { get; set; }
     }
 }

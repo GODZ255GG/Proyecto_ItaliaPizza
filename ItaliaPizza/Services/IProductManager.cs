@@ -21,5 +21,7 @@ namespace Services
         List<Productos> ObtenerListaProductos();
         [OperationContract]
         bool EliminarProducto(int idProducto);
+        [OperationContract]
+        bool ActualizarProducto(int idProducto, string nombre, string codigoProducto, string marca, string tipo, double precio);
     }
 }

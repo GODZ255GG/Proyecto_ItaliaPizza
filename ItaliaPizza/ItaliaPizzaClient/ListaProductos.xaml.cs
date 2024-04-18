@@ -3,17 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace ItaliaPizzaClient
 {
@@ -32,7 +24,14 @@ namespace ItaliaPizzaClient
         private void BtnRegistrarProducto_Click(object sender, RoutedEventArgs e)
         {
             RegistrarProducto registrar = new RegistrarProducto();
+            registrar.Closed += ActualizarTablaProductos;
             registrar.Show();
+            
+        }
+
+        private void ActualizarTablaProductos(object sender, EventArgs e)
+        {
+            MostrarInformacionPedidos();
         }
 
         private void ImgRegresar_MouseLeftButtonDown(object sender, RoutedEventArgs e)
@@ -47,7 +46,8 @@ namespace ItaliaPizzaClient
                 Productos[] productopArray = productoServer.ObtenerListaProductos();
                 List<Productos> productos = productopArray.ToList();
 
-                lbxProductos.ItemsSource = productos;
+                dgListaProductos.ItemsSource = productos;
+
             }
             catch (EndpointNotFoundException ex)
             {
@@ -63,13 +63,31 @@ namespace ItaliaPizzaClient
             }
         }
 
-        private void LbxProductos_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void DgListaProductos_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            if(lbxProductos.SelectedItem != null)
+            if (dgListaProductos.SelectedItem != null)
             {
-                Productos productoSeleccionado = lbxProductos.SelectedItem as Productos;
+                Productos productoSeleccionado = dgListaProductos.SelectedItem as Productos;
                 ConsultarProducto consulta = new ConsultarProducto(productoSeleccionado);
+                consulta.Closed += ActualizarTablaProductos;
                 consulta.Show();
+            }
+        }
+
+        private void TbBuscar_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Productos[] productopArray = productoServer.ObtenerListaProductos();
+            List<Productos> productos = productopArray.ToList();
+            var tbx = sender as TextBox;
+            if (tbx != null)
+            {
+                var filtrarLista = productos.Where(x => x.Nombre.Contains(tbx.Text)).ToList();
+                dgListaProductos.ItemsSource = null;
+                dgListaProductos.ItemsSource = filtrarLista;
+            }
+            else
+            {
+                dgListaProductos.ItemsSource = productos;
             }
         }
     }

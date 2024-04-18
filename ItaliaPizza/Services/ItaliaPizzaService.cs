@@ -1,14 +1,8 @@
 ﻿using Logic;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.Entity.Core;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Runtime.Serialization;
 using System.ServiceModel;
-using System.Text;
 
 namespace Services
 {
@@ -17,41 +11,40 @@ namespace Services
     {
         public bool RegistrarProducto(Productos producto)
         {
-            var status = false;
+            var resultado = false;
             try
             {
-                RegistrarProducto registrar = new RegistrarProducto();
+                GestionarProductos registrar = new GestionarProductos();
                 Logic.Productos nuevoProducto = new Logic.Productos()
                 {
                     Nombre = producto.Nombre,
+                    CodigoProducto = producto.CodigoProducto,
                     Marca = producto.Marca,
                     Tipo = producto.Tipo,
-                    Foto = producto.Foto,
                     Precio = producto.Precio,
-                    Stock = producto.Stock
                 };
-                status = registrar.Registrar(nuevoProducto);
+                resultado = registrar.Registrar(nuevoProducto);
             }
             catch (EntityException e)
             {
 
             }
-            return status;
+            return resultado;
         }
 
         public bool ProductoYaRegistrado(string nombre)
         {
-            RegistrarProducto registro = new RegistrarProducto();
-            var status = false;
+            GestionarProductos registro = new GestionarProductos();
+            var resultado = false;
             try
             {
-                status = registro.ProductoYaRegistrado(nombre);
+                resultado = registro.ProductoYaRegistrado(nombre);
             }
             catch (EntityException e)
             {
 
             }
-            return status;
+            return resultado;
         }
 
 
@@ -60,7 +53,7 @@ namespace Services
             List<Productos> productos = new List<Productos>();
             try
             {
-                ListaProductos lista = new ListaProductos();
+                GestionarProductos lista = new GestionarProductos();
                 productos = lista.CargarProductos();
             }catch (EntityException e)
             {
@@ -71,25 +64,40 @@ namespace Services
 
         public bool EliminarProducto(int idProducto)
         {
-            ActualizarProductocs eliminar = new ActualizarProductocs();
-            var status = false;
+            GestionarProductos eliminar = new GestionarProductos();
+            var resultado = false;
             try
             {
-                status = eliminar.EliminarProducto(idProducto);
+                resultado = eliminar.EliminarProductoSeleccionado(idProducto);
             }
             catch (EntityException e)
             {
 
             }
-            return status;
+            return resultado;
+        }
+
+        public bool ActualizarProducto(int idProducto, string nombre, string codigoProducto, string marca, string tipo, double precio)
+        {
+            GestionarProductos actualizar = new GestionarProductos();
+            var resultado = false;
+            try
+            {
+                resultado = actualizar.ActualizarProducto(idProducto, nombre, codigoProducto, marca, tipo, precio);
+            }
+            catch(EntityException e)
+            {
+
+            }
+            return resultado;
         }
     }
 
     public partial class ItaliaPizzaService : IUserManager
     {
-        public Logic.Usuarios IniciarSesion(String correo, String contraseña)
+        public Logic.Empleados IniciarSesion(String correo, String contraseña)
         {
-            var usuario = new Logic.Usuarios()
+            var usuario = new Logic.Empleados()
             {
                 Status = false
             };
