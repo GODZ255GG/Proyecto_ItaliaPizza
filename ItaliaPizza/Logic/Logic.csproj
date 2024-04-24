@@ -54,10 +54,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Autentificacion.cs" />
+    <Compile Include="GestionarPedidos.cs" />
+    <Compile Include="GestionarProveedor.cs" />
+    <Compile Include="Pedidos.cs" />
     <Compile Include="Productos.cs" />
     <Compile Include="GestionarProductos.cs" />
     <Compile Include="Empleados.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Proveedor.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataAccess\DataAccess.csproj">

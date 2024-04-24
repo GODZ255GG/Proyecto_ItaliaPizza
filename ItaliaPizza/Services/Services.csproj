@@ -54,6 +54,8 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IOrderManager.cs" />
+    <Compile Include="ISupplierManager.cs" />
     <Compile Include="IUserManager.cs" />
     <Compile Include="IProductManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

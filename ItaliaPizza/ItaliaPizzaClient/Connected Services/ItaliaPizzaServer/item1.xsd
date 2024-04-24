@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:8082/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Logic" />
+  <xs:import schemaLocation="http://localhost:8082/?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
   <xs:element name="RegistrarProducto">
     <xs:complexType>
       <xs:sequence>
@@ -86,6 +87,182 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Logic" minOccurs="0" name="IniciarSesionResult" nillable="true" type="q3:Empleados" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegistrarProveedor">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Logic" minOccurs="0" name="proveedor" nillable="true" type="q4:Proveedor" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegistrarProveedorResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RegistrarProveedorResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerListaProveedor">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ObtenerListaProveedorResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Logic" minOccurs="0" name="ObtenerListaProveedorResult" nillable="true" type="q5:ArrayOfProveedor" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EliminarProveedor">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idProveedor" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="EliminarProveedorResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="EliminarProveedorResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ActualizarProveedor">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idProveedor" type="xs:int" />
+        <xs:element minOccurs="0" name="nuevoNombreCompañia" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="nuevoNombreContacto" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="nuevoTelefono" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="nuevaCiudad" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="nuevaDireccion" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ActualizarProveedorResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ActualizarProveedorResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CompañiaYaExistente">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nombreCompañia" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CompañiaYaExistenteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CompañiaYaExistenteResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegistrarNuevoPedido">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="nombreCliente" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="idEmpleado" type="xs:int" />
+        <xs:element minOccurs="0" name="domicilio" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="tipoPedido" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="total" type="xs:decimal" />
+        <xs:element xmlns:q6="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="idProductos" nillable="true" type="q6:ArrayOfint" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegistrarNuevoPedidoResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RecuperarInformacionPedidos">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RecuperarInformacionPedidosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Logic" minOccurs="0" name="RecuperarInformacionPedidosResult" nillable="true" type="q7:ArrayOfPedidos" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModificarEstadoDePedido">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="pedidoId" type="xs:int" />
+        <xs:element minOccurs="0" name="nuevoEstado" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModificarEstadoDePedidoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ModificarEstadoDePedidoResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RecuperarInformacionProductos">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="tipo" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RecuperarInformacionProductosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Logic" minOccurs="0" name="RecuperarInformacionProductosResult" nillable="true" type="q8:ArrayOfProductos" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ActualizarPedido">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idPedido" type="xs:int" />
+        <xs:element minOccurs="0" name="nombreCliente" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="domicilio" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="tipoPedido" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="total" type="xs:decimal" />
+        <xs:element xmlns:q9="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="idProductos" nillable="true" type="q9:ArrayOfint" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ActualizarPedidoResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RecuperarIdsProductosDePedido">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idPedido" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RecuperarIdsProductosDePedidoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="RecuperarIdsProductosDePedidoResult" nillable="true" type="q10:ArrayOfint" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RecuperarProductoPorId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idProducto" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RecuperarProductoPorIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Logic" minOccurs="0" name="RecuperarProductoPorIdResult" nillable="true" type="q11:Productos" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
