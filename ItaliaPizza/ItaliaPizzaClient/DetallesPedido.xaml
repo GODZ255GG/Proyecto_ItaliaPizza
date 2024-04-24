@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ItaliaPizzaClient"
         mc:Ignorable="d"
-        Title="DetallesPedido" Height="700" Width="900">
+        Title="DetallesPedido" Height="700" Width="900"
+        WindowStartupLocation="CenterScreen">
     <Grid>
         <Label FontSize="40" FontFamily="Segoe UI Black" Width="900">
             <Label.Content>

@@ -26,7 +26,7 @@ namespace Logic
                     nombreDelContacto = proveedor.NombreContacto,
                     telefono = proveedor.Telefono,
                     ciudad = proveedor.Ciudad,
-                    direccion = proveedor.Direccion
+                    dirección = proveedor.Direccion
                 };
                 context.Proveedores.Add(nuevoProveedor);
                 resultado = context.SaveChanges() > 0;
@@ -49,7 +49,7 @@ namespace Logic
                                                   NombreContacto = proveedor.nombreDelContacto,
                                                   Telefono = proveedor.telefono,
                                                   Ciudad = proveedor.ciudad,
-                                                  Direccion = proveedor.direccion
+                                                  Direccion = proveedor.dirección
                                               });
                     listaProveedores.AddRange(proveedoresDetalle);
                 }
@@ -102,7 +102,7 @@ namespace Logic
                         proveedor.nombreDelContacto = nuevoNombreContacto;
                         proveedor.telefono = nuevoTelefono;
                         proveedor.ciudad = nuevaCiudad;
-                        proveedor.direccion = nuevaDireccion;
+                        proveedor.dirección = nuevaDireccion;
                         context.SaveChanges();
                         return true;
                     }

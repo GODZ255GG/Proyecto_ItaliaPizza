@@ -55,18 +55,6 @@ namespace ItaliaPizzaClient
             }
         }
 
-
-        private void ImgConfiguracion_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            Configuracion confi = new Configuracion();
-
-            this.IsEnabled = false;
-
-            bool? result = confi.ShowDialog();
-
-            this.IsEnabled = true;
-        }
-
         private void BtnRegistrarPedidos_Click(object sender, RoutedEventArgs e)
         {
             try

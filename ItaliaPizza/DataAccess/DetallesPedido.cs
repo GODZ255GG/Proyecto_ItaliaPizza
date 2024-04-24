@@ -16,8 +16,8 @@ namespace DataAccess
     {
         public int idDetallesPedido { get; set; }
         public int Pedidos_idPedidos { get; set; }
-        public int Empleados_idEmpleados { get; set; }
         public Nullable<System.DateTime> fechaHoraDelPedido { get; set; }
+        public int Empleados_idEmpleados { get; set; }
     
         public virtual Empleados Empleados { get; set; }
         public virtual Pedidos Pedidos { get; set; }

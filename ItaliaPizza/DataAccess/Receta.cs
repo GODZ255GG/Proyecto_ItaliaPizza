@@ -17,16 +17,17 @@ namespace DataAccess
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Receta()
         {
-            this.IngredientesReceta = new HashSet<IngredientesReceta>();
+            this.InsumoReceta = new HashSet<InsumoReceta>();
+            this.RecetasProductos = new HashSet<RecetasProductos>();
         }
     
         public int idRecetas { get; set; }
         public string nombre { get; set; }
-        public int Productos_idProductos { get; set; }
         public string descripcionPreparación { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<IngredientesReceta> IngredientesReceta { get; set; }
-        public virtual Productos Productos { get; set; }
+        public virtual ICollection<InsumoReceta> InsumoReceta { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RecetasProductos> RecetasProductos { get; set; }
     }
 }

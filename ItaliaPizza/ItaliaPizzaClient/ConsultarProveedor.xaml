@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ItaliaPizzaClient"
         mc:Ignorable="d"
-        Title="ConsultarProveedor" Height="550" Width="650">
+        Title="ConsultarProveedor" Height="550" Width="650"
+        WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <Style TargetType="Button">
             <Setter Property="Background" Value="LightGray" />

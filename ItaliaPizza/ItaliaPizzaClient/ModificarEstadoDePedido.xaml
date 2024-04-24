@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ItaliaPizzaClient"
         mc:Ignorable="d"
-        Title="ModificarEstadoDePedido" Height="700" Width="500">
+        Title="ModificarEstadoDePedido" Height="700" Width="500"
+        WindowStartupLocation="CenterScreen">
     <Grid>
         <Label Content="Estado de pedido" HorizontalAlignment="Left" Margin="78,12,0,0" VerticalAlignment="Top" FontSize="40" FontFamily="Segoe UI Black" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
 

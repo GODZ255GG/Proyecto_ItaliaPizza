@@ -19,7 +19,7 @@ namespace DataAccess
         {
             this.InventarioDeProductos = new HashSet<InventarioDeProductos>();
             this.PedidoProducto = new HashSet<PedidoProducto>();
-            this.Receta = new HashSet<Receta>();
+            this.RecetasProductos = new HashSet<RecetasProductos>();
         }
     
         public int idProductos { get; set; }
@@ -34,6 +34,6 @@ namespace DataAccess
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PedidoProducto> PedidoProducto { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Receta> Receta { get; set; }
+        public virtual ICollection<RecetasProductos> RecetasProductos { get; set; }
     }
 }

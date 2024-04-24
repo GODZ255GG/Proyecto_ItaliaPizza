@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ItaliaPizzaClient"
         mc:Ignorable="d"
-        Title="RegistrarPedidos" Height="800" Width="952">
+        Title="RegistrarPedidos" Height="800" Width="952"
+        WindowStartupLocation="CenterScreen">
     <Grid>
         <Label Content="Nuevo pedido" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="40" FontFamily="Segoe UI Black" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
         <Button x:Name="btnCancelarRegistro" Content="Cancelar" HorizontalAlignment="Left" VerticalAlignment="Top" Height="59" Width="185" Foreground="White" Background="#7CA886" FontSize="30" BorderThickness="0,0,0,0" Padding="10,10,10,10" UseLayoutRounding="True" ScrollViewer.CanContentScroll="True" FontWeight="Bold" Click="BtnCancelarRegistro_Click" Margin="24,636,0,0"/>
