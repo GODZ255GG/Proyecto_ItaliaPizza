@@ -455,3 +455,4 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+ItaliaPizza/ItaliaPizzaClient/Connected Services/ItaliaPizzaServer/Reference.cs

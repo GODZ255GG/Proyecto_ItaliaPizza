@@ -40,11 +40,21 @@ namespace ItaliaPizzaClient
             contentControl.Content = new Inventario();
         }
 
+        private void btnFinanzas_Click(object sender, RoutedEventArgs e)
+        {
+            contentControl.Content = new Finanzas();
+        }
+
         private void BtnCerrarSesion_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
             this.Close();
+        }
+
+        private void btnPedidos_Click(object sender, RoutedEventArgs e)
+        {
+            contentControl.Content = new ListaPedidos();
         }
     }
 }

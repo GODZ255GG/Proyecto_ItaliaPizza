@@ -16,11 +16,28 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_ISupplierManager_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IOrderManager_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Logic" />
+      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IProductManager_RegistrarProducto_InputMessage">
@@ -59,6 +76,78 @@
   <wsdl:message name="IUserManager_IniciarSesion_OutputMessage">
     <wsdl:part name="parameters" element="tns:IniciarSesionResponse" />
   </wsdl:message>
+  <wsdl:message name="ISupplierManager_RegistrarProveedor_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarProveedor" />
+  </wsdl:message>
+  <wsdl:message name="ISupplierManager_RegistrarProveedor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarProveedorResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISupplierManager_ObtenerListaProveedor_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerListaProveedor" />
+  </wsdl:message>
+  <wsdl:message name="ISupplierManager_ObtenerListaProveedor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerListaProveedorResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISupplierManager_EliminarProveedor_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarProveedor" />
+  </wsdl:message>
+  <wsdl:message name="ISupplierManager_EliminarProveedor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarProveedorResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISupplierManager_ActualizarProveedor_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarProveedor" />
+  </wsdl:message>
+  <wsdl:message name="ISupplierManager_ActualizarProveedor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarProveedorResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISupplierManager_CompañiaYaExistente_InputMessage">
+    <wsdl:part name="parameters" element="tns:CompañiaYaExistente" />
+  </wsdl:message>
+  <wsdl:message name="ISupplierManager_CompañiaYaExistente_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CompañiaYaExistenteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManager_RegistrarNuevoPedido_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarNuevoPedido" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManager_RegistrarNuevoPedido_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarNuevoPedidoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManager_RecuperarInformacionPedidos_InputMessage">
+    <wsdl:part name="parameters" element="tns:RecuperarInformacionPedidos" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManager_RecuperarInformacionPedidos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RecuperarInformacionPedidosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManager_ModificarEstadoDePedido_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModificarEstadoDePedido" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManager_ModificarEstadoDePedido_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModificarEstadoDePedidoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManager_RecuperarInformacionProductos_InputMessage">
+    <wsdl:part name="parameters" element="tns:RecuperarInformacionProductos" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManager_RecuperarInformacionProductos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RecuperarInformacionProductosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManager_ActualizarPedido_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarPedido" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManager_ActualizarPedido_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarPedidoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManager_RecuperarIdsProductosDePedido_InputMessage">
+    <wsdl:part name="parameters" element="tns:RecuperarIdsProductosDePedido" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManager_RecuperarIdsProductosDePedido_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RecuperarIdsProductosDePedidoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManager_RecuperarProductoPorId_InputMessage">
+    <wsdl:part name="parameters" element="tns:RecuperarProductoPorId" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManager_RecuperarProductoPorId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RecuperarProductoPorIdResponse" />
+  </wsdl:message>
   <wsdl:portType name="IProductManager">
     <wsdl:operation name="RegistrarProducto">
       <wsdl:input wsaw:Action="http://tempuri.org/IProductManager/RegistrarProducto" message="tns:IProductManager_RegistrarProducto_InputMessage" />
@@ -85,6 +174,58 @@
     <wsdl:operation name="IniciarSesion">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/IniciarSesion" message="tns:IUserManager_IniciarSesion_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/IniciarSesionResponse" message="tns:IUserManager_IniciarSesion_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ISupplierManager">
+    <wsdl:operation name="RegistrarProveedor">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISupplierManager/RegistrarProveedor" message="tns:ISupplierManager_RegistrarProveedor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISupplierManager/RegistrarProveedorResponse" message="tns:ISupplierManager_RegistrarProveedor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerListaProveedor">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISupplierManager/ObtenerListaProveedor" message="tns:ISupplierManager_ObtenerListaProveedor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISupplierManager/ObtenerListaProveedorResponse" message="tns:ISupplierManager_ObtenerListaProveedor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarProveedor">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISupplierManager/EliminarProveedor" message="tns:ISupplierManager_EliminarProveedor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISupplierManager/EliminarProveedorResponse" message="tns:ISupplierManager_EliminarProveedor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarProveedor">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISupplierManager/ActualizarProveedor" message="tns:ISupplierManager_ActualizarProveedor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISupplierManager/ActualizarProveedorResponse" message="tns:ISupplierManager_ActualizarProveedor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CompañiaYaExistente">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISupplierManager/CompañiaYaExistente" message="tns:ISupplierManager_CompañiaYaExistente_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISupplierManager/CompañiaYaExistenteResponse" message="tns:ISupplierManager_CompañiaYaExistente_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IOrderManager">
+    <wsdl:operation name="RegistrarNuevoPedido">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManager/RegistrarNuevoPedido" message="tns:IOrderManager_RegistrarNuevoPedido_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManager/RegistrarNuevoPedidoResponse" message="tns:IOrderManager_RegistrarNuevoPedido_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarInformacionPedidos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManager/RecuperarInformacionPedidos" message="tns:IOrderManager_RecuperarInformacionPedidos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManager/RecuperarInformacionPedidosResponse" message="tns:IOrderManager_RecuperarInformacionPedidos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModificarEstadoDePedido">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManager/ModificarEstadoDePedido" message="tns:IOrderManager_ModificarEstadoDePedido_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManager/ModificarEstadoDePedidoResponse" message="tns:IOrderManager_ModificarEstadoDePedido_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarInformacionProductos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManager/RecuperarInformacionProductos" message="tns:IOrderManager_RecuperarInformacionProductos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManager/RecuperarInformacionProductosResponse" message="tns:IOrderManager_RecuperarInformacionProductos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarPedido">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManager/ActualizarPedido" message="tns:IOrderManager_ActualizarPedido_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManager/ActualizarPedidoResponse" message="tns:IOrderManager_ActualizarPedido_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarIdsProductosDePedido">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManager/RecuperarIdsProductosDePedido" message="tns:IOrderManager_RecuperarIdsProductosDePedido_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManager/RecuperarIdsProductosDePedidoResponse" message="tns:IOrderManager_RecuperarIdsProductosDePedido_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarProductoPorId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManager/RecuperarProductoPorId" message="tns:IOrderManager_RecuperarProductoPorId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManager/RecuperarProductoPorIdResponse" message="tns:IOrderManager_RecuperarProductoPorId_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IProductManager" type="tns:IProductManager">
@@ -149,6 +290,122 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_ISupplierManager" type="tns:ISupplierManager">
+    <wsp:PolicyReference URI="#NetTcpBinding_ISupplierManager_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="RegistrarProveedor">
+      <soap12:operation soapAction="http://tempuri.org/ISupplierManager/RegistrarProveedor" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerListaProveedor">
+      <soap12:operation soapAction="http://tempuri.org/ISupplierManager/ObtenerListaProveedor" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarProveedor">
+      <soap12:operation soapAction="http://tempuri.org/ISupplierManager/EliminarProveedor" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarProveedor">
+      <soap12:operation soapAction="http://tempuri.org/ISupplierManager/ActualizarProveedor" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CompañiaYaExistente">
+      <soap12:operation soapAction="http://tempuri.org/ISupplierManager/CompañiaYaExistente" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IOrderManager" type="tns:IOrderManager">
+    <wsp:PolicyReference URI="#NetTcpBinding_IOrderManager_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="RegistrarNuevoPedido">
+      <soap12:operation soapAction="http://tempuri.org/IOrderManager/RegistrarNuevoPedido" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarInformacionPedidos">
+      <soap12:operation soapAction="http://tempuri.org/IOrderManager/RecuperarInformacionPedidos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarEstadoDePedido">
+      <soap12:operation soapAction="http://tempuri.org/IOrderManager/ModificarEstadoDePedido" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarInformacionProductos">
+      <soap12:operation soapAction="http://tempuri.org/IOrderManager/RecuperarInformacionProductos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarPedido">
+      <soap12:operation soapAction="http://tempuri.org/IOrderManager/ActualizarPedido" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarIdsProductosDePedido">
+      <soap12:operation soapAction="http://tempuri.org/IOrderManager/RecuperarIdsProductosDePedido" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarProductoPorId">
+      <soap12:operation soapAction="http://tempuri.org/IOrderManager/RecuperarProductoPorId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
   <wsdl:service name="ItaliaPizzaService">
     <wsdl:port name="NetTcpBinding_IProductManager" binding="tns:NetTcpBinding_IProductManager">
       <soap12:address location="net.tcp://localhost:8081/Services" />
@@ -157,6 +414,18 @@
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_IUserManager" binding="tns:NetTcpBinding_IUserManager">
+      <soap12:address location="net.tcp://localhost:8081/Services" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8081/Services</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_ISupplierManager" binding="tns:NetTcpBinding_ISupplierManager">
+      <soap12:address location="net.tcp://localhost:8081/Services" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8081/Services</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IOrderManager" binding="tns:NetTcpBinding_IOrderManager">
       <soap12:address location="net.tcp://localhost:8081/Services" />
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8081/Services</wsa10:Address>
