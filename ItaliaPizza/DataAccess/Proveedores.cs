@@ -17,17 +17,17 @@ namespace DataAccess
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Proveedores()
         {
-            this.Insumos = new HashSet<Insumos>();
+            this.InsumosProveedores = new HashSet<InsumosProveedores>();
         }
     
         public int idProveedores { get; set; }
         public string nombreCompañia { get; set; }
         public string nombreDelContacto { get; set; }
         public string telefono { get; set; }
-        public string direccion { get; set; }
+        public string dirección { get; set; }
         public string ciudad { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Insumos> Insumos { get; set; }
+        public virtual ICollection<InsumosProveedores> InsumosProveedores { get; set; }
     }
 }

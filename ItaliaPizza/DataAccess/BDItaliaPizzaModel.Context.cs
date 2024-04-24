@@ -28,8 +28,9 @@ namespace DataAccess
         public virtual DbSet<Clientes> Clientes { get; set; }
         public virtual DbSet<DetallesPedido> DetallesPedido { get; set; }
         public virtual DbSet<Empleados> Empleados { get; set; }
-        public virtual DbSet<IngredientesReceta> IngredientesReceta { get; set; }
+        public virtual DbSet<InsumoReceta> InsumoReceta { get; set; }
         public virtual DbSet<Insumos> Insumos { get; set; }
+        public virtual DbSet<InsumosProveedores> InsumosProveedores { get; set; }
         public virtual DbSet<Inventario> Inventario { get; set; }
         public virtual DbSet<InventarioDeInsumo> InventarioDeInsumo { get; set; }
         public virtual DbSet<InventarioDeProductos> InventarioDeProductos { get; set; }
@@ -38,5 +39,6 @@ namespace DataAccess
         public virtual DbSet<Productos> Productos { get; set; }
         public virtual DbSet<Proveedores> Proveedores { get; set; }
         public virtual DbSet<Receta> Receta { get; set; }
+        public virtual DbSet<RecetasProductos> RecetasProductos { get; set; }
     }
 }

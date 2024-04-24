@@ -14,18 +14,9 @@ namespace DataAccess
     
     public partial class Clientes
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Clientes()
-        {
-            this.Pedidos = new HashSet<Pedidos>();
-        }
-    
         public int idClientes { get; set; }
         public string nombre { get; set; }
         public string telefono { get; set; }
         public string rol { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Pedidos> Pedidos { get; set; }
     }
 }

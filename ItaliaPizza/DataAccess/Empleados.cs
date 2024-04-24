@@ -22,8 +22,8 @@ namespace DataAccess
     
         public int idEmpleados { get; set; }
         public string nombre { get; set; }
-        public string apellidoPaterno { get; set; }
         public string apellidoMaterno { get; set; }
+        public string apellidoPaterno { get; set; }
         public string telefono { get; set; }
         public string correo { get; set; }
         public string contraseña { get; set; }

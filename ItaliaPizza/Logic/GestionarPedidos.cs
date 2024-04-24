@@ -103,7 +103,7 @@ namespace Logic
                                 tipoDePedido = tipoPedido,
                                 domicilioDeEntrega = domicilio,
                                 estadoDelPedido = "En preparación",
-                                precioTotal = total,
+                                precioTotal = (double?)total,
                                 nombreCliente = nombreCliente
                             };
                             context.Pedidos.Add(nuevoPedido);
@@ -220,7 +220,7 @@ namespace Logic
                             {
                                 pedidoExistente.tipoDePedido = tipoPedido;
                                 pedidoExistente.domicilioDeEntrega = domicilio;
-                                pedidoExistente.precioTotal = total;
+                                pedidoExistente.precioTotal = (double?)total;
                                 pedidoExistente.nombreCliente = nombreCliente;
 
                                 var productosAsociados = context.PedidoProducto.Where(pp => pp.Pedidos_idPedidos == idPedido);

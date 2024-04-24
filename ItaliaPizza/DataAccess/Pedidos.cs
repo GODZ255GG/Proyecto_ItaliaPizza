@@ -25,10 +25,9 @@ namespace DataAccess
         public string tipoDePedido { get; set; }
         public string domicilioDeEntrega { get; set; }
         public string estadoDelPedido { get; set; }
-        public int Clientes_idClientes { get; set; }
-        public Nullable<decimal> precioTotal { get; set; }
+        public Nullable<double> precioTotal { get; set; }
+        public string nombreCliente { get; set; }
     
-        public virtual Clientes Clientes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DetallesPedido> DetallesPedido { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

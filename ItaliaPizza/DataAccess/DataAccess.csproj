@@ -77,10 +77,13 @@
     <Compile Include="Empleados.cs">
       <DependentUpon>BDItaliaPizzaModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="IngredientesReceta.cs">
+    <Compile Include="InsumoReceta.cs">
       <DependentUpon>BDItaliaPizzaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Insumos.cs">
+      <DependentUpon>BDItaliaPizzaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="InsumosProveedores.cs">
       <DependentUpon>BDItaliaPizzaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Inventario.cs">
@@ -106,6 +109,9 @@
       <DependentUpon>BDItaliaPizzaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Receta.cs">
+      <DependentUpon>BDItaliaPizzaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="RecetasProductos.cs">
       <DependentUpon>BDItaliaPizzaModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>
