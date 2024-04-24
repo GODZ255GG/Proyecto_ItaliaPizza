@@ -27,7 +27,7 @@ namespace DataAccess
         public string marca { get; set; }
         public string tipo { get; set; }
         public string cantidadDeEmpaque { get; set; }
-        public int Proveedores_idProveedores { get; set; }
+        public string codigoInsumo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<InsumoReceta> InsumoReceta { get; set; }
