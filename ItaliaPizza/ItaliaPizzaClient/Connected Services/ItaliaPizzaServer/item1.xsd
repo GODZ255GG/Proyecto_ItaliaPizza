@@ -75,79 +75,6 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="RegistrarInsumo">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Logic" minOccurs="0" name="insumo" nillable="true" type="q3:Insumos" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="RegistrarInsumoResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="RegistrarInsumoResult" type="xs:boolean" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="InsumoYaRegistrado">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="nombre" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="InsumoYaRegistradoResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="InsumoYaRegistradoResult" type="xs:boolean" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="ObtenerListaInsumos">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="ObtenerListaInsumosResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Logic" minOccurs="0" name="ObtenerListaInsumosResult" nillable="true" type="q4:ArrayOfInsumos" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="EliminarInsumo">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="idInsumo" type="xs:int" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="EliminarInsumoResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="EliminarInsumoResult" type="xs:boolean" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="ActualizarInsumo">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="idInsumo" type="xs:int" />
-        <xs:element minOccurs="0" name="nombre" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="codigoInsumo" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="marca" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="tipo" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="cantidadDeEmpaque" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="ActualizarInsumoResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="ActualizarInsumoResult" type="xs:boolean" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
   <xs:element name="IniciarSesion">
     <xs:complexType>
       <xs:sequence>
@@ -159,22 +86,7 @@
   <xs:element name="IniciarSesionResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Logic" minOccurs="0" name="IniciarSesionResult" nillable="true" type="q5:Empleados" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="ExisteCorreoYContraseña">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="correo" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="contraseña" nillable="true" type="xs:string" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="ExisteCorreoYContraseñaResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="ExisteCorreoYContraseñaResult" type="xs:boolean" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Logic" minOccurs="0" name="IniciarSesionResult" nillable="true" type="q3:Empleados" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

@@ -17,23 +17,6 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfProductos" nillable="true" type="tns:ArrayOfProductos" />
-  <xs:complexType name="Insumos">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="CantidadDeEmpaque" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="CodigoInsumo" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="IdInsumos" type="xs:int" />
-      <xs:element minOccurs="0" name="Marca" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Tipo" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Insumos" nillable="true" type="tns:Insumos" />
-  <xs:complexType name="ArrayOfInsumos">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Insumos" nillable="true" type="tns:Insumos" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfInsumos" nillable="true" type="tns:ArrayOfInsumos" />
   <xs:complexType name="Empleados">
     <xs:sequence>
       <xs:element minOccurs="0" name="ApellidoMaterno" nillable="true" type="xs:string" />
