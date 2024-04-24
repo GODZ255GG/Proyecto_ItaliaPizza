@@ -54,7 +54,7 @@
           <Property Name="marca" Type="nvarchar" MaxLength="45" />
           <Property Name="tipo" Type="nvarchar" MaxLength="45" />
           <Property Name="cantidadDeEmpaque" Type="nvarchar" MaxLength="45" />
-          <Property Name="codigoInsumo" Type="nvarchar" MaxLength="45" />
+          <Property Name="Proveedores_idProveedores" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="InsumosProveedores">
           <Key>
@@ -219,6 +219,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Insumos_Proveedores">
+          <End Role="Proveedores" Type="Self.Proveedores" Multiplicity="1" />
+          <End Role="Insumos" Type="Self.Insumos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proveedores">
+              <PropertyRef Name="idProveedores" />
+            </Principal>
+            <Dependent Role="Insumos">
+              <PropertyRef Name="Proveedores_idProveedores" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_InventarioDeInsumo_Insumos">
           <End Role="Insumos" Type="Self.Insumos" Multiplicity="1" />
           <End Role="InventarioDeInsumo" Type="Self.InventarioDeInsumo" Multiplicity="*" />
@@ -354,6 +366,10 @@
           <AssociationSet Name="FK_InsumosProveedores_Proveedores" Association="Self.FK_InsumosProveedores_Proveedores">
             <End Role="Proveedores" EntitySet="Proveedores" />
             <End Role="InsumosProveedores" EntitySet="InsumosProveedores" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Insumos_Proveedores" Association="Self.FK_Insumos_Proveedores">
+            <End Role="Proveedores" EntitySet="Proveedores" />
+            <End Role="Insumos" EntitySet="Insumos" />
           </AssociationSet>
           <AssociationSet Name="FK_InventarioDeInsumo_Insumos" Association="Self.FK_InventarioDeInsumo_Insumos">
             <End Role="Insumos" EntitySet="Insumos" />
@@ -619,6 +635,18 @@
             </Principal>
             <Dependent Role="InsumosProveedores">
               <PropertyRef Name="Insumos_idInsumos" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Insumos_Proveedores">
+          <End Type="BDItaliaPizzaModel.Proveedores" Role="Proveedores" Multiplicity="1" />
+          <End Type="BDItaliaPizzaModel.Insumos" Role="Insumos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Proveedores">
+              <PropertyRef Name="idProveedores" />
+            </Principal>
+            <Dependent Role="Insumos">
+              <PropertyRef Name="Proveedores_idProveedores" />
             </Dependent>
           </ReferentialConstraint>
         </Association>

@@ -72,9 +72,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="ConsultarInsumo.xaml.cs">
-      <DependentUpon>ConsultarInsumo.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ConsultarProducto.xaml.cs">
       <DependentUpon>ConsultarProducto.xaml</DependentUpon>
     </Compile>
@@ -89,9 +86,6 @@
     </Compile>
     <Compile Include="Inventario.xaml.cs">
       <DependentUpon>Inventario.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ListaInsumos.xaml.cs">
-      <DependentUpon>ListaInsumos.xaml</DependentUpon>
     </Compile>
     <Compile Include="ListaPedidos.xaml.cs">
       <DependentUpon>ListaPedidos.xaml</DependentUpon>
@@ -144,10 +138,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Inventario.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ListaInsumos.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -223,9 +213,6 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="Connected Services\ItaliaPizzaServer\ItaliaPizzaClient.ItaliaPizzaServer.Empleados.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\ItaliaPizzaServer\ItaliaPizzaClient.ItaliaPizzaServer.Insumos.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ItaliaPizzaServer\ItaliaPizzaClient.ItaliaPizzaServer.Pedidos.datasource">
