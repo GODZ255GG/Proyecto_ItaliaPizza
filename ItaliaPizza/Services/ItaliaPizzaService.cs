@@ -1,4 +1,5 @@
 ﻿using Logic;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Core;
@@ -112,6 +113,108 @@ namespace Services
 
             }
             return usuario;
+        }
+
+        public bool ExisteCorreoYContraseña(string correo, string contraseña)
+        {
+            Autentificacion empelado = new Autentificacion();
+            var resultado = false;
+            try
+            {
+                resultado = empelado.ExisteCorreoYContraseña(correo, contraseña);
+            }
+            catch (EntityException e)
+            {
+
+            }
+            return resultado;
+        }
+    }
+
+    public partial class ItaliaPizzaService : IInsumoManager
+    {
+        public bool RegistrarInsumo(Insumos insumo)
+        {
+            var resultado = false;
+            try
+            {
+                GestionarInsumos registrar = new GestionarInsumos();
+                Logic.Insumos nuevoInsumo = new Logic.Insumos()
+                {
+                    Nombre = insumo.Nombre,
+                    CodigoInsumo = insumo.CodigoInsumo,
+                    Marca = insumo.Marca,
+                    Tipo = insumo.Tipo,
+                    CantidadDeEmpaque = insumo.CantidadDeEmpaque,
+                };
+                resultado = registrar.Registrar(nuevoInsumo);
+            }
+            catch (EntityException e)
+            {
+
+            }
+            return resultado;
+        }
+
+        public bool InsumoYaRegistrado(string nombre)
+        {
+            GestionarInsumos registro = new GestionarInsumos();
+            var resultado = false;
+            try
+            {
+                resultado = registro.InsumoYaRegistrado(nombre);
+            }
+            catch (EntityException e)
+            {
+
+            }
+            return resultado;
+        }
+
+
+        public List<Insumos> ObtenerListaInsumos()
+        {
+            List<Insumos> insumos = new List<Insumos>();
+            try
+            {
+                GestionarInsumos lista = new GestionarInsumos();
+                insumos = lista.CargarInsumos();
+            }
+            catch (EntityException e)
+            {
+
+            }
+            return insumos;
+        }
+
+        public bool EliminarInsumo(int idInsumo)
+        {
+            GestionarInsumos eliminar = new GestionarInsumos();
+            var resultado = false;
+            try
+            {
+                resultado = eliminar.EliminarInsumoSeleccionado(idInsumo);
+            }
+            catch (EntityException e)
+            {
+
+            }
+            return resultado;
+        }
+
+        public bool ActualizarInsumo(int idInsumo, string nombre, string codigoInsumo, string marca, string tipo, string cantidadDeEmpaque)
+        {
+            GestionarInsumos actualizar = new GestionarInsumos();
+            var resultado = false;
+            try
+            {
+                resultado = actualizar.ActualizarInsumo(idInsumo, nombre, codigoInsumo, marca, tipo, cantidadDeEmpaque);
+            }
+            catch (EntityException e)
+            {
+
+            }
+            return resultado;
         }
     }
 

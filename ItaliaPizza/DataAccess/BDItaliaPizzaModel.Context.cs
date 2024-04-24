@@ -38,5 +38,6 @@ namespace DataAccess
         public virtual DbSet<Productos> Productos { get; set; }
         public virtual DbSet<Proveedores> Proveedores { get; set; }
         public virtual DbSet<Receta> Receta { get; set; }
+        public virtual DbSet<ProveedorInsumo> ProveedorInsumo { get; set; }
     }
 }

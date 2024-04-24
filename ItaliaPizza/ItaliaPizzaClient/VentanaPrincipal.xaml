@@ -63,7 +63,7 @@
 
         <Grid Grid.Column="1">
             <ContentControl x:Name="contentControl" Background="#FFFCF3F3">
-                <Image Source="/Image/logoP.jpeg" HorizontalAlignment="Center" Height="720" VerticalAlignment="Center" Width="736"/>
+                <Image Source="/Image/logoP.png" HorizontalAlignment="Center" Height="720" VerticalAlignment="Center" Width="708"/>
             </ContentControl>
 
         </Grid>

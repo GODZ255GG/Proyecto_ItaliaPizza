@@ -13,5 +13,7 @@ namespace Services
     {
         [OperationContract]
         Logic.Empleados IniciarSesion(String correo, String contraseña);
+        [OperationContract]
+        bool ExisteCorreoYContraseña(string correo, string contraseña);
     }
 }

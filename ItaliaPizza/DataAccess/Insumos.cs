@@ -19,6 +19,7 @@ namespace DataAccess
         {
             this.IngredientesReceta = new HashSet<IngredientesReceta>();
             this.InventarioDeInsumo = new HashSet<InventarioDeInsumo>();
+            this.ProveedorInsumo = new HashSet<ProveedorInsumo>();
         }
     
         public int idInsumos { get; set; }
@@ -26,12 +27,13 @@ namespace DataAccess
         public string marca { get; set; }
         public string tipo { get; set; }
         public string cantidadDeEmpaque { get; set; }
-        public int Proveedores_idProveedores { get; set; }
+        public string codigoInsumo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<IngredientesReceta> IngredientesReceta { get; set; }
-        public virtual Proveedores Proveedores { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<InventarioDeInsumo> InventarioDeInsumo { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ProveedorInsumo> ProveedorInsumo { get; set; }
     }
 }

@@ -140,6 +140,131 @@ namespace ItaliaPizzaClient.ItaliaPizzaServer {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Insumos", Namespace="http://schemas.datacontract.org/2004/07/Logic")]
+    [System.SerializableAttribute()]
+    public partial class Insumos : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CantidadDeEmpaqueField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CodigoInsumoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdInsumosField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MarcaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NombreField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TipoField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CantidadDeEmpaque {
+            get {
+                return this.CantidadDeEmpaqueField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CantidadDeEmpaqueField, value) != true)) {
+                    this.CantidadDeEmpaqueField = value;
+                    this.RaisePropertyChanged("CantidadDeEmpaque");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CodigoInsumo {
+            get {
+                return this.CodigoInsumoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CodigoInsumoField, value) != true)) {
+                    this.CodigoInsumoField = value;
+                    this.RaisePropertyChanged("CodigoInsumo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IdInsumos {
+            get {
+                return this.IdInsumosField;
+            }
+            set {
+                if ((this.IdInsumosField.Equals(value) != true)) {
+                    this.IdInsumosField = value;
+                    this.RaisePropertyChanged("IdInsumos");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Marca {
+            get {
+                return this.MarcaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MarcaField, value) != true)) {
+                    this.MarcaField = value;
+                    this.RaisePropertyChanged("Marca");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Nombre {
+            get {
+                return this.NombreField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NombreField, value) != true)) {
+                    this.NombreField = value;
+                    this.RaisePropertyChanged("Nombre");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Tipo {
+            get {
+                return this.TipoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TipoField, value) != true)) {
+                    this.TipoField = value;
+                    this.RaisePropertyChanged("Tipo");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Empleados", Namespace="http://schemas.datacontract.org/2004/07/Logic")]
     [System.SerializableAttribute()]
     public partial class Empleados : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -431,6 +556,109 @@ namespace ItaliaPizzaClient.ItaliaPizzaServer {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ItaliaPizzaServer.IInsumoManager")]
+    public interface IInsumoManager {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInsumoManager/RegistrarInsumo", ReplyAction="http://tempuri.org/IInsumoManager/RegistrarInsumoResponse")]
+        bool RegistrarInsumo(ItaliaPizzaClient.ItaliaPizzaServer.Insumos insumo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInsumoManager/RegistrarInsumo", ReplyAction="http://tempuri.org/IInsumoManager/RegistrarInsumoResponse")]
+        System.Threading.Tasks.Task<bool> RegistrarInsumoAsync(ItaliaPizzaClient.ItaliaPizzaServer.Insumos insumo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInsumoManager/InsumoYaRegistrado", ReplyAction="http://tempuri.org/IInsumoManager/InsumoYaRegistradoResponse")]
+        bool InsumoYaRegistrado(string nombre);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInsumoManager/InsumoYaRegistrado", ReplyAction="http://tempuri.org/IInsumoManager/InsumoYaRegistradoResponse")]
+        System.Threading.Tasks.Task<bool> InsumoYaRegistradoAsync(string nombre);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInsumoManager/ObtenerListaInsumos", ReplyAction="http://tempuri.org/IInsumoManager/ObtenerListaInsumosResponse")]
+        ItaliaPizzaClient.ItaliaPizzaServer.Insumos[] ObtenerListaInsumos();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInsumoManager/ObtenerListaInsumos", ReplyAction="http://tempuri.org/IInsumoManager/ObtenerListaInsumosResponse")]
+        System.Threading.Tasks.Task<ItaliaPizzaClient.ItaliaPizzaServer.Insumos[]> ObtenerListaInsumosAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInsumoManager/EliminarInsumo", ReplyAction="http://tempuri.org/IInsumoManager/EliminarInsumoResponse")]
+        bool EliminarInsumo(int idInsumo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInsumoManager/EliminarInsumo", ReplyAction="http://tempuri.org/IInsumoManager/EliminarInsumoResponse")]
+        System.Threading.Tasks.Task<bool> EliminarInsumoAsync(int idInsumo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInsumoManager/ActualizarInsumo", ReplyAction="http://tempuri.org/IInsumoManager/ActualizarInsumoResponse")]
+        bool ActualizarInsumo(int idInsumo, string nombre, string codigoInsumo, string marca, string tipo, string cantidadDeEmpaque);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInsumoManager/ActualizarInsumo", ReplyAction="http://tempuri.org/IInsumoManager/ActualizarInsumoResponse")]
+        System.Threading.Tasks.Task<bool> ActualizarInsumoAsync(int idInsumo, string nombre, string codigoInsumo, string marca, string tipo, string cantidadDeEmpaque);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IInsumoManagerChannel : ItaliaPizzaClient.ItaliaPizzaServer.IInsumoManager, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class InsumoManagerClient : System.ServiceModel.ClientBase<ItaliaPizzaClient.ItaliaPizzaServer.IInsumoManager>, ItaliaPizzaClient.ItaliaPizzaServer.IInsumoManager {
+        
+        public InsumoManagerClient() {
+        }
+        
+        public InsumoManagerClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public InsumoManagerClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public InsumoManagerClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public InsumoManagerClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public bool RegistrarInsumo(ItaliaPizzaClient.ItaliaPizzaServer.Insumos insumo) {
+            return base.Channel.RegistrarInsumo(insumo);
+        }
+        
+        public System.Threading.Tasks.Task<bool> RegistrarInsumoAsync(ItaliaPizzaClient.ItaliaPizzaServer.Insumos insumo) {
+            return base.Channel.RegistrarInsumoAsync(insumo);
+        }
+        
+        public bool InsumoYaRegistrado(string nombre) {
+            return base.Channel.InsumoYaRegistrado(nombre);
+        }
+        
+        public System.Threading.Tasks.Task<bool> InsumoYaRegistradoAsync(string nombre) {
+            return base.Channel.InsumoYaRegistradoAsync(nombre);
+        }
+        
+        public ItaliaPizzaClient.ItaliaPizzaServer.Insumos[] ObtenerListaInsumos() {
+            return base.Channel.ObtenerListaInsumos();
+        }
+        
+        public System.Threading.Tasks.Task<ItaliaPizzaClient.ItaliaPizzaServer.Insumos[]> ObtenerListaInsumosAsync() {
+            return base.Channel.ObtenerListaInsumosAsync();
+        }
+        
+        public bool EliminarInsumo(int idInsumo) {
+            return base.Channel.EliminarInsumo(idInsumo);
+        }
+        
+        public System.Threading.Tasks.Task<bool> EliminarInsumoAsync(int idInsumo) {
+            return base.Channel.EliminarInsumoAsync(idInsumo);
+        }
+        
+        public bool ActualizarInsumo(int idInsumo, string nombre, string codigoInsumo, string marca, string tipo, string cantidadDeEmpaque) {
+            return base.Channel.ActualizarInsumo(idInsumo, nombre, codigoInsumo, marca, tipo, cantidadDeEmpaque);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ActualizarInsumoAsync(int idInsumo, string nombre, string codigoInsumo, string marca, string tipo, string cantidadDeEmpaque) {
+            return base.Channel.ActualizarInsumoAsync(idInsumo, nombre, codigoInsumo, marca, tipo, cantidadDeEmpaque);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ItaliaPizzaServer.IUserManager")]
     public interface IUserManager {
         
@@ -439,6 +667,12 @@ namespace ItaliaPizzaClient.ItaliaPizzaServer {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/IniciarSesion", ReplyAction="http://tempuri.org/IUserManager/IniciarSesionResponse")]
         System.Threading.Tasks.Task<ItaliaPizzaClient.ItaliaPizzaServer.Empleados> IniciarSesionAsync(string correo, string contraseña);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/ExisteCorreoYContraseña", ReplyAction="http://tempuri.org/IUserManager/ExisteCorreoYContraseñaResponse")]
+        bool ExisteCorreoYContraseña(string correo, string contraseña);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/ExisteCorreoYContraseña", ReplyAction="http://tempuri.org/IUserManager/ExisteCorreoYContraseñaResponse")]
+        System.Threading.Tasks.Task<bool> ExisteCorreoYContraseñaAsync(string correo, string contraseña);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -474,6 +708,14 @@ namespace ItaliaPizzaClient.ItaliaPizzaServer {
         
         public System.Threading.Tasks.Task<ItaliaPizzaClient.ItaliaPizzaServer.Empleados> IniciarSesionAsync(string correo, string contraseña) {
             return base.Channel.IniciarSesionAsync(correo, contraseña);
+        }
+        
+        public bool ExisteCorreoYContraseña(string correo, string contraseña) {
+            return base.Channel.ExisteCorreoYContraseña(correo, contraseña);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ExisteCorreoYContraseñaAsync(string correo, string contraseña) {
+            return base.Channel.ExisteCorreoYContraseñaAsync(correo, contraseña);
         }
     }
 }

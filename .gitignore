@@ -456,3 +456,8 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 ItaliaPizza/ItaliaPizzaClient/Connected Services/ItaliaPizzaServer/Reference.cs
+ItaliaPizza/DataAccess/BDItaliaPizzaModel.edmx.diagram
+ItaliaPizza/DataAccess/BDItaliaPizzaModel.Context.cs
+ItaliaPizza/DataAccess/BDItaliaPizzaModel.edmx
+ItaliaPizza/DataAccess/BDItaliaPizzaModel.Context.cs
+ItaliaPizza/DataAccess/DataAccess.csproj

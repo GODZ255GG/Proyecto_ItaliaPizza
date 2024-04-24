@@ -18,7 +18,7 @@ namespace ItaliaPizzaClient
         public ListaProductos()
         {
             InitializeComponent();
-            MostrarInformacionPedidos();
+            MostrarInformacionProductos();
         }
 
         private void BtnRegistrarProducto_Click(object sender, RoutedEventArgs e)
@@ -31,7 +31,7 @@ namespace ItaliaPizzaClient
 
         private void ActualizarTablaProductos(object sender, EventArgs e)
         {
-            MostrarInformacionPedidos();
+            MostrarInformacionProductos();
         }
 
         private void ImgRegresar_MouseLeftButtonDown(object sender, RoutedEventArgs e)
@@ -39,7 +39,7 @@ namespace ItaliaPizzaClient
             contentControl.Content = new Inventario();
         }
 
-        private void MostrarInformacionPedidos()
+        private void MostrarInformacionProductos()
         {
             try
             {

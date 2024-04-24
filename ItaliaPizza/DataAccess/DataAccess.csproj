@@ -105,6 +105,9 @@
     <Compile Include="Proveedores.cs">
       <DependentUpon>BDItaliaPizzaModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="ProveedorInsumo.cs">
+      <DependentUpon>BDItaliaPizzaModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Receta.cs">
       <DependentUpon>BDItaliaPizzaModel.tt</DependentUpon>
     </Compile>

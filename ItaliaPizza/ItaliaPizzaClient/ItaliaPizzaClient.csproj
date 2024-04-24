@@ -47,8 +47,10 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -75,6 +77,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="ConsultarInsumo.xaml.cs">
+      <DependentUpon>ConsultarInsumo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ConsultarProducto.xaml.cs">
       <DependentUpon>ConsultarProducto.xaml</DependentUpon>
     </Compile>
@@ -90,11 +95,17 @@
     <Compile Include="Inventario.xaml.cs">
       <DependentUpon>Inventario.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ListaInsumos.xaml.cs">
+      <DependentUpon>ListaInsumos.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ListaPedidos.xaml.cs">
       <DependentUpon>ListaPedidos.xaml</DependentUpon>
     </Compile>
     <Compile Include="ListaProductos.xaml.cs">
       <DependentUpon>ListaProductos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RegistrarInsumo.xaml.cs">
+      <DependentUpon>RegistrarInsumo.xaml</DependentUpon>
     </Compile>
     <Compile Include="ListaProveedores.xaml.cs">
       <DependentUpon>ListaProveedores.xaml</DependentUpon>
@@ -121,6 +132,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ConsultarInsumo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ConsultarProducto.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -138,6 +153,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Inventario.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ListaInsumos.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -165,6 +184,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="RegistrarInsumo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ModificarEstadoDePedido.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -209,6 +232,9 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="Connected Services\ItaliaPizzaServer\ItaliaPizzaClient.ItaliaPizzaServer.Empleados.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ItaliaPizzaServer\ItaliaPizzaClient.ItaliaPizzaServer.Insumos.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ItaliaPizzaServer\ItaliaPizzaClient.ItaliaPizzaServer.Pedidos.datasource">
@@ -300,7 +326,19 @@
     <Resource Include="Image\logout.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Image\logoP.jpeg" />
+    <Resource Include="Image\insumos.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\Productos.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\mail.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\logoP.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\pizzaFondo.jpeg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Image\cargo-truck.png" />

@@ -8,6 +8,14 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IInsumoManager_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsp:Policy wsu:Id="NetTcpBinding_IUserManager_policy">
     <wsp:ExactlyOne>
       <wsp:All>
@@ -69,6 +77,36 @@
   </wsdl:message>
   <wsdl:message name="IProductManager_ActualizarProducto_OutputMessage">
     <wsdl:part name="parameters" element="tns:ActualizarProductoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IInsumoManager_RegistrarInsumo_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarInsumo" />
+  </wsdl:message>
+  <wsdl:message name="IInsumoManager_RegistrarInsumo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarInsumoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IInsumoManager_InsumoYaRegistrado_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsumoYaRegistrado" />
+  </wsdl:message>
+  <wsdl:message name="IInsumoManager_InsumoYaRegistrado_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsumoYaRegistradoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IInsumoManager_ObtenerListaInsumos_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerListaInsumos" />
+  </wsdl:message>
+  <wsdl:message name="IInsumoManager_ObtenerListaInsumos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerListaInsumosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IInsumoManager_EliminarInsumo_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarInsumo" />
+  </wsdl:message>
+  <wsdl:message name="IInsumoManager_EliminarInsumo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarInsumoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IInsumoManager_ActualizarInsumo_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarInsumo" />
+  </wsdl:message>
+  <wsdl:message name="IInsumoManager_ActualizarInsumo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarInsumoResponse" />
   </wsdl:message>
   <wsdl:message name="IUserManager_IniciarSesion_InputMessage">
     <wsdl:part name="parameters" element="tns:IniciarSesion" />
@@ -148,6 +186,12 @@
   <wsdl:message name="IOrderManager_RecuperarProductoPorId_OutputMessage">
     <wsdl:part name="parameters" element="tns:RecuperarProductoPorIdResponse" />
   </wsdl:message>
+  <wsdl:message name="IUserManager_ExisteCorreoYContraseña_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExisteCorreoYContraseña" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_ExisteCorreoYContraseña_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ExisteCorreoYContraseñaResponse" />
+  </wsdl:message>
   <wsdl:portType name="IProductManager">
     <wsdl:operation name="RegistrarProducto">
       <wsdl:input wsaw:Action="http://tempuri.org/IProductManager/RegistrarProducto" message="tns:IProductManager_RegistrarProducto_InputMessage" />
@@ -170,10 +214,36 @@
       <wsdl:output wsaw:Action="http://tempuri.org/IProductManager/ActualizarProductoResponse" message="tns:IProductManager_ActualizarProducto_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
+  <wsdl:portType name="IInsumoManager">
+    <wsdl:operation name="RegistrarInsumo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInsumoManager/RegistrarInsumo" message="tns:IInsumoManager_RegistrarInsumo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInsumoManager/RegistrarInsumoResponse" message="tns:IInsumoManager_RegistrarInsumo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsumoYaRegistrado">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInsumoManager/InsumoYaRegistrado" message="tns:IInsumoManager_InsumoYaRegistrado_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInsumoManager/InsumoYaRegistradoResponse" message="tns:IInsumoManager_InsumoYaRegistrado_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerListaInsumos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInsumoManager/ObtenerListaInsumos" message="tns:IInsumoManager_ObtenerListaInsumos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInsumoManager/ObtenerListaInsumosResponse" message="tns:IInsumoManager_ObtenerListaInsumos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarInsumo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInsumoManager/EliminarInsumo" message="tns:IInsumoManager_EliminarInsumo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInsumoManager/EliminarInsumoResponse" message="tns:IInsumoManager_EliminarInsumo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarInsumo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInsumoManager/ActualizarInsumo" message="tns:IInsumoManager_ActualizarInsumo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInsumoManager/ActualizarInsumoResponse" message="tns:IInsumoManager_ActualizarInsumo_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
   <wsdl:portType name="IUserManager">
     <wsdl:operation name="IniciarSesion">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/IniciarSesion" message="tns:IUserManager_IniciarSesion_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/IniciarSesionResponse" message="tns:IUserManager_IniciarSesion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ExisteCorreoYContraseña">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/ExisteCorreoYContraseña" message="tns:IUserManager_ExisteCorreoYContraseña_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/ExisteCorreoYContraseñaResponse" message="tns:IUserManager_ExisteCorreoYContraseña_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="ISupplierManager">
@@ -269,6 +339,55 @@
     </wsdl:operation>
     <wsdl:operation name="ActualizarProducto">
       <soap12:operation soapAction="http://tempuri.org/IProductManager/ActualizarProducto" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IInsumoManager" type="tns:IInsumoManager">
+    <wsp:PolicyReference URI="#NetTcpBinding_IInsumoManager_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="RegistrarInsumo">
+      <soap12:operation soapAction="http://tempuri.org/IInsumoManager/RegistrarInsumo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsumoYaRegistrado">
+      <soap12:operation soapAction="http://tempuri.org/IInsumoManager/InsumoYaRegistrado" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerListaInsumos">
+      <soap12:operation soapAction="http://tempuri.org/IInsumoManager/ObtenerListaInsumos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarInsumo">
+      <soap12:operation soapAction="http://tempuri.org/IInsumoManager/EliminarInsumo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarInsumo">
+      <soap12:operation soapAction="http://tempuri.org/IInsumoManager/ActualizarInsumo" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -405,9 +524,24 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="ExisteCorreoYContraseña">
+      <soap12:operation soapAction="http://tempuri.org/IUserManager/ExisteCorreoYContraseña" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="ItaliaPizzaService">
     <wsdl:port name="NetTcpBinding_IProductManager" binding="tns:NetTcpBinding_IProductManager">
+      <soap12:address location="net.tcp://localhost:8081/Services" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8081/Services</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IInsumoManager" binding="tns:NetTcpBinding_IInsumoManager">
       <soap12:address location="net.tcp://localhost:8081/Services" />
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8081/Services</wsa10:Address>
