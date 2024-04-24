@@ -38,14 +38,6 @@ namespace Logic
             return usuario;
         }
 
-        public bool ExisteCorreoYContraseña(string correo, string contraseña)
-        {
-            using (var context = new BDItaliaPizzaEntities())
-            {
-                return context.Empleados.Any(em => em.correo == correo 
-                                            && em.contraseña == contraseña);
-            }
-        }
 
     }
 }

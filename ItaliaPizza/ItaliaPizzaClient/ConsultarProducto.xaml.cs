@@ -87,7 +87,6 @@ namespace ItaliaPizzaClient
         {
 
             Title = "Modificar Producto";
-            lbTitulo.Content = "Modificar Producto";
 
             btnModificar.Visibility = Visibility.Hidden;
             btnEliminar.Visibility = Visibility.Hidden;
@@ -105,7 +104,6 @@ namespace ItaliaPizzaClient
         {
 
             Title = "Consultar Producto";
-            lbTitulo.Content = "Información del Producto";
 
             btnAceptar.Visibility=Visibility.Hidden;
             btnCancelar.Visibility=Visibility.Hidden;

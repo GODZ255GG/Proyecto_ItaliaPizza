@@ -34,6 +34,7 @@ namespace Logic
 
         public bool ProductoYaRegistrado(string nombre)
         {
+            bool resultado = false;
             using (var context = new BDItaliaPizzaEntities())
             {
                 var producto = (from productos in context.Productos
@@ -41,10 +42,10 @@ namespace Logic
                                 select productos).Count();
                 if (producto > 0)
                 {
-                    return true;
+                    resultado = true;
                 }
             }
-            return false;
+            return resultado;
         }
 
         public List<Productos> CargarProductos()
@@ -76,6 +77,7 @@ namespace Logic
 
         public bool EliminarProductoSeleccionado(int idProducto)
         {
+            var resultado = false;
             using (var context = new BDItaliaPizzaEntities())
             {
                 var producto = context.Productos.FirstOrDefault(p => p.idProductos == idProducto);
@@ -83,13 +85,14 @@ namespace Logic
                 {
                     context.Productos.Remove(producto);
                     context.SaveChanges();
-                    return true;
+                    resultado = true;
                 }
                 else
                 {
-                    return false;
+                    resultado = false;
                 }
             }
+            return resultado;
         }
 
         public bool ActualizarProducto(int idProducto, string nuevoNombre, string nuevoCodigo, string nuevaMarca, string nuevoTipo, double nuevoPrecio)
@@ -109,6 +112,8 @@ namespace Logic
                     context.SaveChanges();
                     return true;
                 }
+                
+                
             }
             return false;
         }

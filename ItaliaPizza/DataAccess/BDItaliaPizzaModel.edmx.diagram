@@ -23,6 +23,7 @@
         <AssociationConnector Association="BDItaliaPizzaModel.FK_DetallesPedido_Pedidos" />
         <AssociationConnector Association="BDItaliaPizzaModel.FK_IngredientesReceta_Insumos" />
         <AssociationConnector Association="BDItaliaPizzaModel.FK_IngredientesReceta_Recetas" />
+        <AssociationConnector Association="BDItaliaPizzaModel.FK_Insumos_Proveedores" />
         <AssociationConnector Association="BDItaliaPizzaModel.FK_InventarioDeInsumo_Insumos" />
         <AssociationConnector Association="BDItaliaPizzaModel.FK_InventarioDeInsumo_Inventario" />
         <AssociationConnector Association="BDItaliaPizzaModel.FK_InventarioDeProductos_Inventario" />
@@ -30,9 +31,6 @@
         <AssociationConnector Association="BDItaliaPizzaModel.FK_PedidoProducto_Pedidos" />
         <AssociationConnector Association="BDItaliaPizzaModel.FK_PedidoProducto_Productos" />
         <AssociationConnector Association="BDItaliaPizzaModel.FK_Recetas_Productos" />
-        <EntityTypeShape EntityType="BDItaliaPizzaModel.ProveedorInsumo" Width="1.5" PointX="1" PointY="4.25" />
-        <AssociationConnector Association="BDItaliaPizzaModel.FK_ProveedorInsumo_Insumos" />
-        <AssociationConnector Association="BDItaliaPizzaModel.FK_ProveedorInsumo_Proveedores" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
