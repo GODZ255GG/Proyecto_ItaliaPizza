@@ -1,0 +1,6 @@
+C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\Security\bin\Debug\Security.dll
+C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\Security\bin\Debug\Security.pdb
+C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\Security\obj\Debug\Security.csproj.AssemblyReference.cache
+C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\Security\obj\Debug\Security.csproj.CoreCompileInputs.cache
+C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\Security\obj\Debug\Security.dll
+C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\Security\obj\Debug\Security.pdb
