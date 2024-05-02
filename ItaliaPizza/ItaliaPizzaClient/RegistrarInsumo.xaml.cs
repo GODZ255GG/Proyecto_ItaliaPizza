@@ -96,31 +96,21 @@ namespace ItaliaPizzaClient
             };
 
             var result = false;
-
-            if (CamposVacios())
+            if (!client.InsumoYaRegistrado(nombre))
             {
-
-                if (!client.InsumoYaRegistrado(nombre))
+                result = true;
+            }
+            else
+            {
+                MessageBox.Show("Este insumo ya se encuentra registrado en el sistema, intente con otro", "Insumo duplicado", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            if (result)
+            {
+                var aux = client.RegistrarInsumo(nuevoInsumo);
+                if (aux)
                 {
-                    result = true;
-                }
-                else
-                {
-                    MessageBox.Show("Este insumo ya se encuentra registrado en el sistema, intente con otro", "Insumo duplicado", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-
-                if (result)
-                {
-                    var aux = client.RegistrarInsumo(nuevoInsumo);
-                    if (aux)
-                    {
-                        MessageBox.Show("El insumo se ha registrado exitosamente", "Registro exitoso", MessageBoxButton.OK, MessageBoxImage.Information);
-                        this.Close();
-                    }
-                    else
-                    {
-                        MessageBox.Show("No se pudo registrar el insumo", "Registro fallido", MessageBoxButton.OK, MessageBoxImage.Error);
-                    }
+                    MessageBox.Show("El insumo se ha registrado exitosamente", "Registro exitoso", MessageBoxButton.OK, MessageBoxImage.Information);
+                    this.Close();
                 }
                 else
                 {
@@ -129,7 +119,7 @@ namespace ItaliaPizzaClient
             }
             else
             {
-                MessageBox.Show("Ingrese la información solicitada para continuar.", "Campos Vacios", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("No se pudo registrar el insumo", "Registro fallido", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -146,13 +136,12 @@ namespace ItaliaPizzaClient
 
         private bool StringValidos(string codigo, string cantidad, string nombre, string marca)
         {
-            var esValido = false;
-            if (Regex.IsMatch(cantidad, @"^[a-zA-Z0-9\s]+$") && Regex.IsMatch(codigo, @"^[a-zA-Z0-9]+$") && Regex.IsMatch(nombre, @"^[a-zA-Z\s]+$")
-                && Regex.IsMatch(marca, @"^[a-zA-Z\s]+$"))
+            if (Regex.IsMatch(cantidad, @"^[a-zA-Z0-9\s]+$") && Regex.IsMatch(codigo, @"^[a-zA-Z0-9]+$") && Regex.IsMatch(nombre, @"^[a-zA-Z\s\-.,'()ñÑáéíóúÁÉÍÓÚ]+$")
+                && Regex.IsMatch(marca, @"^[a-zA-Z\s\-.,'()ñÑáéíóúÁÉÍÓÚ]+$"))
             {
-                esValido = true;
+                return true;
             }
-            return esValido;
+            return false;
         }
 
         private bool StringLargos(string nombre, string marca, string codigo, string cantidad)
