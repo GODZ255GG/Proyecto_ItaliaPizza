@@ -186,8 +186,8 @@ namespace ItaliaPizzaClient
 
         private bool StringValidos(string codigo, string cantidad, string nombre, string marca)
         {
-            if (Regex.IsMatch(cantidad, @"^[a-zA-Z0-9\s]+$") && Regex.IsMatch(codigo, @"^[a-zA-Z0-9]+$") && Regex.IsMatch(nombre, @"^[a-zA-Z\s]+$")
-                && Regex.IsMatch(marca, @"^[a-zA-Z\s]+$"))
+            if (Regex.IsMatch(cantidad, @"^[a-zA-Z0-9\s]+$") && Regex.IsMatch(codigo, @"^[a-zA-Z0-9]+$") && Regex.IsMatch(nombre, @"^[a-zA-Z\s\-.,'()ñÑáéíóúÁÉÍÓÚ]+$")
+                && Regex.IsMatch(marca, @"^[a-zA-Z\s\-.,'()ñÑáéíóúÁÉÍÓÚ]+$"))
             {
                 return true;
             }

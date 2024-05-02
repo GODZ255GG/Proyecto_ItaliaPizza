@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="BDItaliaPizzaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="BDItaliaPizzaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Clientes">
           <Key>
             <PropertyRef Name="idClientes" />
@@ -54,7 +54,7 @@
           <Property Name="marca" Type="nvarchar" MaxLength="45" />
           <Property Name="tipo" Type="nvarchar" MaxLength="45" />
           <Property Name="cantidadDeEmpaque" Type="nvarchar" MaxLength="45" />
-          <Property Name="Proveedores_idProveedores" Type="int" Nullable="false" />
+          <Property Name="codigoInsumo" Type="nvarchar" MaxLength="45" />
         </EntityType>
         <EntityType Name="InsumosProveedores">
           <Key>
@@ -219,18 +219,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Insumos_Proveedores">
-          <End Role="Proveedores" Type="Self.Proveedores" Multiplicity="1" />
-          <End Role="Insumos" Type="Self.Insumos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Proveedores">
-              <PropertyRef Name="idProveedores" />
-            </Principal>
-            <Dependent Role="Insumos">
-              <PropertyRef Name="Proveedores_idProveedores" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_InventarioDeInsumo_Insumos">
           <End Role="Insumos" Type="Self.Insumos" Multiplicity="1" />
           <End Role="InventarioDeInsumo" Type="Self.InventarioDeInsumo" Multiplicity="*" />
@@ -367,10 +355,6 @@
             <End Role="Proveedores" EntitySet="Proveedores" />
             <End Role="InsumosProveedores" EntitySet="InsumosProveedores" />
           </AssociationSet>
-          <AssociationSet Name="FK_Insumos_Proveedores" Association="Self.FK_Insumos_Proveedores">
-            <End Role="Proveedores" EntitySet="Proveedores" />
-            <End Role="Insumos" EntitySet="Insumos" />
-          </AssociationSet>
           <AssociationSet Name="FK_InventarioDeInsumo_Insumos" Association="Self.FK_InventarioDeInsumo_Insumos">
             <End Role="Insumos" EntitySet="Insumos" />
             <End Role="InventarioDeInsumo" EntitySet="InventarioDeInsumo" />
@@ -404,7 +388,8 @@
             <End Role="RecetasProductos" EntitySet="RecetasProductos" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BDItaliaPizzaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -635,18 +620,6 @@
             </Principal>
             <Dependent Role="InsumosProveedores">
               <PropertyRef Name="Insumos_idInsumos" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Insumos_Proveedores">
-          <End Type="BDItaliaPizzaModel.Proveedores" Role="Proveedores" Multiplicity="1" />
-          <End Type="BDItaliaPizzaModel.Insumos" Role="Insumos" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Proveedores">
-              <PropertyRef Name="idProveedores" />
-            </Principal>
-            <Dependent Role="Insumos">
-              <PropertyRef Name="Proveedores_idProveedores" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
