@@ -61,7 +61,7 @@ CornerRadius="10">
                 </TextBox.Background>
             </TextBox>
             <Image Source="/image/Search.png" HorizontalAlignment="Left" Height="45" Margin="434,108,0,0" VerticalAlignment="Top" Width="45"/>
-            <DataGrid x:Name="dgListaProveedores" SelectionUnit="FullRow" AutoGenerateColumns="False" Margin="61,178,61,152" MouseDoubleClick="DgListaProveedores_MouseDoubleClick" BorderThickness="5,5,5,5" IsReadOnly="True">
+            <DataGrid x:Name="dgListaProveedores" SelectionUnit="FullRow" AutoGenerateColumns="False" Margin="61,178,61,152" MouseDoubleClick="DgListaProveedores_MouseDoubleClick" BorderThickness="5,5,5,5" IsReadOnly="True" SelectionChanged="dgListaProveedores_SelectionChanged">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Nombre De Compañía" Width="*" Binding="{Binding NombreCompañia}"/>
                     <DataGridTextColumn Header="Nombre De Contacto" Width="*" Binding="{Binding NombreContacto}"/>

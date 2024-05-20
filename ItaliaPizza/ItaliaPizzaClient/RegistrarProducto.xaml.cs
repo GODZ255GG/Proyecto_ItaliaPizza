@@ -1,5 +1,7 @@
-﻿using System;
+﻿using ItaliaPizzaClient.Utilidades;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.ServiceModel;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -16,11 +18,16 @@ namespace ItaliaPizzaClient
         {
             InitializeComponent();
             Loaded += CbxTipo_Loaded;
+            tbxCodigoProducto.Text = "PD" + Utilidades.Utilidades.GenerarCodigo();
         }
 
         private void BtnCancelar_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            if (Utilidades.Utilidades.MostrarMensajeConfirmacionRegresar())
+            {
+                this.Close();
+            }
+            
         }
 
         private void CbxTipo_Loaded(object sender, RoutedEventArgs e)
@@ -38,13 +45,11 @@ namespace ItaliaPizzaClient
         private void BtnAceptar_Click(object sender, RoutedEventArgs e)
         {
             var nombre = tbxNombre.Text;
-            var codigoProducto = tbxCodigoProducto.Text;
             var marca = tbxMarca.Text;
-            var precio = tbxPrecio.Text;
 
-            if (CamposVacios())
+            if (!CamposVacios())
             {
-                if (StringValidos(codigoProducto, precio, nombre, marca) && StringLargos(nombre, marca))
+                if (StringValidos(nombre, marca))
                 {
                     try
                     {
@@ -52,25 +57,30 @@ namespace ItaliaPizzaClient
                     }
                     catch (EndpointNotFoundException ex)
                     {
-                        MessageBox.Show("Por el momento no hay conexión con la base de datos, por favor inténtelo más tarde", "Error de conexión con base de datos", MessageBoxButton.OK, MessageBoxImage.Error);
+                        Utilidades.Utilidades.MostrarMensajeEndpointNotFoundException();
                     }
                     catch (CommunicationException ex)
                     {
-                        MessageBox.Show("Se produjo un error de comunicación al intentar acceder a un recurso remoto. Intente de nuevo", "Problema de comunicación", MessageBoxButton.OK, MessageBoxImage.Error);
+                        Utilidades.Utilidades.MostrarMensajeCommunicationException();
                     }
                     catch (TimeoutException ex)
                     {
-                        MessageBox.Show("La operación que intentaba realizar ha superado el tiempo de espera establecido y no pudo completarse en el tiempo especificado. Intente de nuevo", "Tiempo de espera agotado", MessageBoxButton.OK, MessageBoxImage.Error);
+                        Utilidades.Utilidades.MostrarMensajeTimeoutException();
+                    }
+                    catch (Exception ex)
+                    {
+                        // Manejar cualquier otra excepción no específica
+                        MessageBox.Show($"Ocurrió un error inesperado: {ex.Message}", "Error", MessageBoxButton.OK ,MessageBoxImage.Error);
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Los datos ingresados no son validos. Verifique sus datos", "Datos Invalidos", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    Utilidades.Utilidades.MostrarMensajeCamposInvalidos();
                 }
             }
             else
             {
-                MessageBox.Show("Ingrese la información solicitada para continuar", "Campos Vacíos", MessageBoxButton.OK, MessageBoxImage.Warning);
+                Utilidades.Utilidades.MostrarMensajeCamposVacios();
             }
         }
 
@@ -82,6 +92,12 @@ namespace ItaliaPizzaClient
             var tipo = cbxTipo.Text;
             var precio = tbxPrecio.Text;
 
+            if (!double.TryParse(precio, out double precioDouble))
+            {
+                MessageBox.Show("El precio debe ser un número válido.", "Error de formato del precio", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             ItaliaPizzaServer.ProductManagerClient client = new ItaliaPizzaServer.ProductManagerClient();
 
             ItaliaPizzaServer.Productos nuevoProducto = new ItaliaPizzaServer.Productos()
@@ -90,77 +106,46 @@ namespace ItaliaPizzaClient
                 CodigoProducto = codigoProducto,
                 Marca = marca,
                 Tipo = tipo,
-                Precio = double.Parse(precio)
+                Precio = precioDouble
             };
 
-            var result = false;
-
-            if (CamposVacios())
+            if (client.ProductoYaRegistrado(nombre))
             {
-
-                if (!client.ProductoYaRegistrado(nombre))
-                {
-                    result = true;
-                }
-                else
-                {
-                    MessageBox.Show("Este producto ya se encuentra registrado en el sistema, intente con otro", "Producto duplicado", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-
-                if (result)
-                {
-                    var aux = client.RegistrarProducto(nuevoProducto);
-                    if (aux)
-                    {
-                        MessageBox.Show("El producto se ha registrado exitosamente", "Registro exitoso", MessageBoxButton.OK, MessageBoxImage.Information);
-                        this.Close();
-                    }
-                    else
-                    {
-                        MessageBox.Show("No se pudo registrar el producto", "Registro fallido", MessageBoxButton.OK, MessageBoxImage.Error);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("No se pudo registrar el producto", "Registro fallido", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
+                MessageBox.Show("Este producto ya se encuentra registrado en el sistema, intente con otro", "Producto duplicado", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
             }
-            else
-            {
-                MessageBox.Show("Ingrese la información solicitada para continuar.", "Campos Vacios", MessageBoxButton.OK, MessageBoxImage.Warning);
-            }
+
+            client.RegistrarProducto(nuevoProducto);
+            MessageBox.Show("El producto se ha registrado exitosamente", "Registro exitoso", MessageBoxButton.OK, MessageBoxImage.Information);
+            this.Close();
         }
 
         #region Validaciones
         public bool CamposVacios()
         {
-            if(tbxNombre.Text == string.Empty || tbxMarca.Text == string.Empty || tbxPrecio.Text == string.Empty 
-                || tbxCodigoProducto.Text == string.Empty || cbxTipo.Text == string.Empty)
+            if (string.IsNullOrEmpty(tbxNombre.Text) || string.IsNullOrEmpty(tbxMarca.Text) ||
+                string.IsNullOrEmpty(tbxPrecio.Text) || string.IsNullOrEmpty(tbxCodigoProducto.Text) ||
+                string.IsNullOrEmpty(cbxTipo.Text))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        private bool StringValidos(string nombre, string marca)
+        {
+            if (!Regex.IsMatch(nombre, @"^[a-zA-Z\s\-.,'()ñÑáéíóúÁÉÍÓÚ]+$") ||
+                !Regex.IsMatch(marca, @"^[a-zA-Z\s\-.,'()ñÑáéíóúÁÉÍÓÚ]+$"))
             {
                 return false;
             }
+
+            if (nombre.Length > 45 || marca.Length > 45)
+            {
+                return false;
+            }
+
             return true;
-        }
-
-        private bool StringValidos(string codigo, string precio, string nombre, string marca)
-        {
-            var esValido = false;
-            if (Regex.IsMatch(precio, @"^\d+(\.\d+)?$") && Regex.IsMatch(codigo, @"^[a-zA-Z0-9]+$") && Regex.IsMatch(nombre, @"^[a-zA-Z\s\-.,'()ñÑáéíóúÁÉÍÓÚ]+$")
-                && Regex.IsMatch(marca, @"^[a-zA-Z\s\-.,'()ñÑáéíóúÁÉÍÓÚ]+$"))
-            {
-                esValido = true;
-            }
-            return esValido;
-        }
-
-        private bool StringLargos(string nombre, string marca)
-        {
-            var noSonLargos = false;
-            if (nombre.Length <= 45 || marca.Length <= 45)
-            {
-                noSonLargos = true;
-            }
-            return noSonLargos;
         }
         #endregion
     }

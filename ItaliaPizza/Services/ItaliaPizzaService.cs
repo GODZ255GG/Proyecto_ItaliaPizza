@@ -113,6 +113,93 @@ namespace Services
             }
             return usuario;
         }
+
+        public bool RegistrarEmpleado(Empleados usuarios)
+        {
+            var status = false;
+            try
+            {
+                GestionarEmpleados registrar = new GestionarEmpleados();
+                Logic.Empleados nuevoUsuario = new Logic.Empleados()
+                {
+                    Nombre = usuarios.Nombre,
+                    ApellidoPaterno = usuarios.ApellidoPaterno,
+                    ApellidoMaterno = usuarios.ApellidoMaterno,
+                    Telefono = usuarios.Telefono,
+                    Correo = usuarios.Correo,
+                    Contraseña = usuarios.Contraseña,
+                    Rol = usuarios.Rol,
+                    Foto = usuarios.Foto,
+
+                };
+                status = registrar.Registrar(nuevoUsuario);
+            }
+            catch (EntityException e)
+            {
+
+            }
+            return status;
+        }
+
+        public bool UsuarioYaRegistrado(string correo)
+        {
+            GestionarEmpleados registro = new GestionarEmpleados();
+            var status = false;
+            try
+            {
+                status = registro.UsuarioYaRegistrado(correo);
+            }
+            catch (EntityException e)
+            {
+
+            }
+            return status;
+        }
+
+        public List<Empleados> ObtenerListaUsuarios()
+        {
+            List<Empleados> usuarios = new List<Empleados>();
+            try
+            {
+                GestionarEmpleados lista = new GestionarEmpleados();
+                usuarios = lista.CargarUsuarios();
+            }
+            catch (EntityException e)
+            {
+
+            }
+            return usuarios;
+        }
+
+        public bool EliminarEmpleados(int idEmpleados)
+        {
+            GestionarEmpleados eliminar = new GestionarEmpleados();
+            var status = false;
+            try
+            {
+                status = eliminar.EliminarEmpleados(idEmpleados);
+            }
+            catch (EntityException e)
+            {
+
+            }
+            return status;
+        }
+
+        public bool ActualizarEmpleado(int idEmpleados, string nombre, string apellidoPaterno, string apellidoMaterno, string correo, string contraseña)
+        {
+            GestionarEmpleados actualizar = new GestionarEmpleados();
+            var resultado = false;
+            try
+            {
+                resultado = actualizar.ActualizarEmpleado(idEmpleados, nombre, apellidoPaterno, apellidoMaterno, correo, contraseña);
+            }
+            catch (EntityException e)
+            {
+
+            }
+            return resultado;
+        }
     }
 
     public partial class ItaliaPizzaService : ISupplierManager
@@ -384,5 +471,93 @@ namespace Services
             }
             return resultado;
         }
+    }
+
+    public partial class ItaliaPizzaService : IRecipeManager
+    {
+
+
+        public bool RegistrarReceta(Recetas receta)
+        {
+            var status = false;
+            try
+            {
+                GestionarReceta registrar = new GestionarReceta();
+                Logic.Recetas nuevoReceta = new Logic.Recetas()
+                {
+                    Nombre = receta.Nombre,
+                    DescripcionPreparación = receta.DescripcionPreparación,
+
+
+                };
+                status = registrar.Registrar(nuevoReceta);
+            }
+            catch (EntityException e)
+            {
+
+            }
+            return status;
+        }
+
+        public bool RecetaYaRegistrado(string nombre)
+        {
+            GestionarReceta registro = new GestionarReceta();
+            var status = false;
+            try
+            {
+                status = registro.RecetaYaRegistrado(nombre);
+            }
+            catch (EntityException e)
+            {
+
+            }
+            return status;
+        }
+
+        public List<Recetas> ObtenerListaReceta()
+        {
+            List<Recetas> receta = new List<Recetas>();
+            try
+            {
+                GestionarReceta lista = new GestionarReceta();
+                receta = lista.CargarReceta();
+            }
+            catch (EntityException e)
+            {
+
+            }
+            return receta;
+        }
+
+        public bool EliminarReceta(int idRecetas)
+        {
+            GestionarReceta eliminar = new GestionarReceta();
+            var status = false;
+            try
+            {
+                status = eliminar.EliminarReceta(idRecetas);
+            }
+            catch (EntityException e)
+            {
+
+            }
+            return status;
+        }
+
+        public bool ActualizarReceta(int idReceta, string nombre, string descripcionPreparación)
+        {
+            GestionarReceta actualizar = new GestionarReceta();
+            var resultado = false;
+            try
+            {
+                resultado = actualizar.ActualizarReceta(idReceta, nombre, descripcionPreparación);
+            }
+            catch (EntityException e)
+            {
+
+            }
+            return resultado;
+        }
+
     }
 }

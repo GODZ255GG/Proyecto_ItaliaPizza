@@ -155,7 +155,7 @@ namespace ItaliaPizzaClient
                 MessageBox.Show("Ingrese la información solicitada para continuar", "Campos Vacíos", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
-
+            
             if (!StringsValidos(nuevoNombreCompañia, nuevoNombreContacto, nuevoTelefono, nuevaDireccion))
             {
                 MessageBox.Show("Los datos ingresados no son válidos. Verifique sus datos", "Datos Inválidos", MessageBoxButton.OK, MessageBoxImage.Warning);
