@@ -40,6 +40,14 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IRecipeManager_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd0" namespace="http://tempuri.org/" />
@@ -83,6 +91,36 @@
   </wsdl:message>
   <wsdl:message name="IUserManager_IniciarSesion_OutputMessage">
     <wsdl:part name="parameters" element="tns:IniciarSesionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_RegistrarEmpleado_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarEmpleado" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_RegistrarEmpleado_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarEmpleadoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_UsuarioYaRegistrado_InputMessage">
+    <wsdl:part name="parameters" element="tns:UsuarioYaRegistrado" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_UsuarioYaRegistrado_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UsuarioYaRegistradoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_ObtenerListaUsuarios_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerListaUsuarios" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_ObtenerListaUsuarios_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerListaUsuariosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_EliminarEmpleados_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarEmpleados" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_EliminarEmpleados_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarEmpleadosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_ActualizarEmpleado_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarEmpleado" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_ActualizarEmpleado_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarEmpleadoResponse" />
   </wsdl:message>
   <wsdl:message name="ISupplierManager_RegistrarProveedor_InputMessage">
     <wsdl:part name="parameters" element="tns:RegistrarProveedor" />
@@ -186,6 +224,36 @@
   <wsdl:message name="IInsumoManager_ActualizarInsumo_OutputMessage">
     <wsdl:part name="parameters" element="tns:ActualizarInsumoResponse" />
   </wsdl:message>
+  <wsdl:message name="IRecipeManager_RegistrarReceta_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarReceta" />
+  </wsdl:message>
+  <wsdl:message name="IRecipeManager_RegistrarReceta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarRecetaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRecipeManager_RecetaYaRegistrado_InputMessage">
+    <wsdl:part name="parameters" element="tns:RecetaYaRegistrado" />
+  </wsdl:message>
+  <wsdl:message name="IRecipeManager_RecetaYaRegistrado_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RecetaYaRegistradoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRecipeManager_ObtenerListaReceta_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerListaReceta" />
+  </wsdl:message>
+  <wsdl:message name="IRecipeManager_ObtenerListaReceta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerListaRecetaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRecipeManager_EliminarReceta_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarReceta" />
+  </wsdl:message>
+  <wsdl:message name="IRecipeManager_EliminarReceta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarRecetaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRecipeManager_ActualizarReceta_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarReceta" />
+  </wsdl:message>
+  <wsdl:message name="IRecipeManager_ActualizarReceta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarRecetaResponse" />
+  </wsdl:message>
   <wsdl:portType name="IProductManager">
     <wsdl:operation name="RegistrarProducto">
       <wsdl:input wsaw:Action="http://tempuri.org/IProductManager/RegistrarProducto" message="tns:IProductManager_RegistrarProducto_InputMessage" />
@@ -212,6 +280,26 @@
     <wsdl:operation name="IniciarSesion">
       <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/IniciarSesion" message="tns:IUserManager_IniciarSesion_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/IniciarSesionResponse" message="tns:IUserManager_IniciarSesion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarEmpleado">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/RegistrarEmpleado" message="tns:IUserManager_RegistrarEmpleado_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/RegistrarEmpleadoResponse" message="tns:IUserManager_RegistrarEmpleado_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UsuarioYaRegistrado">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/UsuarioYaRegistrado" message="tns:IUserManager_UsuarioYaRegistrado_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/UsuarioYaRegistradoResponse" message="tns:IUserManager_UsuarioYaRegistrado_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerListaUsuarios">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/ObtenerListaUsuarios" message="tns:IUserManager_ObtenerListaUsuarios_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/ObtenerListaUsuariosResponse" message="tns:IUserManager_ObtenerListaUsuarios_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarEmpleados">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/EliminarEmpleados" message="tns:IUserManager_EliminarEmpleados_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/EliminarEmpleadosResponse" message="tns:IUserManager_EliminarEmpleados_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarEmpleado">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/ActualizarEmpleado" message="tns:IUserManager_ActualizarEmpleado_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/ActualizarEmpleadoResponse" message="tns:IUserManager_ActualizarEmpleado_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="ISupplierManager">
@@ -288,6 +376,28 @@
       <wsdl:output wsaw:Action="http://tempuri.org/IInsumoManager/ActualizarInsumoResponse" message="tns:IInsumoManager_ActualizarInsumo_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
+  <wsdl:portType name="IRecipeManager">
+    <wsdl:operation name="RegistrarReceta">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRecipeManager/RegistrarReceta" message="tns:IRecipeManager_RegistrarReceta_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRecipeManager/RegistrarRecetaResponse" message="tns:IRecipeManager_RegistrarReceta_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RecetaYaRegistrado">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRecipeManager/RecetaYaRegistrado" message="tns:IRecipeManager_RecetaYaRegistrado_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRecipeManager/RecetaYaRegistradoResponse" message="tns:IRecipeManager_RecetaYaRegistrado_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerListaReceta">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRecipeManager/ObtenerListaReceta" message="tns:IRecipeManager_ObtenerListaReceta_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRecipeManager/ObtenerListaRecetaResponse" message="tns:IRecipeManager_ObtenerListaReceta_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarReceta">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRecipeManager/EliminarReceta" message="tns:IRecipeManager_EliminarReceta_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRecipeManager/EliminarRecetaResponse" message="tns:IRecipeManager_EliminarReceta_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarReceta">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRecipeManager/ActualizarReceta" message="tns:IRecipeManager_ActualizarReceta_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRecipeManager/ActualizarRecetaResponse" message="tns:IRecipeManager_ActualizarReceta_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IProductManager" type="tns:IProductManager">
     <wsp:PolicyReference URI="#NetTcpBinding_IProductManager_policy" />
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
@@ -342,6 +452,51 @@
     <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
     <wsdl:operation name="IniciarSesion">
       <soap12:operation soapAction="http://tempuri.org/IUserManager/IniciarSesion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarEmpleado">
+      <soap12:operation soapAction="http://tempuri.org/IUserManager/RegistrarEmpleado" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UsuarioYaRegistrado">
+      <soap12:operation soapAction="http://tempuri.org/IUserManager/UsuarioYaRegistrado" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerListaUsuarios">
+      <soap12:operation soapAction="http://tempuri.org/IUserManager/ObtenerListaUsuarios" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarEmpleados">
+      <soap12:operation soapAction="http://tempuri.org/IUserManager/EliminarEmpleados" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarEmpleado">
+      <soap12:operation soapAction="http://tempuri.org/IUserManager/ActualizarEmpleado" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -515,6 +670,55 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IRecipeManager" type="tns:IRecipeManager">
+    <wsp:PolicyReference URI="#NetTcpBinding_IRecipeManager_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="RegistrarReceta">
+      <soap12:operation soapAction="http://tempuri.org/IRecipeManager/RegistrarReceta" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecetaYaRegistrado">
+      <soap12:operation soapAction="http://tempuri.org/IRecipeManager/RecetaYaRegistrado" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerListaReceta">
+      <soap12:operation soapAction="http://tempuri.org/IRecipeManager/ObtenerListaReceta" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarReceta">
+      <soap12:operation soapAction="http://tempuri.org/IRecipeManager/EliminarReceta" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarReceta">
+      <soap12:operation soapAction="http://tempuri.org/IRecipeManager/ActualizarReceta" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
   <wsdl:service name="ItaliaPizzaService">
     <wsdl:port name="NetTcpBinding_IProductManager" binding="tns:NetTcpBinding_IProductManager">
       <soap12:address location="net.tcp://localhost:8081/Services" />
@@ -541,6 +745,12 @@
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_IInsumoManager" binding="tns:NetTcpBinding_IInsumoManager">
+      <soap12:address location="net.tcp://localhost:8081/Services" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8081/Services</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IRecipeManager" binding="tns:NetTcpBinding_IRecipeManager">
       <soap12:address location="net.tcp://localhost:8081/Services" />
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8081/Services</wsa10:Address>

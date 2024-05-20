@@ -32,6 +32,12 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Empleados" nillable="true" type="tns:Empleados" />
+  <xs:complexType name="ArrayOfEmpleados">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Empleados" nillable="true" type="tns:Empleados" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfEmpleados" nillable="true" type="tns:ArrayOfEmpleados" />
   <xs:complexType name="Proveedor">
     <xs:sequence>
       <xs:element minOccurs="0" name="Ciudad" nillable="true" type="xs:string" />
@@ -86,4 +92,18 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfInsumos" nillable="true" type="tns:ArrayOfInsumos" />
+  <xs:complexType name="Recetas">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DescripcionPreparación" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IdRecetas" type="xs:int" />
+      <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Recetas" nillable="true" type="tns:Recetas" />
+  <xs:complexType name="ArrayOfRecetas">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Recetas" nillable="true" type="tns:Recetas" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRecetas" nillable="true" type="tns:ArrayOfRecetas" />
 </xs:schema>

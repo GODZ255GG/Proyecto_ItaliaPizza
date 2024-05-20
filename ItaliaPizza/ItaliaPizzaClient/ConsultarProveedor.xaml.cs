@@ -151,7 +151,7 @@ namespace ItaliaPizzaClient
             nuevaDireccion = tbxDireccion.Text;
             nuevaCiudad = cbxCiudad.SelectedItem.ToString();
 
-            if ((CamposVacios()))
+            if (CamposVacios())
             {
                 if (StringValidos(nombreCompañia, nombreContacto, telefono, direccion) && StringLargos(nombreCompañia, nombreContacto, telefono, direccion))
                 {

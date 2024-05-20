@@ -54,9 +54,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Autentificacion.cs" />
+    <Compile Include="GestionarEmpleados.cs" />
     <Compile Include="GestionarInsumos.cs" />
     <Compile Include="GestionarPedidos.cs" />
     <Compile Include="GestionarProveedor.cs" />
+    <Compile Include="GestionarRecetas.cs" />
     <Compile Include="Insumos.cs" />
     <Compile Include="Pedidos.cs" />
     <Compile Include="Productos.cs" />
@@ -64,6 +66,7 @@
     <Compile Include="Empleados.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Proveedor.cs" />
+    <Compile Include="Recetas.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataAccess\DataAccess.csproj">

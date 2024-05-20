@@ -1,0 +1,2 @@
+﻿C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\Domain\Empleados.cs
+C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\Domain\Properties\AssemblyInfo.cs

@@ -96,5 +96,10 @@ namespace ItaliaPizzaClient
                 MessageBox.Show("La operación que intentaba realizar ha superado el tiempo de espera establecido y no pudo completarse en el tiempo especificado. Intente de nuevo", "Tiempo de espera agotado", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
+        private void dgListaProveedores_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
