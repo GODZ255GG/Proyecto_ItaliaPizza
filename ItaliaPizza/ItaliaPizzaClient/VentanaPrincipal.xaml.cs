@@ -32,7 +32,7 @@ namespace ItaliaPizzaClient
 
         private void BtnUsuarios_Click(object sender, RoutedEventArgs e)
         {
-
+            contentControl.Content = new ConsultarEmpleado();
         }
 
         private void BtnInventario_Click(object sender, RoutedEventArgs e)
@@ -43,6 +43,11 @@ namespace ItaliaPizzaClient
         private void btnFinanzas_Click(object sender, RoutedEventArgs e)
         {
             contentControl.Content = new Finanzas();
+        }
+
+        private void BtnReceta_Click(object sender, RoutedEventArgs e)
+        {
+            contentControl.Content = new ListaRecetas();
         }
 
         private void BtnCerrarSesion_Click(object sender, RoutedEventArgs e)

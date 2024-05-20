@@ -196,7 +196,7 @@ namespace ItaliaPizzaClient
 
         private bool StringLargos(string nombre, string marca, string codigo, string cantidad)
         {
-            if (nombre.Length <= 45 || marca.Length <= 45 || codigo.Length <= 45 || cantidad.Length >= 45)
+            if (nombre.Length <= 45 || marca.Length <= 45 || codigo.Length <= 45 || cantidad.Length <= 45)
             {
                 return true;
             }

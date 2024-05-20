@@ -24,10 +24,7 @@
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsPressed" Value="True">
-                                <Setter TargetName="border" Property="Background" Value="DarkGray" />
-                            </Trigger>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="border" Property="Background" Value="Silver" />
+                                <Setter TargetName="border" Property="Opacity" Value="20" />
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>

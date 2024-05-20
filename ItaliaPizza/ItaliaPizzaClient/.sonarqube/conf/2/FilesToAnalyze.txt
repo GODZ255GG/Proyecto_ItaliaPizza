@@ -1,0 +1,39 @@
+﻿C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\ConsultarInsumo.xaml.cs
+C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\ConsultarProducto.xaml.cs
+C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\ConsultarProveedor.xaml.cs
+C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\DetallesPedido.xaml.cs
+C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\Finanzas.xaml.cs
+C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\Inventario.xaml.cs
+C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\ListaInsumos.xaml.cs
+C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\ListaPedidos.xaml.cs
+C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\ListaProductos.xaml.cs
+C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\ListaProveedores.xaml.cs
+C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\ModificarEstadoDePedido.xaml.cs
+C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\ModificarPedido.xaml.cs
+C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\RegistrarInsumo.xaml.cs
+C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\RegistrarPedidos.xaml.cs
+C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\RegistrarProducto.xaml.cs
+C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\RegistrarProveedor.xaml.cs
+C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\VentanaPrincipal.xaml.cs
+C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\App.xaml.cs
+C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\MainWindow.xaml.cs
+C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\Properties\AssemblyInfo.cs
+C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\Properties\Resources.resx
+C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\Connected Services\ItaliaPizzaServer\ItaliaPizzaClient.ItaliaPizzaServer.Empleados.datasource
+C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\Connected Services\ItaliaPizzaServer\ItaliaPizzaClient.ItaliaPizzaServer.Insumos.datasource
+C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\Connected Services\ItaliaPizzaServer\ItaliaPizzaClient.ItaliaPizzaServer.Pedidos.datasource
+C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\Connected Services\ItaliaPizzaServer\ItaliaPizzaClient.ItaliaPizzaServer.Productos.datasource
+C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\Connected Services\ItaliaPizzaServer\ItaliaPizzaClient.ItaliaPizzaServer.Proveedor.datasource
+C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\Connected Services\ItaliaPizzaServer\ItaliaPizzaService.wsdl
+C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\Connected Services\ItaliaPizzaServer\item.xsd
+C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\Connected Services\ItaliaPizzaServer\item1.xsd
+C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\Connected Services\ItaliaPizzaServer\item2.xsd
+C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\Connected Services\ItaliaPizzaServer\item3.xsd
+C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\packages.config
+C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\Properties\DataSources\System.Data.DataTable.datasource
+C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\Properties\Settings.settings
+C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\App.config
+C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\Connected Services\ItaliaPizzaServer\item.disco
+C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\Connected Services\ItaliaPizzaServer\configuration91.svcinfo
+C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\Connected Services\ItaliaPizzaServer\configuration.svcinfo
+C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\Connected Services\ItaliaPizzaServer\Reference.svcmap

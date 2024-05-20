@@ -13,5 +13,15 @@ namespace Services
     {
         [OperationContract]
         Logic.Empleados IniciarSesion(String correo, String contraseña);
+        [OperationContract]
+        bool RegistrarEmpleado(Empleados usuarios);
+        [OperationContract]
+        bool UsuarioYaRegistrado(string correo);
+        [OperationContract]
+        List<Empleados> ObtenerListaUsuarios();
+        [OperationContract]
+        bool EliminarEmpleados(int idEmpleados);
+        [OperationContract]
+        bool ActualizarEmpleado(int idEmpleados, string nombre, string apellidoPaterno, string apellidoMaterno, string correo, string contraseña);
     }
 }

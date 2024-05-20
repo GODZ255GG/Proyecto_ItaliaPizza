@@ -750,6 +750,83 @@ namespace ItaliaPizzaClient.ItaliaPizzaServer {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Recetas", Namespace="http://schemas.datacontract.org/2004/07/Logic")]
+    [System.SerializableAttribute()]
+    public partial class Recetas : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescripcionPreparaciónField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdRecetasField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NombreField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string DescripcionPreparación {
+            get {
+                return this.DescripcionPreparaciónField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescripcionPreparaciónField, value) != true)) {
+                    this.DescripcionPreparaciónField = value;
+                    this.RaisePropertyChanged("DescripcionPreparación");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IdRecetas {
+            get {
+                return this.IdRecetasField;
+            }
+            set {
+                if ((this.IdRecetasField.Equals(value) != true)) {
+                    this.IdRecetasField = value;
+                    this.RaisePropertyChanged("IdRecetas");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Nombre {
+            get {
+                return this.NombreField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NombreField, value) != true)) {
+                    this.NombreField = value;
+                    this.RaisePropertyChanged("Nombre");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ItaliaPizzaServer.IProductManager")]
     public interface IProductManager {
@@ -862,6 +939,36 @@ namespace ItaliaPizzaClient.ItaliaPizzaServer {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/IniciarSesion", ReplyAction="http://tempuri.org/IUserManager/IniciarSesionResponse")]
         System.Threading.Tasks.Task<ItaliaPizzaClient.ItaliaPizzaServer.Empleados> IniciarSesionAsync(string correo, string contraseña);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/RegistrarEmpleado", ReplyAction="http://tempuri.org/IUserManager/RegistrarEmpleadoResponse")]
+        bool RegistrarEmpleado(ItaliaPizzaClient.ItaliaPizzaServer.Empleados usuarios);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/RegistrarEmpleado", ReplyAction="http://tempuri.org/IUserManager/RegistrarEmpleadoResponse")]
+        System.Threading.Tasks.Task<bool> RegistrarEmpleadoAsync(ItaliaPizzaClient.ItaliaPizzaServer.Empleados usuarios);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/UsuarioYaRegistrado", ReplyAction="http://tempuri.org/IUserManager/UsuarioYaRegistradoResponse")]
+        bool UsuarioYaRegistrado(string correo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/UsuarioYaRegistrado", ReplyAction="http://tempuri.org/IUserManager/UsuarioYaRegistradoResponse")]
+        System.Threading.Tasks.Task<bool> UsuarioYaRegistradoAsync(string correo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/ObtenerListaUsuarios", ReplyAction="http://tempuri.org/IUserManager/ObtenerListaUsuariosResponse")]
+        ItaliaPizzaClient.ItaliaPizzaServer.Empleados[] ObtenerListaUsuarios();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/ObtenerListaUsuarios", ReplyAction="http://tempuri.org/IUserManager/ObtenerListaUsuariosResponse")]
+        System.Threading.Tasks.Task<ItaliaPizzaClient.ItaliaPizzaServer.Empleados[]> ObtenerListaUsuariosAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/EliminarEmpleados", ReplyAction="http://tempuri.org/IUserManager/EliminarEmpleadosResponse")]
+        bool EliminarEmpleados(int idEmpleados);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/EliminarEmpleados", ReplyAction="http://tempuri.org/IUserManager/EliminarEmpleadosResponse")]
+        System.Threading.Tasks.Task<bool> EliminarEmpleadosAsync(int idEmpleados);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/ActualizarEmpleado", ReplyAction="http://tempuri.org/IUserManager/ActualizarEmpleadoResponse")]
+        bool ActualizarEmpleado(int idEmpleados, string nombre, string apellidoPaterno, string apellidoMaterno, string correo, string contraseña);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/ActualizarEmpleado", ReplyAction="http://tempuri.org/IUserManager/ActualizarEmpleadoResponse")]
+        System.Threading.Tasks.Task<bool> ActualizarEmpleadoAsync(int idEmpleados, string nombre, string apellidoPaterno, string apellidoMaterno, string correo, string contraseña);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -897,6 +1004,46 @@ namespace ItaliaPizzaClient.ItaliaPizzaServer {
         
         public System.Threading.Tasks.Task<ItaliaPizzaClient.ItaliaPizzaServer.Empleados> IniciarSesionAsync(string correo, string contraseña) {
             return base.Channel.IniciarSesionAsync(correo, contraseña);
+        }
+        
+        public bool RegistrarEmpleado(ItaliaPizzaClient.ItaliaPizzaServer.Empleados usuarios) {
+            return base.Channel.RegistrarEmpleado(usuarios);
+        }
+        
+        public System.Threading.Tasks.Task<bool> RegistrarEmpleadoAsync(ItaliaPizzaClient.ItaliaPizzaServer.Empleados usuarios) {
+            return base.Channel.RegistrarEmpleadoAsync(usuarios);
+        }
+        
+        public bool UsuarioYaRegistrado(string correo) {
+            return base.Channel.UsuarioYaRegistrado(correo);
+        }
+        
+        public System.Threading.Tasks.Task<bool> UsuarioYaRegistradoAsync(string correo) {
+            return base.Channel.UsuarioYaRegistradoAsync(correo);
+        }
+        
+        public ItaliaPizzaClient.ItaliaPizzaServer.Empleados[] ObtenerListaUsuarios() {
+            return base.Channel.ObtenerListaUsuarios();
+        }
+        
+        public System.Threading.Tasks.Task<ItaliaPizzaClient.ItaliaPizzaServer.Empleados[]> ObtenerListaUsuariosAsync() {
+            return base.Channel.ObtenerListaUsuariosAsync();
+        }
+        
+        public bool EliminarEmpleados(int idEmpleados) {
+            return base.Channel.EliminarEmpleados(idEmpleados);
+        }
+        
+        public System.Threading.Tasks.Task<bool> EliminarEmpleadosAsync(int idEmpleados) {
+            return base.Channel.EliminarEmpleadosAsync(idEmpleados);
+        }
+        
+        public bool ActualizarEmpleado(int idEmpleados, string nombre, string apellidoPaterno, string apellidoMaterno, string correo, string contraseña) {
+            return base.Channel.ActualizarEmpleado(idEmpleados, nombre, apellidoPaterno, apellidoMaterno, correo, contraseña);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ActualizarEmpleadoAsync(int idEmpleados, string nombre, string apellidoPaterno, string apellidoMaterno, string correo, string contraseña) {
+            return base.Channel.ActualizarEmpleadoAsync(idEmpleados, nombre, apellidoPaterno, apellidoMaterno, correo, contraseña);
         }
     }
     
@@ -1234,6 +1381,109 @@ namespace ItaliaPizzaClient.ItaliaPizzaServer {
         
         public System.Threading.Tasks.Task<bool> ActualizarInsumoAsync(int idInsumo, string nombre, string codigoInsumo, string marca, string tipo, string cantidadDeEmpaque) {
             return base.Channel.ActualizarInsumoAsync(idInsumo, nombre, codigoInsumo, marca, tipo, cantidadDeEmpaque);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ItaliaPizzaServer.IRecipeManager")]
+    public interface IRecipeManager {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRecipeManager/RegistrarReceta", ReplyAction="http://tempuri.org/IRecipeManager/RegistrarRecetaResponse")]
+        bool RegistrarReceta(ItaliaPizzaClient.ItaliaPizzaServer.Recetas receta);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRecipeManager/RegistrarReceta", ReplyAction="http://tempuri.org/IRecipeManager/RegistrarRecetaResponse")]
+        System.Threading.Tasks.Task<bool> RegistrarRecetaAsync(ItaliaPizzaClient.ItaliaPizzaServer.Recetas receta);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRecipeManager/RecetaYaRegistrado", ReplyAction="http://tempuri.org/IRecipeManager/RecetaYaRegistradoResponse")]
+        bool RecetaYaRegistrado(string nombre);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRecipeManager/RecetaYaRegistrado", ReplyAction="http://tempuri.org/IRecipeManager/RecetaYaRegistradoResponse")]
+        System.Threading.Tasks.Task<bool> RecetaYaRegistradoAsync(string nombre);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRecipeManager/ObtenerListaReceta", ReplyAction="http://tempuri.org/IRecipeManager/ObtenerListaRecetaResponse")]
+        ItaliaPizzaClient.ItaliaPizzaServer.Recetas[] ObtenerListaReceta();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRecipeManager/ObtenerListaReceta", ReplyAction="http://tempuri.org/IRecipeManager/ObtenerListaRecetaResponse")]
+        System.Threading.Tasks.Task<ItaliaPizzaClient.ItaliaPizzaServer.Recetas[]> ObtenerListaRecetaAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRecipeManager/EliminarReceta", ReplyAction="http://tempuri.org/IRecipeManager/EliminarRecetaResponse")]
+        bool EliminarReceta(int idReceta);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRecipeManager/EliminarReceta", ReplyAction="http://tempuri.org/IRecipeManager/EliminarRecetaResponse")]
+        System.Threading.Tasks.Task<bool> EliminarRecetaAsync(int idReceta);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRecipeManager/ActualizarReceta", ReplyAction="http://tempuri.org/IRecipeManager/ActualizarRecetaResponse")]
+        bool ActualizarReceta(int idReceta, string nombre, string descripcionPreparación);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRecipeManager/ActualizarReceta", ReplyAction="http://tempuri.org/IRecipeManager/ActualizarRecetaResponse")]
+        System.Threading.Tasks.Task<bool> ActualizarRecetaAsync(int idReceta, string nombre, string descripcionPreparación);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IRecipeManagerChannel : ItaliaPizzaClient.ItaliaPizzaServer.IRecipeManager, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class RecipeManagerClient : System.ServiceModel.ClientBase<ItaliaPizzaClient.ItaliaPizzaServer.IRecipeManager>, ItaliaPizzaClient.ItaliaPizzaServer.IRecipeManager {
+        
+        public RecipeManagerClient() {
+        }
+        
+        public RecipeManagerClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public RecipeManagerClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public RecipeManagerClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public RecipeManagerClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public bool RegistrarReceta(ItaliaPizzaClient.ItaliaPizzaServer.Recetas receta) {
+            return base.Channel.RegistrarReceta(receta);
+        }
+        
+        public System.Threading.Tasks.Task<bool> RegistrarRecetaAsync(ItaliaPizzaClient.ItaliaPizzaServer.Recetas receta) {
+            return base.Channel.RegistrarRecetaAsync(receta);
+        }
+        
+        public bool RecetaYaRegistrado(string nombre) {
+            return base.Channel.RecetaYaRegistrado(nombre);
+        }
+        
+        public System.Threading.Tasks.Task<bool> RecetaYaRegistradoAsync(string nombre) {
+            return base.Channel.RecetaYaRegistradoAsync(nombre);
+        }
+        
+        public ItaliaPizzaClient.ItaliaPizzaServer.Recetas[] ObtenerListaReceta() {
+            return base.Channel.ObtenerListaReceta();
+        }
+        
+        public System.Threading.Tasks.Task<ItaliaPizzaClient.ItaliaPizzaServer.Recetas[]> ObtenerListaRecetaAsync() {
+            return base.Channel.ObtenerListaRecetaAsync();
+        }
+        
+        public bool EliminarReceta(int idReceta) {
+            return base.Channel.EliminarReceta(idReceta);
+        }
+        
+        public System.Threading.Tasks.Task<bool> EliminarRecetaAsync(int idReceta) {
+            return base.Channel.EliminarRecetaAsync(idReceta);
+        }
+        
+        public bool ActualizarReceta(int idReceta, string nombre, string descripcionPreparación) {
+            return base.Channel.ActualizarReceta(idReceta, nombre, descripcionPreparación);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ActualizarRecetaAsync(int idReceta, string nombre, string descripcionPreparación) {
+            return base.Channel.ActualizarRecetaAsync(idReceta, nombre, descripcionPreparación);
         }
     }
 }

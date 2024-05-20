@@ -1,0 +1,2 @@
+﻿C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\Security\PasswordEncryptor.cs
+C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\Security\Properties\AssemblyInfo.cs
