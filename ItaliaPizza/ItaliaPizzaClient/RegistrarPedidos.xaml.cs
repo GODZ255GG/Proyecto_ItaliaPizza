@@ -124,6 +124,14 @@ namespace ItaliaPizzaClient
         {
             if (dgProductos.SelectedItem != null && dgProductos.SelectedItem is ItaliaPizzaServer.Productos producto)
             {
+                int cantidadActual = productosSeleccionados.Count(p => p.IdProductos == producto.IdProductos);
+
+                if (cantidadActual >= 30)
+                {
+                    MessageBox.Show("No puedes añadir más de 30 productos del mismo tipo.", "Límite de productos alcanzado", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+
                 productosSeleccionados.Add(producto);
 
                 idsProductosSeleccionados.Add(producto.IdProductos);

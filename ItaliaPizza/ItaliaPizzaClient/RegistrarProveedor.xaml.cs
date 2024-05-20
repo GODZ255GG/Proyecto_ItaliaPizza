@@ -44,35 +44,39 @@ namespace ItaliaPizzaClient
             var telefono = tbxTelefono.Text;
             var direccion = tbxDireccion.Text;
 
-            if (CamposVacios())
-            {
-                if (StringValidos(nombreCompañia, nombreContacto, telefono, direccion) && StringLargos(nombreCompañia, nombreContacto, telefono, direccion))
-                {
-                    try
-                    {
-                        AccionRegistrar();
-                    }
-                    catch (EndpointNotFoundException ex)
-                    {
-                        MessageBox.Show("Por el momento no hay conexión con la base de datos, por favor inténtelo más tarde", "Error de conexión con base de datos", MessageBoxButton.OK, MessageBoxImage.Error);
-                    }
-                    catch (CommunicationException ex)
-                    {
-                        MessageBox.Show("Se produjo un error de comunicación al intentar acceder a un recurso remoto. Intente de nuevo", "Problema de comunicación", MessageBoxButton.OK, MessageBoxImage.Error);
-                    }
-                    catch (TimeoutException ex)
-                    {
-                        MessageBox.Show("La operación que intentaba realizar ha superado el tiempo de espera establecido y no pudo completarse en el tiempo especificado. Intente de nuevo", "Tiempo de espera agotado", MessageBoxButton.OK, MessageBoxImage.Error);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Los datos ingresados no son validos. Verifique sus datos", "Datos Invalidos", MessageBoxButton.OK, MessageBoxImage.Warning);
-                }
-            }
-            else
+            if (!CamposVacios())
             {
                 MessageBox.Show("Ingrese la información solicitada para continuar", "Campos Vacíos", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            if (!StringValidos(nombreCompañia, nombreContacto, telefono, direccion))
+            {
+                MessageBox.Show("Los datos ingresados no son validos. Verifique sus datos", "Datos Invalidos", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            if (!TelefonoValido(telefono))
+            {
+                MessageBox.Show("Los datos ingresados no cumplen con la longitud requerida. Verifique sus datos", "Datos Invalidos", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            try
+            {
+                AccionRegistrar();
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                MessageBox.Show("Por el momento no hay conexión con la base de datos, por favor inténtelo más tarde", "Error de conexión con base de datos", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch (CommunicationException ex)
+            {
+                MessageBox.Show("Se produjo un error de comunicación al intentar acceder a un recurso remoto. Intente de nuevo", "Problema de comunicación", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch (TimeoutException ex)
+            {
+                MessageBox.Show("La operación que intentaba realizar ha superado el tiempo de espera establecido y no pudo completarse en el tiempo especificado. Intente de nuevo", "Tiempo de espera agotado", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -145,8 +149,9 @@ namespace ItaliaPizzaClient
 
         public bool CamposVacios()
         {
-            if (tbxNombreCompañia.Text == string.Empty || tbxNombreContacto.Text == string.Empty || tbxTelefono.Text == string.Empty
-                || tbxDireccion.Text == string.Empty || cbxCiudad.Text == string.Empty)
+            if (string.IsNullOrEmpty(tbxNombreCompañia.Text) || string.IsNullOrEmpty(tbxNombreContacto.Text) ||
+                string.IsNullOrEmpty(tbxTelefono.Text) || string.IsNullOrEmpty(tbxDireccion.Text) ||
+                string.IsNullOrEmpty(cbxCiudad.Text))
             {
                 return false;
             }
@@ -164,14 +169,14 @@ namespace ItaliaPizzaClient
             return esValido;
         }
 
-        private bool StringLargos(string nombreCompañia, string nombreContacto, string telefono, string direccion)
+        private bool TelefonoValido(string telefono)
         {
-            var noSonLargos = false;
-            if (nombreCompañia.Length <= 50 || nombreContacto.Length <= 45 || telefono.Length <= 24 || direccion.Length <= 45)
+            if (telefono.Length == 10)
             {
-                noSonLargos = true;
+                return true;
             }
-            return noSonLargos;
+            return false;
         }
+
     }
 }
