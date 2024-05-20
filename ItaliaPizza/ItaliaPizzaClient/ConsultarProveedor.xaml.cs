@@ -138,82 +138,73 @@ namespace ItaliaPizzaClient
 
         private void BtnAceptar_Click(object sender, RoutedEventArgs e)
         {
+            string nuevoNombreCompañia = tbxNombreCompañia.Text;
+            string nuevoNombreContacto = tbxNombreContacto.Text;
+            string nuevoTelefono = tbxTelefono.Text;
+            string nuevaDireccion = tbxDireccion.Text;
+            string nuevaCiudad = cbxCiudad.SelectedItem?.ToString();
 
-            string nuevoNombreCompañia;
-            string nuevoNombreContacto;
-            string nuevoTelefono;
-            string nuevaDireccion;
-            string nuevaCiudad;
-
-            nuevoNombreCompañia = tbxNombreCompañia.Text;
-            nuevoNombreContacto = tbxNombreContacto.Text;
-            nuevoTelefono = tbxTelefono.Text;
-            nuevaDireccion = tbxDireccion.Text;
-            nuevaCiudad = cbxCiudad.SelectedItem.ToString();
-
-            if ((CamposVacios()))
+            if (string.IsNullOrEmpty(nuevaCiudad))
             {
-                if (StringValidos(nombreCompañia, nombreContacto, telefono, direccion) && StringLargos(nombreCompañia, nombreContacto, telefono, direccion))
-                {
-                    try
-                    {
-                        proveedor.ActualizarProveedor(idProveedor, nuevoNombreCompañia, nuevoNombreContacto, nuevoTelefono, nuevaCiudad, nuevaDireccion);
-                        MessageBox.Show("Proveedor se ha actualizado exitosamente", "Actualización exitosa", MessageBoxButton.OK, MessageBoxImage.Information);
-                        this.Close();
-                    }
-                    catch (EndpointNotFoundException ex)
-                    {
-                        MessageBox.Show("Por el momento no hay conexión con la base de datos, por favor inténtelo más tarde", "Error de conexión con base de datos", MessageBoxButton.OK, MessageBoxImage.Error);
-                    }
-                    catch (CommunicationException ex)
-                    {
-                        MessageBox.Show("Se produjo un error de comunicación al intentar acceder a un recurso remoto. Intente de nuevo", "Problema de comunicación", MessageBoxButton.OK, MessageBoxImage.Error);
-                    }
-                    catch (TimeoutException ex)
-                    {
-                        MessageBox.Show("La operación que intentaba realizar ha superado el tiempo de espera establecido y no pudo completarse en el tiempo especificado. Intente de nuevo", "Tiempo de espera agotado", MessageBoxButton.OK, MessageBoxImage.Error);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Los datos ingresados no son validos. Verifique sus datos", "Datos Invalidos", MessageBoxButton.OK, MessageBoxImage.Warning);
-                }
+                MessageBox.Show("Seleccione una ciudad para continuar", "Campos Vacíos", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
             }
-            else
+
+            if (CamposVacios(nuevoNombreCompañia, nuevoNombreContacto, nuevoTelefono, nuevaDireccion, nuevaCiudad))
             {
                 MessageBox.Show("Ingrese la información solicitada para continuar", "Campos Vacíos", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            if (!StringsValidos(nuevoNombreCompañia, nuevoNombreContacto, nuevoTelefono, nuevaDireccion))
+            {
+                MessageBox.Show("Los datos ingresados no son válidos. Verifique sus datos", "Datos Inválidos", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            if (!TelefonoValido(nuevoTelefono))
+            {
+                MessageBox.Show("El teléfono ingresado no cumple con la longitud requerida. Verifique sus datos", "Datos Inválidos", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            try
+            {
+                proveedor.ActualizarProveedor(idProveedor, nuevoNombreCompañia, nuevoNombreContacto, nuevoTelefono, nuevaCiudad, nuevaDireccion);
+                MessageBox.Show("Proveedor se ha actualizado exitosamente", "Actualización exitosa", MessageBoxButton.OK, MessageBoxImage.Information);
+                this.Close();
+            }
+            catch (EndpointNotFoundException)
+            {
+                MessageBox.Show("Por el momento no hay conexión con la base de datos, por favor inténtelo más tarde", "Error de conexión con base de datos", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch (CommunicationException)
+            {
+                MessageBox.Show("Se produjo un error de comunicación al intentar acceder a un recurso remoto. Intente de nuevo", "Problema de comunicación", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            catch (TimeoutException)
+            {
+                MessageBox.Show("La operación que intentaba realizar ha superado el tiempo de espera establecido y no pudo completarse en el tiempo especificado. Intente de nuevo", "Tiempo de espera agotado", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
-        public bool CamposVacios()
+        private bool CamposVacios(string nombreCompañia, string nombreContacto, string telefono, string direccion, string ciudad)
         {
-            if (tbxNombreCompañia.Text == string.Empty || tbxNombreContacto.Text == string.Empty || tbxTelefono.Text == string.Empty
-                || tbxDireccion.Text == string.Empty || cbxCiudad.Text == string.Empty)
-            {
-                return false;
-            }
-            return true;
+            return string.IsNullOrEmpty(nombreCompañia) || string.IsNullOrEmpty(nombreContacto) || string.IsNullOrEmpty(telefono) || string.IsNullOrEmpty(direccion) || string.IsNullOrEmpty(ciudad);
         }
 
-        private bool StringValidos(string nombreCompañia, string nombreContacto, string telefono, string direccion)
+        private bool StringsValidos(string nombreCompañia, string nombreContacto, string telefono, string direccion)
         {
-            var esValido = false;
-            if (Regex.IsMatch(nombreCompañia, @"^[a-zA-Z\s\-.,'()ñÑáéíóúÁÉÍÓÚ]+$") && Regex.IsMatch(nombreContacto, @"^[a-zA-Z\s\-.,'()ñÑáéíóúÁÉÍÓÚ]+$")
-                && Regex.IsMatch(telefono, @"^\d+$") && Regex.IsMatch(direccion, @"^[a-zA-Z\s\-.,'()ñÑáéíóúÁÉÍÓÚ]+$"))
-            {
-                esValido = true;
-            }
-            return esValido;
+            return Regex.IsMatch(nombreCompañia, @"^[a-zA-Z0-9\s\-.,'()ñÑáéíóúÁÉÍÓÚ]+$") &&
+                   Regex.IsMatch(nombreContacto, @"^[a-zA-Z\s\-.,'()ñÑáéíóúÁÉÍÓÚ]+$") &&
+                   Regex.IsMatch(telefono, @"^\d+$") &&
+                   Regex.IsMatch(direccion, @"^[a-zA-Z0-9\s\-.,'()ñÑáéíóúÁÉÍÓÚ]+$");
         }
 
-        private bool StringLargos(string nombreCompañia, string nombreContacto, string telefono, string direccion)
+        private bool TelefonoValido(string telefono)
         {
-            var noSonLargos = false;
-            if (nombreCompañia.Length <= 50 || nombreContacto.Length <= 45 || telefono.Length <= 24 || direccion.Length <= 45)
-            {
-                noSonLargos = true;
-            }
-            return noSonLargos;
+            return telefono.Length == 10;
         }
+
     }
 }
