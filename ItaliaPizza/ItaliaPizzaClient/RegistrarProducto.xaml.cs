@@ -1,7 +1,5 @@
-﻿using ItaliaPizzaClient.Utilidades;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.Eventing.Reader;
 using System.ServiceModel;
 using System.Text.RegularExpressions;
 using System.Windows;
@@ -19,6 +17,7 @@ namespace ItaliaPizzaClient
             InitializeComponent();
             Loaded += CbxTipo_Loaded;
             tbxCodigoProducto.Text = "PD" + Utilidades.Utilidades.GenerarCodigo();
+            tbxMarca.Text = "Italia Pizza";
         }
 
         private void BtnCancelar_Click(object sender, RoutedEventArgs e)
@@ -27,7 +26,6 @@ namespace ItaliaPizzaClient
             {
                 this.Close();
             }
-            
         }
 
         private void CbxTipo_Loaded(object sender, RoutedEventArgs e)
@@ -69,8 +67,7 @@ namespace ItaliaPizzaClient
                     }
                     catch (Exception ex)
                     {
-                        // Manejar cualquier otra excepción no específica
-                        MessageBox.Show($"Ocurrió un error inesperado: {ex.Message}", "Error", MessageBoxButton.OK ,MessageBoxImage.Error);
+                        Utilidades.Utilidades.MostrarMensaje($"Ocurrió un error inesperado: {ex.Message}", "Error",MessageBoxImage.Error);
                     }
                 }
                 else
@@ -94,7 +91,7 @@ namespace ItaliaPizzaClient
 
             if (!double.TryParse(precio, out double precioDouble))
             {
-                MessageBox.Show("El precio debe ser un número válido.", "Error de formato del precio", MessageBoxButton.OK, MessageBoxImage.Error);
+                Utilidades.Utilidades.MostrarMensaje("El precio debe ser un número válido.", "Error de formato del precio", MessageBoxImage.Error);
                 return;
             }
 
@@ -111,12 +108,12 @@ namespace ItaliaPizzaClient
 
             if (client.ProductoYaRegistrado(nombre))
             {
-                MessageBox.Show("Este producto ya se encuentra registrado en el sistema, intente con otro", "Producto duplicado", MessageBoxButton.OK, MessageBoxImage.Error);
+                Utilidades.Utilidades.MostrarMensaje("Este producto ya se encuentra registrado en el sistema, intente con otro", "Producto duplicado", MessageBoxImage.Error);
                 return;
             }
 
             client.RegistrarProducto(nuevoProducto);
-            MessageBox.Show("El producto se ha registrado exitosamente", "Registro exitoso", MessageBoxButton.OK, MessageBoxImage.Information);
+            Utilidades.Utilidades.MostrarMensaje("El producto se ha registrado exitosamente", "Registro exitoso", MessageBoxImage.Information);
             this.Close();
         }
 

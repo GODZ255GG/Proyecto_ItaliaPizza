@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 
 namespace ItaliaPizzaClient.Utilidades
 {
@@ -34,17 +29,21 @@ namespace ItaliaPizzaClient.Utilidades
         {
             MostrarMensaje("La operación que intentaba realizar ha superado el tiempo de espera establecido y no pudo completarse en el tiempo especificado. Intente de nuevo", "Tiempo de espera agotado", MessageBoxImage.Error);
         }
-
-        public static int GenerarCodigo()
-        {
-            Random random = new Random();
-            int numeroAleatorio = random.Next(1000, 10000);
-            return numeroAleatorio;
-        }
         public static bool MostrarMensajeConfirmacionRegresar()
         {
             MessageBoxResult resultado = MessageBox.Show("¿Está seguro de querer regresar? Si lo hace los datos ingresados se perderán.", "Regresar", MessageBoxButton.YesNo, MessageBoxImage.Question);
             return (resultado == MessageBoxResult.Yes);
         }
+        public static bool MostrarMensajeConfirmacionCancelar()
+        {
+            MessageBoxResult resultado = MessageBox.Show("¿Está seguro de querer cancelar la modificación? Si lo hace los datos ingresados se perderán.", "Cancelar", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            return (resultado == MessageBoxResult.Yes);
+        }
+        public static int GenerarCodigo()
+        {
+            Random random = new Random();
+            int numeroAleatorio = random.Next(1000, 10000);
+            return numeroAleatorio;
+        }        
     }
 }
