@@ -64,11 +64,9 @@
             <Image x:Name="imgRegresar" Source="/Image/back.png" HorizontalAlignment="Left" Height="45" Margin="38,26,0,0" VerticalAlignment="Top" Width="45" MouseLeftButtonDown="ImgRegresar_MouseLeftButtonDown"/>
             <DataGrid x:Name="dgListaProductos" SelectionUnit="FullRow" AutoGenerateColumns="False" Margin="61,178,61,152" MouseDoubleClick="DgListaProductos_MouseDoubleClick" BorderThickness="5,5,5,5" IsReadOnly="True">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Código del Producto" Width="*" Binding="{Binding CodigoProducto}"/>
-                    <DataGridTextColumn Header="Nombre del Producto" Width="*" Binding="{Binding Nombre}"/>
-                    <DataGridTextColumn Header="Marca" Width="*" Binding="{Binding Marca}"/>
-                    <DataGridTextColumn Header="Tipo" Width="*" Binding="{Binding Tipo}"/>
-                    <DataGridTextColumn Header="Precio" Width="*" Binding="{Binding Precio}"/>
+                    <DataGridTextColumn Header="Código del Producto" Width="*" FontSize="15" Binding="{Binding CodigoProducto}"/>
+                    <DataGridTextColumn Header="Nombre del Producto" Width="*" FontSize="15" Binding="{Binding Nombre}"/>
+                    <DataGridTextColumn Header="Precio" Width="*" FontSize="15" Binding="{Binding Precio}"/>
                 </DataGrid.Columns>
             </DataGrid>
         </Grid>

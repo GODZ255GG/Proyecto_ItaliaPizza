@@ -64,23 +64,24 @@ namespace ItaliaPizzaClient
                 try
                 {
                     client.EliminarInsumo(idInsumos);
-                    MessageBox.Show("Insumo eliminado exitosamente", "Eliminación exitosa", MessageBoxButton.OK, MessageBoxImage.Information);
+                    Utilidades.Utilidades.MostrarMensaje("Insumo eliminado exitosamente", "Eliminación exitosa", MessageBoxImage.Information);
                     this.Close();
                 }
                 catch (EndpointNotFoundException ex)
                 {
-                    MessageBox.Show("Por el momento no hay conexión con la base de datos, por favor inténtelo más tarde",
-                        "Error de conexión con base de datos", MessageBoxButton.OK, MessageBoxImage.Error);
+                    Utilidades.Utilidades.MostrarMensajeEndpointNotFoundException();
                 }
                 catch (CommunicationException ex)
                 {
-                    MessageBox.Show("Se produjo un error de comunicación al intentar acceder a un recurso remoto. Intente de nuevo",
-                        "Problema de comunicación", MessageBoxButton.OK, MessageBoxImage.Error);
+                    Utilidades.Utilidades.MostrarMensajeCommunicationException();
                 }
                 catch (TimeoutException ex)
                 {
-                    MessageBox.Show("La operación que intentaba realizar ha superado el tiempo de espera establecido y no pudo completarse en el tiempo especificado. Intente de nuevo",
-                        "Tiempo de espera agotado", MessageBoxButton.OK, MessageBoxImage.Error);
+                    Utilidades.Utilidades.MostrarMensajeTimeoutException();
+                }
+                catch (Exception ex)
+                {
+                    Utilidades.Utilidades.MostrarMensaje($"Ocurrió un error inesperado: {ex.Message}", "Error", MessageBoxImage.Error);
                 }
             }
         }
@@ -98,109 +99,110 @@ namespace ItaliaPizzaClient
             tbxNombre.IsReadOnly = false;
             tbxMarca.IsReadOnly = false;
             tbxCantidad.IsReadOnly = false;
-            tbxCodigoInsumo.IsReadOnly = false;
             cbxTipo.IsEnabled = true;
         }
 
         private void BtnAceptar_Click(object sender, RoutedEventArgs e)
         {
-            string nuevoNombre;
-            string nuevaMarca;
-            string nuevoTipo;
-            string nuevaCantidad;
-            string nuevoCodigo;
-
-            nuevoNombre = tbxNombre.Text;
-            nuevaMarca = tbxMarca.Text;
-            nuevoTipo = cbxTipo.Text;
-            nuevaCantidad = tbxCantidad.Text;
-            nuevoCodigo = tbxCodigoInsumo.Text;
-
-            if (CamposVacios())
+           if (!CamposVacios())
             {
-                if (StringValidos(codigo, cantidad, nombre, marca) && StringLargos(nombre, marca, codigo, cantidad))
+                if (StringValidos(nombre, marca))
                 {
                     try
                     {
-                        client.ActualizarInsumo(idInsumos, nuevoNombre, nuevoCodigo, nuevaMarca, nuevoTipo, nuevaCantidad);
-                        MessageBox.Show("Producto se ha actualizado exitosamente", "Actualización exitosa", MessageBoxButton.OK, MessageBoxImage.Information);
-                        this.Close();
+                        AccionModificar();
                     }
                     catch (EndpointNotFoundException ex)
                     {
-                        MessageBox.Show("Por el momento no hay conexión con la base de datos, por favor inténtelo más tarde", "Error de conexión con base de datos", MessageBoxButton.OK, MessageBoxImage.Error);
+                        Utilidades.Utilidades.MostrarMensajeEndpointNotFoundException();
                     }
                     catch (CommunicationException ex)
                     {
-                        MessageBox.Show("Se produjo un error de comunicación al intentar acceder a un recurso remoto. Intente de nuevo", "Problema de comunicación", MessageBoxButton.OK, MessageBoxImage.Error);
+                        Utilidades.Utilidades.MostrarMensajeCommunicationException();
                     }
                     catch (TimeoutException ex)
                     {
-                        MessageBox.Show("La operación que intentaba realizar ha superado el tiempo de espera establecido y no pudo completarse en el tiempo especificado. Intente de nuevo", "Tiempo de espera agotado", MessageBoxButton.OK, MessageBoxImage.Error);
+                        Utilidades.Utilidades.MostrarMensajeTimeoutException();
+                    }
+                    catch (Exception ex)
+                    {
+                        Utilidades.Utilidades.MostrarMensaje($"Ocurrió un error inesperado: {ex.Message}", "Error", MessageBoxImage.Error);
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Los datos ingresados no son validos. Verifique sus datos", "Datos Invalidos", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    Utilidades.Utilidades.MostrarMensajeCamposInvalidos();
                 }
             }
             else
             {
-                MessageBox.Show("Ingrese la información solicitada para continuar", "Campos Vacíos", MessageBoxButton.OK, MessageBoxImage.Warning);
+                Utilidades.Utilidades.MostrarMensajeCamposVacios();
             }
+        }
+
+        private void AccionModificar()
+        {
+            var nuevoNombre = tbxNombre.Text;
+            var nuevaMarca = tbxMarca.Text;
+            var nuevoTipo = cbxTipo.Text;
+            var nuevaCantidad = tbxCantidad.Text;
+            var nuevoCodigo = tbxCodigoInsumo.Text;
+
+            client.ActualizarInsumo(idInsumos, nuevoNombre, nuevoCodigo, nuevaMarca, nuevoTipo, nuevaCantidad);
+            MessageBox.Show("Producto se ha actualizado exitosamente", "Actualización exitosa", MessageBoxButton.OK, MessageBoxImage.Information);
+            this.Close();
         }
 
         private void BtnCancelar_Click(object sender, RoutedEventArgs e)
         {
-            Title = "Consultar Insumo";
-            lbTitulo.Content = "Información del Insumo";
+            if (Utilidades.Utilidades.MostrarMensajeConfirmacionCancelar())
+            {
+                Title = "Consultar Insumo";
+                lbTitulo.Content = "Información del Insumo";
 
-            btnAceptar.Visibility = Visibility.Hidden;
-            btnCancelar.Visibility = Visibility.Hidden;
-            btnModificar.Visibility = Visibility.Visible;
-            btnEliminar.Visibility = Visibility.Visible;
+                btnAceptar.Visibility = Visibility.Hidden;
+                btnCancelar.Visibility = Visibility.Hidden;
+                btnModificar.Visibility = Visibility.Visible;
+                btnEliminar.Visibility = Visibility.Visible;
 
-            tbxNombre.IsReadOnly = true;
-            tbxMarca.IsReadOnly = true;
-            tbxCantidad.IsReadOnly = true;
-            tbxCodigoInsumo.IsReadOnly = true;
-            cbxTipo.IsEnabled = false;
+                tbxNombre.IsReadOnly = true;
+                tbxMarca.IsReadOnly = true;
+                tbxCantidad.IsReadOnly = true;
+                tbxCodigoInsumo.IsReadOnly = true;
+                cbxTipo.IsEnabled = false;
 
-            tbxNombre.Text = nombre;
-            tbxMarca.Text = marca;
-            tbxCantidad.Text = cantidad;
-            tbxCodigoInsumo.Text = codigo;
-            cbxTipo.SelectedItem = tipo;
+                tbxNombre.Text = nombre;
+                tbxMarca.Text = marca;
+                tbxCantidad.Text = cantidad;
+                tbxCodigoInsumo.Text = codigo;
+                cbxTipo.SelectedItem = tipo;
+            }
         }
 
         #region Validaciones
         public bool CamposVacios()
         {
-            if (tbxNombre.Text == string.Empty || tbxMarca.Text == string.Empty || tbxCantidad.Text == string.Empty
-                || tbxCodigoInsumo.Text == string.Empty || cbxTipo.Text == string.Empty)
+            if (string.IsNullOrEmpty(tbxNombre.Text) || string.IsNullOrEmpty(tbxMarca.Text) ||
+                string.IsNullOrEmpty(tbxCantidad.Text) || string.IsNullOrEmpty(cbxTipo.Text))
+            {
+                return true;
+            }
+            return false;
+        }
+        private bool StringValidos(string nombre, string marca)
+        {
+            if (!Regex.IsMatch(nombre, @"^[a-zA-Z\s\-.,'()ñÑáéíóúÁÉÍÓÚ]+$") ||
+                !Regex.IsMatch(marca, @"^[a-zA-Z\s\-.,'()ñÑáéíóúÁÉÍÓÚ]+$"))
             {
                 return false;
             }
+
+            if (nombre.Length > 45 || marca.Length > 45)
+            {
+                return false;
+            }
+
             return true;
-        }
-
-        private bool StringValidos(string codigo, string cantidad, string nombre, string marca)
-        {
-            if (Regex.IsMatch(cantidad, @"^[a-zA-Z0-9\s]+$") && Regex.IsMatch(codigo, @"^[a-zA-Z0-9]+$") && Regex.IsMatch(nombre, @"^[a-zA-Z\s\-.,'()ñÑáéíóúÁÉÍÓÚ]+$")
-                && Regex.IsMatch(marca, @"^[a-zA-Z\s\-.,'()ñÑáéíóúÁÉÍÓÚ]+$"))
-            {
-                return true;
-            }
-            return false;
-        }
-
-        private bool StringLargos(string nombre, string marca, string codigo, string cantidad)
-        {
-            if (nombre.Length <= 45 || marca.Length <= 45 || codigo.Length <= 45 || cantidad.Length <= 45)
-            {
-                return true;
-            }
-            return false;
         }
         #endregion
     }
