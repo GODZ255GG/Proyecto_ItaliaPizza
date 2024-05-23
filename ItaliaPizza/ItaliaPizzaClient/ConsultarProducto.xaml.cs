@@ -1,4 +1,6 @@
-﻿using ItaliaPizzaClient.ItaliaPizzaServer;
+﻿using Logs;
+using ItaliaPizzaClient.ItaliaPizzaServer;
+using log4net;
 using System;
 using System.Collections.Generic;
 using System.ServiceModel;
@@ -13,6 +15,7 @@ namespace ItaliaPizzaClient
     public partial class ConsultarProducto : Window
     {
         ProductManagerClient client = new ProductManagerClient();
+        private static readonly ILog Log = Logger.GetLogger();
 
         private int idProducto;
         private string nombre;
@@ -66,14 +69,17 @@ namespace ItaliaPizzaClient
                 }
                 catch (EndpointNotFoundException ex)
                 {
+                    Log.Error($"{ex.Message}");
                     Utilidades.Utilidades.MostrarMensajeEndpointNotFoundException();
                 }
                 catch (CommunicationException ex)
                 {
+                    Log.Error($"{ex.Message}");
                     Utilidades.Utilidades.MostrarMensajeCommunicationException();
                 }
                 catch (TimeoutException ex)
                 {
+                    Log.Error($"{ex.Message}");
                     Utilidades.Utilidades.MostrarMensajeTimeoutException();
                 }
                 catch (Exception ex)
@@ -138,14 +144,17 @@ namespace ItaliaPizzaClient
                     }
                     catch (EndpointNotFoundException ex)
                     {
+                        Log.Error($"{ex.Message}");
                         Utilidades.Utilidades.MostrarMensajeEndpointNotFoundException();
                     }
                     catch (CommunicationException ex)
                     {
+                        Log.Error($"{ex.Message}");
                         Utilidades.Utilidades.MostrarMensajeCommunicationException();
                     }
                     catch (TimeoutException ex)
                     {
+                        Log.Error($"{ex.Message}");
                         Utilidades.Utilidades.MostrarMensajeTimeoutException();
                     }
                     catch (Exception ex)

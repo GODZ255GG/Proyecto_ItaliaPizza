@@ -1,0 +1,9 @@
+C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ClassLibrary1\bin\Debug\log4net.dll
+C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ClassLibrary1\bin\Debug\log4net.xml
+C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ClassLibrary1\obj\Debug\Logs.csproj.AssemblyReference.cache
+C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ClassLibrary1\obj\Debug\Logs.csproj.CoreCompileInputs.cache
+C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ClassLibrary1\obj\Debug\Logs.csproj.Up2Date
+C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ClassLibrary1\bin\Debug\Logs.dll
+C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ClassLibrary1\bin\Debug\Logs.pdb
+C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ClassLibrary1\obj\Debug\Logs.dll
+C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ClassLibrary1\obj\Debug\Logs.pdb
