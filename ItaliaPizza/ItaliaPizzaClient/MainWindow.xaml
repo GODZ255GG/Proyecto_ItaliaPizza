@@ -65,29 +65,31 @@
         </Style>
     </Window.Resources>
     <Grid>
-        <Rectangle RadiusX="20" RadiusY="20" HorizontalAlignment="Left" Height="720" VerticalAlignment="Top" Width="593" Margin="558,56,0,0" StrokeThickness="0">
+        <Rectangle RadiusX="20" RadiusY="20" HorizontalAlignment="Left" Height="720" VerticalAlignment="Top" Width="593" Margin="563,33,0,0" StrokeThickness="0">
             <Rectangle.Fill>
                 <SolidColorBrush Color="#FF79A182"/>
             </Rectangle.Fill>
         </Rectangle>
-        <Rectangle RadiusX="20" RadiusY="20" HorizontalAlignment="Left" Height="417" VerticalAlignment="Top" Width="476" Margin="615,106,0,0" StrokeThickness="0">
+        <Rectangle RadiusX="20" RadiusY="20" HorizontalAlignment="Left" Height="417" VerticalAlignment="Top" Width="476" Margin="620,83,0,0" StrokeThickness="0">
             <Rectangle.Fill>
                 <SolidColorBrush Color="#FFFDFDFD"/>
             </Rectangle.Fill>
         </Rectangle>
-        <Label Content="Correo Electrónico" HorizontalAlignment="Left" Margin="636,214,0,0" VerticalAlignment="Top" FontFamily="Segoe UI Black" FontSize="25"/>
-        <TextBox x:Name="tbCorreo" Style="{StaticResource RoundedTextBoxStyle}" HorizontalAlignment="Left" Margin="635,288,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="376" Height="59" FontSize="30"  VerticalContentAlignment="Center" Background="#FF7CA886"/>
-        <Label Content="Contraseña" HorizontalAlignment="Left" Margin="636,352,0,0" VerticalAlignment="Top" FontFamily="Segoe UI Black" FontSize="25"/>
-        <PasswordBox x:Name="pbContraseña" Style="{StaticResource RoundedPasswordBoxStyle}" HorizontalAlignment="Left" Margin="635,427,0,0" VerticalAlignment="Top" Width="376" Height="59" FontSize="30" VerticalContentAlignment="Center" Background="#FF7CA886"/>
-        <Button x:Name="btnSalir" Content="Salir" HorizontalAlignment="Left" Margin="665,671,0,0" VerticalAlignment="Top" Height="68" Width="376" Foreground="White" Background="#FFFF4242" FontSize="30" FontFamily="Arial Narrow" Click="BtnSalir_Click"/>
-        <Button x:Name="btnIniciarSesion" Content="Ingresar" HorizontalAlignment="Left" Margin="665,558,0,0" VerticalAlignment="Top" Height="68" Width="376"  Foreground="Black" Background="White" FontSize="30" FontFamily="Arial Narrow" Click="BtnIniciarSesion_Click" IsDefault="True"/>
-        <Label Content="Inicio de Sesión" HorizontalAlignment="Left" Margin="658,124,0,0" VerticalAlignment="Top" FontFamily="Segoe UI Black" FontSize="50"/>
-        <Image Source="Image/mail.png" HorizontalAlignment="Left" Height="50" Margin="1011,292,0,0" VerticalAlignment="Top" Width="50"/>
+        <Label Content="Correo Electrónico" HorizontalAlignment="Left" Margin="641,191,0,0" VerticalAlignment="Top" FontFamily="Segoe UI Black" FontSize="25"/>
+        <TextBox x:Name="tbxCorreo" Style="{StaticResource RoundedTextBoxStyle}" HorizontalAlignment="Left" Margin="640,265,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="376" Height="59" FontSize="30"  VerticalContentAlignment="Center" Background="#FF7CA886"/>
+        <Label Content="Contraseña" HorizontalAlignment="Left" Margin="641,329,0,0" VerticalAlignment="Top" FontFamily="Segoe UI Black" FontSize="25"/>
+        <PasswordBox x:Name="pbxContraseña" Style="{StaticResource RoundedPasswordBoxStyle}" HorizontalAlignment="Left" Margin="640,404,0,0" VerticalAlignment="Top" Width="376" Height="59" FontSize="30" VerticalContentAlignment="Center" Background="#FF7CA886"/>
+        <Button x:Name="btnSalir" Content="Salir" HorizontalAlignment="Left" Margin="670,648,0,0" VerticalAlignment="Top" Height="68" Width="376" Foreground="White" Background="#FFFF4242" FontSize="30" FontFamily="Arial Narrow" Click="BtnSalir_Click"/>
+        <Button x:Name="btnIniciarSesion" Content="Ingresar" HorizontalAlignment="Left" Margin="670,535,0,0" VerticalAlignment="Top" Height="68" Width="376"  Foreground="Black" Background="White" FontSize="30" FontFamily="Arial Narrow" Click="BtnIniciarSesion_Click" IsDefault="True"/>
+        <Label Content="Inicio de Sesión" HorizontalAlignment="Left" Margin="663,101,0,0" VerticalAlignment="Top" FontFamily="Segoe UI Black" FontSize="50"/>
+        <Image Source="Image/mail.png" HorizontalAlignment="Left" Height="50" Margin="1016,269,0,0" VerticalAlignment="Top" Width="50"/>
         <Rectangle HorizontalAlignment="Left" Height="818" Stroke="Black" VerticalAlignment="Center" Width="510">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="Image\pizzaFondo.jpeg"/>
             </Rectangle.Fill>
         </Rectangle>
-        <Image Source="/Image/Vision.png" HorizontalAlignment="Left" Height="50" Margin="1011,432,0,0" VerticalAlignment="Top" Width="50"/>
+        <Image x:Name="imgVerContraseña" Source="/Image/hidden.png" HorizontalAlignment="Left" Height="50" Margin="1016,409,0,0" VerticalAlignment="Top" Width="50" MouseLeftButtonDown="ImgVerContraseña_MouseLeftButtonDown" Visibility="Collapsed"/>
+        <TextBox x:Name="tbxContraseña" Style="{StaticResource RoundedTextBoxStyle}" HorizontalAlignment="Left" Margin="640,404,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="376" Height="59" FontSize="30"  VerticalContentAlignment="Center" Background="#FF7CA886" Visibility="Collapsed"/>
+        <Image x:Name="imgOcultarContraseña" Source="/Image/open.png" HorizontalAlignment="Left" Height="50" Margin="1016,409,0,0" VerticalAlignment="Top" Width="50" MouseLeftButtonDown="ImgVerContraseña_MouseLeftButtonDown"/>
     </Grid>
 </Window>

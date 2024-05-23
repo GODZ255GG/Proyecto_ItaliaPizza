@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Logs;
+using log4net;
+using System;
 using System.Collections.Generic;
 using System.ServiceModel;
 using System.Text.RegularExpressions;
@@ -11,7 +13,7 @@ namespace ItaliaPizzaClient
     /// </summary>
     public partial class RegistrarProducto : Window
     {
-
+        private static readonly ILog Log = Logger.GetLogger();
         public RegistrarProducto()
         {
             InitializeComponent();
@@ -55,14 +57,17 @@ namespace ItaliaPizzaClient
                     }
                     catch (EndpointNotFoundException ex)
                     {
+                        Log.Error($"{ex.Message}");
                         Utilidades.Utilidades.MostrarMensajeEndpointNotFoundException();
                     }
                     catch (CommunicationException ex)
                     {
+                        Log.Error($"{ex.Message}");
                         Utilidades.Utilidades.MostrarMensajeCommunicationException();
                     }
                     catch (TimeoutException ex)
                     {
+                        Log.Error($"{ex.Message}");
                         Utilidades.Utilidades.MostrarMensajeTimeoutException();
                     }
                     catch (Exception ex)
@@ -113,7 +118,7 @@ namespace ItaliaPizzaClient
             }
 
             client.RegistrarProducto(nuevoProducto);
-            Utilidades.Utilidades.MostrarMensaje("El producto se ha registrado exitosamente", "Registro exitoso", MessageBoxImage.Information);
+            Utilidades.Utilidades.MostrarMensaje("El producto se ha registrado exitosamente: ", "Registro exitoso", MessageBoxImage.Information);
             this.Close();
         }
 

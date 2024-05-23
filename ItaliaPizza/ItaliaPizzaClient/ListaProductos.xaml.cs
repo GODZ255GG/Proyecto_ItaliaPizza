@@ -1,5 +1,7 @@
 ﻿using ItaliaPizzaClient.ItaliaPizzaServer;
+using log4net;
 using System;
+using Logs;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
@@ -15,6 +17,7 @@ namespace ItaliaPizzaClient
     public partial class ListaProductos : UserControl
     {
         ProductManagerClient productoServer = new ProductManagerClient();
+        private static readonly ILog Log = Logger.GetLogger();
         public ListaProductos()
         {
             InitializeComponent();
@@ -51,26 +54,56 @@ namespace ItaliaPizzaClient
             }
             catch (EndpointNotFoundException ex)
             {
-                MessageBox.Show("Por el momento no hay conexión con la base de datos, por favor inténtelo más tarde", "Error de conexión con base de datos", MessageBoxButton.OK, MessageBoxImage.Error);
+                Log.Error($"{ex.Message}");
+                Utilidades.Utilidades.MostrarMensajeEndpointNotFoundException();
             }
             catch (CommunicationException ex)
             {
-                MessageBox.Show("Se produjo un error de comunicación al intentar acceder a un recurso remoto. Intente de nuevo", "Problema de comunicación", MessageBoxButton.OK, MessageBoxImage.Error);
+                Log.Error($"{ex.Message}");
+                Utilidades.Utilidades.MostrarMensajeCommunicationException();
             }
             catch (TimeoutException ex)
             {
-                MessageBox.Show("La operación que intentaba realizar ha superado el tiempo de espera establecido y no pudo completarse en el tiempo especificado. Intente de nuevo", "Tiempo de espera agotado", MessageBoxButton.OK, MessageBoxImage.Error);
+                Log.Error($"{ex.Message}");
+                Utilidades.Utilidades.MostrarMensajeTimeoutException();
+            }
+            catch (Exception ex)
+            {
+                Utilidades.Utilidades.MostrarMensaje($"Ocurrió un error inesperado: {ex.Message}", "Error", MessageBoxImage.Error);
             }
         }
 
         private void DgListaProductos_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            if (dgListaProductos.SelectedItem != null)
+            try
             {
-                Productos productoSeleccionado = dgListaProductos.SelectedItem as Productos;
-                ConsultarProducto consulta = new ConsultarProducto(productoSeleccionado);
-                consulta.Closed += ActualizarTablaProductos;
-                consulta.Show();
+                if (dgListaProductos.SelectedItem != null)
+                {
+                    Productos productoSeleccionado = dgListaProductos.SelectedItem as Productos;
+                    ConsultarProducto consulta = new ConsultarProducto(productoSeleccionado);
+                    consulta.Closed += ActualizarTablaProductos;
+                    consulta.Show();
+                }
+
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                Log.Error($"{ex.Message}");
+                Utilidades.Utilidades.MostrarMensajeEndpointNotFoundException();
+            }
+            catch (CommunicationException ex)
+            {
+                Log.Error($"{ex.Message}");
+                Utilidades.Utilidades.MostrarMensajeCommunicationException();
+            }
+            catch (TimeoutException ex)
+            {
+                Log.Error($"{ex.Message}");
+                Utilidades.Utilidades.MostrarMensajeTimeoutException();
+            }
+            catch (Exception ex)
+            {
+                Utilidades.Utilidades.MostrarMensaje($"Ocurrió un error inesperado: {ex.Message}", "Error", MessageBoxImage.Error);
             }
         }
 
@@ -83,7 +116,8 @@ namespace ItaliaPizzaClient
                 var tbx = sender as TextBox;
                 if (tbx != null)
                 {
-                    var filtrarLista = productos.Where(x => x.Nombre.Contains(tbx.Text)).ToList();
+                    var searchText = tbx.Text.ToLower();
+                    var filtrarLista = productos.Where(x => x.Nombre.ToLower().Contains(searchText)).ToList();
                     dgListaProductos.ItemsSource = null;
                     dgListaProductos.ItemsSource = filtrarLista;
                 }
@@ -94,18 +128,22 @@ namespace ItaliaPizzaClient
             }
             catch (EndpointNotFoundException ex)
             {
-                MessageBox.Show("Por el momento no hay conexión con la base de datos, por favor inténtelo más tarde",
-                    "Error de conexión con base de datos", MessageBoxButton.OK, MessageBoxImage.Error);
+                Log.Error($"{ex.Message}");
+                Utilidades.Utilidades.MostrarMensajeEndpointNotFoundException();
             }
             catch (CommunicationException ex)
             {
-                MessageBox.Show("Se produjo un error de comunicación al intentar acceder a un recurso remoto. Intente de nuevo",
-                    "Problema de comunicación", MessageBoxButton.OK, MessageBoxImage.Error);
+                Log.Error($"{ex.Message}");
+                Utilidades.Utilidades.MostrarMensajeCommunicationException();
             }
             catch (TimeoutException ex)
             {
-                MessageBox.Show("La operación que intentaba realizar ha superado el tiempo de espera establecido y no pudo completarse en el tiempo especificado. Intente de nuevo",
-                    "Tiempo de espera agotado", MessageBoxButton.OK, MessageBoxImage.Error);
+                Log.Error($"{ex.Message}");
+                Utilidades.Utilidades.MostrarMensajeTimeoutException();
+            }
+            catch (Exception ex)
+            {
+                Utilidades.Utilidades.MostrarMensaje($"Ocurrió un error inesperado: {ex.Message}", "Error", MessageBoxImage.Error);
             }
         }
     }

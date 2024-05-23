@@ -1,4 +1,6 @@
 ﻿using ItaliaPizzaClient.ItaliaPizzaServer;
+using log4net;
+using Logs;
 using System;
 using System.Collections.Generic;
 using System.ServiceModel;
@@ -13,6 +15,7 @@ namespace ItaliaPizzaClient
     public partial class ConsultarInsumo : Window
     {
         InsumoManagerClient client = new InsumoManagerClient();
+        private static readonly ILog Log = Logger.GetLogger();
 
         private int idInsumos;
         private string nombre;
@@ -69,14 +72,17 @@ namespace ItaliaPizzaClient
                 }
                 catch (EndpointNotFoundException ex)
                 {
+                    Log.Error($"{ex.Message}");
                     Utilidades.Utilidades.MostrarMensajeEndpointNotFoundException();
                 }
                 catch (CommunicationException ex)
                 {
+                    Log.Error($"{ex.Message}");
                     Utilidades.Utilidades.MostrarMensajeCommunicationException();
                 }
                 catch (TimeoutException ex)
                 {
+                    Log.Error($"{ex.Message}");
                     Utilidades.Utilidades.MostrarMensajeTimeoutException();
                 }
                 catch (Exception ex)
@@ -114,14 +120,17 @@ namespace ItaliaPizzaClient
                     }
                     catch (EndpointNotFoundException ex)
                     {
+                        Log.Error($"{ex.Message}");
                         Utilidades.Utilidades.MostrarMensajeEndpointNotFoundException();
                     }
                     catch (CommunicationException ex)
                     {
+                        Log.Error($"{ex.Message}");
                         Utilidades.Utilidades.MostrarMensajeCommunicationException();
                     }
                     catch (TimeoutException ex)
                     {
+                        Log.Error($"{ex.Message}");
                         Utilidades.Utilidades.MostrarMensajeTimeoutException();
                     }
                     catch (Exception ex)
