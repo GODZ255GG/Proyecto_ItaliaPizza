@@ -5,7 +5,9 @@ C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\bin\Deb
 C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\bin\Debug\EntityFramework.dll
 C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\bin\Debug\log4net.dll
+C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\bin\Debug\Logs.dll
 C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\bin\Debug\Security.dll
+C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\bin\Debug\Logs.pdb
 C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\bin\Debug\Domain.pdb
 C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\bin\Debug\Security.pdb
 C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\bin\Debug\EntityFramework.xml
@@ -70,5 +72,3 @@ C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\obj\Deb
 C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\obj\Debug\ItaliaPi.6C10FE0D.Up2Date
 C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\obj\Debug\ItaliaPizzaClient.exe
 C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\obj\Debug\ItaliaPizzaClient.pdb
-C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\bin\Debug\Logs.dll
-C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\bin\Debug\Logs.pdb

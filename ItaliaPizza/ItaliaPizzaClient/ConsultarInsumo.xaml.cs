@@ -23,6 +23,7 @@ namespace ItaliaPizzaClient
         private string tipo;
         private string cantidad;
         private string codigo;
+        private string medida;
 
         public ConsultarInsumo(Insumos insumo)
         {
@@ -35,12 +36,14 @@ namespace ItaliaPizzaClient
             tipo = insumo.Tipo;
             cantidad = insumo.CantidadDeEmpaque;
             codigo = insumo.CodigoInsumo;
+            medida = insumo.UnidadDeMedida;
 
             tbxNombre.Text = nombre;
             tbxMarca.Text = marca;
             tbxCantidad.Text = cantidad;
             tbxCodigoInsumo.Text = codigo;
             cbxTipo.SelectedItem = tipo;
+            cbxMedida.SelectedItem = medida;
         }
 
         private void CbxTipo_Loaded(object sender, RoutedEventArgs e)
@@ -56,6 +59,16 @@ namespace ItaliaPizzaClient
                 "Extras Creativos"
             };
             cbxTipo.ItemsSource = items;
+        }
+
+        private void CbxMedida_Loaded(object sender, RoutedEventArgs e)
+        {
+            List<string> items = new List<string>
+            {
+                "Mililitro",
+                "Gramo"
+            };
+            cbxMedida.ItemsSource = items;
         }
 
         private void BtnEliminar_Click(object sender, RoutedEventArgs e)
@@ -106,6 +119,7 @@ namespace ItaliaPizzaClient
             tbxMarca.IsReadOnly = false;
             tbxCantidad.IsReadOnly = false;
             cbxTipo.IsEnabled = true;
+            cbxMedida.IsEnabled = true;
         }
 
         private void BtnAceptar_Click(object sender, RoutedEventArgs e)
@@ -156,8 +170,9 @@ namespace ItaliaPizzaClient
             var nuevoTipo = cbxTipo.Text;
             var nuevaCantidad = tbxCantidad.Text;
             var nuevoCodigo = tbxCodigoInsumo.Text;
+            var nuevaMedida = cbxMedida.Text;
 
-            client.ActualizarInsumo(idInsumos, nuevoNombre, nuevoCodigo, nuevaMarca, nuevoTipo, nuevaCantidad);
+            client.ActualizarInsumo(idInsumos, nuevoNombre, nuevoCodigo, nuevaMarca, nuevoTipo, nuevaCantidad, nuevaMedida);
             MessageBox.Show("Producto se ha actualizado exitosamente", "Actualización exitosa", MessageBoxButton.OK, MessageBoxImage.Information);
             this.Close();
         }
@@ -179,12 +194,14 @@ namespace ItaliaPizzaClient
                 tbxCantidad.IsReadOnly = true;
                 tbxCodigoInsumo.IsReadOnly = true;
                 cbxTipo.IsEnabled = false;
+                cbxMedida.IsEnabled = false;
 
                 tbxNombre.Text = nombre;
                 tbxMarca.Text = marca;
                 tbxCantidad.Text = cantidad;
                 tbxCodigoInsumo.Text = codigo;
                 cbxTipo.SelectedItem = tipo;
+                cbxMedida.SelectedItem = medida;
             }
         }
 

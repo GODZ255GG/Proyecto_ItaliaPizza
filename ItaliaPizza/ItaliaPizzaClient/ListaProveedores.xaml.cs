@@ -36,6 +36,11 @@ namespace ItaliaPizzaClient
             MostrarInformacionProveedores();
         }
 
+        private void ImgRegresar_MouseLeftButtonDown(object sender, RoutedEventArgs e)
+        {
+            contentControl.Content = new Finanzas();
+        }
+
         private void BtnRegistrarProveedor_Click(object sender, RoutedEventArgs e)
         {
             RegistrarProveedor registrarProveedor = new RegistrarProveedor();

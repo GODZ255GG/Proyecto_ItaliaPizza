@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ItaliaPizzaClient"
              mc:Ignorable="d" 
-             d:DesignHeight="834" d:DesignWidth="960">
+             d:DesignHeight="808" d:DesignWidth="960">
     <UserControl.Resources>
         <Style TargetType="Button">
             <Setter Property="Background" Value="LightGray" />
@@ -59,6 +59,7 @@ CornerRadius="10">
                     <DataGridTextColumn Header="Código del Insumo" Width="*" FontSize="15" Binding="{Binding CodigoInsumo}"/>
                     <DataGridTextColumn Header="Nombre del Insumo" Width="*" FontSize="15" Binding="{Binding Nombre}"/>
                     <DataGridTextColumn Header="Cantidad De Empaque" Width="*" FontSize="15" Binding="{Binding CantidadDeEmpaque}"/>
+                    <DataGridTextColumn Header="Unidad de Medida" Width="*" FontSize="15" Binding="{Binding UnidadDeMedida}"/>
                 </DataGrid.Columns>
             </DataGrid>
             <TextBox x:Name="tbBuscar" Style="{StaticResource RoundedTextBoxStyle}" HorizontalAlignment="Left" Margin="104,107,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="316"  VerticalContentAlignment="Center" Height="46" FontSize="20" BorderThickness="3,3,3,3" TextChanged="TbBuscar_TextChanged">

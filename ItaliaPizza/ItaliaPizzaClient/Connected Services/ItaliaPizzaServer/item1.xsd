@@ -402,6 +402,7 @@
         <xs:element minOccurs="0" name="marca" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="tipo" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="cantidadDeEmpaque" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="unidadDeMedida" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

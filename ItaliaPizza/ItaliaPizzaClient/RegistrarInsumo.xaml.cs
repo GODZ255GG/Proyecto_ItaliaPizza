@@ -18,6 +18,7 @@ namespace ItaliaPizzaClient
         {
             InitializeComponent();
             Loaded += CbxTipo_Loaded;
+            Loaded += CbxMedida_Loaded;
             tbxCodigoInsumo.Text = "IM" + Utilidades.Utilidades.GenerarCodigo();
         }
 
@@ -34,6 +35,16 @@ namespace ItaliaPizzaClient
                 "Extras Creativos"
             };
             cbxTipo.ItemsSource = items;
+        }
+
+        private void CbxMedida_Loaded(object sender, RoutedEventArgs e)
+        {
+            List<string> items = new List<string>
+            {
+                "Mililitro",
+                "Gramo"
+            };
+            cbxMedida.ItemsSource = items;
         }
 
         private void BtnAceptar_Click(object sender, RoutedEventArgs e)
@@ -79,15 +90,7 @@ namespace ItaliaPizzaClient
                 Utilidades.Utilidades.MostrarMensajeCamposVacios();
             }
         }
-
-        private void BtnCancelar_Click(object sender, RoutedEventArgs e)
-        {
-            if (Utilidades.Utilidades.MostrarMensajeConfirmacionRegresar())
-            {
-                this.Close();
-            }
-        }
-
+                
         private void AccionRegistrar()
         {
             var nombre = tbxNombre.Text;
@@ -95,6 +98,7 @@ namespace ItaliaPizzaClient
             var marca = tbxMarca.Text;
             var tipo = cbxTipo.Text;
             var cantidad = tbxCantidad.Text;
+            var medida = cbxMedida.Text;
 
             ItaliaPizzaServer.InsumoManagerClient client = new ItaliaPizzaServer.InsumoManagerClient();
 
@@ -104,7 +108,8 @@ namespace ItaliaPizzaClient
                 CodigoInsumo = codigoInsumo,
                 Marca = marca,
                 Tipo = tipo,
-                CantidadDeEmpaque = cantidad
+                CantidadDeEmpaque = cantidad,
+                UnidadDeMedida = medida
             };
 
             if (client.InsumoYaRegistrado(nombre))
@@ -116,6 +121,14 @@ namespace ItaliaPizzaClient
             client.RegistrarInsumo(nuevoInsumo);
             Utilidades.Utilidades.MostrarMensaje("El insumo se ha registrado exitosamente", "Registro exitoso", MessageBoxImage.Information);
             this.Close();
+        }
+
+        private void BtnCancelar_Click(object sender, RoutedEventArgs e)
+        {
+            if (Utilidades.Utilidades.MostrarMensajeConfirmacionRegresar())
+            {
+                this.Close();
+            }
         }
 
         #region Validaciones

@@ -16,6 +16,6 @@ namespace Services
         [OperationContract]
         bool EliminarInsumo(int idInsumo);
         [OperationContract]
-        bool ActualizarInsumo(int idInsumo, string nombre, string codigoInsumo, string marca, string tipo, string cantidadDeEmpaque);
+        bool ActualizarInsumo(int idInsumo, string nombre, string codigoInsumo, string marca, string tipo, string cantidadDeEmpaque, string unidadDeMedida);
     }
 }

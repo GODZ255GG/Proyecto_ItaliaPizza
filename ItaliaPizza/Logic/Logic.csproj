@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Autentificacion.cs" />
+    <Compile Include="GestionarCompraDeInventario.cs" />
     <Compile Include="GestionarEmpleados.cs" />
     <Compile Include="GestionarInsumos.cs" />
     <Compile Include="GestionarPedidos.cs" />

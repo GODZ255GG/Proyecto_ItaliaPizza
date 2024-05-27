@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ItaliaPizzaClient"
              mc:Ignorable="d" 
-             d:DesignHeight="834" d:DesignWidth="960">
+             d:DesignHeight="808" d:DesignWidth="960">
     <UserControl.Resources>
         <Style TargetType="Button">
             <Setter Property="Background" Value="LightGray" />
@@ -35,14 +35,14 @@
     <ContentControl x:Name="contentControl">
         <Grid>
             <Rectangle HorizontalAlignment="Left" Height="834"  VerticalAlignment="Top" Width="960" Fill="White"/>
-            <Button x:Name="btnProductos" Content="Productos" HorizontalAlignment="Center" VerticalAlignment="Top" Height="177" Width="630" Foreground="White" FontSize="48" BorderThickness="0,0,0,0" Padding="10,10,10,10" UseLayoutRounding="True" ScrollViewer.CanContentScroll="True" FontWeight="Bold" Click="BtnProductos_Click" Margin="0,129,0,0">
+            <Button x:Name="btnProductos" Content="Productos" HorizontalAlignment="Center" VerticalAlignment="Top" Height="177" Width="630" Foreground="White" FontSize="48" BorderThickness="0,0,0,0" Padding="10,10,10,10" UseLayoutRounding="True" ScrollViewer.CanContentScroll="True" FontWeight="Bold" Click="BtnProductos_Click" Margin="0,143,0,0">
                 <Button.Background>
                     <ImageBrush ImageSource="Image\Productos.jpeg"/>
                 </Button.Background>
             </Button>
             <Label Content="Inventario" HorizontalAlignment="Center" Margin="0,17,0,0" VerticalAlignment="Top" FontSize="40" FontFamily="Segoe UI Black" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
             <Rectangle HorizontalAlignment="Center" Height="4" Margin="0,85,0,0" VerticalAlignment="Top" Width="753" RenderTransformOrigin="0.5,0.5" Fill="#FF7CA886"/>
-            <Button x:Name="btnInsumos" Content="Insumos" HorizontalAlignment="Center" Margin="0,375,0,0" VerticalAlignment="Top" Height="177" Width="630" Foreground="White" FontSize="48" BorderThickness="0,0,0,0" Padding="10,10,10,10" UseLayoutRounding="True" ScrollViewer.CanContentScroll="True" FontWeight="Bold" Click="BtnInsumos_Click">
+            <Button x:Name="btnInsumos" Content="Insumos" HorizontalAlignment="Center" Margin="0,361,0,0" VerticalAlignment="Top" Height="177" Width="630" Foreground="White" FontSize="48" BorderThickness="0,0,0,0" Padding="10,10,10,10" UseLayoutRounding="True" ScrollViewer.CanContentScroll="True" FontWeight="Bold" Click="BtnInsumos_Click">
                 <Button.Background>
                     <ImageBrush ImageSource="Image\insumos.jpeg"/>
                 </Button.Background>
