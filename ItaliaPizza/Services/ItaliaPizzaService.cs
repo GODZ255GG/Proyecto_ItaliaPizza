@@ -401,6 +401,7 @@ namespace Services
                     Marca = insumo.Marca,
                     Tipo = insumo.Tipo,
                     CantidadDeEmpaque = insumo.CantidadDeEmpaque,
+                    UnidadDeMedida = insumo.UnidadDeMedida
                 };
                 resultado = registrar.Registrar(nuevoInsumo);
             }
@@ -457,13 +458,13 @@ namespace Services
             return resultado;
         }
 
-        public bool ActualizarInsumo(int idInsumo, string nombre, string codigoInsumo, string marca, string tipo, string cantidadDeEmpaque)
+        public bool ActualizarInsumo(int idInsumo, string nombre, string codigoInsumo, string marca, string tipo, string cantidadDeEmpaque, string unidadDeMedida)
         {
             GestionarInsumos actualizar = new GestionarInsumos();
             var resultado = false;
             try
             {
-                resultado = actualizar.ActualizarInsumo(idInsumo, nombre, codigoInsumo, marca, tipo, cantidadDeEmpaque);
+                resultado = actualizar.ActualizarInsumo(idInsumo, nombre, codigoInsumo, marca, tipo, cantidadDeEmpaque, unidadDeMedida);
             }
             catch (EntityException e)
             {

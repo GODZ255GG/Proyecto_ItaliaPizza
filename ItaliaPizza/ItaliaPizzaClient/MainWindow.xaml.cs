@@ -78,33 +78,30 @@ namespace ItaliaPizzaClient
         private void IniciarSesionAction(string correo, string contraseña)
         {
             var usuarioInicioSesion = client.IniciarSesion(correo, contraseña);
-            if (usuarioInicioSesion != null)
+            if (usuarioInicioSesion != null && usuarioInicioSesion.Status)
             {
-                if (usuarioInicioSesion.Status)
+                Domain.Empleados.EmpleadosClient = new Domain.Empleados()
                 {
-                    Domain.Empleados.EmpleadosClient = new Domain.Empleados()
-                    {
-                        IdEmpleados = usuarioInicioSesion.IdEmpleados,
-                        Nombre = usuarioInicioSesion.Nombre,
-                        ApellidoPaterno = usuarioInicioSesion.ApellidoPaterno,
-                        ApellidoMaterno = usuarioInicioSesion.ApellidoMaterno,
-                        Telefono = usuarioInicioSesion.Telefono,
-                        Correo = usuarioInicioSesion.Correo,
-                        Foto = usuarioInicioSesion.Foto,
-                        Rol = usuarioInicioSesion.Rol
-                    };
+                    IdEmpleados = usuarioInicioSesion.IdEmpleados,
+                    Nombre = usuarioInicioSesion.Nombre,
+                    ApellidoPaterno = usuarioInicioSesion.ApellidoPaterno,
+                    ApellidoMaterno = usuarioInicioSesion.ApellidoMaterno,
+                    Telefono = usuarioInicioSesion.Telefono,
+                    Correo = usuarioInicioSesion.Correo,
+                    Foto = usuarioInicioSesion.Foto,
+                    Rol = usuarioInicioSesion.Rol
+                };
 
-                    string nombre = Domain.Empleados.EmpleadosClient.Nombre;
-                    Utilidades.Utilidades.MostrarMensaje("Bienvenido " + nombre, "Inicio de Sesión exitoso", MessageBoxImage.Information);
+                string nombre = Domain.Empleados.EmpleadosClient.Nombre;
+                Utilidades.Utilidades.MostrarMensaje("Bienvenido " + nombre, "Inicio de Sesión exitoso", MessageBoxImage.Information);
 
-                    VentanaPrincipal ventanaPrincipal = new VentanaPrincipal();
-                    ventanaPrincipal.Show();
-                    this.Close();
-                }
+                VentanaPrincipal ventanaPrincipal = new VentanaPrincipal();
+                ventanaPrincipal.Show();
+                this.Close();
             }
             else
             {
-                Utilidades.Utilidades.MostrarMensaje("No se puede iniciar sesion", "Error", MessageBoxImage.Error);
+                Utilidades.Utilidades.MostrarMensaje("No se puede iniciar sesión. Verifique sus credenciales.", "Error", MessageBoxImage.Error);
             }
         }
 

@@ -101,6 +101,9 @@
     <Compile Include="Inventario.xaml.cs">
       <DependentUpon>Inventario.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ListaCompras.xaml.cs">
+      <DependentUpon>ListaCompras.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ListaInsumos.xaml.cs">
       <DependentUpon>ListaInsumos.xaml</DependentUpon>
     </Compile>
@@ -176,6 +179,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Inventario.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ListaCompras.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -388,6 +395,11 @@
   <ItemGroup>
     <Resource Include="Image\hidden.png" />
     <Resource Include="Image\open.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Image\compra.png" />
+    <Resource Include="Image\corte.png" />
+    <Resource Include="Image\proveedor.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

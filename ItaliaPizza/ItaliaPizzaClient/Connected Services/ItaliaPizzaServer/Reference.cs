@@ -652,6 +652,9 @@ namespace ItaliaPizzaClient.ItaliaPizzaServer {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string TipoField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string UnidadDeMedidaField;
+        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -736,6 +739,19 @@ namespace ItaliaPizzaClient.ItaliaPizzaServer {
                 if ((object.ReferenceEquals(this.TipoField, value) != true)) {
                     this.TipoField = value;
                     this.RaisePropertyChanged("Tipo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string UnidadDeMedida {
+            get {
+                return this.UnidadDeMedidaField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.UnidadDeMedidaField, value) != true)) {
+                    this.UnidadDeMedidaField = value;
+                    this.RaisePropertyChanged("UnidadDeMedida");
                 }
             }
         }
@@ -1310,10 +1326,10 @@ namespace ItaliaPizzaClient.ItaliaPizzaServer {
         System.Threading.Tasks.Task<bool> EliminarInsumoAsync(int idInsumo);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInsumoManager/ActualizarInsumo", ReplyAction="http://tempuri.org/IInsumoManager/ActualizarInsumoResponse")]
-        bool ActualizarInsumo(int idInsumo, string nombre, string codigoInsumo, string marca, string tipo, string cantidadDeEmpaque);
+        bool ActualizarInsumo(int idInsumo, string nombre, string codigoInsumo, string marca, string tipo, string cantidadDeEmpaque, string unidadDeMedida);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInsumoManager/ActualizarInsumo", ReplyAction="http://tempuri.org/IInsumoManager/ActualizarInsumoResponse")]
-        System.Threading.Tasks.Task<bool> ActualizarInsumoAsync(int idInsumo, string nombre, string codigoInsumo, string marca, string tipo, string cantidadDeEmpaque);
+        System.Threading.Tasks.Task<bool> ActualizarInsumoAsync(int idInsumo, string nombre, string codigoInsumo, string marca, string tipo, string cantidadDeEmpaque, string unidadDeMedida);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1375,12 +1391,12 @@ namespace ItaliaPizzaClient.ItaliaPizzaServer {
             return base.Channel.EliminarInsumoAsync(idInsumo);
         }
         
-        public bool ActualizarInsumo(int idInsumo, string nombre, string codigoInsumo, string marca, string tipo, string cantidadDeEmpaque) {
-            return base.Channel.ActualizarInsumo(idInsumo, nombre, codigoInsumo, marca, tipo, cantidadDeEmpaque);
+        public bool ActualizarInsumo(int idInsumo, string nombre, string codigoInsumo, string marca, string tipo, string cantidadDeEmpaque, string unidadDeMedida) {
+            return base.Channel.ActualizarInsumo(idInsumo, nombre, codigoInsumo, marca, tipo, cantidadDeEmpaque, unidadDeMedida);
         }
         
-        public System.Threading.Tasks.Task<bool> ActualizarInsumoAsync(int idInsumo, string nombre, string codigoInsumo, string marca, string tipo, string cantidadDeEmpaque) {
-            return base.Channel.ActualizarInsumoAsync(idInsumo, nombre, codigoInsumo, marca, tipo, cantidadDeEmpaque);
+        public System.Threading.Tasks.Task<bool> ActualizarInsumoAsync(int idInsumo, string nombre, string codigoInsumo, string marca, string tipo, string cantidadDeEmpaque, string unidadDeMedida) {
+            return base.Channel.ActualizarInsumoAsync(idInsumo, nombre, codigoInsumo, marca, tipo, cantidadDeEmpaque, unidadDeMedida);
         }
     }
     

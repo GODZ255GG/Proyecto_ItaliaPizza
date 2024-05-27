@@ -24,7 +24,8 @@ namespace Logic
                     codigoInsumo = insumos.CodigoInsumo,
                     marca = insumos.Marca,
                     tipo = insumos.Tipo,
-                    cantidadDeEmpaque = insumos.CantidadDeEmpaque
+                    cantidadDeEmpaque = insumos.CantidadDeEmpaque,
+                    unidadDeMedida = insumos.UnidadDeMedida
                 };
                 context.Insumos.Add(nuevoInsumo);
                 resultado = context.SaveChanges() > 0;
@@ -63,6 +64,7 @@ namespace Logic
                                               Marca = insumos.marca,
                                               Tipo = insumos.tipo,
                                               CantidadDeEmpaque = insumos.cantidadDeEmpaque,
+                                              UnidadDeMedida = insumos.unidadDeMedida
                                           });
                     listaInsumos.AddRange(insumosDetalle);
                 }
@@ -89,7 +91,7 @@ namespace Logic
             }
         }
 
-        public bool ActualizarInsumo(int idInsumo, string nuevoNombre, string nuevoCodigo, string nuevaMarca, string nuevoTipo, string nuevoEmpaque)
+        public bool ActualizarInsumo(int idInsumo, string nuevoNombre, string nuevoCodigo, string nuevaMarca, string nuevoTipo, string nuevoEmpaque, string nuevaUnidad)
         {
             using (var context = new BDItaliaPizzaEntities())
             {
@@ -103,6 +105,7 @@ namespace Logic
                     query.marca = nuevaMarca;
                     query.tipo = nuevoTipo;
                     query.cantidadDeEmpaque = nuevoEmpaque;
+                    query.unidadDeMedida = nuevaUnidad;
                     context.SaveChanges();
                     return true;
                 }

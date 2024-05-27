@@ -1,6 +1,4 @@
-﻿using Logic;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.ServiceModel;
 
 namespace Server

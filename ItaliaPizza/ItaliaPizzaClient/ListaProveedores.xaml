@@ -68,6 +68,7 @@ CornerRadius="10">
                     <DataGridTextColumn Header="Teléfono" Width="*" Binding="{Binding Telefono}"/>
                 </DataGrid.Columns>
             </DataGrid>
+            <Image x:Name="imgRegresar" Source="/Image/back.png" HorizontalAlignment="Left" Height="45" Margin="38,26,0,0" VerticalAlignment="Top" Width="45" MouseLeftButtonDown="ImgRegresar_MouseLeftButtonDown"/>
         </Grid>
     </ContentControl>
 </UserControl>

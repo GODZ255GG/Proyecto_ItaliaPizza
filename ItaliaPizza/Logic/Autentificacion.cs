@@ -1,9 +1,5 @@
 ﻿using DataAccess;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Logic
 {
@@ -18,26 +14,34 @@ namespace Logic
             Logic.Empleados usuario = new Logic.Empleados();
             using(var context = new BDItaliaPizzaEntities())
             {
-                var cuentas = (from empleado in context.Empleados
-                               where empleado.correo == correo && empleado.contraseña == contraseña
-                               select empleado);
-                if (cuentas.Any())
+                var cuenta = context.Empleados.FirstOrDefault(e => e.correo == correo);
+                if (cuenta != null && VerificarContraseña(contraseña, cuenta.contraseña))
                 {
-                    usuario.IdEmpleados = cuentas.First().idEmpleados;
-                    usuario.Nombre = cuentas.First().nombre;
-                    usuario.ApellidoPaterno = cuentas.First().apellidoPaterno;
-                    usuario.ApellidoMaterno = cuentas.First().apellidoMaterno;
-                    usuario.Telefono = cuentas.First().telefono;
-                    usuario.Correo = cuentas.First().correo;
-                    usuario.Contraseña = cuentas.First().contraseña;
-                    usuario.Foto = cuentas.First().foto;
-                    usuario.Rol = cuentas.First().rol;
-                    usuario.Status = true;
+                    return new Logic.Empleados()
+                    {
+                        IdEmpleados = cuenta.idEmpleados,
+                        Nombre = cuenta.nombre,
+                        ApellidoPaterno = cuenta.apellidoPaterno,
+                        ApellidoMaterno = cuenta.apellidoMaterno,
+                        Telefono = cuenta.telefono,
+                        Correo = cuenta.correo,
+                        Foto = cuenta.foto,
+                        Rol = cuenta.rol,
+                        Status = true
+                    };
                 }
             }
-            return usuario;
+            return new Logic.Empleados() { Status = false };
         }
 
+        private bool VerificarContraseña(string contraseñaIngresada, string contraseñaAlmacenada)
+        {
+            if (contraseñaIngresada == contraseñaAlmacenada)
+            {
+                return true;
+            }
+            return false;
+        }
 
     }
 }
