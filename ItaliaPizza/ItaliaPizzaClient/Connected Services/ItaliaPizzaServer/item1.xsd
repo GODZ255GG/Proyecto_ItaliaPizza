@@ -212,6 +212,8 @@
         <xs:element minOccurs="0" name="nuevoTelefono" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="nuevaCiudad" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="nuevaDireccion" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="nuevoEstado" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="nuevaCategoriaProveedor" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -480,6 +482,33 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="ActualizarRecetaResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegistrarNuevoCorteDeCaja">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="fechaCorteDeCaja" type="xs:dateTime" />
+        <xs:element minOccurs="0" name="totalIngresos" type="xs:float" />
+        <xs:element minOccurs="0" name="dineroRestante" type="xs:float" />
+        <xs:element minOccurs="0" name="turno" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegistrarNuevoCorteDeCajaResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RecuperarInformacionDeCortesDeCaja">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RecuperarInformacionDeCortesDeCajaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/Logic" minOccurs="0" name="RecuperarInformacionDeCortesDeCajaResult" nillable="true" type="q18:ArrayOfCorteDeCaja" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

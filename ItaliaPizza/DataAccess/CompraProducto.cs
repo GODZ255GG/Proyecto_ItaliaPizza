@@ -12,13 +12,13 @@ namespace DataAccess
     using System;
     using System.Collections.Generic;
     
-    public partial class InsumosProveedores
+    public partial class CompraProducto
     {
-        public int idInsumosProveedores { get; set; }
-        public int Insumos_idInsumos { get; set; }
-        public int Proveedores_idProveedores { get; set; }
+        public int idCompraProducto { get; set; }
+        public int Productos_idProductos { get; set; }
+        public int CompraDeInventario_idCompraDeInventario { get; set; }
     
-        public virtual Insumos Insumos { get; set; }
-        public virtual Proveedores Proveedores { get; set; }
+        public virtual CompraDeInventario CompraDeInventario { get; set; }
+        public virtual Productos Productos { get; set; }
     }
 }

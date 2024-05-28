@@ -48,6 +48,14 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_ICashRecord_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd0" namespace="http://tempuri.org/" />
@@ -254,6 +262,18 @@
   <wsdl:message name="IRecipeManager_ActualizarReceta_OutputMessage">
     <wsdl:part name="parameters" element="tns:ActualizarRecetaResponse" />
   </wsdl:message>
+  <wsdl:message name="ICashRecord_RegistrarNuevoCorteDeCaja_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarNuevoCorteDeCaja" />
+  </wsdl:message>
+  <wsdl:message name="ICashRecord_RegistrarNuevoCorteDeCaja_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarNuevoCorteDeCajaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICashRecord_RecuperarInformacionDeCortesDeCaja_InputMessage">
+    <wsdl:part name="parameters" element="tns:RecuperarInformacionDeCortesDeCaja" />
+  </wsdl:message>
+  <wsdl:message name="ICashRecord_RecuperarInformacionDeCortesDeCaja_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RecuperarInformacionDeCortesDeCajaResponse" />
+  </wsdl:message>
   <wsdl:portType name="IProductManager">
     <wsdl:operation name="RegistrarProducto">
       <wsdl:input wsaw:Action="http://tempuri.org/IProductManager/RegistrarProducto" message="tns:IProductManager_RegistrarProducto_InputMessage" />
@@ -396,6 +416,16 @@
     <wsdl:operation name="ActualizarReceta">
       <wsdl:input wsaw:Action="http://tempuri.org/IRecipeManager/ActualizarReceta" message="tns:IRecipeManager_ActualizarReceta_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IRecipeManager/ActualizarRecetaResponse" message="tns:IRecipeManager_ActualizarReceta_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ICashRecord">
+    <wsdl:operation name="RegistrarNuevoCorteDeCaja">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICashRecord/RegistrarNuevoCorteDeCaja" message="tns:ICashRecord_RegistrarNuevoCorteDeCaja_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICashRecord/RegistrarNuevoCorteDeCajaResponse" message="tns:ICashRecord_RegistrarNuevoCorteDeCaja_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarInformacionDeCortesDeCaja">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICashRecord/RecuperarInformacionDeCortesDeCaja" message="tns:ICashRecord_RecuperarInformacionDeCortesDeCaja_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICashRecord/RecuperarInformacionDeCortesDeCajaResponse" message="tns:ICashRecord_RecuperarInformacionDeCortesDeCaja_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IProductManager" type="tns:IProductManager">
@@ -719,6 +749,28 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_ICashRecord" type="tns:ICashRecord">
+    <wsp:PolicyReference URI="#NetTcpBinding_ICashRecord_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="RegistrarNuevoCorteDeCaja">
+      <soap12:operation soapAction="http://tempuri.org/ICashRecord/RegistrarNuevoCorteDeCaja" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarInformacionDeCortesDeCaja">
+      <soap12:operation soapAction="http://tempuri.org/ICashRecord/RecuperarInformacionDeCortesDeCaja" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
   <wsdl:service name="ItaliaPizzaService">
     <wsdl:port name="NetTcpBinding_IProductManager" binding="tns:NetTcpBinding_IProductManager">
       <soap12:address location="net.tcp://localhost:8081/Services" />
@@ -751,6 +803,12 @@
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_IRecipeManager" binding="tns:NetTcpBinding_IRecipeManager">
+      <soap12:address location="net.tcp://localhost:8081/Services" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8081/Services</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_ICashRecord" binding="tns:NetTcpBinding_ICashRecord">
       <soap12:address location="net.tcp://localhost:8081/Services" />
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8081/Services</wsa10:Address>
