@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ItaliaPizzaClient"
+             mc:Ignorable="d"
              d:DesignHeight="808" d:DesignWidth="960">
     <UserControl.Resources>
         <Style TargetType="Button">
@@ -37,7 +38,7 @@ CornerRadius="10">
             <Label Content="Compras de Inventario" HorizontalAlignment="Center" Margin="0,17,0,0" VerticalAlignment="Top" FontSize="40" FontFamily="Segoe UI Black" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
             <Rectangle HorizontalAlignment="Center" Height="4" Margin="0,85,0,0" VerticalAlignment="Top" Width="753" RenderTransformOrigin="0.5,0.5" Fill="#FF7CA886"/>
             <Image x:Name="imgRegresar" Source="/Image/back.png" HorizontalAlignment="Left" Height="45" Margin="31,26,0,0" VerticalAlignment="Top" Width="45" MouseLeftButtonDown="ImgRegresar_MouseLeftButtonDown"/>
-            <DataGrid x:Name="dgListaCompras" SelectionUnit="FullRow" AutoGenerateColumns="False" Margin="61,178,61,152" BorderThickness="5,5,5,5" IsReadOnly="True" MouseDoubleClick="DgListaInsumos_MouseDoubleClick">
+            <DataGrid x:Name="dgListaCompras" SelectionUnit="FullRow" AutoGenerateColumns="False" Margin="61,178,61,152" BorderThickness="5,5,5,5" IsReadOnly="True">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID Compra" Width="*" FontSize="15" Binding="{Binding CodigoInsumo}"/>
                     <DataGridTextColumn Header="Inventario Comprado" Width="*" FontSize="15" Binding="{Binding Nombre}"/>

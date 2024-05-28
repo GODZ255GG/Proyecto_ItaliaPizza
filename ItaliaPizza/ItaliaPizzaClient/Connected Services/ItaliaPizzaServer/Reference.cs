@@ -337,10 +337,16 @@ namespace ItaliaPizzaClient.ItaliaPizzaServer {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CategoriaProveedorField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string CiudadField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string DireccionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EstadoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int IdProveedoresField;
@@ -361,6 +367,19 @@ namespace ItaliaPizzaClient.ItaliaPizzaServer {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CategoriaProveedor {
+            get {
+                return this.CategoriaProveedorField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CategoriaProveedorField, value) != true)) {
+                    this.CategoriaProveedorField = value;
+                    this.RaisePropertyChanged("CategoriaProveedor");
+                }
             }
         }
         
@@ -386,6 +405,19 @@ namespace ItaliaPizzaClient.ItaliaPizzaServer {
                 if ((object.ReferenceEquals(this.DireccionField, value) != true)) {
                     this.DireccionField = value;
                     this.RaisePropertyChanged("Direccion");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Estado {
+            get {
+                return this.EstadoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EstadoField, value) != true)) {
+                    this.EstadoField = value;
+                    this.RaisePropertyChanged("Estado");
                 }
             }
         }
@@ -843,6 +875,115 @@ namespace ItaliaPizzaClient.ItaliaPizzaServer {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CorteDeCaja", Namespace="http://schemas.datacontract.org/2004/07/Logic")]
+    [System.SerializableAttribute()]
+    public partial class CorteDeCaja : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private float DineroRestanteField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime FechaCorteDeCajaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdCorteDeCajaField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private float TotalIngresosField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TurnoField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public float DineroRestante {
+            get {
+                return this.DineroRestanteField;
+            }
+            set {
+                if ((this.DineroRestanteField.Equals(value) != true)) {
+                    this.DineroRestanteField = value;
+                    this.RaisePropertyChanged("DineroRestante");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime FechaCorteDeCaja {
+            get {
+                return this.FechaCorteDeCajaField;
+            }
+            set {
+                if ((this.FechaCorteDeCajaField.Equals(value) != true)) {
+                    this.FechaCorteDeCajaField = value;
+                    this.RaisePropertyChanged("FechaCorteDeCaja");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IdCorteDeCaja {
+            get {
+                return this.IdCorteDeCajaField;
+            }
+            set {
+                if ((this.IdCorteDeCajaField.Equals(value) != true)) {
+                    this.IdCorteDeCajaField = value;
+                    this.RaisePropertyChanged("IdCorteDeCaja");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public float TotalIngresos {
+            get {
+                return this.TotalIngresosField;
+            }
+            set {
+                if ((this.TotalIngresosField.Equals(value) != true)) {
+                    this.TotalIngresosField = value;
+                    this.RaisePropertyChanged("TotalIngresos");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Turno {
+            get {
+                return this.TurnoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TurnoField, value) != true)) {
+                    this.TurnoField = value;
+                    this.RaisePropertyChanged("Turno");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ItaliaPizzaServer.IProductManager")]
     public interface IProductManager {
@@ -1086,10 +1227,10 @@ namespace ItaliaPizzaClient.ItaliaPizzaServer {
         System.Threading.Tasks.Task<bool> EliminarProveedorAsync(int idProveedor);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISupplierManager/ActualizarProveedor", ReplyAction="http://tempuri.org/ISupplierManager/ActualizarProveedorResponse")]
-        bool ActualizarProveedor(int idProveedor, string nuevoNombreCompañia, string nuevoNombreContacto, string nuevoTelefono, string nuevaCiudad, string nuevaDireccion);
+        bool ActualizarProveedor(int idProveedor, string nuevoNombreCompañia, string nuevoNombreContacto, string nuevoTelefono, string nuevaCiudad, string nuevaDireccion, string nuevoEstado, string nuevaCategoriaProveedor);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISupplierManager/ActualizarProveedor", ReplyAction="http://tempuri.org/ISupplierManager/ActualizarProveedorResponse")]
-        System.Threading.Tasks.Task<bool> ActualizarProveedorAsync(int idProveedor, string nuevoNombreCompañia, string nuevoNombreContacto, string nuevoTelefono, string nuevaCiudad, string nuevaDireccion);
+        System.Threading.Tasks.Task<bool> ActualizarProveedorAsync(int idProveedor, string nuevoNombreCompañia, string nuevoNombreContacto, string nuevoTelefono, string nuevaCiudad, string nuevaDireccion, string nuevoEstado, string nuevaCategoriaProveedor);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ISupplierManager/CompañiaYaExistente", ReplyAction="http://tempuri.org/ISupplierManager/CompañiaYaExistenteResponse")]
         bool CompañiaYaExistente(string nombreCompañia);
@@ -1149,12 +1290,12 @@ namespace ItaliaPizzaClient.ItaliaPizzaServer {
             return base.Channel.EliminarProveedorAsync(idProveedor);
         }
         
-        public bool ActualizarProveedor(int idProveedor, string nuevoNombreCompañia, string nuevoNombreContacto, string nuevoTelefono, string nuevaCiudad, string nuevaDireccion) {
-            return base.Channel.ActualizarProveedor(idProveedor, nuevoNombreCompañia, nuevoNombreContacto, nuevoTelefono, nuevaCiudad, nuevaDireccion);
+        public bool ActualizarProveedor(int idProveedor, string nuevoNombreCompañia, string nuevoNombreContacto, string nuevoTelefono, string nuevaCiudad, string nuevaDireccion, string nuevoEstado, string nuevaCategoriaProveedor) {
+            return base.Channel.ActualizarProveedor(idProveedor, nuevoNombreCompañia, nuevoNombreContacto, nuevoTelefono, nuevaCiudad, nuevaDireccion, nuevoEstado, nuevaCategoriaProveedor);
         }
         
-        public System.Threading.Tasks.Task<bool> ActualizarProveedorAsync(int idProveedor, string nuevoNombreCompañia, string nuevoNombreContacto, string nuevoTelefono, string nuevaCiudad, string nuevaDireccion) {
-            return base.Channel.ActualizarProveedorAsync(idProveedor, nuevoNombreCompañia, nuevoNombreContacto, nuevoTelefono, nuevaCiudad, nuevaDireccion);
+        public System.Threading.Tasks.Task<bool> ActualizarProveedorAsync(int idProveedor, string nuevoNombreCompañia, string nuevoNombreContacto, string nuevoTelefono, string nuevaCiudad, string nuevaDireccion, string nuevoEstado, string nuevaCategoriaProveedor) {
+            return base.Channel.ActualizarProveedorAsync(idProveedor, nuevoNombreCompañia, nuevoNombreContacto, nuevoTelefono, nuevaCiudad, nuevaDireccion, nuevoEstado, nuevaCategoriaProveedor);
         }
         
         public bool CompañiaYaExistente(string nombreCompañia) {
@@ -1500,6 +1641,67 @@ namespace ItaliaPizzaClient.ItaliaPizzaServer {
         
         public System.Threading.Tasks.Task<bool> ActualizarRecetaAsync(int idReceta, string nombre, string descripcionPreparación) {
             return base.Channel.ActualizarRecetaAsync(idReceta, nombre, descripcionPreparación);
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ItaliaPizzaServer.ICashRecord")]
+    public interface ICashRecord {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICashRecord/RegistrarNuevoCorteDeCaja", ReplyAction="http://tempuri.org/ICashRecord/RegistrarNuevoCorteDeCajaResponse")]
+        void RegistrarNuevoCorteDeCaja(System.DateTime fechaCorteDeCaja, float totalIngresos, float dineroRestante, string turno);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICashRecord/RegistrarNuevoCorteDeCaja", ReplyAction="http://tempuri.org/ICashRecord/RegistrarNuevoCorteDeCajaResponse")]
+        System.Threading.Tasks.Task RegistrarNuevoCorteDeCajaAsync(System.DateTime fechaCorteDeCaja, float totalIngresos, float dineroRestante, string turno);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICashRecord/RecuperarInformacionDeCortesDeCaja", ReplyAction="http://tempuri.org/ICashRecord/RecuperarInformacionDeCortesDeCajaResponse")]
+        ItaliaPizzaClient.ItaliaPizzaServer.CorteDeCaja[] RecuperarInformacionDeCortesDeCaja();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ICashRecord/RecuperarInformacionDeCortesDeCaja", ReplyAction="http://tempuri.org/ICashRecord/RecuperarInformacionDeCortesDeCajaResponse")]
+        System.Threading.Tasks.Task<ItaliaPizzaClient.ItaliaPizzaServer.CorteDeCaja[]> RecuperarInformacionDeCortesDeCajaAsync();
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface ICashRecordChannel : ItaliaPizzaClient.ItaliaPizzaServer.ICashRecord, System.ServiceModel.IClientChannel {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public partial class CashRecordClient : System.ServiceModel.ClientBase<ItaliaPizzaClient.ItaliaPizzaServer.ICashRecord>, ItaliaPizzaClient.ItaliaPizzaServer.ICashRecord {
+        
+        public CashRecordClient() {
+        }
+        
+        public CashRecordClient(string endpointConfigurationName) : 
+                base(endpointConfigurationName) {
+        }
+        
+        public CashRecordClient(string endpointConfigurationName, string remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public CashRecordClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(endpointConfigurationName, remoteAddress) {
+        }
+        
+        public CashRecordClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(binding, remoteAddress) {
+        }
+        
+        public void RegistrarNuevoCorteDeCaja(System.DateTime fechaCorteDeCaja, float totalIngresos, float dineroRestante, string turno) {
+            base.Channel.RegistrarNuevoCorteDeCaja(fechaCorteDeCaja, totalIngresos, dineroRestante, turno);
+        }
+        
+        public System.Threading.Tasks.Task RegistrarNuevoCorteDeCajaAsync(System.DateTime fechaCorteDeCaja, float totalIngresos, float dineroRestante, string turno) {
+            return base.Channel.RegistrarNuevoCorteDeCajaAsync(fechaCorteDeCaja, totalIngresos, dineroRestante, turno);
+        }
+        
+        public ItaliaPizzaClient.ItaliaPizzaServer.CorteDeCaja[] RecuperarInformacionDeCortesDeCaja() {
+            return base.Channel.RecuperarInformacionDeCortesDeCaja();
+        }
+        
+        public System.Threading.Tasks.Task<ItaliaPizzaClient.ItaliaPizzaServer.CorteDeCaja[]> RecuperarInformacionDeCortesDeCajaAsync() {
+            return base.Channel.RecuperarInformacionDeCortesDeCajaAsync();
         }
     }
 }

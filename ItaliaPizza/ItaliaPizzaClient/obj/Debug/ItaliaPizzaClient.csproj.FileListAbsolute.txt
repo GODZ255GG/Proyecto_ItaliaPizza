@@ -22,6 +22,8 @@ C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\obj\Deb
 C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\obj\Debug\DetallesPedido.g.cs
 C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\obj\Debug\Finanzas.g.cs
 C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\obj\Debug\Inventario.g.cs
+C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\obj\Debug\ListaCompras.g.cs
+C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\obj\Debug\ListaDeCortesDeCaja.g.cs
 C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\obj\Debug\ListaInsumos.g.cs
 C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\obj\Debug\ListaPedidos.g.cs
 C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\obj\Debug\ListaProductos.g.cs
@@ -31,6 +33,7 @@ C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\obj\Deb
 C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\obj\Debug\ModificarEmpleado.g.cs
 C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\obj\Debug\ModificarEstadoDePedido.g.cs
 C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\obj\Debug\ModificarPedido.g.cs
+C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\obj\Debug\RegistrarCorteDeCaja.g.cs
 C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\obj\Debug\RegistrarInsumo.g.cs
 C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\obj\Debug\RegistrarPedidos.g.cs
 C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\obj\Debug\RegistrarProducto.g.cs
@@ -49,6 +52,8 @@ C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\obj\Deb
 C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\obj\Debug\DetallesPedido.baml
 C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\obj\Debug\Finanzas.baml
 C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\obj\Debug\Inventario.baml
+C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\obj\Debug\ListaCompras.baml
+C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\obj\Debug\ListaDeCortesDeCaja.baml
 C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\obj\Debug\ListaInsumos.baml
 C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\obj\Debug\ListaPedidos.baml
 C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\obj\Debug\ListaProductos.baml
@@ -58,6 +63,7 @@ C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\obj\Deb
 C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\obj\Debug\ModificarEmpleado.baml
 C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\obj\Debug\ModificarEstadoDePedido.baml
 C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\obj\Debug\ModificarPedido.baml
+C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\obj\Debug\RegistrarCorteDeCaja.baml
 C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\obj\Debug\RegistrarInsumo.baml
 C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\obj\Debug\RegistrarPedidos.baml
 C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\obj\Debug\RegistrarProducto.baml

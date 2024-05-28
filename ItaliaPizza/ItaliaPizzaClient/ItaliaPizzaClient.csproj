@@ -104,6 +104,9 @@
     <Compile Include="ListaCompras.xaml.cs">
       <DependentUpon>ListaCompras.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ListaDeCortesDeCaja.xaml.cs">
+      <DependentUpon>ListaDeCortesDeCaja.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ListaInsumos.xaml.cs">
       <DependentUpon>ListaInsumos.xaml</DependentUpon>
     </Compile>
@@ -127,6 +130,9 @@
     </Compile>
     <Compile Include="ModificarPedido.xaml.cs">
       <DependentUpon>ModificarPedido.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RegistrarCorteDeCaja.xaml.cs">
+      <DependentUpon>RegistrarCorteDeCaja.xaml</DependentUpon>
     </Compile>
     <Compile Include="RegistrarInsumo.xaml.cs">
       <DependentUpon>RegistrarInsumo.xaml</DependentUpon>
@@ -186,6 +192,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ListaDeCortesDeCaja.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="ListaInsumos.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -229,6 +239,10 @@
     <Page Include="ModificarPedido.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RegistrarCorteDeCaja.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="RegistrarInsumo.xaml">
       <SubType>Designer</SubType>
@@ -277,6 +291,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Connected Services\ItaliaPizzaServer\ItaliaPizzaClient.ItaliaPizzaServer.CorteDeCaja.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\ItaliaPizzaServer\ItaliaPizzaClient.ItaliaPizzaServer.Empleados.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

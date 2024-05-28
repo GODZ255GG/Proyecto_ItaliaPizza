@@ -53,79 +53,88 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BDItaliaPizzaModel.Context.cs">
+    <Compile Include="BDPizzaItaliaModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BDItaliaPizzaModel.Context.tt</DependentUpon>
+      <DependentUpon>BDPizzaItaliaModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="BDItaliaPizzaModel.cs">
+    <Compile Include="BDPizzaItaliaModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BDItaliaPizzaModel.tt</DependentUpon>
+      <DependentUpon>BDPizzaItaliaModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="BDItaliaPizzaModel.Designer.cs">
+    <Compile Include="BDPizzaItaliaModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BDItaliaPizzaModel.edmx</DependentUpon>
+      <DependentUpon>BDPizzaItaliaModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Clientes.cs">
-      <DependentUpon>BDItaliaPizzaModel.tt</DependentUpon>
+      <DependentUpon>BDPizzaItaliaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CompraDeInventario.cs">
+      <DependentUpon>BDPizzaItaliaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CompraInsumo.cs">
+      <DependentUpon>BDPizzaItaliaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CompraProducto.cs">
+      <DependentUpon>BDPizzaItaliaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="CorteDeCaja.cs">
-      <DependentUpon>BDItaliaPizzaModel.tt</DependentUpon>
+      <DependentUpon>BDPizzaItaliaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DetallesPedido.cs">
-      <DependentUpon>BDItaliaPizzaModel.tt</DependentUpon>
+      <DependentUpon>BDPizzaItaliaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Empleados.cs">
-      <DependentUpon>BDItaliaPizzaModel.tt</DependentUpon>
+      <DependentUpon>BDPizzaItaliaModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IngredientesReceta.cs">
+      <DependentUpon>BDPizzaItaliaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="InsumoReceta.cs">
-      <DependentUpon>BDItaliaPizzaModel.tt</DependentUpon>
+      <DependentUpon>BDPizzaItaliaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Insumos.cs">
-      <DependentUpon>BDItaliaPizzaModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="InsumosProveedores.cs">
-      <DependentUpon>BDItaliaPizzaModel.tt</DependentUpon>
+      <DependentUpon>BDPizzaItaliaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Inventario.cs">
-      <DependentUpon>BDItaliaPizzaModel.tt</DependentUpon>
+      <DependentUpon>BDPizzaItaliaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="InventarioDeInsumo.cs">
-      <DependentUpon>BDItaliaPizzaModel.tt</DependentUpon>
+      <DependentUpon>BDPizzaItaliaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="InventarioDeProductos.cs">
-      <DependentUpon>BDItaliaPizzaModel.tt</DependentUpon>
+      <DependentUpon>BDPizzaItaliaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="PedidoProducto.cs">
-      <DependentUpon>BDItaliaPizzaModel.tt</DependentUpon>
+      <DependentUpon>BDPizzaItaliaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Pedidos.cs">
-      <DependentUpon>BDItaliaPizzaModel.tt</DependentUpon>
+      <DependentUpon>BDPizzaItaliaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Productos.cs">
-      <DependentUpon>BDItaliaPizzaModel.tt</DependentUpon>
+      <DependentUpon>BDPizzaItaliaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Proveedores.cs">
-      <DependentUpon>BDItaliaPizzaModel.tt</DependentUpon>
+      <DependentUpon>BDPizzaItaliaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Receta.cs">
-      <DependentUpon>BDItaliaPizzaModel.tt</DependentUpon>
+      <DependentUpon>BDPizzaItaliaModel.tt</DependentUpon>
     </Compile>
     <Compile Include="RecetasProductos.cs">
-      <DependentUpon>BDItaliaPizzaModel.tt</DependentUpon>
+      <DependentUpon>BDPizzaItaliaModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <EntityDeploy Include="BDItaliaPizzaModel.edmx">
+    <EntityDeploy Include="BDPizzaItaliaModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>BDItaliaPizzaModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>BDPizzaItaliaModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="BDItaliaPizzaModel.edmx.diagram">
-      <DependentUpon>BDItaliaPizzaModel.edmx</DependentUpon>
+    <None Include="BDPizzaItaliaModel.edmx.diagram">
+      <DependentUpon>BDPizzaItaliaModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
@@ -133,15 +142,15 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="BDItaliaPizzaModel.Context.tt">
+    <Content Include="BDPizzaItaliaModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BDItaliaPizzaModel.edmx</DependentUpon>
-      <LastGenOutput>BDItaliaPizzaModel.Context.cs</LastGenOutput>
+      <DependentUpon>BDPizzaItaliaModel.edmx</DependentUpon>
+      <LastGenOutput>BDPizzaItaliaModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="BDItaliaPizzaModel.tt">
+    <Content Include="BDPizzaItaliaModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BDItaliaPizzaModel.edmx</DependentUpon>
-      <LastGenOutput>BDItaliaPizzaModel.cs</LastGenOutput>
+      <DependentUpon>BDPizzaItaliaModel.edmx</DependentUpon>
+      <LastGenOutput>BDPizzaItaliaModel.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

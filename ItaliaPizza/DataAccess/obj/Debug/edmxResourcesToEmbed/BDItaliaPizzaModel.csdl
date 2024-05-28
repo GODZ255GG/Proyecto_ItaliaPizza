@@ -56,18 +56,10 @@
     <Property Name="cantidadDeEmpaque" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
     <Property Name="codigoInsumo" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="InsumoReceta" Relationship="Self.FK_InsumoReceta_Insumos" FromRole="Insumos" ToRole="InsumoReceta" />
-    <NavigationProperty Name="InsumosProveedores" Relationship="Self.FK_InsumosProveedores_Insumos" FromRole="Insumos" ToRole="InsumosProveedores" />
     <NavigationProperty Name="InventarioDeInsumo" Relationship="Self.FK_InventarioDeInsumo_Insumos" FromRole="Insumos" ToRole="InventarioDeInsumo" />
-  </EntityType>
-  <EntityType Name="InsumosProveedores">
-    <Key>
-      <PropertyRef Name="idInsumosProveedores" />
-    </Key>
-    <Property Name="idInsumosProveedores" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Insumos_idInsumos" Type="Int32" Nullable="false" />
-    <Property Name="Proveedores_idProveedores" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Insumos" Relationship="Self.FK_InsumosProveedores_Insumos" FromRole="InsumosProveedores" ToRole="Insumos" />
-    <NavigationProperty Name="Proveedores" Relationship="Self.FK_InsumosProveedores_Proveedores" FromRole="InsumosProveedores" ToRole="Proveedores" />
+    <Property Name="unidadDeMedida" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CompraInsumo" Relationship="BDItaliaPizzaModel.FK_CompraInsumo_Insumos" FromRole="Insumos" ToRole="CompraInsumo" />
+    <NavigationProperty Name="IngredientesReceta" Relationship="BDItaliaPizzaModel.fk_Insumos_has_Recetas_Insumos1" FromRole="Insumos" ToRole="IngredientesReceta" />
   </EntityType>
   <EntityType Name="Inventario">
     <Key>
@@ -137,6 +129,7 @@
     <NavigationProperty Name="InventarioDeProductos" Relationship="Self.FK_InventarioDeProductos_Productos" FromRole="Productos" ToRole="InventarioDeProductos" />
     <NavigationProperty Name="PedidoProducto" Relationship="Self.FK_PedidoProducto_Productos" FromRole="Productos" ToRole="PedidoProducto" />
     <NavigationProperty Name="RecetasProductos" Relationship="Self.FK_RecetasProductos_Productos" FromRole="Productos" ToRole="RecetasProductos" />
+    <NavigationProperty Name="CompraProducto" Relationship="BDItaliaPizzaModel.FK_CompraProducto_Productos" FromRole="Productos" ToRole="CompraProducto" />
   </EntityType>
   <EntityType Name="Proveedores">
     <Key>
@@ -148,7 +141,9 @@
     <Property Name="telefono" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
     <Property Name="dirección" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
     <Property Name="ciudad" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="InsumosProveedores" Relationship="Self.FK_InsumosProveedores_Proveedores" FromRole="Proveedores" ToRole="InsumosProveedores" />
+    <Property Name="estado" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
+    <Property Name="categoriaProveedor" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CompraDeInventario" Relationship="BDItaliaPizzaModel.FK_CompraDeInventario_Proveedores" FromRole="Proveedores" ToRole="CompraDeInventario" />
   </EntityType>
   <EntityType Name="Receta">
     <Key>
@@ -159,6 +154,7 @@
     <Property Name="descripcionPreparación" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="InsumoReceta" Relationship="Self.FK_InsumoReceta_Receta" FromRole="Receta" ToRole="InsumoReceta" />
     <NavigationProperty Name="RecetasProductos" Relationship="Self.FK_RecetasProductos_Receta" FromRole="Receta" ToRole="RecetasProductos" />
+    <NavigationProperty Name="IngredientesReceta" Relationship="BDItaliaPizzaModel.fk_Insumos_has_Recetas_Recetas1" FromRole="Receta" ToRole="IngredientesReceta" />
   </EntityType>
   <EntityType Name="RecetasProductos">
     <Key>
@@ -218,18 +214,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_InsumosProveedores_Insumos">
-    <End Role="Insumos" Type="Self.Insumos" Multiplicity="1" />
-    <End Role="InsumosProveedores" Type="Self.InsumosProveedores" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Insumos">
-        <PropertyRef Name="idInsumos" />
-      </Principal>
-      <Dependent Role="InsumosProveedores">
-        <PropertyRef Name="Insumos_idInsumos" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_InventarioDeInsumo_Insumos">
     <End Role="Insumos" Type="Self.Insumos" Multiplicity="1" />
     <End Role="InventarioDeInsumo" Type="Self.InventarioDeInsumo" Multiplicity="*" />
@@ -239,18 +223,6 @@
       </Principal>
       <Dependent Role="InventarioDeInsumo">
         <PropertyRef Name="Insumos_idInsumos" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_InsumosProveedores_Proveedores">
-    <End Role="Proveedores" Type="Self.Proveedores" Multiplicity="1" />
-    <End Role="InsumosProveedores" Type="Self.InsumosProveedores" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Proveedores">
-        <PropertyRef Name="idProveedores" />
-      </Principal>
-      <Dependent Role="InsumosProveedores">
-        <PropertyRef Name="Proveedores_idProveedores" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -344,7 +316,6 @@
     <EntitySet Name="Empleados" EntityType="Self.Empleados" />
     <EntitySet Name="InsumoReceta" EntityType="Self.InsumoReceta" />
     <EntitySet Name="Insumos" EntityType="Self.Insumos" />
-    <EntitySet Name="InsumosProveedores" EntityType="Self.InsumosProveedores" />
     <EntitySet Name="Inventario" EntityType="Self.Inventario" />
     <EntitySet Name="InventarioDeInsumo" EntityType="Self.InventarioDeInsumo" />
     <EntitySet Name="InventarioDeProductos" EntityType="Self.InventarioDeProductos" />
@@ -370,17 +341,9 @@
       <End Role="Receta" EntitySet="Receta" />
       <End Role="InsumoReceta" EntitySet="InsumoReceta" />
     </AssociationSet>
-    <AssociationSet Name="FK_InsumosProveedores_Insumos" Association="Self.FK_InsumosProveedores_Insumos">
-      <End Role="Insumos" EntitySet="Insumos" />
-      <End Role="InsumosProveedores" EntitySet="InsumosProveedores" />
-    </AssociationSet>
     <AssociationSet Name="FK_InventarioDeInsumo_Insumos" Association="Self.FK_InventarioDeInsumo_Insumos">
       <End Role="Insumos" EntitySet="Insumos" />
       <End Role="InventarioDeInsumo" EntitySet="InventarioDeInsumo" />
-    </AssociationSet>
-    <AssociationSet Name="FK_InsumosProveedores_Proveedores" Association="Self.FK_InsumosProveedores_Proveedores">
-      <End Role="Proveedores" EntitySet="Proveedores" />
-      <End Role="InsumosProveedores" EntitySet="InsumosProveedores" />
     </AssociationSet>
     <AssociationSet Name="FK_InventarioDeInsumo_Inventario" Association="Self.FK_InventarioDeInsumo_Inventario">
       <End Role="Inventario" EntitySet="Inventario" />
@@ -410,5 +373,174 @@
       <End Role="Receta" EntitySet="Receta" />
       <End Role="RecetasProductos" EntitySet="RecetasProductos" />
     </AssociationSet>
+    <EntitySet Name="CompraDeInventario" EntityType="BDItaliaPizzaModel.CompraDeInventario" />
+    <EntitySet Name="CompraInsumo" EntityType="BDItaliaPizzaModel.CompraInsumo" />
+    <EntitySet Name="CompraProducto" EntityType="BDItaliaPizzaModel.CompraProducto" />
+    <EntitySet Name="CorteDeCaja" EntityType="BDItaliaPizzaModel.CorteDeCaja" />
+    <EntitySet Name="IngredientesReceta" EntityType="BDItaliaPizzaModel.IngredientesReceta" />
+    <AssociationSet Name="FK_CompraDeInventario_Proveedores" Association="BDItaliaPizzaModel.FK_CompraDeInventario_Proveedores">
+      <End Role="Proveedores" EntitySet="Proveedores" />
+      <End Role="CompraDeInventario" EntitySet="CompraDeInventario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CompraInsumo_CompraDeInventario" Association="BDItaliaPizzaModel.FK_CompraInsumo_CompraDeInventario">
+      <End Role="CompraDeInventario" EntitySet="CompraDeInventario" />
+      <End Role="CompraInsumo" EntitySet="CompraInsumo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CompraProducto_CompraDeInventario" Association="BDItaliaPizzaModel.FK_CompraProducto_CompraDeInventario">
+      <End Role="CompraDeInventario" EntitySet="CompraDeInventario" />
+      <End Role="CompraProducto" EntitySet="CompraProducto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CompraInsumo_Insumos" Association="BDItaliaPizzaModel.FK_CompraInsumo_Insumos">
+      <End Role="Insumos" EntitySet="Insumos" />
+      <End Role="CompraInsumo" EntitySet="CompraInsumo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CompraProducto_Productos" Association="BDItaliaPizzaModel.FK_CompraProducto_Productos">
+      <End Role="Productos" EntitySet="Productos" />
+      <End Role="CompraProducto" EntitySet="CompraProducto" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Insumos_has_Recetas_Insumos1" Association="BDItaliaPizzaModel.fk_Insumos_has_Recetas_Insumos1">
+      <End Role="Insumos" EntitySet="Insumos" />
+      <End Role="IngredientesReceta" EntitySet="IngredientesReceta" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Insumos_has_Recetas_Recetas1" Association="BDItaliaPizzaModel.fk_Insumos_has_Recetas_Recetas1">
+      <End Role="Receta" EntitySet="Receta" />
+      <End Role="IngredientesReceta" EntitySet="IngredientesReceta" />
+    </AssociationSet>
   </EntityContainer>
+  <EntityType Name="CompraDeInventario">
+    <Key>
+      <PropertyRef Name="idCompraDeInventario" />
+    </Key>
+    <Property Name="idCompraDeInventario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Proveedores_idProveedores" Type="Int32" Nullable="false" />
+    <Property Name="fechaDeCompra" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Proveedores" Relationship="BDItaliaPizzaModel.FK_CompraDeInventario_Proveedores" FromRole="CompraDeInventario" ToRole="Proveedores" />
+    <NavigationProperty Name="CompraInsumo" Relationship="BDItaliaPizzaModel.FK_CompraInsumo_CompraDeInventario" FromRole="CompraDeInventario" ToRole="CompraInsumo" />
+    <NavigationProperty Name="CompraProducto" Relationship="BDItaliaPizzaModel.FK_CompraProducto_CompraDeInventario" FromRole="CompraDeInventario" ToRole="CompraProducto" />
+  </EntityType>
+  <EntityType Name="CompraInsumo">
+    <Key>
+      <PropertyRef Name="idCompraInsumo" />
+    </Key>
+    <Property Name="idCompraInsumo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Insumos_idInsumos" Type="Int32" Nullable="false" />
+    <Property Name="CompraDeInventario_idCompraDeInventario" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="CompraDeInventario" Relationship="BDItaliaPizzaModel.FK_CompraInsumo_CompraDeInventario" FromRole="CompraInsumo" ToRole="CompraDeInventario" />
+    <NavigationProperty Name="Insumos" Relationship="BDItaliaPizzaModel.FK_CompraInsumo_Insumos" FromRole="CompraInsumo" ToRole="Insumos" />
+  </EntityType>
+  <EntityType Name="CompraProducto">
+    <Key>
+      <PropertyRef Name="idCompraProducto" />
+    </Key>
+    <Property Name="idCompraProducto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Productos_idProductos" Type="Int32" Nullable="false" />
+    <Property Name="CompraDeInventario_idCompraDeInventario" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="CompraDeInventario" Relationship="BDItaliaPizzaModel.FK_CompraProducto_CompraDeInventario" FromRole="CompraProducto" ToRole="CompraDeInventario" />
+    <NavigationProperty Name="Productos" Relationship="BDItaliaPizzaModel.FK_CompraProducto_Productos" FromRole="CompraProducto" ToRole="Productos" />
+  </EntityType>
+  <EntityType Name="CorteDeCaja">
+    <Key>
+      <PropertyRef Name="idCorteDeCaja" />
+    </Key>
+    <Property Name="idCorteDeCaja" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="fechaDeCorte" Type="DateTime" Precision="3" />
+    <Property Name="totalDeIngresos" Type="Double" />
+    <Property Name="dineroRestante" Type="Double" />
+    <Property Name="turno" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="IngredientesReceta">
+    <Key>
+      <PropertyRef Name="Insumos_idInsumos" />
+      <PropertyRef Name="Recetas_idRecetas" />
+    </Key>
+    <Property Name="Insumos_idInsumos" Type="Int32" Nullable="false" />
+    <Property Name="Recetas_idRecetas" Type="Int32" Nullable="false" />
+    <Property Name="cantidad" Type="Int32" />
+    <NavigationProperty Name="Insumos" Relationship="BDItaliaPizzaModel.fk_Insumos_has_Recetas_Insumos1" FromRole="IngredientesReceta" ToRole="Insumos" />
+    <NavigationProperty Name="Receta" Relationship="BDItaliaPizzaModel.fk_Insumos_has_Recetas_Recetas1" FromRole="IngredientesReceta" ToRole="Receta" />
+  </EntityType>
+  <Association Name="FK_CompraDeInventario_Proveedores">
+    <End Type="BDItaliaPizzaModel.Proveedores" Role="Proveedores" Multiplicity="1" />
+    <End Type="BDItaliaPizzaModel.CompraDeInventario" Role="CompraDeInventario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proveedores">
+        <PropertyRef Name="idProveedores" />
+      </Principal>
+      <Dependent Role="CompraDeInventario">
+        <PropertyRef Name="Proveedores_idProveedores" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CompraInsumo_CompraDeInventario">
+    <End Type="BDItaliaPizzaModel.CompraDeInventario" Role="CompraDeInventario" Multiplicity="1" />
+    <End Type="BDItaliaPizzaModel.CompraInsumo" Role="CompraInsumo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CompraDeInventario">
+        <PropertyRef Name="idCompraDeInventario" />
+      </Principal>
+      <Dependent Role="CompraInsumo">
+        <PropertyRef Name="CompraDeInventario_idCompraDeInventario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CompraProducto_CompraDeInventario">
+    <End Type="BDItaliaPizzaModel.CompraDeInventario" Role="CompraDeInventario" Multiplicity="1" />
+    <End Type="BDItaliaPizzaModel.CompraProducto" Role="CompraProducto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CompraDeInventario">
+        <PropertyRef Name="idCompraDeInventario" />
+      </Principal>
+      <Dependent Role="CompraProducto">
+        <PropertyRef Name="CompraDeInventario_idCompraDeInventario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CompraInsumo_Insumos">
+    <End Type="BDItaliaPizzaModel.Insumos" Role="Insumos" Multiplicity="1" />
+    <End Type="BDItaliaPizzaModel.CompraInsumo" Role="CompraInsumo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Insumos">
+        <PropertyRef Name="idInsumos" />
+      </Principal>
+      <Dependent Role="CompraInsumo">
+        <PropertyRef Name="Insumos_idInsumos" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CompraProducto_Productos">
+    <End Type="BDItaliaPizzaModel.Productos" Role="Productos" Multiplicity="1" />
+    <End Type="BDItaliaPizzaModel.CompraProducto" Role="CompraProducto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Productos">
+        <PropertyRef Name="idProductos" />
+      </Principal>
+      <Dependent Role="CompraProducto">
+        <PropertyRef Name="Productos_idProductos" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Insumos_has_Recetas_Insumos1">
+    <End Type="BDItaliaPizzaModel.Insumos" Role="Insumos" Multiplicity="1" />
+    <End Type="BDItaliaPizzaModel.IngredientesReceta" Role="IngredientesReceta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Insumos">
+        <PropertyRef Name="idInsumos" />
+      </Principal>
+      <Dependent Role="IngredientesReceta">
+        <PropertyRef Name="Insumos_idInsumos" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Insumos_has_Recetas_Recetas1">
+    <End Type="BDItaliaPizzaModel.Receta" Role="Receta" Multiplicity="1" />
+    <End Type="BDItaliaPizzaModel.IngredientesReceta" Role="IngredientesReceta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Receta">
+        <PropertyRef Name="idRecetas" />
+      </Principal>
+      <Dependent Role="IngredientesReceta">
+        <PropertyRef Name="Recetas_idRecetas" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

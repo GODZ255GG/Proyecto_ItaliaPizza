@@ -17,7 +17,7 @@ namespace DataAccess
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Proveedores()
         {
-            this.InsumosProveedores = new HashSet<InsumosProveedores>();
+            this.CompraDeInventario = new HashSet<CompraDeInventario>();
         }
     
         public int idProveedores { get; set; }
@@ -26,8 +26,10 @@ namespace DataAccess
         public string telefono { get; set; }
         public string dirección { get; set; }
         public string ciudad { get; set; }
+        public string estado { get; set; }
+        public string categoriaProveedor { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<InsumosProveedores> InsumosProveedores { get; set; }
+        public virtual ICollection<CompraDeInventario> CompraDeInventario { get; set; }
     }
 }

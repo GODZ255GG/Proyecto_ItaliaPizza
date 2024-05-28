@@ -358,3 +358,10 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+ItaliaPizza/DataAccess/BDPizzaItaliaModel.Context.cs
+ItaliaPizza/DataAccess/BDPizzaItaliaModel.Context.tt
+ItaliaPizza/DataAccess/BDPizzaItaliaModel.cs
+ItaliaPizza/DataAccess/BDPizzaItaliaModel.Designer.cs
+ItaliaPizza/DataAccess/BDPizzaItaliaModel.edmx
+ItaliaPizza/DataAccess/BDPizzaItaliaModel.edmx.diagram
+ItaliaPizza/DataAccess/BDPizzaItaliaModel.tt

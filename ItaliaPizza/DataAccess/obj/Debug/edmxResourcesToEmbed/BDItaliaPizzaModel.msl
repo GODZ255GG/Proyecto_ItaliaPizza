@@ -48,21 +48,13 @@
     <EntitySetMapping Name="Insumos">
       <EntityTypeMapping TypeName="BDItaliaPizzaModel.Insumos">
         <MappingFragment StoreEntitySet="Insumos">
+          <ScalarProperty Name="unidadDeMedida" ColumnName="unidadDeMedida" />
           <ScalarProperty Name="idInsumos" ColumnName="idInsumos" />
           <ScalarProperty Name="nombre" ColumnName="nombre" />
           <ScalarProperty Name="marca" ColumnName="marca" />
           <ScalarProperty Name="tipo" ColumnName="tipo" />
           <ScalarProperty Name="cantidadDeEmpaque" ColumnName="cantidadDeEmpaque" />
           <ScalarProperty Name="codigoInsumo" ColumnName="codigoInsumo" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="InsumosProveedores">
-      <EntityTypeMapping TypeName="BDItaliaPizzaModel.InsumosProveedores">
-        <MappingFragment StoreEntitySet="InsumosProveedores">
-          <ScalarProperty Name="idInsumosProveedores" ColumnName="idInsumosProveedores" />
-          <ScalarProperty Name="Insumos_idInsumos" ColumnName="Insumos_idInsumos" />
-          <ScalarProperty Name="Proveedores_idProveedores" ColumnName="Proveedores_idProveedores" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -131,6 +123,8 @@
     <EntitySetMapping Name="Proveedores">
       <EntityTypeMapping TypeName="BDItaliaPizzaModel.Proveedores">
         <MappingFragment StoreEntitySet="Proveedores">
+          <ScalarProperty Name="categoriaProveedor" ColumnName="categoriaProveedor" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
           <ScalarProperty Name="idProveedores" ColumnName="idProveedores" />
           <ScalarProperty Name="nombreCompañia" ColumnName="nombreCompañia" />
           <ScalarProperty Name="nombreDelContacto" ColumnName="nombreDelContacto" />
@@ -155,6 +149,53 @@
           <ScalarProperty Name="idRecetasProductos" ColumnName="idRecetasProductos" />
           <ScalarProperty Name="Receta_idRecetas" ColumnName="Receta_idRecetas" />
           <ScalarProperty Name="Productos_idProductos" ColumnName="Productos_idProductos" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CompraDeInventario">
+      <EntityTypeMapping TypeName="BDItaliaPizzaModel.CompraDeInventario">
+        <MappingFragment StoreEntitySet="CompraDeInventario">
+          <ScalarProperty Name="fechaDeCompra" ColumnName="fechaDeCompra" />
+          <ScalarProperty Name="Proveedores_idProveedores" ColumnName="Proveedores_idProveedores" />
+          <ScalarProperty Name="idCompraDeInventario" ColumnName="idCompraDeInventario" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CompraInsumo">
+      <EntityTypeMapping TypeName="BDItaliaPizzaModel.CompraInsumo">
+        <MappingFragment StoreEntitySet="CompraInsumo">
+          <ScalarProperty Name="CompraDeInventario_idCompraDeInventario" ColumnName="CompraDeInventario_idCompraDeInventario" />
+          <ScalarProperty Name="Insumos_idInsumos" ColumnName="Insumos_idInsumos" />
+          <ScalarProperty Name="idCompraInsumo" ColumnName="idCompraInsumo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CompraProducto">
+      <EntityTypeMapping TypeName="BDItaliaPizzaModel.CompraProducto">
+        <MappingFragment StoreEntitySet="CompraProducto">
+          <ScalarProperty Name="CompraDeInventario_idCompraDeInventario" ColumnName="CompraDeInventario_idCompraDeInventario" />
+          <ScalarProperty Name="Productos_idProductos" ColumnName="Productos_idProductos" />
+          <ScalarProperty Name="idCompraProducto" ColumnName="idCompraProducto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CorteDeCaja">
+      <EntityTypeMapping TypeName="BDItaliaPizzaModel.CorteDeCaja">
+        <MappingFragment StoreEntitySet="CorteDeCaja">
+          <ScalarProperty Name="turno" ColumnName="turno" />
+          <ScalarProperty Name="dineroRestante" ColumnName="dineroRestante" />
+          <ScalarProperty Name="totalDeIngresos" ColumnName="totalDeIngresos" />
+          <ScalarProperty Name="fechaDeCorte" ColumnName="fechaDeCorte" />
+          <ScalarProperty Name="idCorteDeCaja" ColumnName="idCorteDeCaja" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IngredientesReceta">
+      <EntityTypeMapping TypeName="BDItaliaPizzaModel.IngredientesReceta">
+        <MappingFragment StoreEntitySet="IngredientesReceta">
+          <ScalarProperty Name="cantidad" ColumnName="cantidad" />
+          <ScalarProperty Name="Recetas_idRecetas" ColumnName="Recetas_idRecetas" />
+          <ScalarProperty Name="Insumos_idInsumos" ColumnName="Insumos_idInsumos" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

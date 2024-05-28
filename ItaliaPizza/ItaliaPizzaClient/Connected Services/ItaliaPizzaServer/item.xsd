@@ -40,8 +40,10 @@
   <xs:element name="ArrayOfEmpleados" nillable="true" type="tns:ArrayOfEmpleados" />
   <xs:complexType name="Proveedor">
     <xs:sequence>
+      <xs:element minOccurs="0" name="CategoriaProveedor" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Ciudad" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Direccion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Estado" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="IdProveedores" type="xs:int" />
       <xs:element minOccurs="0" name="NombreCompañia" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="NombreContacto" nillable="true" type="xs:string" />
@@ -107,4 +109,20 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfRecetas" nillable="true" type="tns:ArrayOfRecetas" />
+  <xs:complexType name="ArrayOfCorteDeCaja">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CorteDeCaja" nillable="true" type="tns:CorteDeCaja" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCorteDeCaja" nillable="true" type="tns:ArrayOfCorteDeCaja" />
+  <xs:complexType name="CorteDeCaja">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DineroRestante" type="xs:float" />
+      <xs:element minOccurs="0" name="FechaCorteDeCaja" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="IdCorteDeCaja" type="xs:int" />
+      <xs:element minOccurs="0" name="TotalIngresos" type="xs:float" />
+      <xs:element minOccurs="0" name="Turno" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CorteDeCaja" nillable="true" type="tns:CorteDeCaja" />
 </xs:schema>
