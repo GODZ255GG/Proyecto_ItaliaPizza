@@ -40,17 +40,23 @@
         <Image x:Name="imgRegresar" Source="/Image/back.png" HorizontalAlignment="Left" Height="45" Margin="14,12,0,0" VerticalAlignment="Top" Width="45" MouseLeftButtonDown="ImgRegresar_MouseLeftButtonDown"/>
         <Label Content="Proveedores" HorizontalAlignment="Center" Margin="0,2,0,0" VerticalAlignment="Top" FontSize="40" FontFamily="Segoe UI Black" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
         <Rectangle HorizontalAlignment="Center" Height="4" Margin="0,63,0,0" VerticalAlignment="Top" Width="500" RenderTransformOrigin="0.5,0.5" Fill="#FF7CA886"/>
-        <Button x:Name="btnCancelar" Content="Cancelar" HorizontalAlignment="Left" Margin="345,378,0,0" VerticalAlignment="Top" Height="43" Width="118" Foreground="White" Background="#7CA886" FontSize="25" BorderThickness="0,0,0,0" Padding="10,10,10,10" UseLayoutRounding="True" ScrollViewer.CanContentScroll="True" FontWeight="Bold" Click="BtnCancelar_Click"/>
-        <Button x:Name="btnAceptar" Content="Aceptar" HorizontalAlignment="Left" Margin="510,378,0,0" VerticalAlignment="Top" Height="43" Width="118" Foreground="White" Background="#7CA886" FontSize="25" BorderThickness="0,0,0,0" Padding="10,10,10,10" UseLayoutRounding="True" ScrollViewer.CanContentScroll="True" FontWeight="Bold" Click="BtnAceptar_Click"/>
-        <TextBox x:Name="tbxNombreContacto" HorizontalAlignment="Left" Margin="38,231,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="282" Height="34" FontSize="16" VerticalContentAlignment="Center" MaxLength="40"/>
-        <Label Content="Nombre de contacto: " HorizontalAlignment="Left" Margin="38,197,0,0" VerticalAlignment="Top" FontSize="18"/>
-        <TextBox x:Name="tbxTelefono" HorizontalAlignment="Left" Margin="371,140,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="236" Height="34" FontSize="16" VerticalContentAlignment="Center" MaxLength="10"/>
-        <Label Content="Teléfono: " HorizontalAlignment="Left" Margin="371,106,0,0" VerticalAlignment="Top" FontSize="18"/>
-        <TextBox x:Name="tbxNombreCompañia" HorizontalAlignment="Left" Margin="33,140,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="287" Height="34" FontSize="16" VerticalContentAlignment="Center" MaxLength="40"/>
-        <Label Content="Dirección:" HorizontalAlignment="Left" Margin="41,270,0,0" VerticalAlignment="Top" FontSize="18"/>
-        <TextBox x:Name="tbxDireccion" HorizontalAlignment="Left" Margin="41,309,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="214" Height="112" FontSize="16" VerticalContentAlignment="Center" MaxLength="45"/>
-        <Label Content="Nombre de compañia: " HorizontalAlignment="Left" Margin="33,101,0,0" VerticalAlignment="Top" FontSize="18"/>
-        <Label Content="Ciudad: " HorizontalAlignment="Left" Margin="366,192,0,0" VerticalAlignment="Top" FontSize="18"/>
-        <ComboBox x:Name="cbxCiudad" HorizontalAlignment="Left" Margin="371,232,0,0" VerticalAlignment="Top" Width="236" Height="33" Loaded="CbxTipo_Loaded" FontSize="16"/>
+        <Button x:Name="btnCancelar" Content="Cancelar" HorizontalAlignment="Left" Margin="345,416,0,0" VerticalAlignment="Top" Height="43" Width="118" Foreground="White" Background="#7CA886" FontSize="25" BorderThickness="0,0,0,0" Padding="10,10,10,10" UseLayoutRounding="True" ScrollViewer.CanContentScroll="True" FontWeight="Bold" Click="BtnCancelar_Click"/>
+        <Button x:Name="btnAceptar" Content="Aceptar" HorizontalAlignment="Left" Margin="510,416,0,0" VerticalAlignment="Top" Height="43" Width="118" Foreground="White" Background="#7CA886" FontSize="25" BorderThickness="0,0,0,0" Padding="10,10,10,10" UseLayoutRounding="True" ScrollViewer.CanContentScroll="True" FontWeight="Bold" Click="BtnAceptar_Click"/>
+        <TextBox x:Name="tbxNombreContacto" HorizontalAlignment="Left" Margin="38,211,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="282" Height="34" FontSize="16" VerticalContentAlignment="Center" MaxLength="40"/>
+        <Label Content="Nombre de contacto: " HorizontalAlignment="Left" Margin="38,177,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <TextBox x:Name="tbxTelefono" HorizontalAlignment="Left" Margin="371,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="236" Height="34" FontSize="16" VerticalContentAlignment="Center" MaxLength="10"/>
+        <Label Content="Teléfono: " HorizontalAlignment="Left" Margin="371,86,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <TextBox x:Name="tbxNombreCompañia" HorizontalAlignment="Left" Margin="33,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="287" Height="34" FontSize="16" VerticalContentAlignment="Center" MaxLength="40"/>
+        <Label Content="Dirección:" HorizontalAlignment="Left" Margin="41,250,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <TextBox x:Name="tbxDireccion" HorizontalAlignment="Left" Margin="41,289,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="214" Height="112" FontSize="16" VerticalContentAlignment="Center" MaxLength="45"/>
+        <Label Content="Nombre de compañia: " HorizontalAlignment="Left" Margin="33,81,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <Label Content="Estado: " HorizontalAlignment="Left" Margin="369,175,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <ComboBox x:Name="cbxEstado" HorizontalAlignment="Left" Margin="371,209,0,0" VerticalAlignment="Top" Width="236" Height="33" FontSize="16" SelectionChanged="CbxEstado_SelectionChanged"/>
+        <Label Content="Ciudad: " HorizontalAlignment="Left" Margin="366,249,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <ComboBox x:Name="cbxCiudad" HorizontalAlignment="Left" Margin="371,289,0,0" VerticalAlignment="Top" Width="236" Height="33" FontSize="16" IsEnabled="False"/>
+        <Label Content="Categoria de proveedor: " HorizontalAlignment="Left" Margin="371,331,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <ComboBox x:Name="cbxCategoriaProveedor" HorizontalAlignment="Left" Margin="369,365,0,0" VerticalAlignment="Top" Width="236" Height="33" Loaded="CbxCategoriaProveedor_Loaded" FontSize="16"/>
+
+
     </Grid>
 </Window>

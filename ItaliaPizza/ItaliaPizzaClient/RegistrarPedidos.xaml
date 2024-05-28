@@ -9,8 +9,8 @@
         WindowStartupLocation="CenterScreen">
     <Grid>
         <Label Content="Nuevo pedido" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="40" FontFamily="Segoe UI Black" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
-        <Button x:Name="btnCancelarRegistro" Content="Cancelar" HorizontalAlignment="Left" VerticalAlignment="Top" Height="59" Width="185" Foreground="White" Background="#7CA886" FontSize="30" BorderThickness="0,0,0,0" Padding="10,10,10,10" UseLayoutRounding="True" ScrollViewer.CanContentScroll="True" FontWeight="Bold" Click="BtnCancelarRegistro_Click" Margin="24,636,0,0"/>
-        <Button x:Name="btnAceptarRegistro" Content="Aceptar" HorizontalAlignment="Left" VerticalAlignment="Top" Height="59" Width="185" Foreground="White" Background="#7CA886" FontSize="30" BorderThickness="0,0,0,0" Padding="10,10,10,10" UseLayoutRounding="True" ScrollViewer.CanContentScroll="True" FontWeight="Bold" Click="BtnAceptarRegistro_Click" Margin="225,636,0,0"/>
+        <Button x:Name="btnCancelarRegistro" Content="Cancelar" HorizontalAlignment="Left" VerticalAlignment="Top" Height="59" Width="185" Foreground="White" Background="#7CA886" FontSize="30" BorderThickness="0,0,0,0" Padding="10,10,10,10" UseLayoutRounding="True" ScrollViewer.CanContentScroll="True" FontWeight="Bold" Click="BtnCancelarRegistro_Click" Margin="24,681,0,0"/>
+        <Button x:Name="btnAceptarRegistro" Content="Aceptar" HorizontalAlignment="Left" VerticalAlignment="Top" Height="59" Width="185" Foreground="White" Background="#7CA886" FontSize="30" BorderThickness="0,0,0,0" Padding="10,10,10,10" UseLayoutRounding="True" ScrollViewer.CanContentScroll="True" FontWeight="Bold" Click="BtnAceptarRegistro_Click" Margin="225,681,0,0"/>
         <Label Content="Productos" HorizontalAlignment="Left" Margin="10,111,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Segoe UI Black" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
         <Label Content="Total:" HorizontalAlignment="Left" Margin="10,334,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Segoe UI Black" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
 
@@ -51,8 +51,11 @@
 
 
         <Label x:Name="lbDomicilio" Content="Domicilio" HorizontalAlignment="Left" Margin="10,386,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Segoe UI Black" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Visibility="Hidden"/>
-        <TextBox x:Name="tbxDomicilio" HorizontalAlignment="Left" Margin="10,428,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="125" Width="343" Visibility="Hidden"/>
-        <TextBox x:Name="tbxNombreCliente" HorizontalAlignment="Left" Margin="182,581,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="240"  FontSize="16" FontFamily="Segoe UI Black" Height="28"/>
+        <TextBox x:Name="tbxDomicilio" HorizontalAlignment="Left" Margin="10,428,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Height="125" Width="343" Visibility="Hidden" MaxLength="60"/>
+        <TextBox x:Name="tbxNombreCliente" HorizontalAlignment="Left" Margin="182,581,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="240" FontSize="16" FontFamily="Segoe UI Black" Height="28" MaxLength="50" TextChanged="TbxNombreCliente_TextChanged"/>
+        <ComboBox x:Name="cbxNombreCliente" HorizontalAlignment="Left" Margin="181,620,0,0" VerticalAlignment="Top" Width="240" Height="28" Loaded="CbxNombreCliente_Loaded" FontSize="16" SelectionChanged="CbxNombreCliente_SelectionChanged"/>
+        <Button Content="X" Click="BtnLimpiarComboBoxCliente_Click" HorizontalAlignment="Left" Margin="426,622,0,0" VerticalAlignment="Top" FontSize="16" Background="Red" Height="24"/>
+
 
     </Grid>
 

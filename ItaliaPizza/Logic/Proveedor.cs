@@ -15,6 +15,8 @@ namespace Logic
         private string _telefono;
         private string _ciudad;
         private string _direccion;
+        private string _estado;
+        private string _categoriaProveedor;
 
         [DataMember]
         public int IdProveedores { get { return _idProveedores; } set { _idProveedores = value; } }
@@ -28,5 +30,9 @@ namespace Logic
         public string Ciudad { get { return _ciudad; } set { _ciudad = value; } }
         [DataMember]
         public string Direccion { get { return _direccion; } set { _direccion = value; } }
+        [DataMember]
+        public string Estado { get { return _estado; } set { _estado = value; } }
+        [DataMember]
+        public string CategoriaProveedor { get { return _categoriaProveedor; } set { _categoriaProveedor = value; } }
     }
 }

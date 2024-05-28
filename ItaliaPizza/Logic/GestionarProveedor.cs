@@ -26,7 +26,9 @@ namespace Logic
                     nombreDelContacto = proveedor.NombreContacto,
                     telefono = proveedor.Telefono,
                     ciudad = proveedor.Ciudad,
-                    dirección = proveedor.Direccion
+                    dirección = proveedor.Direccion,
+                    estado = proveedor.Estado,
+                    categoriaProveedor = proveedor.CategoriaProveedor
                 };
                 context.Proveedores.Add(nuevoProveedor);
                 resultado = context.SaveChanges() > 0;
@@ -49,7 +51,9 @@ namespace Logic
                                                   NombreContacto = proveedor.nombreDelContacto,
                                                   Telefono = proveedor.telefono,
                                                   Ciudad = proveedor.ciudad,
-                                                  Direccion = proveedor.dirección
+                                                  Direccion = proveedor.dirección,
+                                                  Estado = proveedor.estado,
+                                                  CategoriaProveedor = proveedor.categoriaProveedor
                                               });
                     listaProveedores.AddRange(proveedoresDetalle);
                 }
@@ -89,7 +93,7 @@ namespace Logic
             return resultado;
         }
 
-        public bool ActualizarProveedor(int idProveedor, string nuevoNombreCompañia, string nuevoNombreContacto, string nuevoTelefono, string nuevaCiudad, string nuevaDireccion)
+        public bool ActualizarProveedor(int idProveedor, string nuevoNombreCompañia, string nuevoNombreContacto, string nuevoTelefono, string nuevaCiudad, string nuevaDireccion, string nuevoEstado, string nuevaCategoriaProveedor)
         {
             try
             {
@@ -103,6 +107,8 @@ namespace Logic
                         proveedor.telefono = nuevoTelefono;
                         proveedor.ciudad = nuevaCiudad;
                         proveedor.dirección = nuevaDireccion;
+                        proveedor.estado = nuevoEstado;
+                        proveedor.categoriaProveedor = nuevaCategoriaProveedor;
                         context.SaveChanges();
                         return true;
                     }

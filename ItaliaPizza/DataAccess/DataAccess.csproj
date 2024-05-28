@@ -71,6 +71,9 @@
     <Compile Include="Clientes.cs">
       <DependentUpon>BDItaliaPizzaModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="CorteDeCaja.cs">
+      <DependentUpon>BDItaliaPizzaModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DetallesPedido.cs">
       <DependentUpon>BDItaliaPizzaModel.tt</DependentUpon>
     </Compile>
