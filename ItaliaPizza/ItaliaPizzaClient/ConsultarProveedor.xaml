@@ -55,15 +55,20 @@
         <Button x:Name="btnAceptar" Content="Aceptar" HorizontalAlignment="Left" Margin="479,431,0,0" VerticalAlignment="Top" Height="43" Width="133" Foreground="White" Background="#7CA886" FontSize="25" BorderThickness="0,0,0,0" Padding="10,10,10,10" UseLayoutRounding="True" FontWeight="Bold" Visibility="Hidden" Click="BtnAceptar_Click"/>
         <Button x:Name="btnCancelar" Content="Cancelar" HorizontalAlignment="Left" Margin="335,431,0,0" VerticalAlignment="Top" Height="43" Width="133" Foreground="White" Background="#7CA886" FontSize="25" BorderThickness="0,0,0,0" Padding="10,10,10,10" UseLayoutRounding="True" FontWeight="Bold" Visibility="Hidden" Click="BtnCancelar_Click"/>
 
-        <TextBox x:Name="tbxNombreContacto" HorizontalAlignment="Left" Margin="38,231,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="282" Height="34" FontSize="16" VerticalContentAlignment="Center" IsEnabled="False" MaxLength="40"/>
-        <Label Content="Nombre de contacto: " HorizontalAlignment="Left" Margin="38,197,0,0" VerticalAlignment="Top" FontSize="18"/>
-        <TextBox x:Name="tbxTelefono" HorizontalAlignment="Left" Margin="371,140,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="236" Height="34" FontSize="16" VerticalContentAlignment="Center" IsEnabled="False" MaxLength="10"/>
-        <Label Content="Teléfono: " HorizontalAlignment="Left" Margin="371,106,0,0" VerticalAlignment="Top" FontSize="18"/>
-        <TextBox x:Name="tbxNombreCompañia" HorizontalAlignment="Left" Margin="33,140,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="287" Height="34" FontSize="16" VerticalContentAlignment="Center" IsEnabled="False" MaxLength="40"/>
-        <Label Content="Dirección:" HorizontalAlignment="Left" Margin="41,270,0,0" VerticalAlignment="Top" FontSize="18"/>
-        <TextBox x:Name="tbxDireccion" HorizontalAlignment="Left" Margin="41,309,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="214" Height="112" FontSize="16" VerticalContentAlignment="Center" IsEnabled="False" MaxLength="45"/>
-        <Label Content="Nombre de compañia: " HorizontalAlignment="Left" Margin="33,101,0,0" VerticalAlignment="Top" FontSize="18"/>
-        <Label Content="Ciudad: " HorizontalAlignment="Left" Margin="366,192,0,0" VerticalAlignment="Top" FontSize="18"/>
-        <ComboBox x:Name="cbxCiudad" HorizontalAlignment="Left" Margin="371,232,0,0" VerticalAlignment="Top" Width="236" Height="33" Loaded="CbxTipo_Loaded" FontSize="16" IsEnabled="False"/>
+        <TextBox x:Name="tbxNombreContacto" HorizontalAlignment="Left" Margin="38,207,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="282" Height="34" FontSize="16" VerticalContentAlignment="Center" IsEnabled="False" MaxLength="40"/>
+        <Label Content="Nombre de contacto: " HorizontalAlignment="Left" Margin="38,173,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <TextBox x:Name="tbxTelefono" HorizontalAlignment="Left" Margin="371,116,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="236" Height="34" FontSize="16" VerticalContentAlignment="Center" IsEnabled="False" MaxLength="10"/>
+        <Label Content="Teléfono: " HorizontalAlignment="Left" Margin="371,82,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <TextBox x:Name="tbxNombreCompañia" HorizontalAlignment="Left" Margin="33,116,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="287" Height="34" FontSize="16" VerticalContentAlignment="Center" IsEnabled="False" MaxLength="40"/>
+        <Label Content="Dirección:" HorizontalAlignment="Left" Margin="41,246,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <TextBox x:Name="tbxDireccion" HorizontalAlignment="Left" Margin="41,285,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="214" Height="112" FontSize="16" VerticalContentAlignment="Center" IsEnabled="False" MaxLength="45"/>
+        <Label Content="Nombre de compañia: " HorizontalAlignment="Left" Margin="33,77,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <Label Content="Estado: " HorizontalAlignment="Left" Margin="369,175,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <ComboBox x:Name="cbxEstado" HorizontalAlignment="Left" Margin="371,209,0,0" VerticalAlignment="Top" Width="236" Height="33" FontSize="16" SelectionChanged="CbxEstado_SelectionChanged" IsEnabled="False"/>
+        <Label Content="Ciudad: " HorizontalAlignment="Left" Margin="366,249,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <ComboBox x:Name="cbxCiudad" HorizontalAlignment="Left" Margin="371,289,0,0" VerticalAlignment="Top" Width="236" Height="33" FontSize="16"/>
+        <Label Content="Categoria de proveedor: " HorizontalAlignment="Left" Margin="371,331,0,0" VerticalAlignment="Top" FontSize="18" IsEnabled="False"/>
+        <ComboBox x:Name="cbxCategoriaProveedor" HorizontalAlignment="Left" Margin="369,365,0,0" VerticalAlignment="Top" Width="236" Height="33" Loaded="CbxCategoriaProveedor_Loaded" FontSize="16" IsEnabled="False"/>
+
     </Grid>
 </Window>

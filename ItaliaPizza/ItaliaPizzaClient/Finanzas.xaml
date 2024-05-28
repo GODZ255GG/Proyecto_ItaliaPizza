@@ -45,7 +45,7 @@
                     <ImageBrush ImageSource="Image\compra.png"/>
                 </Button.Background>
             </Button>
-            <Button x:Name="btnCorteDeCaja" Content="Corte de Caja" HorizontalAlignment="Center" VerticalAlignment="Top" Height="177" Width="630" Foreground="White" FontSize="48" BorderThickness="0,0,0,0" Padding="10,10,10,10" UseLayoutRounding="True" ScrollViewer.CanContentScroll="True" FontWeight="Bold" Margin="0,579,0,0">
+            <Button x:Name="btnCorteDeCaja" Content="Corte de Caja" HorizontalAlignment="Center" VerticalAlignment="Top" Height="177" Width="630" Foreground="White" FontSize="48" BorderThickness="0,0,0,0" Padding="10,10,10,10" UseLayoutRounding="True" ScrollViewer.CanContentScroll="True" FontWeight="Bold" Margin="0,579,0,0" Click="BtnCorteDeCaja_Click">
                 <Button.Background>
                     <ImageBrush ImageSource="Image\corte.png"/>
                 </Button.Background>

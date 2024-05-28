@@ -29,5 +29,10 @@ namespace ItaliaPizzaClient
         {
             contentControl.Content = new ListaProveedores();
         }
+
+        private void BtnCorteDeCaja_Click(object sender, RoutedEventArgs e)
+        {
+            contentControl.Content = new ListaDeCortesDeCaja();
+        }
     }
 }

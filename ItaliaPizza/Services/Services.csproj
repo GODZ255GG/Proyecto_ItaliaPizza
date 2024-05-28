@@ -54,6 +54,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ICashRecord.cs" />
     <Compile Include="IInsumoManager.cs" />
     <Compile Include="IOrderManager.cs" />
     <Compile Include="IRecipeManager.cs" />

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Domain;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,7 @@ namespace ItaliaPizzaClient
     public partial class RegistrarPedidos : Window
     {
         ItaliaPizzaServer.OrderManagerClient pedidosServer = new ItaliaPizzaServer.OrderManagerClient();
+        ItaliaPizzaServer.UserManagerClient usuariosServer = new ItaliaPizzaServer.UserManagerClient();
         private List<int> idsProductosSeleccionados = new List<int>();
         private List<ItaliaPizzaServer.Productos> productosSeleccionados = new List<ItaliaPizzaServer.Productos>();
 
@@ -28,6 +30,7 @@ namespace ItaliaPizzaClient
         public RegistrarPedidos()
         {
             InitializeComponent();
+            Loaded += CbxNombreCliente_Loaded;
             CargarProductos();
         }
 
@@ -52,7 +55,7 @@ namespace ItaliaPizzaClient
         private void BtnAceptarRegistro_Click(object sender, RoutedEventArgs e)
         {
             int idEmpleado = Domain.Empleados.EmpleadosClient.IdEmpleados;
-            string nombreCliente = tbxNombreCliente.Text;
+            string nombreCliente = ObtenerNombreCliente();
             string domicilio = rbPedidoDomicilio.IsChecked == true ? tbxDomicilio.Text : "";
             string tipoPedido = rbPedidoLocal.IsChecked == true ? "Local" : "Domicilio";
 
@@ -72,7 +75,7 @@ namespace ItaliaPizzaClient
                     MessageBox.Show("El campo de domicilio no puede estar vacío para un pedido a domicilio.");
                     return;
                 }
-
+                 
                 if (rbPedidoDomicilio.IsChecked == false && rbPedidoLocal.IsChecked == false)
                 {
                     MessageBox.Show("Se debe seleccionar un tipo de pedido");
@@ -235,6 +238,52 @@ namespace ItaliaPizzaClient
             productosSeleccionados.Clear();
             stackProductos.Children.Clear();
             lbTotalPedido.Content = string.Empty;
+        }
+
+        private void CbxNombreCliente_Loaded(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                ItaliaPizzaServer.Empleados[] empleadosArray = usuariosServer.ObtenerListaUsuarios();
+
+                var nombresClientes = empleadosArray
+                                        .Where(usuario => usuario.Rol == "Cliente")
+                                        .Select(usuario => $"{usuario.Nombre} {usuario.ApellidoPaterno} {usuario.ApellidoMaterno}")
+                                        .ToList();
+
+                cbxNombreCliente.ItemsSource = nombresClientes;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al cargar los usuarios: " + ex.Message);
+            }
+        }
+
+        private void BtnLimpiarComboBoxCliente_Click(object sender, RoutedEventArgs e)
+        {
+            cbxNombreCliente.SelectedItem = null;
+        }
+
+        private void TbxNombreCliente_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            cbxNombreCliente.IsEnabled = string.IsNullOrEmpty(tbxNombreCliente.Text);
+        }
+
+        private void CbxNombreCliente_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (cbxNombreCliente.SelectedItem != null)
+            {
+                tbxNombreCliente.IsEnabled = false;
+            }
+            else
+            {
+                tbxNombreCliente.IsEnabled = true;
+            }
+        }
+
+        private string ObtenerNombreCliente()
+        {
+            return tbxNombreCliente.IsEnabled ? tbxNombreCliente.Text : cbxNombreCliente.SelectedItem?.ToString();
         }
     }
 }

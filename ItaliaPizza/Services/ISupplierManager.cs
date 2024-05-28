@@ -18,7 +18,7 @@ namespace Services
         [OperationContract]
         bool EliminarProveedor(int idProveedor);
         [OperationContract]
-        bool ActualizarProveedor(int idProveedor, string nuevoNombreCompañia, string nuevoNombreContacto, string nuevoTelefono, string nuevaCiudad, string nuevaDireccion);
+        bool ActualizarProveedor(int idProveedor, string nuevoNombreCompañia, string nuevoNombreContacto, string nuevoTelefono, string nuevaCiudad, string nuevaDireccion, string nuevoEstado, string nuevaCategoriaProveedor);
         [OperationContract]
         bool CompañiaYaExistente(string nombreCompañia);
     }

@@ -216,7 +216,9 @@ namespace Services
                     NombreContacto = proveedor.NombreContacto,
                     Telefono = proveedor.Telefono,
                     Ciudad = proveedor.Ciudad,
-                    Direccion = proveedor.Direccion
+                    Direccion = proveedor.Direccion,
+                    Estado = proveedor.Estado,
+                    CategoriaProveedor = proveedor.CategoriaProveedor
                 };
                 resultado = registrar.RegistrarProveedor(nuevoProveedor);
             }
@@ -241,13 +243,13 @@ namespace Services
             return productos;
         }
 
-        public bool ActualizarProveedor(int idProveedor, string nuevoNombreCompañia, string nuevoNombreContacto, string nuevoTelefono, string nuevaCiudad, string nuevaDireccion)
+        public bool ActualizarProveedor(int idProveedor, string nuevoNombreCompañia, string nuevoNombreContacto, string nuevoTelefono, string nuevaCiudad, string nuevaDireccion, string nuevoEstado, string nuevaCategoriaProveedor)
         {
             GestionarProveedor actualizar = new GestionarProveedor();
             var resultado = false;
             try
             {
-                resultado = actualizar.ActualizarProveedor(idProveedor, nuevoNombreCompañia, nuevoNombreContacto, nuevoTelefono, nuevaCiudad, nuevaDireccion);
+                resultado = actualizar.ActualizarProveedor(idProveedor, nuevoNombreCompañia, nuevoNombreContacto, nuevoTelefono, nuevaCiudad, nuevaDireccion, nuevoEstado, nuevaCategoriaProveedor);
             }
             catch (EntityException e)
             {
@@ -560,5 +562,35 @@ namespace Services
             return resultado;
         }
 
+    }
+
+    public partial class ItaliaPizzaService : ICashRecord 
+    {
+        public List<Logic.CorteDeCaja> RecuperarInformacionDeCortesDeCaja()
+        {
+            try
+            {
+                Logic.GestionarCortesDeCaja gestionarCortesDeCaja = new Logic.GestionarCortesDeCaja();
+                return gestionarCortesDeCaja.RecuperarInformacionDeCortesDeCaja();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al recuperar la información de los cortes de caja: " + ex.Message);
+                return new List<Logic.CorteDeCaja>();
+            }
+        }
+
+        public void RegistrarNuevoCorteDeCaja(DateTime fechaCorteDeCaja, float totalIngresos, float dineroRestante, string turno)
+        {
+            try
+            {
+                Logic.GestionarCortesDeCaja gestionarCortesDeCaja = new Logic.GestionarCortesDeCaja();
+                gestionarCortesDeCaja.RegistrarNuevoCorteDeCaja(fechaCorteDeCaja, totalIngresos, dineroRestante, turno);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al registrar el nuevo corte de caja: " + ex.Message);
+            }
+        }
     }
 }
