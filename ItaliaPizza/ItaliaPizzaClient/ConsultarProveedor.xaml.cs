@@ -101,13 +101,13 @@ namespace ItaliaPizzaClient
         {
             List<string> items = new List<string>
             {
-                "Carnes",
-                "Frutas",
-                "Verduras",
-                "Harinas",
-                "Lacteos",
-                "Postres",
-                "Bebidas"
+                "Masa y Harina",
+                "Salsas y Bases",
+                "Quesos",
+                "Toppings y Proteínas",
+                "Verduras y Hierbas",
+                "Aceites y Condimentos",
+                "Extras Creativos",
             };
             cbxCategoriaProveedor.ItemsSource = items;
         }
