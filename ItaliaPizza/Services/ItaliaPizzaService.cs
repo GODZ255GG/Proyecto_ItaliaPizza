@@ -593,4 +593,47 @@ namespace Services
             }
         }
     }
+
+    public partial class ItaliaPizzaService : IProcurementManager
+    {
+        public List<Logic.Insumos> RecuperarInsumosPorCategoria(string categoria)
+        {
+            try
+            {
+                Logic.GestionarCompraInventario gestionarCompra = new Logic.GestionarCompraInventario();
+                return gestionarCompra.RecuperarInsumosPorCategoria(categoria);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al recuperar la información de los insumos: " + ex.Message);
+                return new List<Logic.Insumos>();
+            }
+        }
+
+        public List<Logic.CompraDeInventario> RecuperarInformacionCompras()
+        {
+            try
+            {
+                Logic.GestionarCompraDeInventario compras = new GestionarCompraDeInventario();
+                return compras.RecuperarCompras();
+            }catch (Exception ex)
+            {
+                Console.WriteLine("Error al recuperar la información de las compras: " + ex.Message);
+                return new List<Logic.CompraDeInventario>();
+            }
+        }
+
+        public void RegistrarNuevaCompra(int idProveedor, List<int> idInsumos)
+        {
+            try
+            {
+                Logic.GestionarCompraDeInventario compras = new GestionarCompraDeInventario();
+                compras.RegistrarNuevaCompra(idProveedor, idInsumos);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al registrar la compra: " + ex.Message);
+            }
+        }
+    }
 }

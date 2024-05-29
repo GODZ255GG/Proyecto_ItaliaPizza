@@ -35,17 +35,26 @@ CornerRadius="10">
     <ContentControl x:Name="contentControl">
         <Grid>
             <Rectangle HorizontalAlignment="Left" Height="834"  VerticalAlignment="Top" Width="960" Fill="White"/>
-            <Label Content="Compras de Inventario" HorizontalAlignment="Center" Margin="0,17,0,0" VerticalAlignment="Top" FontSize="40" FontFamily="Segoe UI Black" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
+            <Label Content="Compras de Insumos" HorizontalAlignment="Center" Margin="0,17,0,0" VerticalAlignment="Top" FontSize="40" FontFamily="Segoe UI Black" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
             <Rectangle HorizontalAlignment="Center" Height="4" Margin="0,85,0,0" VerticalAlignment="Top" Width="753" RenderTransformOrigin="0.5,0.5" Fill="#FF7CA886"/>
             <Image x:Name="imgRegresar" Source="/Image/back.png" HorizontalAlignment="Left" Height="45" Margin="31,26,0,0" VerticalAlignment="Top" Width="45" MouseLeftButtonDown="ImgRegresar_MouseLeftButtonDown"/>
-            <DataGrid x:Name="dgListaCompras" SelectionUnit="FullRow" AutoGenerateColumns="False" Margin="61,178,61,152" BorderThickness="5,5,5,5" IsReadOnly="True">
+            <DataGrid x:Name="dgListaCompras" AutoGenerateColumns="False" Margin="45,155,44,169" IsReadOnly="True" SelectionUnit="FullRow">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="ID Compra" Width="*" FontSize="15" Binding="{Binding CodigoInsumo}"/>
-                    <DataGridTextColumn Header="Inventario Comprado" Width="*" FontSize="15" Binding="{Binding Nombre}"/>
-                    <DataGridTextColumn Header="Fecha de Compra" Width="*" FontSize="15" Binding="{Binding UnidadDeMedida}"/>
+                    <DataGridTextColumn Header="ID Compra" Width="*" Binding="{Binding IdCompraDeInventario}"/>
+
+                    <DataGridTemplateColumn Header="Insumos Comprados" Width="*">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding InsumosConcatenados}" TextWrapping="Wrap"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                    <DataGridTextColumn Header="Fecha de la Compra" Width="*" Binding="{Binding FechaDeCompra}"/>
                 </DataGrid.Columns>
             </DataGrid>
-            <Button x:Name="btnRegistrarCompra" Content="Registrar" HorizontalAlignment="Left" VerticalAlignment="Top" Height="64" Width="225" Foreground="White" Background="#7CA886" FontSize="30" BorderThickness="0,0,0,0" Padding="10,10,10,10" UseLayoutRounding="True" ScrollViewer.CanContentScroll="True" FontWeight="Bold" Margin="674,714,0,0"/>
+            
+            <Button x:Name="btnRegistrarCompra" Content="Registrar" HorizontalAlignment="Left" VerticalAlignment="Top" Height="64" Width="225" Foreground="White" Background="#7CA886" FontSize="30" BorderThickness="0,0,0,0" Padding="10,10,10,10" UseLayoutRounding="True" ScrollViewer.CanContentScroll="True" FontWeight="Bold" Margin="674,714,0,0" Click="BtnRegistrarCompra_Click"/>
 
         </Grid>
     </ContentControl>

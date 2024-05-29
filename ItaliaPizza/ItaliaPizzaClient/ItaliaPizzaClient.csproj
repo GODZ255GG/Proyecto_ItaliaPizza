@@ -131,6 +131,9 @@
     <Compile Include="ModificarPedido.xaml.cs">
       <DependentUpon>ModificarPedido.xaml</DependentUpon>
     </Compile>
+    <Compile Include="RegistrarCompraInsumo.xaml.cs">
+      <DependentUpon>RegistrarCompraInsumo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RegistrarCorteDeCaja.xaml.cs">
       <DependentUpon>RegistrarCorteDeCaja.xaml</DependentUpon>
     </Compile>
@@ -240,6 +243,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="RegistrarCompraInsumo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="RegistrarCorteDeCaja.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -291,6 +298,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Connected Services\ItaliaPizzaServer\ItaliaPizzaClient.ItaliaPizzaServer.CompraDeInventario.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\ItaliaPizzaServer\ItaliaPizzaClient.ItaliaPizzaServer.CorteDeCaja.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>

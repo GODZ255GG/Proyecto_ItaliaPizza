@@ -56,6 +56,14 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IProcurementManager_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd0" namespace="http://tempuri.org/" />
@@ -274,6 +282,24 @@
   <wsdl:message name="ICashRecord_RecuperarInformacionDeCortesDeCaja_OutputMessage">
     <wsdl:part name="parameters" element="tns:RecuperarInformacionDeCortesDeCajaResponse" />
   </wsdl:message>
+  <wsdl:message name="IProcurementManager_RecuperarInsumosPorCategoria_InputMessage">
+    <wsdl:part name="parameters" element="tns:RecuperarInsumosPorCategoria" />
+  </wsdl:message>
+  <wsdl:message name="IProcurementManager_RecuperarInsumosPorCategoria_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RecuperarInsumosPorCategoriaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProcurementManager_RegistrarNuevaCompra_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarNuevaCompra" />
+  </wsdl:message>
+  <wsdl:message name="IProcurementManager_RegistrarNuevaCompra_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarNuevaCompraResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProcurementManager_RecuperarInformacionCompras_InputMessage">
+    <wsdl:part name="parameters" element="tns:RecuperarInformacionCompras" />
+  </wsdl:message>
+  <wsdl:message name="IProcurementManager_RecuperarInformacionCompras_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RecuperarInformacionComprasResponse" />
+  </wsdl:message>
   <wsdl:portType name="IProductManager">
     <wsdl:operation name="RegistrarProducto">
       <wsdl:input wsaw:Action="http://tempuri.org/IProductManager/RegistrarProducto" message="tns:IProductManager_RegistrarProducto_InputMessage" />
@@ -426,6 +452,20 @@
     <wsdl:operation name="RecuperarInformacionDeCortesDeCaja">
       <wsdl:input wsaw:Action="http://tempuri.org/ICashRecord/RecuperarInformacionDeCortesDeCaja" message="tns:ICashRecord_RecuperarInformacionDeCortesDeCaja_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ICashRecord/RecuperarInformacionDeCortesDeCajaResponse" message="tns:ICashRecord_RecuperarInformacionDeCortesDeCaja_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IProcurementManager">
+    <wsdl:operation name="RecuperarInsumosPorCategoria">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProcurementManager/RecuperarInsumosPorCategoria" message="tns:IProcurementManager_RecuperarInsumosPorCategoria_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProcurementManager/RecuperarInsumosPorCategoriaResponse" message="tns:IProcurementManager_RecuperarInsumosPorCategoria_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarNuevaCompra">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProcurementManager/RegistrarNuevaCompra" message="tns:IProcurementManager_RegistrarNuevaCompra_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProcurementManager/RegistrarNuevaCompraResponse" message="tns:IProcurementManager_RegistrarNuevaCompra_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarInformacionCompras">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProcurementManager/RecuperarInformacionCompras" message="tns:IProcurementManager_RecuperarInformacionCompras_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProcurementManager/RecuperarInformacionComprasResponse" message="tns:IProcurementManager_RecuperarInformacionCompras_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="NetTcpBinding_IProductManager" type="tns:IProductManager">
@@ -771,6 +811,37 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IProcurementManager" type="tns:IProcurementManager">
+    <wsp:PolicyReference URI="#NetTcpBinding_IProcurementManager_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="RecuperarInsumosPorCategoria">
+      <soap12:operation soapAction="http://tempuri.org/IProcurementManager/RecuperarInsumosPorCategoria" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarNuevaCompra">
+      <soap12:operation soapAction="http://tempuri.org/IProcurementManager/RegistrarNuevaCompra" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarInformacionCompras">
+      <soap12:operation soapAction="http://tempuri.org/IProcurementManager/RecuperarInformacionCompras" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
   <wsdl:service name="ItaliaPizzaService">
     <wsdl:port name="NetTcpBinding_IProductManager" binding="tns:NetTcpBinding_IProductManager">
       <soap12:address location="net.tcp://localhost:8081/Services" />
@@ -809,6 +880,12 @@
       </wsa10:EndpointReference>
     </wsdl:port>
     <wsdl:port name="NetTcpBinding_ICashRecord" binding="tns:NetTcpBinding_ICashRecord">
+      <soap12:address location="net.tcp://localhost:8081/Services" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8081/Services</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IProcurementManager" binding="tns:NetTcpBinding_IProcurementManager">
       <soap12:address location="net.tcp://localhost:8081/Services" />
       <wsa10:EndpointReference>
         <wsa10:Address>net.tcp://localhost:8081/Services</wsa10:Address>

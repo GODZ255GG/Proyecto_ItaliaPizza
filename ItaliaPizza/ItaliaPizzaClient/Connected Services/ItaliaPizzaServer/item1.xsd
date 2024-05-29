@@ -512,4 +512,43 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="RecuperarInsumosPorCategoria">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="categoria" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RecuperarInsumosPorCategoriaResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/Logic" minOccurs="0" name="RecuperarInsumosPorCategoriaResult" nillable="true" type="q19:ArrayOfInsumos" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegistrarNuevaCompra">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idProveedor" type="xs:int" />
+        <xs:element xmlns:q20="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="idInsumos" nillable="true" type="q20:ArrayOfint" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegistrarNuevaCompraResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RecuperarInformacionCompras">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RecuperarInformacionComprasResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/Logic" minOccurs="0" name="RecuperarInformacionComprasResult" nillable="true" type="q21:ArrayOfCompraDeInventario" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>
