@@ -42,6 +42,8 @@ C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\obj\Deb
 C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\obj\Debug\RegistrarStockProducto.g.cs
 C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\obj\Debug\RegistrarUsuario.g.cs
 C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\obj\Debug\Stock.g.cs
+C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\obj\Debug\VentanaCajero.g.cs
+C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\obj\Debug\VentanaCocinero.g.cs
 C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\obj\Debug\VentanaPrincipal.g.cs
 C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\obj\Debug\App.g.cs
 C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\obj\Debug\ItaliaPizzaClient_MarkupCompile.cache
@@ -74,6 +76,8 @@ C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\obj\Deb
 C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\obj\Debug\RegistrarStockProducto.baml
 C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\obj\Debug\RegistrarUsuario.baml
 C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\obj\Debug\Stock.baml
+C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\obj\Debug\VentanaCajero.baml
+C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\obj\Debug\VentanaCocinero.baml
 C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\obj\Debug\VentanaPrincipal.baml
 C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\obj\Debug\ItaliaPizzaClient.g.resources
 C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\obj\Debug\ItaliaPizzaClient.Properties.Resources.resources
