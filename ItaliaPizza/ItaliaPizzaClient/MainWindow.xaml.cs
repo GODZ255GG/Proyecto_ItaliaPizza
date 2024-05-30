@@ -4,6 +4,7 @@ using Logs;
 using System.ServiceModel;
 using System.Text.RegularExpressions;
 using System.Windows;
+using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 
 namespace ItaliaPizzaClient
 {
@@ -96,9 +97,7 @@ namespace ItaliaPizzaClient
                 string usuarioRol = Domain.Empleados.EmpleadosClient.Rol;
                 Utilidades.Utilidades.MostrarMensaje("Bienvenido " + nombre, "Inicio de Sesión exitoso", MessageBoxImage.Information);
 
-                VentanaPrincipal ventanaPrincipal = new VentanaPrincipal(usuarioRol);
-                ventanaPrincipal.Show();
-                this.Close();
+                MostrarVentanaPorRol(usuarioRol);
             }
             else
             {
@@ -123,6 +122,31 @@ namespace ItaliaPizzaClient
                 imgVerContraseña.Visibility = Visibility.Collapsed;
                 imgOcultarContraseña.Visibility = Visibility.Visible;
                 pbxContraseña.Password = tbxContraseña.Text;
+            }
+        }
+
+        public void MostrarVentanaPorRol(string Rol)
+        {
+            switch (Rol)
+            {
+                case "Gerente":
+                    VentanaPrincipal ventanaPrincipal = new VentanaPrincipal();
+                    ventanaPrincipal.Show();
+                    this.Close();
+                    break;
+                case "Cajero":
+                    VentanaCajero ventanaCajero = new VentanaCajero();
+                    ventanaCajero.Show();
+                    this.Close();
+                    break;
+                case "Cocinero":
+                    VentanaCocinero ventanaCocinero = new VentanaCocinero();
+                    ventanaCocinero.Show();
+                    this.Close();
+                    break;
+                default:
+                    Utilidades.Utilidades.MostrarMensaje("No tienes permisos para ingresar al sistema", "Permiso Denegado", MessageBoxImage.Warning);
+                    break;
             }
         }
 

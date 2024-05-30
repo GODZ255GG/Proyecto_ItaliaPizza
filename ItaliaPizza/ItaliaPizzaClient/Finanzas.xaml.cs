@@ -20,9 +20,11 @@ namespace ItaliaPizzaClient
     /// </summary>
     public partial class Finanzas : UserControl
     {
+        string rol = Domain.Empleados.EmpleadosClient.Rol;
         public Finanzas()
         {
             InitializeComponent();
+            OcultarBotones();
         }
 
         private void BtnProveedores_Click(object sender, RoutedEventArgs e)
@@ -33,6 +35,15 @@ namespace ItaliaPizzaClient
         private void BtnCorteDeCaja_Click(object sender, RoutedEventArgs e)
         {
             contentControl.Content = new ListaDeCortesDeCaja();
+        }
+
+        private void OcultarBotones()
+        {
+            if(rol == "Cajero")
+            {
+                btnProveedores.Visibility = Visibility.Collapsed;
+                btnCorteDeCaja.Margin = new Thickness(0, 137, 0, 0);
+            }
         }
     }
 }

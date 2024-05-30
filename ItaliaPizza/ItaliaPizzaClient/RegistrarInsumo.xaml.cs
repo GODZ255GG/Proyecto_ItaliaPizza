@@ -5,6 +5,7 @@ using System.ServiceModel;
 using System.Text.RegularExpressions;
 using System.Windows;
 using Logs;
+using System.Windows.Input;
 
 namespace ItaliaPizzaClient
 {
@@ -162,6 +163,18 @@ namespace ItaliaPizzaClient
 
             return true;
         }
-        #endregion        
+        #endregion
+
+        private void TbxNombre_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^a-zA-Z]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+
+        private void TbxMarca_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^a-zA-Z]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
     }
 }

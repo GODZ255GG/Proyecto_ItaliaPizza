@@ -160,6 +160,12 @@
       <DependentUpon>Stock.xaml</DependentUpon>
     </Compile>
     <Compile Include="Utilidades\Utilidades.cs" />
+    <Compile Include="VentanaCajero.xaml.cs">
+      <DependentUpon>VentanaCajero.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VentanaCocinero.xaml.cs">
+      <DependentUpon>VentanaCocinero.xaml</DependentUpon>
+    </Compile>
     <Compile Include="VentanaPrincipal.xaml.cs">
       <DependentUpon>VentanaPrincipal.xaml</DependentUpon>
     </Compile>
@@ -280,6 +286,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Stock.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VentanaCajero.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VentanaCocinero.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

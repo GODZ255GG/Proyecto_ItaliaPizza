@@ -42,7 +42,7 @@ namespace ItaliaPizzaClient.Utilidades
         public static int GenerarCodigo()
         {
             Random random = new Random();
-            int numeroAleatorio = random.Next(1000, 10000);
+            int numeroAleatorio = random.Next(100, 999);
             return numeroAleatorio;
         }        
     }
