@@ -52,7 +52,7 @@ namespace ItaliaPizzaClient
 
             if (!CamposVacios())
             {
-                if (StringValidos(nombre, marca, precio))
+                if (StringValidos(nombre, marca))
                 {
                     try
                     {
@@ -97,6 +97,12 @@ namespace ItaliaPizzaClient
             var tipo = cbxTipo.Text;
             var precio = tbxPrecio.Text;
 
+            if (!IsValidDecimal(tbxPrecio.Text))
+            {
+                MessageBox.Show("Ingrese un número válido en el campo del precio", "Entrada inválida", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
             if (!double.TryParse(precio, out double precioDouble))
             {
                 Utilidades.Utilidades.MostrarMensaje("El precio debe ser un número válido.", "Error de formato del precio", MessageBoxImage.Error);
@@ -137,11 +143,10 @@ namespace ItaliaPizzaClient
             return false;
         }
 
-        private bool StringValidos(string nombre, string marca, string precio)
+        private bool StringValidos(string nombre, string marca)
         {
             if (!Regex.IsMatch(nombre, @"^[a-zA-Z0-9\s\-.,'()ñÑáéíóúÁÉÍÓÚ]+$") ||
-                !Regex.IsMatch(marca, @"^[a-zA-Z0-9\s\-.,'()ñÑáéíóúÁÉÍÓÚ]+$") ||
-                !Regex.IsMatch(precio, @"^[0-9]+(\.[0-9]+)?$"))
+                !Regex.IsMatch(marca, @"^[a-zA-Z0-9\s\-.,'()ñÑáéíóúÁÉÍÓÚ]+$"))
             {
                 return false;
             }
@@ -165,6 +170,19 @@ namespace ItaliaPizzaClient
         {
             Regex regex = new Regex("[^a-zA-Z]+");
             e.Handled = regex.IsMatch(e.Text);
+        }
+
+        private void TbxPrecio_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!IsValidDecimal(e.Text))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private bool IsValidDecimal(string input)
+        {
+            return System.Text.RegularExpressions.Regex.IsMatch(input, @"^[0-9]*\.?[0-9]{0,2}$");
         }
     }
 }
