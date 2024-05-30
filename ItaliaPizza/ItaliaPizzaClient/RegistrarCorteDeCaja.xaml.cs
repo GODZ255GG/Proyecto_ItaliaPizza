@@ -23,6 +23,8 @@ namespace ItaliaPizzaClient
     public partial class RegistrarCorteDeCaja : Window
     {
         ItaliaPizzaServer.OrderManagerClient pedidosServer = new ItaliaPizzaServer.OrderManagerClient();
+        ItaliaPizzaServer.CashRecordClient cortesDeCajaServer = new ItaliaPizzaServer.CashRecordClient();
+
         public RegistrarCorteDeCaja()
         {
             InitializeComponent();
@@ -129,9 +131,24 @@ namespace ItaliaPizzaClient
             float totalIngresos = (float)Math.Round(float.Parse(lbVentasTotales.Content.ToString().Replace("$", "").Trim()), 2);
             float dineroRestante = (float)Math.Round(float.Parse(tbxDineroEnCaja.Text), 2);
 
-
             try
             {
+                var cortesDesdeBD = cortesDeCajaServer.RecuperarInformacionDeCortesDeCaja();
+
+                bool corteExistente = cortesDesdeBD.Any(corte => corte.FechaCorteDeCaja.Date == fechaCorteDeCaja.Date);
+
+
+                if (totalIngresos <= 0)
+                {
+                    MessageBox.Show("No hay ventas realizadas", "Ingreso inválido", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+                else if (corteExistente)
+                {
+                    MessageBox.Show("Ya existe un corte de caja registrado el día de hoy.", "Corte de caja duplicado", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+
                 ItaliaPizzaServer.CashRecordClient corteDeCajaClient = new ItaliaPizzaServer.CashRecordClient();
                 corteDeCajaClient.RegistrarNuevoCorteDeCaja(fechaCorteDeCaja, totalIngresos, dineroRestante, turno);
                 MessageBox.Show("El corte de caja se ha registrado exitosamente.", "Registro exitoso", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -170,7 +187,7 @@ namespace ItaliaPizzaClient
 
         private bool IsValidDecimal(string input)
         {
-            return System.Text.RegularExpressions.Regex.IsMatch(input, @"^\d*\.?\d{0,2}$");
+            return System.Text.RegularExpressions.Regex.IsMatch(input, @"^[0-9]*\.?[0-9]{0,2}$");
         }
     }
 }
