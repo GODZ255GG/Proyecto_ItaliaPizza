@@ -22,11 +22,11 @@ namespace Logic
             {
                 DataAccess.Proveedores nuevoProveedor = new DataAccess.Proveedores()
                 {
-                    nombreCompañia = proveedor.NombreCompañia,
+                    nombreCompania = proveedor.NombreCompañia,
                     nombreDelContacto = proveedor.NombreContacto,
                     telefono = proveedor.Telefono,
                     ciudad = proveedor.Ciudad,
-                    dirección = proveedor.Direccion,
+                    direccion = proveedor.Direccion,
                     estado = proveedor.Estado,
                     categoriaProveedor = proveedor.CategoriaProveedor
                 };
@@ -47,11 +47,11 @@ namespace Logic
                                               select new Proveedor
                                               {
                                                   IdProveedores = proveedor.idProveedores,
-                                                  NombreCompañia = proveedor.nombreCompañia,
+                                                  NombreCompañia = proveedor.nombreCompania,
                                                   NombreContacto = proveedor.nombreDelContacto,
                                                   Telefono = proveedor.telefono,
                                                   Ciudad = proveedor.ciudad,
-                                                  Direccion = proveedor.dirección,
+                                                  Direccion = proveedor.direccion,
                                                   Estado = proveedor.estado,
                                                   CategoriaProveedor = proveedor.categoriaProveedor
                                               });
@@ -102,11 +102,11 @@ namespace Logic
                     var proveedor = context.Proveedores.FirstOrDefault(p => p.idProveedores == idProveedor);
                     if (proveedor != null)
                     {
-                        proveedor.nombreCompañia = nuevoNombreCompañia;
+                        proveedor.nombreCompania = nuevoNombreCompañia;
                         proveedor.nombreDelContacto = nuevoNombreContacto;
                         proveedor.telefono = nuevoTelefono;
                         proveedor.ciudad = nuevaCiudad;
-                        proveedor.dirección = nuevaDireccion;
+                        proveedor.direccion = nuevaDireccion;
                         proveedor.estado = nuevoEstado;
                         proveedor.categoriaProveedor = nuevaCategoriaProveedor;
                         context.SaveChanges();
@@ -128,7 +128,7 @@ namespace Logic
             {
                 using (var context = new BDItaliaPizzaEntities())
                 {
-                    var cantidad = context.Proveedores.Count(p => p.nombreCompañia == nombreCompañia);
+                    var cantidad = context.Proveedores.Count(p => p.nombreCompania == nombreCompañia);
                     if (cantidad > 0)
                     {
                         resultado = true;

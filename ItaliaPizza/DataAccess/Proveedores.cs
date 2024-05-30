@@ -14,22 +14,13 @@ namespace DataAccess
     
     public partial class Proveedores
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Proveedores()
-        {
-            this.CompraDeInventario = new HashSet<CompraDeInventario>();
-        }
-    
         public int idProveedores { get; set; }
-        public string nombreCompañia { get; set; }
+        public string nombreCompania { get; set; }
         public string nombreDelContacto { get; set; }
         public string telefono { get; set; }
-        public string dirección { get; set; }
+        public string direccion { get; set; }
         public string ciudad { get; set; }
         public string estado { get; set; }
         public string categoriaProveedor { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CompraDeInventario> CompraDeInventario { get; set; }
     }
 }

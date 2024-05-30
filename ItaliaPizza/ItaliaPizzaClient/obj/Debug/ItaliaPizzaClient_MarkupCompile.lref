@@ -8,7 +8,6 @@ FC:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\Consul
 FC:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\DetallesPedido.xaml;;
 FC:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\Finanzas.xaml;;
 FC:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\Inventario.xaml;;
-FC:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\ListaCompras.xaml;;
 FC:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\ListaDeCortesDeCaja.xaml;;
 FC:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\ListaInsumos.xaml;;
 FC:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\ListaPedidos.xaml;;
@@ -19,13 +18,15 @@ FC:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\MainWi
 FC:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\ModificarEmpleado.xaml;;
 FC:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\ModificarEstadoDePedido.xaml;;
 FC:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\ModificarPedido.xaml;;
-FC:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\RegistrarCompraInsumo.xaml;;
 FC:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\RegistrarCorteDeCaja.xaml;;
 FC:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\RegistrarInsumo.xaml;;
 FC:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\RegistrarPedidos.xaml;;
 FC:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\RegistrarProducto.xaml;;
 FC:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\RegistrarProveedor.xaml;;
 FC:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\RegistrarRecetas.xaml;;
+FC:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\RegistrarStockInsumo.xaml;;
+FC:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\RegistrarStockProducto.xaml;;
 FC:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\RegistrarUsuario.xaml;;
+FC:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\Stock.xaml;;
 FC:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\ItaliaPizzaClient\VentanaPrincipal.xaml;;
 

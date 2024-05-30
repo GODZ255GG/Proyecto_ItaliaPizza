@@ -26,7 +26,7 @@ namespace DataAccess
         public string apellidoPaterno { get; set; }
         public string telefono { get; set; }
         public string correo { get; set; }
-        public string contraseña { get; set; }
+        public string contrasena { get; set; }
         public string foto { get; set; }
         public string rol { get; set; }
     

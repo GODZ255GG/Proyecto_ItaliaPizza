@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ServiceModel;
 using System.Text.RegularExpressions;
 using System.Windows;
+using System.Windows.Input;
 
 namespace ItaliaPizzaClient
 {
@@ -136,7 +137,7 @@ namespace ItaliaPizzaClient
         {
             if (!CamposVacios())
             {
-                if (StringValidos(nombre, marca))
+                if (StringValidos(nombre, marca, precio))
                 {
                     try
                     {
@@ -205,10 +206,11 @@ namespace ItaliaPizzaClient
             return false;
         }
 
-        private bool StringValidos(string nombre, string marca)
+        private bool StringValidos(string nombre, string marca, string precio)
         {
-            if (!Regex.IsMatch(nombre, @"^[a-zA-Z\s\-.,'()ñÑáéíóúÁÉÍÓÚ]+$") ||
-                !Regex.IsMatch(marca, @"^[a-zA-Z\s\-.,'()ñÑáéíóúÁÉÍÓÚ]+$"))
+            if (!Regex.IsMatch(nombre, @"^[a-zA-Z0-9\s\-.,'()ñÑáéíóúÁÉÍÓÚ]+$") ||
+                !Regex.IsMatch(marca, @"^[a-zA-Z0-9\s\-.,'()ñÑáéíóúÁÉÍÓÚ]+$") ||
+                !Regex.IsMatch(precio, @"^[0-9]+(\.[0-9]+)?$"))
             {
                 return false;
             }
@@ -221,5 +223,17 @@ namespace ItaliaPizzaClient
             return true;
         }
         #endregion
+
+        private void TbxNombre_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^a-zA-Z]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+
+        private void TbxMarca_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^a-zA-Z]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
     }
 }

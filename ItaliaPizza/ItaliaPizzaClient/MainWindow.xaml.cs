@@ -93,9 +93,10 @@ namespace ItaliaPizzaClient
                 };
 
                 string nombre = Domain.Empleados.EmpleadosClient.Nombre;
+                string usuarioRol = Domain.Empleados.EmpleadosClient.Rol;
                 Utilidades.Utilidades.MostrarMensaje("Bienvenido " + nombre, "Inicio de Sesión exitoso", MessageBoxImage.Information);
 
-                VentanaPrincipal ventanaPrincipal = new VentanaPrincipal();
+                VentanaPrincipal ventanaPrincipal = new VentanaPrincipal(usuarioRol);
                 ventanaPrincipal.Show();
                 this.Close();
             }

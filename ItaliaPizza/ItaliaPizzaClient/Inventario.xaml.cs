@@ -34,5 +34,10 @@ namespace ItaliaPizzaClient
         {
             contentControl.Content = new ListaInsumos();
         }
+
+        private void BtnStock_Click(object sender, RoutedEventArgs e)
+        {
+            contentControl.Content = new Stock();
+        }
     }
 }

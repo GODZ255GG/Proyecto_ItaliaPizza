@@ -39,9 +39,9 @@
     <Grid Background="#FFD2D2D2">
         <Button x:Name="btnCancelar" Content="Cancelar" HorizontalAlignment="Left" Margin="71,420,0,0" VerticalAlignment="Top" Height="43" Width="118" Foreground="White" Background="#7CA886" FontSize="25" BorderThickness="0,0,0,0" Padding="10,10,10,10" UseLayoutRounding="True" ScrollViewer.CanContentScroll="True" FontWeight="Bold" Click="BtnCancelar_Click"/>
         <Button x:Name="btnAceptar" Content="Aceptar" HorizontalAlignment="Left" Margin="406,420,0,0" VerticalAlignment="Top" Height="43" Width="118" Foreground="White" Background="#7CA886" FontSize="25" BorderThickness="0,0,0,0" Padding="10,10,10,10" UseLayoutRounding="True" ScrollViewer.CanContentScroll="True" FontWeight="Bold" Click="BtnAceptar_Click"/>
-        <TextBox x:Name="tbxNombre" HorizontalAlignment="Left" Margin="41,219,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="214" Height="34" FontSize="16" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="tbxNombre" HorizontalAlignment="Left" Margin="41,219,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="214" Height="34" FontSize="16" VerticalContentAlignment="Center" PreviewTextInput="TbxNombre_PreviewTextInput"/>
         <Label Content="Nombre: " HorizontalAlignment="Left" Margin="41,185,0,0" VerticalAlignment="Top" FontSize="18"/>
-        <TextBox x:Name="tbxMarca" HorizontalAlignment="Left" Margin="345,219,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="214" Height="34" FontSize="16" VerticalContentAlignment="Center"/>
+        <TextBox x:Name="tbxMarca" HorizontalAlignment="Left" Margin="345,219,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="214" Height="34" FontSize="16" VerticalContentAlignment="Center" PreviewTextInput="TbxMarca_PreviewTextInput"/>
         <Label Content="Marca: " HorizontalAlignment="Left" Margin="345,185,0,0" VerticalAlignment="Top" FontSize="18"/>
         <TextBox x:Name="tbxCodigoProducto" HorizontalAlignment="Left" Margin="199,128,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="214" Height="34" FontSize="16" VerticalContentAlignment="Center" IsReadOnly="True"/>
         <Label Content="Precio: " HorizontalAlignment="Left" Margin="345,295,0,0" VerticalAlignment="Top" FontSize="18"/>

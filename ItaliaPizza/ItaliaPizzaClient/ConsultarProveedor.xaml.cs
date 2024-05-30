@@ -1,19 +1,12 @@
 ﻿using ItaliaPizzaClient.ItaliaPizzaServer;
+using log4net;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.ServiceModel;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using Logs;
 
 namespace ItaliaPizzaClient
 {
@@ -22,6 +15,7 @@ namespace ItaliaPizzaClient
     /// </summary>
     public partial class ConsultarProveedor : Window
     {
+        private static readonly ILog Log = Logger.GetLogger();
         SupplierManagerClient proveedor = new SupplierManagerClient();
 
         private int idProveedor;
@@ -149,18 +143,22 @@ namespace ItaliaPizzaClient
                 }
                 catch (EndpointNotFoundException ex)
                 {
-                    MessageBox.Show("Por el momento no hay conexión con la base de datos, por favor inténtelo más tarde",
-                        "Error de conexión con base de datos", MessageBoxButton.OK, MessageBoxImage.Error);
+                    Log.Error($"{ex.Message}");
+                    Utilidades.Utilidades.MostrarMensajeEndpointNotFoundException();
                 }
                 catch (CommunicationException ex)
                 {
-                    MessageBox.Show("Se produjo un error de comunicación al intentar acceder a un recurso remoto. Intente de nuevo",
-                        "Problema de comunicación", MessageBoxButton.OK, MessageBoxImage.Error);
+                    Log.Error($"{ex.Message}");
+                    Utilidades.Utilidades.MostrarMensajeCommunicationException();
                 }
                 catch (TimeoutException ex)
                 {
-                    MessageBox.Show("La operación que intentaba realizar ha superado el tiempo de espera establecido y no pudo completarse en el tiempo especificado. Intente de nuevo",
-                        "Tiempo de espera agotado", MessageBoxButton.OK, MessageBoxImage.Error);
+                    Log.Error($"{ex.Message}");
+                    Utilidades.Utilidades.MostrarMensajeTimeoutException();
+                }
+                catch (Exception ex)
+                {
+                    Utilidades.Utilidades.MostrarMensaje($"Ocurrió un error inesperado: {ex.Message}", "Error", MessageBoxImage.Error);
                 }
             }
         }
@@ -232,17 +230,24 @@ namespace ItaliaPizzaClient
                 MessageBox.Show("Proveedor se ha actualizado exitosamente", "Actualización exitosa", MessageBoxButton.OK, MessageBoxImage.Information);
                 this.Close();
             }
-            catch (EndpointNotFoundException)
+            catch (EndpointNotFoundException ex)
             {
-                MessageBox.Show("Por el momento no hay conexión con la base de datos, por favor inténtelo más tarde", "Error de conexión con base de datos", MessageBoxButton.OK, MessageBoxImage.Error);
+                Log.Error($"{ex.Message}");
+                Utilidades.Utilidades.MostrarMensajeEndpointNotFoundException();
             }
-            catch (CommunicationException)
+            catch (CommunicationException ex)
             {
-                MessageBox.Show("Se produjo un error de comunicación al intentar acceder a un recurso remoto. Intente de nuevo", "Problema de comunicación", MessageBoxButton.OK, MessageBoxImage.Error);
+                Log.Error($"{ex.Message}");
+                Utilidades.Utilidades.MostrarMensajeCommunicationException();
             }
-            catch (TimeoutException)
+            catch (TimeoutException ex)
             {
-                MessageBox.Show("La operación que intentaba realizar ha superado el tiempo de espera establecido y no pudo completarse en el tiempo especificado. Intente de nuevo", "Tiempo de espera agotado", MessageBoxButton.OK, MessageBoxImage.Error);
+                Log.Error($"{ex.Message}");
+                Utilidades.Utilidades.MostrarMensajeTimeoutException();
+            }
+            catch (Exception ex)
+            {
+                Utilidades.Utilidades.MostrarMensaje($"Ocurrió un error inesperado: {ex.Message}", "Error", MessageBoxImage.Error);
             }
         }
 

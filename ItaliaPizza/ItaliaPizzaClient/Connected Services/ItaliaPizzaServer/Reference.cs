@@ -329,6 +329,99 @@ namespace ItaliaPizzaClient.ItaliaPizzaServer {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Cliente", Namespace="http://schemas.datacontract.org/2004/07/Logic")]
+    [System.SerializableAttribute()]
+    public partial class Cliente : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdEmpleadosField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NombreField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string RolField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TelefonoField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IdEmpleados {
+            get {
+                return this.IdEmpleadosField;
+            }
+            set {
+                if ((this.IdEmpleadosField.Equals(value) != true)) {
+                    this.IdEmpleadosField = value;
+                    this.RaisePropertyChanged("IdEmpleados");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Nombre {
+            get {
+                return this.NombreField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NombreField, value) != true)) {
+                    this.NombreField = value;
+                    this.RaisePropertyChanged("Nombre");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Rol {
+            get {
+                return this.RolField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.RolField, value) != true)) {
+                    this.RolField = value;
+                    this.RaisePropertyChanged("Rol");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Telefono {
+            get {
+                return this.TelefonoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TelefonoField, value) != true)) {
+                    this.TelefonoField = value;
+                    this.RaisePropertyChanged("Telefono");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Proveedor", Namespace="http://schemas.datacontract.org/2004/07/Logic")]
     [System.SerializableAttribute()]
     public partial class Proveedor : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -984,83 +1077,6 @@ namespace ItaliaPizzaClient.ItaliaPizzaServer {
         }
     }
     
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="CompraDeInventario", Namespace="http://schemas.datacontract.org/2004/07/Logic")]
-    [System.SerializableAttribute()]
-    public partial class CompraDeInventario : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime FechaDeCompraField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdCompraDeInventarioField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string InsumosConcatenadosField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime FechaDeCompra {
-            get {
-                return this.FechaDeCompraField;
-            }
-            set {
-                if ((this.FechaDeCompraField.Equals(value) != true)) {
-                    this.FechaDeCompraField = value;
-                    this.RaisePropertyChanged("FechaDeCompra");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int IdCompraDeInventario {
-            get {
-                return this.IdCompraDeInventarioField;
-            }
-            set {
-                if ((this.IdCompraDeInventarioField.Equals(value) != true)) {
-                    this.IdCompraDeInventarioField = value;
-                    this.RaisePropertyChanged("IdCompraDeInventario");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string InsumosConcatenados {
-            get {
-                return this.InsumosConcatenadosField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.InsumosConcatenadosField, value) != true)) {
-                    this.InsumosConcatenadosField = value;
-                    this.RaisePropertyChanged("InsumosConcatenados");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ItaliaPizzaServer.IProductManager")]
     public interface IProductManager {
@@ -1180,6 +1196,12 @@ namespace ItaliaPizzaClient.ItaliaPizzaServer {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/RegistrarEmpleado", ReplyAction="http://tempuri.org/IUserManager/RegistrarEmpleadoResponse")]
         System.Threading.Tasks.Task<bool> RegistrarEmpleadoAsync(ItaliaPizzaClient.ItaliaPizzaServer.Empleados usuarios);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/RegistrarClientes", ReplyAction="http://tempuri.org/IUserManager/RegistrarClientesResponse")]
+        bool RegistrarClientes(ItaliaPizzaClient.ItaliaPizzaServer.Cliente usuarios);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/RegistrarClientes", ReplyAction="http://tempuri.org/IUserManager/RegistrarClientesResponse")]
+        System.Threading.Tasks.Task<bool> RegistrarClientesAsync(ItaliaPizzaClient.ItaliaPizzaServer.Cliente usuarios);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/UsuarioYaRegistrado", ReplyAction="http://tempuri.org/IUserManager/UsuarioYaRegistradoResponse")]
         bool UsuarioYaRegistrado(string correo);
         
@@ -1246,6 +1268,14 @@ namespace ItaliaPizzaClient.ItaliaPizzaServer {
         
         public System.Threading.Tasks.Task<bool> RegistrarEmpleadoAsync(ItaliaPizzaClient.ItaliaPizzaServer.Empleados usuarios) {
             return base.Channel.RegistrarEmpleadoAsync(usuarios);
+        }
+        
+        public bool RegistrarClientes(ItaliaPizzaClient.ItaliaPizzaServer.Cliente usuarios) {
+            return base.Channel.RegistrarClientes(usuarios);
+        }
+        
+        public System.Threading.Tasks.Task<bool> RegistrarClientesAsync(ItaliaPizzaClient.ItaliaPizzaServer.Cliente usuarios) {
+            return base.Channel.RegistrarClientesAsync(usuarios);
         }
         
         public bool UsuarioYaRegistrado(string correo) {
@@ -1779,81 +1809,6 @@ namespace ItaliaPizzaClient.ItaliaPizzaServer {
         
         public System.Threading.Tasks.Task<ItaliaPizzaClient.ItaliaPizzaServer.CorteDeCaja[]> RecuperarInformacionDeCortesDeCajaAsync() {
             return base.Channel.RecuperarInformacionDeCortesDeCajaAsync();
-        }
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ItaliaPizzaServer.IProcurementManager")]
-    public interface IProcurementManager {
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcurementManager/RecuperarInsumosPorCategoria", ReplyAction="http://tempuri.org/IProcurementManager/RecuperarInsumosPorCategoriaResponse")]
-        ItaliaPizzaClient.ItaliaPizzaServer.Insumos[] RecuperarInsumosPorCategoria(string categoria);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcurementManager/RecuperarInsumosPorCategoria", ReplyAction="http://tempuri.org/IProcurementManager/RecuperarInsumosPorCategoriaResponse")]
-        System.Threading.Tasks.Task<ItaliaPizzaClient.ItaliaPizzaServer.Insumos[]> RecuperarInsumosPorCategoriaAsync(string categoria);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcurementManager/RegistrarNuevaCompra", ReplyAction="http://tempuri.org/IProcurementManager/RegistrarNuevaCompraResponse")]
-        void RegistrarNuevaCompra(int idProveedor, int[] idInsumos);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcurementManager/RegistrarNuevaCompra", ReplyAction="http://tempuri.org/IProcurementManager/RegistrarNuevaCompraResponse")]
-        System.Threading.Tasks.Task RegistrarNuevaCompraAsync(int idProveedor, int[] idInsumos);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcurementManager/RecuperarInformacionCompras", ReplyAction="http://tempuri.org/IProcurementManager/RecuperarInformacionComprasResponse")]
-        ItaliaPizzaClient.ItaliaPizzaServer.CompraDeInventario[] RecuperarInformacionCompras();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProcurementManager/RecuperarInformacionCompras", ReplyAction="http://tempuri.org/IProcurementManager/RecuperarInformacionComprasResponse")]
-        System.Threading.Tasks.Task<ItaliaPizzaClient.ItaliaPizzaServer.CompraDeInventario[]> RecuperarInformacionComprasAsync();
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IProcurementManagerChannel : ItaliaPizzaClient.ItaliaPizzaServer.IProcurementManager, System.ServiceModel.IClientChannel {
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class ProcurementManagerClient : System.ServiceModel.ClientBase<ItaliaPizzaClient.ItaliaPizzaServer.IProcurementManager>, ItaliaPizzaClient.ItaliaPizzaServer.IProcurementManager {
-        
-        public ProcurementManagerClient() {
-        }
-        
-        public ProcurementManagerClient(string endpointConfigurationName) : 
-                base(endpointConfigurationName) {
-        }
-        
-        public ProcurementManagerClient(string endpointConfigurationName, string remoteAddress) : 
-                base(endpointConfigurationName, remoteAddress) {
-        }
-        
-        public ProcurementManagerClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(endpointConfigurationName, remoteAddress) {
-        }
-        
-        public ProcurementManagerClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(binding, remoteAddress) {
-        }
-        
-        public ItaliaPizzaClient.ItaliaPizzaServer.Insumos[] RecuperarInsumosPorCategoria(string categoria) {
-            return base.Channel.RecuperarInsumosPorCategoria(categoria);
-        }
-        
-        public System.Threading.Tasks.Task<ItaliaPizzaClient.ItaliaPizzaServer.Insumos[]> RecuperarInsumosPorCategoriaAsync(string categoria) {
-            return base.Channel.RecuperarInsumosPorCategoriaAsync(categoria);
-        }
-        
-        public void RegistrarNuevaCompra(int idProveedor, int[] idInsumos) {
-            base.Channel.RegistrarNuevaCompra(idProveedor, idInsumos);
-        }
-        
-        public System.Threading.Tasks.Task RegistrarNuevaCompraAsync(int idProveedor, int[] idInsumos) {
-            return base.Channel.RegistrarNuevaCompraAsync(idProveedor, idInsumos);
-        }
-        
-        public ItaliaPizzaClient.ItaliaPizzaServer.CompraDeInventario[] RecuperarInformacionCompras() {
-            return base.Channel.RecuperarInformacionCompras();
-        }
-        
-        public System.Threading.Tasks.Task<ItaliaPizzaClient.ItaliaPizzaServer.CompraDeInventario[]> RecuperarInformacionComprasAsync() {
-            return base.Channel.RecuperarInformacionComprasAsync();
         }
     }
 }

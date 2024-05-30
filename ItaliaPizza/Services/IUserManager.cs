@@ -15,6 +15,9 @@ namespace Services
         Logic.Empleados IniciarSesion(String correo, String contraseña);
         [OperationContract]
         bool RegistrarEmpleado(Empleados usuarios);
+
+        [OperationContract]
+        bool RegistrarClientes(Cliente usuarios);
         [OperationContract]
         bool UsuarioYaRegistrado(string correo);
         [OperationContract]

@@ -14,20 +14,55 @@ using System.Windows.Shapes;
 
 namespace ItaliaPizzaClient
 {
-    /// <summary>
-    /// Lógica de interacción para VentanaPrincipal.xaml
-    /// </summary>
     public partial class VentanaPrincipal : Window
     {
-        public VentanaPrincipal()
+        private string usuarioRol;
+
+        public VentanaPrincipal(string rol)
         {
             InitializeComponent();
+            usuarioRol = rol;
             MostrarInformacionUsuario();
+            EstablecerVisibilidadBotones();
         }
 
         private void MostrarInformacionUsuario()
         {
-            lbNombreUsuario.Content = ("Hola " + Domain.Empleados.EmpleadosClient.Nombre);
+            lbNombreUsuario.Content = $"Hola {Domain.Empleados.EmpleadosClient.Nombre}";
+        }
+
+        private void EstablecerVisibilidadBotones()
+        {
+            switch (usuarioRol)
+            {
+                case "Gerente":
+                    btnUsuarios.Visibility = Visibility.Visible;
+                    btnPedidos.Visibility = Visibility.Visible;
+                    btnInventario.Visibility = Visibility.Visible;
+                    btnRecetas.Visibility = Visibility.Visible;
+                    btnFinanzas.Visibility = Visibility.Visible;
+                    break;
+                case "Cajero":
+                    btnPedidos.Visibility = Visibility.Visible;
+                    btnInventario.Visibility = Visibility.Visible;
+                    btnFinanzas.Visibility = Visibility.Visible;
+                    break;
+                case "Cocinero":
+                    btnPedidos.Visibility = Visibility.Visible;
+                    btnRecetas.Visibility = Visibility.Visible;
+                    break;
+                case "Cliente":
+                    // Si no quieres mostrar ningún botón para el cliente, deja todo oculto
+                    break;
+                default:
+                    // Oculta todos los botones si el rol no coincide con ninguno conocido
+                    btnUsuarios.Visibility = Visibility.Collapsed;
+                    btnPedidos.Visibility = Visibility.Collapsed;
+                    btnInventario.Visibility = Visibility.Collapsed;
+                    btnRecetas.Visibility = Visibility.Collapsed;
+                    btnFinanzas.Visibility = Visibility.Collapsed;
+                    break;
+            }
         }
 
         private void BtnUsuarios_Click(object sender, RoutedEventArgs e)

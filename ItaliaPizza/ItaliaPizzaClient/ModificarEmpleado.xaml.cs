@@ -21,11 +21,10 @@ namespace ItaliaPizzaClient
         private string ApellidoMaterno;
         private string Correo;
         private string Rol;
-        private string contrasena;
+        private string contrasena;  // Mantén la contraseña existente aquí
+
         public ModificarEmpleado(Empleados usuarios)
         {
-
-
             InitializeComponent();
             Loaded += CbxTipo_Loaded;
             tbxNombre.Text = usuarios.Nombre;
@@ -34,37 +33,28 @@ namespace ItaliaPizzaClient
             tbxCorreo.Text = usuarios.Correo;
             cbxTipo.SelectedItem = usuarios.Rol;
             idEmpleados = usuarios.IdEmpleados;
-
+            contrasena = usuarios.Contraseña;  // Almacena la contraseña existente
         }
+
         private void BtnEliminar_Click(object sender, RoutedEventArgs e)
         {
             MessageBoxResult resultado = MessageBox.Show("¿Está seguro que desea eliminar este Usuario?", "Confirmar eliminación", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (resultado == MessageBoxResult.Yes)
             {
-
                 usuario.EliminarEmpleados(idEmpleados);
                 MessageBox.Show("Usuario eliminado correctamente", "Eliminación exitosa", MessageBoxButton.OK, MessageBoxImage.Information);
                 this.Close();
-
-
             }
         }
 
         private void BtnAceptar_Click(object sender, RoutedEventArgs e)
         {
-            string nuevoNombre;
-            string nuevoApellidoP;
-            string nuevoApellidoM;
-            string nuevoRol;
-            string nuevoCorreo;
-            string nuevaContrasena;
-
-            nuevoNombre = tbxNombre.Text;
-            nuevoApellidoP = tbxApellidoP.Text;
-            nuevoApellidoM = tbxApellidoM.Text;
-            nuevoRol = cbxTipo.Text;
-            nuevoCorreo = tbxCorreo.Text;
-            nuevaContrasena = txtPassword.Password;
+            string nuevoNombre = tbxNombre.Text;
+            string nuevoApellidoP = tbxApellidoP.Text;
+            string nuevoApellidoM = tbxApellidoM.Text;
+            string nuevoRol = cbxTipo.Text;
+            string nuevoCorreo = tbxCorreo.Text;
+            string nuevaContrasena = txtPassword.Password;
 
             Debug.WriteLine($"Nombre: {tbxNombre.Text}");
             Debug.WriteLine($"Apellido Paterno: {tbxApellidoP.Text}");
@@ -78,6 +68,12 @@ namespace ItaliaPizzaClient
                 {
                     try
                     {
+                        // Si no se ha ingresado una nueva contraseña, usa la contraseña existente
+                        if (string.IsNullOrWhiteSpace(nuevaContrasena))
+                        {
+                            nuevaContrasena = contrasena;
+                        }
+
                         usuario.ActualizarEmpleado(idEmpleados, nuevoNombre, nuevoApellidoP, nuevoApellidoM, nuevoCorreo, nuevaContrasena);
                         MessageBox.Show("El cliente se ha actualizado exitosamente", "Actualización exitosa", MessageBoxButton.OK, MessageBoxImage.Information);
                         this.Close();
@@ -109,15 +105,14 @@ namespace ItaliaPizzaClient
         private void CbxTipo_Loaded(object sender, RoutedEventArgs e)
         {
             List<string> items = new List<string>
-            {
-                "Gerente",
-                "Cajero",
-                "Cocinero",
-                "Cliente"
-            };
+        {
+            "Gerente",
+            "Cajero",
+            "Cocinero",
+            "Cliente"
+        };
             cbxTipo.ItemsSource = items;
         }
-
 
         #region Validaciones
         public bool CamposVacios()
@@ -129,7 +124,6 @@ namespace ItaliaPizzaClient
             }
             return true;
         }
-
 
         public bool StringValidos(string nombre, string apellidoPaterno, string apellidoMaterno)
         {
@@ -158,8 +152,5 @@ namespace ItaliaPizzaClient
             return false;
         }
         #endregion
-
-
     }
 }
-

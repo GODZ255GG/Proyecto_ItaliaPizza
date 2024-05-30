@@ -40,12 +40,7 @@
                     <ImageBrush ImageSource="Image\proveedor.png"/>
                 </Button.Background>
             </Button>
-            <Button x:Name="btnCompra" Content="Compra de Insumos" HorizontalAlignment="Center" VerticalAlignment="Top" Height="176" Width="630" Foreground="White" FontSize="48" BorderThickness="0,0,0,0" Padding="10,10,10,10" UseLayoutRounding="True" ScrollViewer.CanContentScroll="True" FontWeight="Bold" Margin="0,362,0,0" Click="BtnCompra_Click">
-                <Button.Background>
-                    <ImageBrush ImageSource="Image\compra.png"/>
-                </Button.Background>
-            </Button>
-            <Button x:Name="btnCorteDeCaja" Content="Corte de Caja" HorizontalAlignment="Center" VerticalAlignment="Top" Height="177" Width="630" Foreground="White" FontSize="48" BorderThickness="0,0,0,0" Padding="10,10,10,10" UseLayoutRounding="True" ScrollViewer.CanContentScroll="True" FontWeight="Bold" Margin="0,579,0,0" Click="BtnCorteDeCaja_Click">
+            <Button x:Name="btnCorteDeCaja" Content="Corte de Caja" HorizontalAlignment="Center" VerticalAlignment="Top" Height="177" Width="630" Foreground="White" FontSize="48" BorderThickness="0,0,0,0" Padding="10,10,10,10" UseLayoutRounding="True" ScrollViewer.CanContentScroll="True" FontWeight="Bold" Margin="0,404,0,0" Click="BtnCorteDeCaja_Click">
                 <Button.Background>
                     <ImageBrush ImageSource="Image\corte.png"/>
                 </Button.Background>

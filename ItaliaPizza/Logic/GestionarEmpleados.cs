@@ -15,6 +15,13 @@ namespace Logic
             return status;
         }
 
+        public bool RegistrarCliente(Logic.Cliente usuario)
+        {
+            bool status = NuevoRegistroCliente(usuario);
+            return status;
+        }
+
+
         public bool NuevoRegistro(Logic.Empleados usuario)
         {
             var status = false;
@@ -27,12 +34,30 @@ namespace Logic
                     apellidoMaterno = usuario.ApellidoMaterno,
                     telefono = usuario.Telefono,
                     correo = usuario.Correo,
-                    contraseña = usuario.Contraseña,
+                    contrasena = usuario.Contraseña,
                     foto = usuario.Foto,
                     rol = usuario.Rol
 
                 };
                 context.Empleados.Add(nuevoUsuario);
+                status = context.SaveChanges() > 0;
+            }
+            return status;
+        }
+
+        public bool NuevoRegistroCliente(Logic.Cliente usuario)
+        {
+            var status = false;
+            using (var context = new BDItaliaPizzaEntities())
+            {
+                DataAccess.Clientes nuevoUsuario = new DataAccess.Clientes()
+                {
+                    nombre = usuario.Nombre,
+                    telefono = usuario.Telefono,
+                    rol = usuario.Rol
+
+                };
+                context.Clientes.Add(nuevoUsuario);
                 status = context.SaveChanges() > 0;
             }
             return status;
@@ -67,7 +92,7 @@ namespace Logic
                     query.apellidoPaterno = apellidoPaterno;
                     query.apellidoMaterno = apellidoMaterno;
                     query.correo = correo;
-                    query.contraseña = contraseña;
+                    query.contrasena = contraseña;
                     context.SaveChanges();
                     return true;
                 }
@@ -110,7 +135,7 @@ namespace Logic
                                                ApellidoPaterno = Empleados.apellidoPaterno,
                                                ApellidoMaterno = Empleados.apellidoMaterno,
                                                Correo = Empleados.correo,
-                                               Contraseña = Empleados.contraseña,
+                                               Contraseña = Empleados.contrasena,
                                                Foto = Empleados.foto,
                                                Rol = Empleados.rol
                                            });
