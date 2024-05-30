@@ -17,7 +17,6 @@ namespace DataAccess
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Productos()
         {
-            this.CompraProducto = new HashSet<CompraProducto>();
             this.InventarioDeProductos = new HashSet<InventarioDeProductos>();
             this.PedidoProducto = new HashSet<PedidoProducto>();
             this.RecetasProductos = new HashSet<RecetasProductos>();
@@ -30,8 +29,6 @@ namespace DataAccess
         public Nullable<double> precio { get; set; }
         public string codigoProducto { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CompraProducto> CompraProducto { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<InventarioDeProductos> InventarioDeProductos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

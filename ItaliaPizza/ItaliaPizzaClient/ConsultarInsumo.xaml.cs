@@ -173,7 +173,7 @@ namespace ItaliaPizzaClient
             var nuevaMedida = cbxMedida.Text;
 
             client.ActualizarInsumo(idInsumos, nuevoNombre, nuevoCodigo, nuevaMarca, nuevoTipo, nuevaCantidad, nuevaMedida);
-            MessageBox.Show("Producto se ha actualizado exitosamente", "Actualización exitosa", MessageBoxButton.OK, MessageBoxImage.Information);
+            Utilidades.Utilidades.MostrarMensaje("El Insumo se ha actualizado exitosamente", "Actualización exitosa", MessageBoxImage.Information);
             this.Close();
         }
 
@@ -217,8 +217,8 @@ namespace ItaliaPizzaClient
         }
         private bool StringValidos(string nombre, string marca)
         {
-            if (!Regex.IsMatch(nombre, @"^[a-zA-Z\s\-.,'()ñÑáéíóúÁÉÍÓÚ]+$") ||
-                !Regex.IsMatch(marca, @"^[a-zA-Z\s\-.,'()ñÑáéíóúÁÉÍÓÚ]+$"))
+            if (!Regex.IsMatch(nombre, @"^[a-zA-Z0-9\s\-.,'()ñÑáéíóúÁÉÍÓÚ]+$") ||
+                !Regex.IsMatch(marca, @"^[a-zA-Z0-9\s\-.,'()ñÑáéíóúÁÉÍÓÚ]+$"))
             {
                 return false;
             }
@@ -231,5 +231,11 @@ namespace ItaliaPizzaClient
             return true;
         }
         #endregion
+
+        private void TbxCantidad_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
     }
 }

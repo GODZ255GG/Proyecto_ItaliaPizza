@@ -52,7 +52,7 @@
         <Label Content="Nombre de compañia: " HorizontalAlignment="Left" Margin="33,81,0,0" VerticalAlignment="Top" FontSize="18"/>
         <Label Content="Estado: " HorizontalAlignment="Left" Margin="369,175,0,0" VerticalAlignment="Top" FontSize="18"/>
         <ComboBox x:Name="cbxEstado" HorizontalAlignment="Left" Margin="371,209,0,0" VerticalAlignment="Top" Width="236" Height="33" FontSize="16" SelectionChanged="CbxEstado_SelectionChanged"/>
-        <Label Content="Ciudad: " HorizontalAlignment="Left" Margin="366,249,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <Label Content="Municipio: " HorizontalAlignment="Left" Margin="366,249,0,0" VerticalAlignment="Top" FontSize="18"/>
         <ComboBox x:Name="cbxCiudad" HorizontalAlignment="Left" Margin="371,289,0,0" VerticalAlignment="Top" Width="236" Height="33" FontSize="16" IsEnabled="False"/>
         <Label Content="Categoria de proveedor: " HorizontalAlignment="Left" Margin="371,331,0,0" VerticalAlignment="Top" FontSize="18"/>
         <ComboBox x:Name="cbxCategoriaProveedor" HorizontalAlignment="Left" Margin="369,365,0,0" VerticalAlignment="Top" Width="236" Height="33" Loaded="CbxCategoriaProveedor_Loaded" FontSize="16"/>

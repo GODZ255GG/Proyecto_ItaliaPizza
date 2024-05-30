@@ -23,7 +23,6 @@ namespace ItaliaPizzaClient
     public partial class RegistrarCorteDeCaja : Window
     {
         ItaliaPizzaServer.OrderManagerClient pedidosServer = new ItaliaPizzaServer.OrderManagerClient();
-        ItaliaPizzaServer.CashRecordClient corteCajaServer = new ItaliaPizzaServer.CashRecordClient();
         public RegistrarCorteDeCaja()
         {
             InitializeComponent();

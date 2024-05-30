@@ -23,6 +23,7 @@ namespace ItaliaPizzaClient
     public partial class ListaDeCortesDeCaja : UserControl
     {
         ItaliaPizzaServer.CashRecordClient cortesDeCajaServer = new ItaliaPizzaServer.CashRecordClient();
+        
 
         public ListaDeCortesDeCaja()
         {

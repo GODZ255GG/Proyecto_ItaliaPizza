@@ -51,5 +51,7 @@
         <Button x:Name="btnCancelar" Content="Cancelar" HorizontalAlignment="Left" Margin="55,420,0,0" VerticalAlignment="Top" Height="43" Width="166" Foreground="White" Background="#7CA886" FontSize="25" BorderThickness="0,0,0,0" Padding="10,10,10,10" UseLayoutRounding="True" FontWeight="Bold" Visibility="Hidden" Click="BtnCancelar_Click" Grid.ColumnSpan="2"/>
         <Label x:Name="lbTitulo" Content="Receta" HorizontalAlignment="Left" Margin="33,10,0,0" VerticalAlignment="Top" FontSize="40" FontFamily="Segoe UI Black" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.Column="1"/>
         <Rectangle HorizontalAlignment="Left" Height="4" Margin="35,76,0,0" VerticalAlignment="Top" Width="530" RenderTransformOrigin="0.5,0.5" Fill="#FF7CA886" Grid.ColumnSpan="2"/>
+        <TextBox Grid.Column="1" HorizontalAlignment="Left" Margin="233,123,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="245" Height="113" TextChanged="TextBox_TextChanged"/>
+        <Label Grid.Column="1" Content="Insumos:" HorizontalAlignment="Left" Margin="233,87,0,0" VerticalAlignment="Top" FontSize="16"/>
     </Grid>
 </Window>

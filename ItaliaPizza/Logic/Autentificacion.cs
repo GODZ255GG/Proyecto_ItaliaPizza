@@ -15,7 +15,7 @@ namespace Logic
             using(var context = new BDItaliaPizzaEntities())
             {
                 var cuenta = context.Empleados.FirstOrDefault(e => e.correo == correo);
-                if (cuenta != null && VerificarContraseña(contraseña, cuenta.contraseña))
+                if (cuenta != null && VerificarContraseña(contraseña, cuenta.contrasena))
                 {
                     return new Logic.Empleados()
                     {

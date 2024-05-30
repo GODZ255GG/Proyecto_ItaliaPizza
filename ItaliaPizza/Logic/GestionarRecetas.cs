@@ -23,7 +23,7 @@ namespace Logic
                 DataAccess.Receta nuevoReceta = new DataAccess.Receta()
                 {
                     nombre = receta.Nombre,
-                    descripcionPreparación = receta.DescripcionPreparación
+                    descripcionPreparacion = receta.DescripcionPreparación
 
 
                 };
@@ -59,7 +59,7 @@ namespace Logic
                 if (query != null)
                 {
                     query.nombre = nombre;
-                    query.descripcionPreparación = descripcionPreparación;
+                    query.descripcionPreparacion = descripcionPreparación;
 
                     context.SaveChanges();
                     return true;
@@ -79,7 +79,7 @@ namespace Logic
                                          {
                                              IdRecetas = receta.idRecetas,
                                              Nombre = receta.nombre,
-                                             DescripcionPreparación = receta.descripcionPreparación,
+                                             DescripcionPreparación = receta.descripcionPreparacion,
 
                                          });
                     listaReceta.AddRange(recetaDetalle);

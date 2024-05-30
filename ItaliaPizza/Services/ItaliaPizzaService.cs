@@ -141,6 +141,28 @@ namespace Services
             return status;
         }
 
+        public bool RegistrarClientes(Cliente usuarios)
+        {
+            var status = false;
+            try
+            {
+                GestionarEmpleados registrarCliente = new GestionarEmpleados();
+                Logic.Cliente nuevoUsuario = new Logic.Cliente()
+                {
+                    Nombre = usuarios.Nombre,
+                    Telefono = usuarios.Telefono,
+                    Rol = usuarios.Rol,
+
+                };
+                status = registrarCliente.RegistrarCliente(nuevoUsuario);
+            }
+            catch (EntityException e)
+            {
+
+            }
+            return status;
+        }
+
         public bool UsuarioYaRegistrado(string correo)
         {
             GestionarEmpleados registro = new GestionarEmpleados();
@@ -590,49 +612,6 @@ namespace Services
             catch (Exception ex)
             {
                 Console.WriteLine("Error al registrar el nuevo corte de caja: " + ex.Message);
-            }
-        }
-    }
-
-    public partial class ItaliaPizzaService : IProcurementManager
-    {
-        public List<Logic.Insumos> RecuperarInsumosPorCategoria(string categoria)
-        {
-            try
-            {
-                Logic.GestionarCompraInventario gestionarCompra = new Logic.GestionarCompraInventario();
-                return gestionarCompra.RecuperarInsumosPorCategoria(categoria);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error al recuperar la información de los insumos: " + ex.Message);
-                return new List<Logic.Insumos>();
-            }
-        }
-
-        public List<Logic.CompraDeInventario> RecuperarInformacionCompras()
-        {
-            try
-            {
-                Logic.GestionarCompraDeInventario compras = new GestionarCompraDeInventario();
-                return compras.RecuperarCompras();
-            }catch (Exception ex)
-            {
-                Console.WriteLine("Error al recuperar la información de las compras: " + ex.Message);
-                return new List<Logic.CompraDeInventario>();
-            }
-        }
-
-        public void RegistrarNuevaCompra(int idProveedor, List<int> idInsumos)
-        {
-            try
-            {
-                Logic.GestionarCompraDeInventario compras = new GestionarCompraDeInventario();
-                compras.RegistrarNuevaCompra(idProveedor, idInsumos);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error al registrar la compra: " + ex.Message);
             }
         }
     }

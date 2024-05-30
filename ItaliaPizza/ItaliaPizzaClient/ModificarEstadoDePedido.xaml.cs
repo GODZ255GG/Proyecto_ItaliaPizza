@@ -30,7 +30,7 @@ namespace ItaliaPizzaClient
             Pedido = pedido;
             DataContext = Pedido;
 
-            if (rol == "Cajero")
+            if (rol == "Cajero" || rol =="Gerente")
             {
                 CargarBotonesCajero();
             }

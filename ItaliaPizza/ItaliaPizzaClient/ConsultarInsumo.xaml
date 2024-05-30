@@ -45,7 +45,7 @@
         <Label Content="Marca: " HorizontalAlignment="Left" Margin="351,207,0,0" VerticalAlignment="Top" FontSize="18"/>
         <TextBox x:Name="tbxCodigoInsumo" HorizontalAlignment="Left" Margin="47,144,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="214" Height="34" FontSize="16" VerticalContentAlignment="Center" IsReadOnly="True"/>
         <Label Content="Cantidad del Empaque:" HorizontalAlignment="Left" Margin="47,310,0,0" VerticalAlignment="Top" FontSize="18"/>
-        <TextBox x:Name="tbxCantidad" HorizontalAlignment="Left" Margin="47,349,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="214" Height="34" FontSize="16" VerticalContentAlignment="Center" IsReadOnly="True"/>
+        <TextBox x:Name="tbxCantidad" HorizontalAlignment="Left" Margin="47,349,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="214" Height="34" FontSize="16" VerticalContentAlignment="Center" IsReadOnly="True" PreviewTextInput="TbxCantidad_PreviewTextInput"/>
         <Label Content="Código del Producto:  " HorizontalAlignment="Left" Margin="47,105,0,0" VerticalAlignment="Top" FontSize="18"/>
         <Label Content="Tipo de producto: " HorizontalAlignment="Left" Margin="47,207,0,0" VerticalAlignment="Top" FontSize="18"/>
         <ComboBox x:Name="cbxTipo" HorizontalAlignment="Left" Margin="47,247,0,0" VerticalAlignment="Top" Width="214" Height="33" FontSize="16" IsEnabled="False"/>

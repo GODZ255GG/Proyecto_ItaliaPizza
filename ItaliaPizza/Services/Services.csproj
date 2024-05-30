@@ -57,7 +57,6 @@
     <Compile Include="ICashRecord.cs" />
     <Compile Include="IInsumoManager.cs" />
     <Compile Include="IOrderManager.cs" />
-    <Compile Include="IProcurementManager.cs" />
     <Compile Include="IRecipeManager.cs" />
     <Compile Include="ISupplierManager.cs" />
     <Compile Include="IUserManager.cs" />

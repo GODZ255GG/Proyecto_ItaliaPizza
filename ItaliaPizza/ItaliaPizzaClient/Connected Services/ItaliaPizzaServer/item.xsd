@@ -32,6 +32,15 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Empleados" nillable="true" type="tns:Empleados" />
+  <xs:complexType name="Cliente">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="IdEmpleados" type="xs:int" />
+      <xs:element minOccurs="0" name="Nombre" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Rol" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Telefono" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Cliente" nillable="true" type="tns:Cliente" />
   <xs:complexType name="ArrayOfEmpleados">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="Empleados" nillable="true" type="tns:Empleados" />
@@ -125,18 +134,4 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="CorteDeCaja" nillable="true" type="tns:CorteDeCaja" />
-  <xs:complexType name="ArrayOfCompraDeInventario">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="CompraDeInventario" nillable="true" type="tns:CompraDeInventario" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfCompraDeInventario" nillable="true" type="tns:ArrayOfCompraDeInventario" />
-  <xs:complexType name="CompraDeInventario">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="FechaDeCompra" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="IdCompraDeInventario" type="xs:int" />
-      <xs:element minOccurs="0" name="InsumosConcatenados" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="CompraDeInventario" nillable="true" type="tns:CompraDeInventario" />
 </xs:schema>

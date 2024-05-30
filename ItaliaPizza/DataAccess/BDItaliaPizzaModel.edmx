@@ -14,6 +14,16 @@
           <Property Name="telefono" Type="nvarchar" MaxLength="24" />
           <Property Name="rol" Type="nvarchar" MaxLength="45" />
         </EntityType>
+        <EntityType Name="CorteDeCaja">
+          <Key>
+            <PropertyRef Name="idCorteDeCaja" />
+          </Key>
+          <Property Name="idCorteDeCaja" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="fechaDeCorte" Type="datetime" />
+          <Property Name="totalDeIngresos" Type="float" />
+          <Property Name="dineroRestante" Type="float" />
+          <Property Name="turno" Type="nvarchar" MaxLength="45" />
+        </EntityType>
         <EntityType Name="DetallesPedido">
           <Key>
             <PropertyRef Name="idDetallesPedido" />
@@ -33,9 +43,18 @@
           <Property Name="apellidoPaterno" Type="nvarchar" MaxLength="45" />
           <Property Name="telefono" Type="nvarchar" MaxLength="24" />
           <Property Name="correo" Type="nvarchar" MaxLength="50" />
-          <Property Name="contraseña" Type="nvarchar" MaxLength="12" />
+          <Property Name="contrasena" Type="nvarchar" MaxLength="12" />
           <Property Name="foto" Type="nvarchar" MaxLength="250" />
           <Property Name="rol" Type="nvarchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="IngredientesReceta">
+          <Key>
+            <PropertyRef Name="Insumos_idInsumos" />
+            <PropertyRef Name="Recetas_idRecetas" />
+          </Key>
+          <Property Name="Insumos_idInsumos" Type="int" Nullable="false" />
+          <Property Name="Recetas_idRecetas" Type="int" Nullable="false" />
+          <Property Name="cantidad" Type="int" />
         </EntityType>
         <EntityType Name="InsumoReceta">
           <Key>
@@ -55,14 +74,7 @@
           <Property Name="tipo" Type="nvarchar" MaxLength="45" />
           <Property Name="cantidadDeEmpaque" Type="nvarchar" MaxLength="45" />
           <Property Name="codigoInsumo" Type="nvarchar" MaxLength="45" />
-        </EntityType>
-        <EntityType Name="InsumosProveedores">
-          <Key>
-            <PropertyRef Name="idInsumosProveedores" />
-          </Key>
-          <Property Name="idInsumosProveedores" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Insumos_idInsumos" Type="int" Nullable="false" />
-          <Property Name="Proveedores_idProveedores" Type="int" Nullable="false" />
+          <Property Name="unidadDeMedida" Type="nvarchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="Inventario">
           <Key>
@@ -125,11 +137,13 @@
             <PropertyRef Name="idProveedores" />
           </Key>
           <Property Name="idProveedores" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="nombreCompañia" Type="nvarchar" MaxLength="50" />
+          <Property Name="nombreCompania" Type="nvarchar" MaxLength="50" />
           <Property Name="nombreDelContacto" Type="nvarchar" MaxLength="45" />
           <Property Name="telefono" Type="nvarchar" MaxLength="24" />
-          <Property Name="dirección" Type="nvarchar" MaxLength="45" />
+          <Property Name="direccion" Type="nvarchar" MaxLength="45" />
           <Property Name="ciudad" Type="nvarchar" MaxLength="45" />
+          <Property Name="estado" Type="nvarchar" MaxLength="45" />
+          <Property Name="categoriaProveedor" Type="nvarchar" MaxLength="45" />
         </EntityType>
         <EntityType Name="Receta">
           <Key>
@@ -137,7 +151,7 @@
           </Key>
           <Property Name="idRecetas" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="nombre" Type="nvarchar" MaxLength="45" />
-          <Property Name="descripcionPreparación" Type="nvarchar" MaxLength="60" />
+          <Property Name="descripcionPreparacion" Type="nvarchar" MaxLength="60" />
         </EntityType>
         <EntityType Name="RecetasProductos">
           <Key>
@@ -171,6 +185,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_IngredientesReceta_Insumos">
+          <End Role="Insumos" Type="Self.Insumos" Multiplicity="1" />
+          <End Role="IngredientesReceta" Type="Self.IngredientesReceta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Insumos">
+              <PropertyRef Name="idInsumos" />
+            </Principal>
+            <Dependent Role="IngredientesReceta">
+              <PropertyRef Name="Insumos_idInsumos" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IngredientesReceta_Recetas">
+          <End Role="Receta" Type="Self.Receta" Multiplicity="1" />
+          <End Role="IngredientesReceta" Type="Self.IngredientesReceta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Receta">
+              <PropertyRef Name="idRecetas" />
+            </Principal>
+            <Dependent Role="IngredientesReceta">
+              <PropertyRef Name="Recetas_idRecetas" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_InsumoReceta_Insumos">
           <End Role="Insumos" Type="Self.Insumos" Multiplicity="1" />
           <End Role="InsumoReceta" Type="Self.InsumoReceta" Multiplicity="*" />
@@ -192,30 +230,6 @@
             </Principal>
             <Dependent Role="InsumoReceta">
               <PropertyRef Name="Receta_idRecetas" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_InsumosProveedores_Insumos">
-          <End Role="Insumos" Type="Self.Insumos" Multiplicity="1" />
-          <End Role="InsumosProveedores" Type="Self.InsumosProveedores" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Insumos">
-              <PropertyRef Name="idInsumos" />
-            </Principal>
-            <Dependent Role="InsumosProveedores">
-              <PropertyRef Name="Insumos_idInsumos" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_InsumosProveedores_Proveedores">
-          <End Role="Proveedores" Type="Self.Proveedores" Multiplicity="1" />
-          <End Role="InsumosProveedores" Type="Self.InsumosProveedores" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Proveedores">
-              <PropertyRef Name="idProveedores" />
-            </Principal>
-            <Dependent Role="InsumosProveedores">
-              <PropertyRef Name="Proveedores_idProveedores" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -317,11 +331,12 @@
         </Association>
         <EntityContainer Name="BDItaliaPizzaModelStoreContainer">
           <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CorteDeCaja" EntityType="Self.CorteDeCaja" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DetallesPedido" EntityType="Self.DetallesPedido" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Empleados" EntityType="Self.Empleados" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="IngredientesReceta" EntityType="Self.IngredientesReceta" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="InsumoReceta" EntityType="Self.InsumoReceta" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Insumos" EntityType="Self.Insumos" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="InsumosProveedores" EntityType="Self.InsumosProveedores" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Inventario" EntityType="Self.Inventario" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="InventarioDeInsumo" EntityType="Self.InventarioDeInsumo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="InventarioDeProductos" EntityType="Self.InventarioDeProductos" Schema="dbo" store:Type="Tables" />
@@ -339,6 +354,14 @@
             <End Role="Pedidos" EntitySet="Pedidos" />
             <End Role="DetallesPedido" EntitySet="DetallesPedido" />
           </AssociationSet>
+          <AssociationSet Name="FK_IngredientesReceta_Insumos" Association="Self.FK_IngredientesReceta_Insumos">
+            <End Role="Insumos" EntitySet="Insumos" />
+            <End Role="IngredientesReceta" EntitySet="IngredientesReceta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IngredientesReceta_Recetas" Association="Self.FK_IngredientesReceta_Recetas">
+            <End Role="Receta" EntitySet="Receta" />
+            <End Role="IngredientesReceta" EntitySet="IngredientesReceta" />
+          </AssociationSet>
           <AssociationSet Name="FK_InsumoReceta_Insumos" Association="Self.FK_InsumoReceta_Insumos">
             <End Role="Insumos" EntitySet="Insumos" />
             <End Role="InsumoReceta" EntitySet="InsumoReceta" />
@@ -346,14 +369,6 @@
           <AssociationSet Name="FK_InsumoReceta_Receta" Association="Self.FK_InsumoReceta_Receta">
             <End Role="Receta" EntitySet="Receta" />
             <End Role="InsumoReceta" EntitySet="InsumoReceta" />
-          </AssociationSet>
-          <AssociationSet Name="FK_InsumosProveedores_Insumos" Association="Self.FK_InsumosProveedores_Insumos">
-            <End Role="Insumos" EntitySet="Insumos" />
-            <End Role="InsumosProveedores" EntitySet="InsumosProveedores" />
-          </AssociationSet>
-          <AssociationSet Name="FK_InsumosProveedores_Proveedores" Association="Self.FK_InsumosProveedores_Proveedores">
-            <End Role="Proveedores" EntitySet="Proveedores" />
-            <End Role="InsumosProveedores" EntitySet="InsumosProveedores" />
           </AssociationSet>
           <AssociationSet Name="FK_InventarioDeInsumo_Insumos" Association="Self.FK_InventarioDeInsumo_Insumos">
             <End Role="Insumos" EntitySet="Insumos" />
@@ -402,6 +417,16 @@
           <Property Name="telefono" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
           <Property Name="rol" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="CorteDeCaja">
+          <Key>
+            <PropertyRef Name="idCorteDeCaja" />
+          </Key>
+          <Property Name="idCorteDeCaja" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="fechaDeCorte" Type="DateTime" Precision="3" />
+          <Property Name="totalDeIngresos" Type="Double" />
+          <Property Name="dineroRestante" Type="Double" />
+          <Property Name="turno" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
+        </EntityType>
         <EntityType Name="DetallesPedido">
           <Key>
             <PropertyRef Name="idDetallesPedido" />
@@ -423,10 +448,21 @@
           <Property Name="apellidoPaterno" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
           <Property Name="telefono" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
           <Property Name="correo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="contraseña" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="contrasena" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
           <Property Name="foto" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="rol" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="DetallesPedido" Relationship="Self.FK_DetallesPedido_Empleados" FromRole="Empleados" ToRole="DetallesPedido" />
+        </EntityType>
+        <EntityType Name="IngredientesReceta">
+          <Key>
+            <PropertyRef Name="Insumos_idInsumos" />
+            <PropertyRef Name="Recetas_idRecetas" />
+          </Key>
+          <Property Name="Insumos_idInsumos" Type="Int32" Nullable="false" />
+          <Property Name="Recetas_idRecetas" Type="Int32" Nullable="false" />
+          <Property Name="cantidad" Type="Int32" />
+          <NavigationProperty Name="Insumos" Relationship="Self.FK_IngredientesReceta_Insumos" FromRole="IngredientesReceta" ToRole="Insumos" />
+          <NavigationProperty Name="Receta" Relationship="Self.FK_IngredientesReceta_Recetas" FromRole="IngredientesReceta" ToRole="Receta" />
         </EntityType>
         <EntityType Name="InsumoReceta">
           <Key>
@@ -448,19 +484,10 @@
           <Property Name="tipo" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
           <Property Name="cantidadDeEmpaque" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
           <Property Name="codigoInsumo" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
+          <Property Name="unidadDeMedida" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="IngredientesReceta" Relationship="Self.FK_IngredientesReceta_Insumos" FromRole="Insumos" ToRole="IngredientesReceta" />
           <NavigationProperty Name="InsumoReceta" Relationship="Self.FK_InsumoReceta_Insumos" FromRole="Insumos" ToRole="InsumoReceta" />
-          <NavigationProperty Name="InsumosProveedores" Relationship="Self.FK_InsumosProveedores_Insumos" FromRole="Insumos" ToRole="InsumosProveedores" />
           <NavigationProperty Name="InventarioDeInsumo" Relationship="Self.FK_InventarioDeInsumo_Insumos" FromRole="Insumos" ToRole="InventarioDeInsumo" />
-        </EntityType>
-        <EntityType Name="InsumosProveedores">
-          <Key>
-            <PropertyRef Name="idInsumosProveedores" />
-          </Key>
-          <Property Name="idInsumosProveedores" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Insumos_idInsumos" Type="Int32" Nullable="false" />
-          <Property Name="Proveedores_idProveedores" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Insumos" Relationship="Self.FK_InsumosProveedores_Insumos" FromRole="InsumosProveedores" ToRole="Insumos" />
-          <NavigationProperty Name="Proveedores" Relationship="Self.FK_InsumosProveedores_Proveedores" FromRole="InsumosProveedores" ToRole="Proveedores" />
         </EntityType>
         <EntityType Name="Inventario">
           <Key>
@@ -536,12 +563,13 @@
             <PropertyRef Name="idProveedores" />
           </Key>
           <Property Name="idProveedores" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nombreCompañia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="nombreCompania" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="nombreDelContacto" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
           <Property Name="telefono" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
-          <Property Name="dirección" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
+          <Property Name="direccion" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
           <Property Name="ciudad" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="InsumosProveedores" Relationship="Self.FK_InsumosProveedores_Proveedores" FromRole="Proveedores" ToRole="InsumosProveedores" />
+          <Property Name="estado" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
+          <Property Name="categoriaProveedor" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Receta">
           <Key>
@@ -549,7 +577,8 @@
           </Key>
           <Property Name="idRecetas" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombre" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
-          <Property Name="descripcionPreparación" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="descripcionPreparacion" Type="String" MaxLength="60" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="IngredientesReceta" Relationship="Self.FK_IngredientesReceta_Recetas" FromRole="Receta" ToRole="IngredientesReceta" />
           <NavigationProperty Name="InsumoReceta" Relationship="Self.FK_InsumoReceta_Receta" FromRole="Receta" ToRole="InsumoReceta" />
           <NavigationProperty Name="RecetasProductos" Relationship="Self.FK_RecetasProductos_Receta" FromRole="Receta" ToRole="RecetasProductos" />
         </EntityType>
@@ -587,6 +616,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_IngredientesReceta_Insumos">
+          <End Role="Insumos" Type="Self.Insumos" Multiplicity="1" />
+          <End Role="IngredientesReceta" Type="Self.IngredientesReceta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Insumos">
+              <PropertyRef Name="idInsumos" />
+            </Principal>
+            <Dependent Role="IngredientesReceta">
+              <PropertyRef Name="Insumos_idInsumos" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IngredientesReceta_Recetas">
+          <End Role="Receta" Type="Self.Receta" Multiplicity="1" />
+          <End Role="IngredientesReceta" Type="Self.IngredientesReceta" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Receta">
+              <PropertyRef Name="idRecetas" />
+            </Principal>
+            <Dependent Role="IngredientesReceta">
+              <PropertyRef Name="Recetas_idRecetas" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_InsumoReceta_Insumos">
           <End Role="Insumos" Type="Self.Insumos" Multiplicity="1" />
           <End Role="InsumoReceta" Type="Self.InsumoReceta" Multiplicity="*" />
@@ -611,18 +664,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_InsumosProveedores_Insumos">
-          <End Role="Insumos" Type="Self.Insumos" Multiplicity="1" />
-          <End Role="InsumosProveedores" Type="Self.InsumosProveedores" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Insumos">
-              <PropertyRef Name="idInsumos" />
-            </Principal>
-            <Dependent Role="InsumosProveedores">
-              <PropertyRef Name="Insumos_idInsumos" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_InventarioDeInsumo_Insumos">
           <End Role="Insumos" Type="Self.Insumos" Multiplicity="1" />
           <End Role="InventarioDeInsumo" Type="Self.InventarioDeInsumo" Multiplicity="*" />
@@ -632,18 +673,6 @@
             </Principal>
             <Dependent Role="InventarioDeInsumo">
               <PropertyRef Name="Insumos_idInsumos" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_InsumosProveedores_Proveedores">
-          <End Role="Proveedores" Type="Self.Proveedores" Multiplicity="1" />
-          <End Role="InsumosProveedores" Type="Self.InsumosProveedores" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Proveedores">
-              <PropertyRef Name="idProveedores" />
-            </Principal>
-            <Dependent Role="InsumosProveedores">
-              <PropertyRef Name="Proveedores_idProveedores" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -733,11 +762,12 @@
         </Association>
         <EntityContainer Name="BDItaliaPizzaEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Clientes" EntityType="Self.Clientes" />
+          <EntitySet Name="CorteDeCaja" EntityType="Self.CorteDeCaja" />
           <EntitySet Name="DetallesPedido" EntityType="Self.DetallesPedido" />
           <EntitySet Name="Empleados" EntityType="Self.Empleados" />
+          <EntitySet Name="IngredientesReceta" EntityType="Self.IngredientesReceta" />
           <EntitySet Name="InsumoReceta" EntityType="Self.InsumoReceta" />
           <EntitySet Name="Insumos" EntityType="Self.Insumos" />
-          <EntitySet Name="InsumosProveedores" EntityType="Self.InsumosProveedores" />
           <EntitySet Name="Inventario" EntityType="Self.Inventario" />
           <EntitySet Name="InventarioDeInsumo" EntityType="Self.InventarioDeInsumo" />
           <EntitySet Name="InventarioDeProductos" EntityType="Self.InventarioDeProductos" />
@@ -755,6 +785,14 @@
             <End Role="Pedidos" EntitySet="Pedidos" />
             <End Role="DetallesPedido" EntitySet="DetallesPedido" />
           </AssociationSet>
+          <AssociationSet Name="FK_IngredientesReceta_Insumos" Association="Self.FK_IngredientesReceta_Insumos">
+            <End Role="Insumos" EntitySet="Insumos" />
+            <End Role="IngredientesReceta" EntitySet="IngredientesReceta" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IngredientesReceta_Recetas" Association="Self.FK_IngredientesReceta_Recetas">
+            <End Role="Receta" EntitySet="Receta" />
+            <End Role="IngredientesReceta" EntitySet="IngredientesReceta" />
+          </AssociationSet>
           <AssociationSet Name="FK_InsumoReceta_Insumos" Association="Self.FK_InsumoReceta_Insumos">
             <End Role="Insumos" EntitySet="Insumos" />
             <End Role="InsumoReceta" EntitySet="InsumoReceta" />
@@ -763,17 +801,9 @@
             <End Role="Receta" EntitySet="Receta" />
             <End Role="InsumoReceta" EntitySet="InsumoReceta" />
           </AssociationSet>
-          <AssociationSet Name="FK_InsumosProveedores_Insumos" Association="Self.FK_InsumosProveedores_Insumos">
-            <End Role="Insumos" EntitySet="Insumos" />
-            <End Role="InsumosProveedores" EntitySet="InsumosProveedores" />
-          </AssociationSet>
           <AssociationSet Name="FK_InventarioDeInsumo_Insumos" Association="Self.FK_InventarioDeInsumo_Insumos">
             <End Role="Insumos" EntitySet="Insumos" />
             <End Role="InventarioDeInsumo" EntitySet="InventarioDeInsumo" />
-          </AssociationSet>
-          <AssociationSet Name="FK_InsumosProveedores_Proveedores" Association="Self.FK_InsumosProveedores_Proveedores">
-            <End Role="Proveedores" EntitySet="Proveedores" />
-            <End Role="InsumosProveedores" EntitySet="InsumosProveedores" />
           </AssociationSet>
           <AssociationSet Name="FK_InventarioDeInsumo_Inventario" Association="Self.FK_InventarioDeInsumo_Inventario">
             <End Role="Inventario" EntitySet="Inventario" />
@@ -820,6 +850,17 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="CorteDeCaja">
+            <EntityTypeMapping TypeName="BDItaliaPizzaModel.CorteDeCaja">
+              <MappingFragment StoreEntitySet="CorteDeCaja">
+                <ScalarProperty Name="idCorteDeCaja" ColumnName="idCorteDeCaja" />
+                <ScalarProperty Name="fechaDeCorte" ColumnName="fechaDeCorte" />
+                <ScalarProperty Name="totalDeIngresos" ColumnName="totalDeIngresos" />
+                <ScalarProperty Name="dineroRestante" ColumnName="dineroRestante" />
+                <ScalarProperty Name="turno" ColumnName="turno" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="DetallesPedido">
             <EntityTypeMapping TypeName="BDItaliaPizzaModel.DetallesPedido">
               <MappingFragment StoreEntitySet="DetallesPedido">
@@ -839,9 +880,18 @@
                 <ScalarProperty Name="apellidoPaterno" ColumnName="apellidoPaterno" />
                 <ScalarProperty Name="telefono" ColumnName="telefono" />
                 <ScalarProperty Name="correo" ColumnName="correo" />
-                <ScalarProperty Name="contraseña" ColumnName="contraseña" />
+                <ScalarProperty Name="contrasena" ColumnName="contrasena" />
                 <ScalarProperty Name="foto" ColumnName="foto" />
                 <ScalarProperty Name="rol" ColumnName="rol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IngredientesReceta">
+            <EntityTypeMapping TypeName="BDItaliaPizzaModel.IngredientesReceta">
+              <MappingFragment StoreEntitySet="IngredientesReceta">
+                <ScalarProperty Name="Insumos_idInsumos" ColumnName="Insumos_idInsumos" />
+                <ScalarProperty Name="Recetas_idRecetas" ColumnName="Recetas_idRecetas" />
+                <ScalarProperty Name="cantidad" ColumnName="cantidad" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -863,15 +913,7 @@
                 <ScalarProperty Name="tipo" ColumnName="tipo" />
                 <ScalarProperty Name="cantidadDeEmpaque" ColumnName="cantidadDeEmpaque" />
                 <ScalarProperty Name="codigoInsumo" ColumnName="codigoInsumo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="InsumosProveedores">
-            <EntityTypeMapping TypeName="BDItaliaPizzaModel.InsumosProveedores">
-              <MappingFragment StoreEntitySet="InsumosProveedores">
-                <ScalarProperty Name="idInsumosProveedores" ColumnName="idInsumosProveedores" />
-                <ScalarProperty Name="Insumos_idInsumos" ColumnName="Insumos_idInsumos" />
-                <ScalarProperty Name="Proveedores_idProveedores" ColumnName="Proveedores_idProveedores" />
+                <ScalarProperty Name="unidadDeMedida" ColumnName="unidadDeMedida" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -941,11 +983,13 @@
             <EntityTypeMapping TypeName="BDItaliaPizzaModel.Proveedores">
               <MappingFragment StoreEntitySet="Proveedores">
                 <ScalarProperty Name="idProveedores" ColumnName="idProveedores" />
-                <ScalarProperty Name="nombreCompañia" ColumnName="nombreCompañia" />
+                <ScalarProperty Name="nombreCompania" ColumnName="nombreCompania" />
                 <ScalarProperty Name="nombreDelContacto" ColumnName="nombreDelContacto" />
                 <ScalarProperty Name="telefono" ColumnName="telefono" />
-                <ScalarProperty Name="dirección" ColumnName="dirección" />
+                <ScalarProperty Name="direccion" ColumnName="direccion" />
                 <ScalarProperty Name="ciudad" ColumnName="ciudad" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="categoriaProveedor" ColumnName="categoriaProveedor" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -954,7 +998,7 @@
               <MappingFragment StoreEntitySet="Receta">
                 <ScalarProperty Name="idRecetas" ColumnName="idRecetas" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
-                <ScalarProperty Name="descripcionPreparación" ColumnName="descripcionPreparación" />
+                <ScalarProperty Name="descripcionPreparacion" ColumnName="descripcionPreparacion" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

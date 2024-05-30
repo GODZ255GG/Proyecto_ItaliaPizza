@@ -47,6 +47,11 @@
                     <ImageBrush ImageSource="Image\insumos.jpeg"/>
                 </Button.Background>
             </Button>
+            <Button x:Name="btnStock" Content="Stock" HorizontalAlignment="Center" Margin="0,593,0,0" VerticalAlignment="Top" Height="177" Width="630" Foreground="White" FontSize="48" BorderThickness="0,0,0,0" Padding="10,10,10,10" UseLayoutRounding="True" ScrollViewer.CanContentScroll="True" FontWeight="Bold" Click="BtnStock_Click">
+                <Button.Background>
+                    <ImageBrush ImageSource="Image\insumos.jpeg"/>
+                </Button.Background>
+            </Button>
         </Grid>
     </ContentControl>
 </UserControl>

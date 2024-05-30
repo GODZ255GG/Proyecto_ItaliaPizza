@@ -47,6 +47,7 @@
     <Reference Include="log4net, Version=2.0.17.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>packages\log4net.2.0.17\lib\net45\log4net.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -101,9 +102,6 @@
     <Compile Include="Inventario.xaml.cs">
       <DependentUpon>Inventario.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ListaCompras.xaml.cs">
-      <DependentUpon>ListaCompras.xaml</DependentUpon>
-    </Compile>
     <Compile Include="ListaDeCortesDeCaja.xaml.cs">
       <DependentUpon>ListaDeCortesDeCaja.xaml</DependentUpon>
     </Compile>
@@ -131,9 +129,6 @@
     <Compile Include="ModificarPedido.xaml.cs">
       <DependentUpon>ModificarPedido.xaml</DependentUpon>
     </Compile>
-    <Compile Include="RegistrarCompraInsumo.xaml.cs">
-      <DependentUpon>RegistrarCompraInsumo.xaml</DependentUpon>
-    </Compile>
     <Compile Include="RegistrarCorteDeCaja.xaml.cs">
       <DependentUpon>RegistrarCorteDeCaja.xaml</DependentUpon>
     </Compile>
@@ -152,8 +147,17 @@
     <Compile Include="RegistrarRecetas.xaml.cs">
       <DependentUpon>RegistrarRecetas.xaml</DependentUpon>
     </Compile>
+    <Compile Include="RegistrarStockInsumo.xaml.cs">
+      <DependentUpon>RegistrarStockInsumo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RegistrarStockProducto.xaml.cs">
+      <DependentUpon>RegistrarStockProducto.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RegistrarUsuario.xaml.cs">
       <DependentUpon>RegistrarUsuario.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Stock.xaml.cs">
+      <DependentUpon>Stock.xaml</DependentUpon>
     </Compile>
     <Compile Include="Utilidades\Utilidades.cs" />
     <Compile Include="VentanaPrincipal.xaml.cs">
@@ -188,10 +192,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Inventario.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="ListaCompras.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -243,10 +243,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="RegistrarCompraInsumo.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="RegistrarCorteDeCaja.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -271,7 +267,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="RegistrarStockInsumo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RegistrarStockProducto.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="RegistrarUsuario.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Stock.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -298,9 +306,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="Connected Services\ItaliaPizzaServer\ItaliaPizzaClient.ItaliaPizzaServer.CompraDeInventario.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
     <None Include="Connected Services\ItaliaPizzaServer\ItaliaPizzaClient.ItaliaPizzaServer.CorteDeCaja.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
