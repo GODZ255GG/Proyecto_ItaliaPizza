@@ -72,6 +72,7 @@ CornerRadius="10">
                 <DataGridTextColumn Header="Fecha de corte" Width="*" Binding="{Binding FechaCorteDeCaja}"/>
                 <DataGridTextColumn Header="Total del corte" Width="*" Binding="{Binding TotalIngresos}"/>
                 <DataGridTextColumn Header="Dinero en caja" Width="*" Binding="{Binding DineroRestante}"/>
+                <DataGridTextColumn Header="Turno de corte" Width="*" Binding="{Binding Turno}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

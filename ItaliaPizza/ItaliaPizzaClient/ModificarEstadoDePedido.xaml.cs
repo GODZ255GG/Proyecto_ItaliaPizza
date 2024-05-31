@@ -67,7 +67,7 @@ namespace ItaliaPizzaClient
 
             if (nuevoEstado == Pedido.EstadoDelPedido)
             {
-                MessageBox.Show("El estado seleccionado es igual al estado actual del pedido.");
+                Utilidades.Utilidades.MostrarMensaje("El estado seleccionado es igual al estado actual del pedido.", "Mismo estado seleccionado", MessageBoxImage.Warning);
                 return;
             }
 
@@ -78,24 +78,29 @@ namespace ItaliaPizzaClient
 
                 if (modificacionExitosa)
                 {
-                    MessageBox.Show("El estado del pedido se ha modificado correctamente.");
+                    Utilidades.Utilidades.MostrarMensaje("El estado del pedido se ha modificado correctamente.", "Estado cambiado", MessageBoxImage.Information);
+
                 }
                 else
                 {
-                    MessageBox.Show("Error al modificar el estado del pedido. Consulta el registro para más detalles.");
+                    MessageBox.Show("Error al modificar el estado del pedido.");
                 }
             }
             catch (EndpointNotFoundException ex)
             {
-                MessageBox.Show("Por el momento no hay conexión con la base de datos, por favor inténtelo más tarde", "Error de conexión con base de datos", MessageBoxButton.OK, MessageBoxImage.Error);
+                Utilidades.Utilidades.MostrarMensajeEndpointNotFoundException();
             }
             catch (CommunicationException ex)
             {
-                MessageBox.Show("Se produjo un error de comunicación al intentar acceder a un recurso remoto. Intente de nuevo", "Problema de comunicación", MessageBoxButton.OK, MessageBoxImage.Error);
+                Utilidades.Utilidades.MostrarMensajeCommunicationException();
             }
             catch (TimeoutException ex)
             {
-                MessageBox.Show("La operación que intentaba realizar ha superado el tiempo de espera establecido y no pudo completarse en el tiempo especificado. Intente de nuevo", "Tiempo de espera agotado", MessageBoxButton.OK, MessageBoxImage.Error);
+                Utilidades.Utilidades.MostrarMensajeTimeoutException();
+            }
+            catch (Exception ex)
+            {
+                Utilidades.Utilidades.MostrarMensaje($"Ocurrió un error inesperado: {ex.Message}", "Error", MessageBoxImage.Error);
             }
 
             this.Close();

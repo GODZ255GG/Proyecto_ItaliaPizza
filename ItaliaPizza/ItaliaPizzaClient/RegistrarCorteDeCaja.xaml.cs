@@ -66,22 +66,43 @@ namespace ItaliaPizzaClient
             try
             {
                 var pedidosDesdeBD = pedidosServer.RecuperarInformacionPedidos();
-                dgPedidos.ItemsSource = pedidosDesdeBD;
 
-                decimal sumaTotal = (decimal)pedidosDesdeBD.Sum(p => p.Total);
+                string turnoActual = lbTurno.Content.ToString();
+                DateTime inicioTurno, finTurno;
+
+                if (turnoActual == "Matutino")
+                {
+                    inicioTurno = DateTime.Today.AddHours(8);
+                    finTurno = DateTime.Today.AddHours(15);
+                }
+                else
+                {
+                    inicioTurno = DateTime.Today.AddHours(15);
+                    finTurno = DateTime.Today.AddHours(22);
+                }
+
+                var pedidosDelTurno = pedidosDesdeBD.Where(p => p.FechaPedido >= inicioTurno && p.FechaPedido < finTurno).ToList();
+
+                dgPedidos.ItemsSource = pedidosDelTurno;
+
+                decimal sumaTotal = (decimal)pedidosDelTurno.Sum(p => p.Total);
                 lbVentasTotales.Content = $"${sumaTotal:F2}";
             }
-            catch (EndpointNotFoundException)
+            catch (EndpointNotFoundException ex)
             {
-                MessageBox.Show("Por el momento no hay conexión con la base de datos, por favor inténtelo más tarde", "Error de conexión con base de datos", MessageBoxButton.OK, MessageBoxImage.Error);
+                Utilidades.Utilidades.MostrarMensajeEndpointNotFoundException();
             }
-            catch (CommunicationException)
+            catch (CommunicationException ex)
             {
-                MessageBox.Show("Se produjo un error de comunicación al intentar acceder a un recurso remoto. Intente de nuevo", "Problema de comunicación", MessageBoxButton.OK, MessageBoxImage.Error);
+                Utilidades.Utilidades.MostrarMensajeCommunicationException();
             }
-            catch (TimeoutException)
+            catch (TimeoutException ex)
             {
-                MessageBox.Show("La operación que intentaba realizar ha superado el tiempo de espera establecido y no pudo completarse en el tiempo especificado. Intente de nuevo", "Tiempo de espera agotado", MessageBoxButton.OK, MessageBoxImage.Error);
+                Utilidades.Utilidades.MostrarMensajeTimeoutException();
+            }
+            catch (Exception ex)
+            {
+                Utilidades.Utilidades.MostrarMensaje($"Ocurrió un error inesperado: {ex.Message}", "Error", MessageBoxImage.Error);
             }
         }
 
@@ -90,19 +111,40 @@ namespace ItaliaPizzaClient
             try
             {
                 var pedidosDesdeBD = pedidosServer.RecuperarInformacionPedidos();
-                dgPedidos.ItemsSource = pedidosDesdeBD;
+
+                string turnoActual = lbTurno.Content.ToString();
+                DateTime inicioTurno, finTurno;
+
+                if (turnoActual == "Matutino")
+                {
+                    inicioTurno = DateTime.Today.AddHours(8);
+                    finTurno = DateTime.Today.AddHours(15);
+                }
+                else 
+                {
+                    inicioTurno = DateTime.Today.AddHours(15);
+                    finTurno = DateTime.Today.AddHours(22);
+                }
+
+                var pedidosDelTurno = pedidosDesdeBD.Where(p => p.FechaPedido >= inicioTurno && p.FechaPedido < finTurno).ToList();
+
+                dgPedidos.ItemsSource = pedidosDelTurno;
             }
             catch (EndpointNotFoundException ex)
             {
-                MessageBox.Show("Por el momento no hay conexión con la base de datos, por favor inténtelo más tarde", "Error de conexión con base de datos", MessageBoxButton.OK, MessageBoxImage.Error);
+                Utilidades.Utilidades.MostrarMensajeEndpointNotFoundException();
             }
             catch (CommunicationException ex)
             {
-                MessageBox.Show("Se produjo un error de comunicación al intentar acceder a un recurso remoto. Intente de nuevo", "Problema de comunicación", MessageBoxButton.OK, MessageBoxImage.Error);
+                Utilidades.Utilidades.MostrarMensajeCommunicationException();
             }
             catch (TimeoutException ex)
             {
-                MessageBox.Show("La operación que intentaba realizar ha superado el tiempo de espera establecido y no pudo completarse en el tiempo especificado. Intente de nuevo", "Tiempo de espera agotado", MessageBoxButton.OK, MessageBoxImage.Error);
+                Utilidades.Utilidades.MostrarMensajeTimeoutException();
+            }
+            catch (Exception ex)
+            {
+                Utilidades.Utilidades.MostrarMensaje($"Ocurrió un error inesperado: {ex.Message}", "Error", MessageBoxImage.Error);
             }
         }
 
@@ -128,15 +170,14 @@ namespace ItaliaPizzaClient
         {
             DateTime fechaCorteDeCaja = (DateTime)lbFechaDeCorte.Content;
             string turno = lbTurno.Content.ToString();
-            float totalIngresos = (float)Math.Round(float.Parse(lbVentasTotales.Content.ToString().Replace("$", "").Trim()), 2);
-            float dineroRestante = (float)Math.Round(float.Parse(tbxDineroEnCaja.Text), 2);
+            double totalIngresos = double.Parse(lbVentasTotales.Content.ToString().Replace("$", "").Trim());
+            double dineroRestante = double.Parse(tbxDineroEnCaja.Text);
 
             try
             {
                 var cortesDesdeBD = cortesDeCajaServer.RecuperarInformacionDeCortesDeCaja();
 
-                bool corteExistente = cortesDesdeBD.Any(corte => corte.FechaCorteDeCaja.Date == fechaCorteDeCaja.Date);
-
+                bool corteExistente = cortesDesdeBD.Any(corte => corte.FechaCorteDeCaja.Date == fechaCorteDeCaja.Date && corte.Turno == turno);
 
                 if (totalIngresos <= 0)
                 {
@@ -154,21 +195,27 @@ namespace ItaliaPizzaClient
                 MessageBox.Show("El corte de caja se ha registrado exitosamente.", "Registro exitoso", MessageBoxButton.OK, MessageBoxImage.Information);
                 this.Close();
             }
-            catch (EndpointNotFoundException)
+            catch (EndpointNotFoundException ex)
             {
-                MessageBox.Show("Por el momento no hay conexión con la base de datos, por favor inténtelo más tarde.", "Error de conexión con base de datos", MessageBoxButton.OK, MessageBoxImage.Error);
+                Utilidades.Utilidades.MostrarMensajeEndpointNotFoundException();
+                this.Close();
+
             }
-            catch (CommunicationException)
+            catch (CommunicationException ex)
             {
-                MessageBox.Show("Se produjo un error de comunicación al intentar acceder a un recurso remoto. Intente de nuevo.", "Problema de comunicación", MessageBoxButton.OK, MessageBoxImage.Error);
+                Utilidades.Utilidades.MostrarMensajeCommunicationException();
+                this.Close();
+
             }
-            catch (TimeoutException)
+            catch (TimeoutException ex)
             {
-                MessageBox.Show("La operación que intentaba realizar ha superado el tiempo de espera establecido y no pudo completarse en el tiempo especificado. Intente de nuevo.", "Tiempo de espera agotado", MessageBoxButton.OK, MessageBoxImage.Error);
+                Utilidades.Utilidades.MostrarMensajeTimeoutException();
+                this.Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Se produjo un error inesperado: " + ex.Message, "Error inesperado", MessageBoxButton.OK, MessageBoxImage.Error);
+                Utilidades.Utilidades.MostrarMensaje($"Ocurrió un error inesperado: {ex.Message}", "Error", MessageBoxImage.Error);
+                this.Close();
             }
         }
 

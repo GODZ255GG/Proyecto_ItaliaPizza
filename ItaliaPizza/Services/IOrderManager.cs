@@ -28,5 +28,7 @@ namespace Services
         List<int> RecuperarIdsProductosDePedido(int idPedido);
         [OperationContract]
         Logic.Productos RecuperarProductoPorId(int idProducto);
+        [OperationContract]
+        List<int> RecuperarIdsProductosDePedidos();
     }
 }

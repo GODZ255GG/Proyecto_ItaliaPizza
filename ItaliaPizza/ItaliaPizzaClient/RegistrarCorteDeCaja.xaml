@@ -20,7 +20,7 @@
         <Label x:Name="lbVentasTotales" Content="" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontSize="20" FontFamily="Segoe UI" Margin="10,0,0,18" Width="300"/>
 
         <Label Content="Dinero en caja:" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontSize="20" FontFamily="Segoe UI Black" Margin="338,0,0,50"/>
-        <TextBox x:Name="tbxDineroEnCaja" Text="" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontSize="20" FontFamily="Segoe UI" Margin="338,0,0,18" Width="260" Height="30" MaxLength="20" PreviewTextInput="TbxDineroCaja_PreviewTextInput"/>
+        <TextBox x:Name="tbxDineroEnCaja" Text="" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontSize="20" FontFamily="Segoe UI" Margin="338,0,0,18" Width="260" Height="30" MaxLength="10" PreviewTextInput="TbxDineroCaja_PreviewTextInput"/>
 
         <Button x:Name="btnRegistrarCorteDeCaja" Content="Registrar corte" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="42" Width="165" Foreground="White" Background="#7CA886" FontSize="16" BorderThickness="0,0,0,0" Padding="10,10,10,10" UseLayoutRounding="True" FontWeight="Bold" Click="btnRegistrarCorteDeCaja_Click" Margin="788,0,0,26"/>
         <Button x:Name="btnCancelar" Content="Cancelar" HorizontalAlignment="Left" VerticalAlignment="Bottom" Height="42" Width="127" Foreground="White" Background="#7CA886" FontSize="16" BorderThickness="0,0,0,0" Padding="10,10,10,10" UseLayoutRounding="True" FontWeight="Bold" Click="btnCancelar_Click" Margin="637,0,0,26"/>
