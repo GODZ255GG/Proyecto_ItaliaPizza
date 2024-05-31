@@ -10,3 +10,15 @@ C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\DataAccess\obj\Debug\Data
 C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\DataAccess\obj\Debug\DataAccess.csproj.Up2Date
 C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\DataAccess\obj\Debug\DataAccess.dll
 C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\DataAccess\obj\Debug\DataAccess.pdb
+C:\Users\r3n4c\OneDrive\Documentos\Proyecto_ItaliaPizza\ItaliaPizza\DataAccess\bin\Debug\DataAccess.dll.config
+C:\Users\r3n4c\OneDrive\Documentos\Proyecto_ItaliaPizza\ItaliaPizza\DataAccess\bin\Debug\DataAccess.dll
+C:\Users\r3n4c\OneDrive\Documentos\Proyecto_ItaliaPizza\ItaliaPizza\DataAccess\bin\Debug\DataAccess.pdb
+C:\Users\r3n4c\OneDrive\Documentos\Proyecto_ItaliaPizza\ItaliaPizza\DataAccess\bin\Debug\EntityFramework.dll
+C:\Users\r3n4c\OneDrive\Documentos\Proyecto_ItaliaPizza\ItaliaPizza\DataAccess\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\r3n4c\OneDrive\Documentos\Proyecto_ItaliaPizza\ItaliaPizza\DataAccess\bin\Debug\EntityFramework.xml
+C:\Users\r3n4c\OneDrive\Documentos\Proyecto_ItaliaPizza\ItaliaPizza\DataAccess\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\r3n4c\OneDrive\Documentos\Proyecto_ItaliaPizza\ItaliaPizza\DataAccess\obj\Debug\DataAccess.csproj.AssemblyReference.cache
+C:\Users\r3n4c\OneDrive\Documentos\Proyecto_ItaliaPizza\ItaliaPizza\DataAccess\obj\Debug\DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\r3n4c\OneDrive\Documentos\Proyecto_ItaliaPizza\ItaliaPizza\DataAccess\obj\Debug\DataAccess.csproj.CopyComplete
+C:\Users\r3n4c\OneDrive\Documentos\Proyecto_ItaliaPizza\ItaliaPizza\DataAccess\obj\Debug\DataAccess.dll
+C:\Users\r3n4c\OneDrive\Documentos\Proyecto_ItaliaPizza\ItaliaPizza\DataAccess\obj\Debug\DataAccess.pdb

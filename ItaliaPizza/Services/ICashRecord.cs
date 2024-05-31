@@ -12,7 +12,7 @@ namespace Services
     public interface ICashRecord
     {
         [OperationContract]
-        void RegistrarNuevoCorteDeCaja(DateTime fechaCorteDeCaja, float totalIngresos, float dineroRestante, string turno);
+        void RegistrarNuevoCorteDeCaja(DateTime fechaCorteDeCaja, double totalIngresos, double dineroRestante, string turno);
         [OperationContract]
         List<Logic.CorteDeCaja> RecuperarInformacionDeCortesDeCaja();
     }

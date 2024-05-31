@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -49,9 +50,21 @@ namespace ItaliaPizzaClient
                 var pedidosDesdeBD = pedidosServer.RecuperarInformacionProductos(TIPO_GLOBAL);
                 dgProductos.ItemsSource = pedidosDesdeBD;
             }
+            catch (EndpointNotFoundException ex)
+            {
+                Utilidades.Utilidades.MostrarMensajeEndpointNotFoundException();
+            }
+            catch (CommunicationException ex)
+            {
+                Utilidades.Utilidades.MostrarMensajeCommunicationException();
+            }
+            catch (TimeoutException ex)
+            {
+                Utilidades.Utilidades.MostrarMensajeTimeoutException();
+            }
             catch (Exception ex)
             {
-                Console.WriteLine("Error al recuperar la información de los pedidos: " + ex.Message);
+                Utilidades.Utilidades.MostrarMensaje($"Ocurrió un error inesperado: {ex.Message}", "Error", MessageBoxImage.Error);
             }
         }
 
@@ -70,7 +83,15 @@ namespace ItaliaPizzaClient
 
             if (string.IsNullOrEmpty(lbTotalPedido.Content?.ToString()))
             {
-                MessageBox.Show("El total del pedido no puede estar vacío.");
+                Utilidades.Utilidades.MostrarMensaje("El pedido no tiene productos.", "Pedido sin productos", MessageBoxImage.Warning);
+
+                return;
+            }
+
+            if (string.IsNullOrEmpty(tbxDomicilio.Text))
+            {
+                Utilidades.Utilidades.MostrarMensaje("El campo de domicilio no puede estar vacío.", "Domicilio faltante", MessageBoxImage.Warning);
+
                 return;
             }
 
@@ -86,12 +107,24 @@ namespace ItaliaPizzaClient
                 }
 
                 pedidosServer.ActualizarPedido(idPedido, nombreCliente, tipoPedido, domicilio, (decimal)total, idProductosArray);
-                MessageBox.Show("Pedido actualizado exitosamente.");
+                Utilidades.Utilidades.MostrarMensaje("Pedido actualizado exitosamente.", "Actualización exitosa", MessageBoxImage.Information);
                 this.Close();
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                Utilidades.Utilidades.MostrarMensajeEndpointNotFoundException();
+            }
+            catch (CommunicationException ex)
+            {
+                Utilidades.Utilidades.MostrarMensajeCommunicationException();
+            }
+            catch (TimeoutException ex)
+            {
+                Utilidades.Utilidades.MostrarMensajeTimeoutException();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al registrar el pedido: " + ex.Message);
+                Utilidades.Utilidades.MostrarMensaje($"Ocurrió un error inesperado: {ex.Message}", "Error", MessageBoxImage.Error);
             }
         }
 

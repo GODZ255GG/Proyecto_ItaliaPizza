@@ -7,6 +7,7 @@ using System.ServiceModel;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Input;
+using System.Linq;
 
 namespace ItaliaPizzaClient
 {
@@ -16,6 +17,7 @@ namespace ItaliaPizzaClient
     public partial class ConsultarProducto : Window
     {
         ProductManagerClient client = new ProductManagerClient();
+        OrderManagerClient orderClient = new OrderManagerClient();
         private static readonly ILog Log = Logger.GetLogger();
 
         private int idProducto;
@@ -59,11 +61,17 @@ namespace ItaliaPizzaClient
 
         private void BtnEliminar_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult resultado = MessageBox.Show("¿Quieres eliminar el producto?", "Confirmar eliminación", 
+            if (!ValidarProductoAsociado(idProducto))
+            {
+                return;
+            }
+
+            MessageBoxResult resultado = MessageBox.Show("¿Quieres eliminar el producto?", "Confirmar eliminación",
                 MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (resultado == MessageBoxResult.Yes)
             {
-                try{
+                try
+                {
                     client.EliminarProducto(idProducto);
                     Utilidades.Utilidades.MostrarMensaje("Producto eliminado exitosamente", "Eliminación exitosa", MessageBoxImage.Information);
                     this.Close();
@@ -252,6 +260,45 @@ namespace ItaliaPizzaClient
         private bool IsValidDecimal(string input)
         {
             return System.Text.RegularExpressions.Regex.IsMatch(input, @"^[0-9]*\.?[0-9]{0,2}$");
+        }
+
+        private bool ValidarProductoAsociado(int idProducto)
+        {
+            try
+            {
+                var productosAsociados = orderClient.RecuperarIdsProductosDePedidos();
+                if (productosAsociados.Contains(idProducto))
+                {
+                    Utilidades.Utilidades.MostrarMensaje("No se puede eliminar el producto porque está asociado a un pedido.", "Eliminación no permitida", MessageBoxImage.Warning);
+                    return false;
+                }
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                Log.Error($"{ex.Message}");
+                Utilidades.Utilidades.MostrarMensajeEndpointNotFoundException();
+                return false;
+            }
+            catch (CommunicationException ex)
+            {
+                Log.Error($"{ex.Message}");
+                Utilidades.Utilidades.MostrarMensajeCommunicationException();
+                return false;
+            }
+            catch (TimeoutException ex)
+            {
+                Log.Error($"{ex.Message}");
+                Utilidades.Utilidades.MostrarMensajeTimeoutException();
+                return false;
+            }
+            catch (Exception ex)
+            {
+                Log.Error($"{ex.Message}");
+                Utilidades.Utilidades.MostrarMensaje($"Ocurrió un error inesperado: {ex.Message}", "Error", MessageBoxImage.Error);
+                return false;
+            }
+
+            return true;
         }
     }
 }

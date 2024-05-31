@@ -11,8 +11,8 @@ namespace Logic
     {
         private int _idCorteDeCaja;
         private DateTime _fechaCorteDeCaja;
-        private float _totalIngresos;
-        private float _dineroRestante;
+        private double _totalIngresos;
+        private double _dineroRestante;
         private string _turno;
 
         [DataMember]
@@ -20,9 +20,9 @@ namespace Logic
         [DataMember]
         public DateTime FechaCorteDeCaja { get { return _fechaCorteDeCaja; } set { _fechaCorteDeCaja = value; } }
         [DataMember]
-        public float TotalIngresos { get { return _totalIngresos; } set { _totalIngresos = value; } }
+        public double TotalIngresos { get { return _totalIngresos; } set { _totalIngresos = value; } }
         [DataMember]
-        public float DineroRestante { get { return _dineroRestante; } set { _dineroRestante = value; } }
+        public double DineroRestante { get { return _dineroRestante; } set { _dineroRestante = value; } }
         [DataMember]
         public string Turno { get { return _turno; } set { _turno = value; } }
 

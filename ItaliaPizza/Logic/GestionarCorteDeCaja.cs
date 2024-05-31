@@ -22,8 +22,8 @@ namespace Logic
                                         {
                                             IdCorteDeCaja = c.idCorteDeCaja,
                                             FechaCorteDeCaja = (DateTime)c.fechaDeCorte,
-                                            TotalIngresos = (float)c.totalDeIngresos,
-                                            DineroRestante = (float)c.dineroRestante,
+                                            TotalIngresos = (double)c.totalDeIngresos,
+                                            DineroRestante = (double)c.dineroRestante,
                                             Turno = c.turno
                                         }).ToList();
                     listaCortes.AddRange(cortesDeCaja);
@@ -37,7 +37,7 @@ namespace Logic
             return listaCortes;
         }
 
-        public void RegistrarNuevoCorteDeCaja(DateTime fechaCorteDeCaja, float totalIngresos, float dineroRestante, string turno)
+        public void RegistrarNuevoCorteDeCaja(DateTime fechaCorteDeCaja, double totalIngresos, double dineroRestante, string turno)
         {
             try
             {
