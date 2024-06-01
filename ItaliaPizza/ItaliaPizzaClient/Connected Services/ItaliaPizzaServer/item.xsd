@@ -126,10 +126,10 @@
   <xs:element name="ArrayOfCorteDeCaja" nillable="true" type="tns:ArrayOfCorteDeCaja" />
   <xs:complexType name="CorteDeCaja">
     <xs:sequence>
-      <xs:element minOccurs="0" name="DineroRestante" type="xs:float" />
+      <xs:element minOccurs="0" name="DineroRestante" type="xs:double" />
       <xs:element minOccurs="0" name="FechaCorteDeCaja" type="xs:dateTime" />
       <xs:element minOccurs="0" name="IdCorteDeCaja" type="xs:int" />
-      <xs:element minOccurs="0" name="TotalIngresos" type="xs:float" />
+      <xs:element minOccurs="0" name="TotalIngresos" type="xs:double" />
       <xs:element minOccurs="0" name="Turno" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>

@@ -102,15 +102,15 @@ namespace ItaliaPizzaClient
             }
             catch (EndpointNotFoundException ex)
             {
-                MessageBox.Show("Por el momento no hay conexión con la base de datos, por favor inténtelo más tarde", "Error de conexión con base de datos", MessageBoxButton.OK, MessageBoxImage.Error);
+                Utilidades.Utilidades.MostrarMensajeEndpointNotFoundException();
             }
             catch (CommunicationException ex)
             {
-                MessageBox.Show("Se produjo un error de comunicación al intentar acceder a un recurso remoto. Intente de nuevo", "Problema de comunicación", MessageBoxButton.OK, MessageBoxImage.Error);
+                Utilidades.Utilidades.MostrarMensajeCommunicationException();
             }
             catch (TimeoutException ex)
             {
-                MessageBox.Show("La operación que intentaba realizar ha superado el tiempo de espera establecido y no pudo completarse en el tiempo especificado. Intente de nuevo", "Tiempo de espera agotado", MessageBoxButton.OK, MessageBoxImage.Error);
+                Utilidades.Utilidades.MostrarMensajeTimeoutException();
             }
         }
 

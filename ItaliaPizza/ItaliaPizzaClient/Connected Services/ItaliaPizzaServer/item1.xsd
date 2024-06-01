@@ -355,10 +355,22 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="RecuperarIdsProductosDePedidos">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RecuperarIdsProductosDePedidosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="RecuperarIdsProductosDePedidosResult" nillable="true" type="q15:ArrayOfint" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="RegistrarInsumo">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/Logic" minOccurs="0" name="insumo" nillable="true" type="q15:Insumos" />
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/Logic" minOccurs="0" name="insumo" nillable="true" type="q16:Insumos" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -391,7 +403,7 @@
   <xs:element name="ObtenerListaInsumosResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/Logic" minOccurs="0" name="ObtenerListaInsumosResult" nillable="true" type="q16:ArrayOfInsumos" />
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/Logic" minOccurs="0" name="ObtenerListaInsumosResult" nillable="true" type="q17:ArrayOfInsumos" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -432,7 +444,7 @@
   <xs:element name="RegistrarReceta">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/Logic" minOccurs="0" name="receta" nillable="true" type="q17:Recetas" />
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/Logic" minOccurs="0" name="receta" nillable="true" type="q18:Recetas" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -465,7 +477,7 @@
   <xs:element name="ObtenerListaRecetaResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/Logic" minOccurs="0" name="ObtenerListaRecetaResult" nillable="true" type="q18:ArrayOfRecetas" />
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/Logic" minOccurs="0" name="ObtenerListaRecetaResult" nillable="true" type="q19:ArrayOfRecetas" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -503,8 +515,8 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="fechaCorteDeCaja" type="xs:dateTime" />
-        <xs:element minOccurs="0" name="totalIngresos" type="xs:float" />
-        <xs:element minOccurs="0" name="dineroRestante" type="xs:float" />
+        <xs:element minOccurs="0" name="totalIngresos" type="xs:double" />
+        <xs:element minOccurs="0" name="dineroRestante" type="xs:double" />
         <xs:element minOccurs="0" name="turno" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
@@ -522,7 +534,7 @@
   <xs:element name="RecuperarInformacionDeCortesDeCajaResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/Logic" minOccurs="0" name="RecuperarInformacionDeCortesDeCajaResult" nillable="true" type="q19:ArrayOfCorteDeCaja" />
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/Logic" minOccurs="0" name="RecuperarInformacionDeCortesDeCajaResult" nillable="true" type="q20:ArrayOfCorteDeCaja" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

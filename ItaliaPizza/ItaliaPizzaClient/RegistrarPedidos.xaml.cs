@@ -1,7 +1,9 @@
 ﻿using Domain;
+using Microsoft.VisualBasic.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -41,9 +43,21 @@ namespace ItaliaPizzaClient
                 var pedidosDesdeBD = pedidosServer.RecuperarInformacionProductos(TIPO_GLOBAL);
                 dgProductos.ItemsSource = pedidosDesdeBD;
             }
+            catch (EndpointNotFoundException ex)
+            {
+                Utilidades.Utilidades.MostrarMensajeEndpointNotFoundException();
+            }
+            catch (CommunicationException ex)
+            {
+                Utilidades.Utilidades.MostrarMensajeCommunicationException();
+            }
+            catch (TimeoutException ex)
+            {
+                Utilidades.Utilidades.MostrarMensajeTimeoutException();
+            }
             catch (Exception ex)
             {
-                Console.WriteLine("Error al recuperar la información de los pedidos: " + ex.Message);
+                Utilidades.Utilidades.MostrarMensaje($"Ocurrió un error inesperado: {ex.Message}", "Error", MessageBoxImage.Error);
             }
         }
 
@@ -61,7 +75,7 @@ namespace ItaliaPizzaClient
 
             if (string.IsNullOrEmpty(lbTotalPedido.Content?.ToString()))
             {
-                MessageBox.Show("El total del pedido no puede estar vacío.");
+                Utilidades.Utilidades.MostrarMensaje("El pedido no tiene productos.", "Pedido sin productos", MessageBoxImage.Warning);
                 return;
             }
 
@@ -72,30 +86,42 @@ namespace ItaliaPizzaClient
             {
                 if (rbPedidoDomicilio.IsChecked == true && string.IsNullOrEmpty(tbxDomicilio.Text))
                 {
-                    MessageBox.Show("El campo de domicilio no puede estar vacío para un pedido a domicilio.");
+                    Utilidades.Utilidades.MostrarMensaje("El campo de domicilio no puede estar vacío.", "Domicilio faltante", MessageBoxImage.Warning);
+
                     return;
                 }
                  
                 if (rbPedidoDomicilio.IsChecked == false && rbPedidoLocal.IsChecked == false)
                 {
-                    MessageBox.Show("Se debe seleccionar un tipo de pedido");
+                    Utilidades.Utilidades.MostrarMensaje("Se debe seleccionar un tipo de pedido.", "Sin tipo de pedido", MessageBoxImage.Warning);
                 }
                 else if (String.IsNullOrEmpty(nombreCliente) || idProductosArray.Length == 0)
                 {
-                    Console.WriteLine(idProductosArray.Length);
-                    MessageBox.Show("No puede haber campos vacíos");
+                    Utilidades.Utilidades.MostrarMensaje("No puede haber campos vacíos.", "Campos vacíos", MessageBoxImage.Warning);
                 }
                 else
                 {
                     pedidosServer.RegistrarNuevoPedido(nombreCliente, idEmpleado, domicilio, tipoPedido, (decimal)total, idProductosArray);
-                    MessageBox.Show("Pedido registrado exitosamente.");
+                    Utilidades.Utilidades.MostrarMensaje("Pedido registrado exitosamente", "Registro exitoso", MessageBoxImage.Information);
                     this.Close();
                 }
 
             }
+            catch (EndpointNotFoundException ex)
+            {
+                Utilidades.Utilidades.MostrarMensajeEndpointNotFoundException();
+            }
+            catch (CommunicationException ex)
+            {
+                Utilidades.Utilidades.MostrarMensajeCommunicationException();
+            }
+            catch (TimeoutException ex)
+            {
+                Utilidades.Utilidades.MostrarMensajeTimeoutException();
+            }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al registrar el pedido: " + ex.Message);
+                Utilidades.Utilidades.MostrarMensaje($"Ocurrió un error inesperado: {ex.Message}", "Error", MessageBoxImage.Error);
             }
         }
 
@@ -253,9 +279,21 @@ namespace ItaliaPizzaClient
 
                 cbxNombreCliente.ItemsSource = nombresClientes;
             }
+            catch (EndpointNotFoundException ex)
+            {
+                Utilidades.Utilidades.MostrarMensajeEndpointNotFoundException();
+            }
+            catch (CommunicationException ex)
+            {
+                Utilidades.Utilidades.MostrarMensajeCommunicationException();
+            }
+            catch (TimeoutException ex)
+            {
+                Utilidades.Utilidades.MostrarMensajeTimeoutException();
+            }
             catch (Exception ex)
             {
-                MessageBox.Show("Error al cargar los usuarios: " + ex.Message);
+                Utilidades.Utilidades.MostrarMensaje($"Ocurrió un error inesperado: {ex.Message}", "Error", MessageBoxImage.Error);
             }
         }
 

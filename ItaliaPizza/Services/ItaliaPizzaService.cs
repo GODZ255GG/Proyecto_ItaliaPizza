@@ -354,6 +354,20 @@ namespace Services
             }
         }
 
+        public List<int> RecuperarIdsProductosDePedidos()
+        {
+            try
+            {
+                Logic.GestionarPedidos gestionarPedidos = new Logic.GestionarPedidos();
+                return gestionarPedidos.RecuperarIdsProductosDePedidos();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al recuperar la información de los pedidos: " + ex.Message);
+                return new List<int>();
+            }
+        }
+
         public List<Logic.Pedidos> RecuperarInformacionPedidos()
         {
             try
@@ -602,7 +616,7 @@ namespace Services
             }
         }
 
-        public void RegistrarNuevoCorteDeCaja(DateTime fechaCorteDeCaja, float totalIngresos, float dineroRestante, string turno)
+        public void RegistrarNuevoCorteDeCaja(DateTime fechaCorteDeCaja, double totalIngresos, double dineroRestante, string turno)
         {
             try
             {

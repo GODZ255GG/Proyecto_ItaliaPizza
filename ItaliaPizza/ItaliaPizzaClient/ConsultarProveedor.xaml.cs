@@ -143,17 +143,14 @@ namespace ItaliaPizzaClient
                 }
                 catch (EndpointNotFoundException ex)
                 {
-                    Log.Error($"{ex.Message}");
                     Utilidades.Utilidades.MostrarMensajeEndpointNotFoundException();
                 }
                 catch (CommunicationException ex)
                 {
-                    Log.Error($"{ex.Message}");
                     Utilidades.Utilidades.MostrarMensajeCommunicationException();
                 }
                 catch (TimeoutException ex)
                 {
-                    Log.Error($"{ex.Message}");
                     Utilidades.Utilidades.MostrarMensajeTimeoutException();
                 }
                 catch (Exception ex)
@@ -232,17 +229,14 @@ namespace ItaliaPizzaClient
             }
             catch (EndpointNotFoundException ex)
             {
-                Log.Error($"{ex.Message}");
                 Utilidades.Utilidades.MostrarMensajeEndpointNotFoundException();
             }
             catch (CommunicationException ex)
             {
-                Log.Error($"{ex.Message}");
                 Utilidades.Utilidades.MostrarMensajeCommunicationException();
             }
             catch (TimeoutException ex)
             {
-                Log.Error($"{ex.Message}");
                 Utilidades.Utilidades.MostrarMensajeTimeoutException();
             }
             catch (Exception ex)

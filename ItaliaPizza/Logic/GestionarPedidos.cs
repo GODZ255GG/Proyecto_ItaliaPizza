@@ -314,5 +314,25 @@ namespace Logic
             return producto;
         }
 
+        public List<int> RecuperarIdsProductosDePedidos()
+        {
+            List<int> idsProductos = new List<int>();
+
+            try
+            {
+                using (var context = new BDItaliaPizzaEntities())
+                {
+                    idsProductos = (from pp in context.PedidoProducto
+                                    select pp.Productos_idProductos).ToList();
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al recuperar los IDs de productos asociados a los pedidos: " + ex.Message);
+            }
+
+            return idsProductos;
+        }
+
     }
 }

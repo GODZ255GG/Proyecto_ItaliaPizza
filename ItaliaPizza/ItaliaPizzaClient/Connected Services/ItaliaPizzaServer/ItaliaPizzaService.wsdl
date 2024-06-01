@@ -208,6 +208,12 @@
   <wsdl:message name="IOrderManager_RecuperarProductoPorId_OutputMessage">
     <wsdl:part name="parameters" element="tns:RecuperarProductoPorIdResponse" />
   </wsdl:message>
+  <wsdl:message name="IOrderManager_RecuperarIdsProductosDePedidos_InputMessage">
+    <wsdl:part name="parameters" element="tns:RecuperarIdsProductosDePedidos" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManager_RecuperarIdsProductosDePedidos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RecuperarIdsProductosDePedidosResponse" />
+  </wsdl:message>
   <wsdl:message name="IInsumoManager_RegistrarInsumo_InputMessage">
     <wsdl:part name="parameters" element="tns:RegistrarInsumo" />
   </wsdl:message>
@@ -382,6 +388,10 @@
     <wsdl:operation name="RecuperarProductoPorId">
       <wsdl:input wsaw:Action="http://tempuri.org/IOrderManager/RecuperarProductoPorId" message="tns:IOrderManager_RecuperarProductoPorId_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IOrderManager/RecuperarProductoPorIdResponse" message="tns:IOrderManager_RecuperarProductoPorId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarIdsProductosDePedidos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManager/RecuperarIdsProductosDePedidos" message="tns:IOrderManager_RecuperarIdsProductosDePedidos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManager/RecuperarIdsProductosDePedidosResponse" message="tns:IOrderManager_RecuperarIdsProductosDePedidos_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IInsumoManager">
@@ -662,6 +672,15 @@
     </wsdl:operation>
     <wsdl:operation name="RecuperarProductoPorId">
       <soap12:operation soapAction="http://tempuri.org/IOrderManager/RecuperarProductoPorId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarIdsProductosDePedidos">
+      <soap12:operation soapAction="http://tempuri.org/IOrderManager/RecuperarIdsProductosDePedidos" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
