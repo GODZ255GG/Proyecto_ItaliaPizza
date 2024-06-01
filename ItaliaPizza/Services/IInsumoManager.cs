@@ -17,5 +17,12 @@ namespace Services
         bool EliminarInsumo(int idInsumo);
         [OperationContract]
         bool ActualizarInsumo(int idInsumo, string nombre, string codigoInsumo, string marca, string tipo, string cantidadDeEmpaque, string unidadDeMedida);
+
+        [OperationContract]
+        bool RegistrarStockInsumo(int idInsumo, int cantidad);
+
+        [OperationContract]
+
+        List<InventarioDelInsumo> InventarioDeInsumos();
     }
 }

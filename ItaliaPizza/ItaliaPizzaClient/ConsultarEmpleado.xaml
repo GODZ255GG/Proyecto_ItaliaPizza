@@ -68,7 +68,7 @@
             </DataGrid>
             <Image Source="/image/Search.png" HorizontalAlignment="Left" Height="45" Margin="434,108,0,0" VerticalAlignment="Top" Width="45"/>
             <Image x:Name="imgRegresar" Source="/Image/back.png" Height="45" Margin="38,26,877,0" VerticalAlignment="Top"/>
-            <Button x:Name="btnRegistrar" Content="Registrar" Margin="716,740,0,0" VerticalAlignment="Top" Background="#FFA0B7EF" Height="68" BorderThickness="2,2,2,2" BorderBrush="Black" Foreground="White"  FontSize="30" FontFamily="Arial Narrow" Click="BtnRegistrar_Click" HorizontalAlignment="Left" Width="179"/>
+            <Button x:Name="btnRegistrar" Content="Registrar" Margin="720,705,0,0" Background="#FFA0B7EF" BorderThickness="2,2,2,2" BorderBrush="Black" Foreground="White"  FontSize="30" FontFamily="Arial Narrow" Click="BtnRegistrar_Click" HorizontalAlignment="Left" Width="179" Height="68" VerticalAlignment="Top"/>
         </Grid>
     </ContentControl>
 </UserControl>

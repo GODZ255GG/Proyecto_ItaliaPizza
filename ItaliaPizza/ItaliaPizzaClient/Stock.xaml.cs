@@ -8,6 +8,7 @@ using System.ServiceModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using Domain;
 
 namespace ItaliaPizzaClient
 {
@@ -32,6 +33,13 @@ namespace ItaliaPizzaClient
             MostrarInformacionPedidos();
         }
 
+
+        private void ActualizarTablaInsumos(object sender, EventArgs e)
+        {
+            MostrarInformacionInsumos();
+        }
+
+
         private void ImgRegresar_MouseLeftButtonDown(object sender, RoutedEventArgs e)
         {
             contentControl.Content = new Inventario();
@@ -41,11 +49,30 @@ namespace ItaliaPizzaClient
         {
             try
             {
+                // Llama al método del servidor para obtener la lista de productos
                 Productos[] productopArray = productoServer.ObtenerListaProductos();
                 List<Productos> productos = productopArray.ToList();
 
-                dgListaProductos.ItemsSource = productos;
+                // Llama al método del servidor para obtener la lista de inventarios
+                InventarioDeProductos[] inventarioArray = productoServer.InventarioDeProductos();
+                List<InventarioDeProductos> inventario = inventarioArray.ToList();
 
+                // Combina las listas de productos e inventario usando left join
+                var productosConInventario = from p in productos
+                                             join i in inventario on p.IdProductos equals i.IdProductos into pi
+                                             from subI in pi.DefaultIfEmpty()
+                                             select new Producto
+                                             {
+                                                 IdProductos = p.IdProductos,
+                                                 Nombre = p.Nombre,
+                                                 CodigoProducto = p.CodigoProducto,
+                                                 CantidadTotal = subI?.CantidadTotal ?? 0
+
+
+                                             };
+
+                // Asigna la lista combinada al DataGrid
+                dgListaProductos.ItemsSource = productosConInventario.ToList();
             }
             catch (EndpointNotFoundException ex)
             {
@@ -74,12 +101,15 @@ namespace ItaliaPizzaClient
             {
                 if (dgListaProductos.SelectedItem != null)
                 {
-                    Productos productoSeleccionado = dgListaProductos.SelectedItem as Productos;
-                    RegistrarStockProducto consulta = new RegistrarStockProducto(productoSeleccionado);
-                    consulta.Closed += ActualizarTablaProductos;
-                    consulta.Show();
-                }
+                    Producto productoSeleccionado = dgListaProductos.SelectedItem as Producto;
+                    if (productoSeleccionado != null)
+                    {
+                        RegistrarStockProducto consulta = new RegistrarStockProducto(productoSeleccionado);
+                        consulta.Closed += ActualizarTablaProductos;
+                        consulta.Show();
+                    }
 
+                }
             }
             catch (EndpointNotFoundException ex)
             {
@@ -102,15 +132,35 @@ namespace ItaliaPizzaClient
             }
         }
 
+ 
         private void MostrarInformacionInsumos()
         {
             try
             {
+                // Llama al método del servidor para obtener la lista de productos
                 Insumos[] insumoArray = InsumoManagerClient.ObtenerListaInsumos();
-                List<Insumos> productos = insumoArray.ToList();
+                List<Insumos> insumos = insumoArray.ToList();
 
-                dgListaInsumos.ItemsSource = productos;
+                // Llama al método del servidor para obtener la lista de inventarios
+                InventarioDelInsumo[] inventarioArray = InsumoManagerClient.InventarioDeInsumos();
+                List<InventarioDelInsumo> inventario = inventarioArray.ToList();
 
+                // Combina las listas de productos e inventario usando left join
+                var productosConInventario = from p in insumos
+                                             join i in inventario on p.IdInsumos equals i.IdInsumos into pi
+                                             from subI in pi.DefaultIfEmpty()
+                                             select new Insumo
+                                             {
+                                                 IdInsumos = p.IdInsumos,
+                                                 Nombre = p.Nombre,
+                                                 CantidadDeEmpaque = p.CantidadDeEmpaque,
+                                                 CantidadTotal = subI?.CantidadTotal ?? 0
+
+
+                                             };
+
+                // Asigna la lista combinada al DataGrid
+                dgListaInsumos.ItemsSource = productosConInventario.ToList();
             }
             catch (EndpointNotFoundException ex)
             {
@@ -153,10 +203,13 @@ namespace ItaliaPizzaClient
             {
                 if (dgListaInsumos.SelectedItem != null)
                 {
-                    Insumos insumoSeleccionado = dgListaInsumos.SelectedItem as Insumos;
-                    RegistrarStockInsumo consulta = new RegistrarStockInsumo(insumoSeleccionado);
-                    consulta.Closed += ActualizarTablaInsumos;
-                    consulta.Show();
+                    Insumo insumoSeleccionado = dgListaInsumos.SelectedItem as Insumo;
+                    if (insumoSeleccionado != null)
+                    {
+                        RegistrarStockInsumo consulta = new RegistrarStockInsumo(insumoSeleccionado);
+                        consulta.Closed += ActualizarTablaInsumos;
+                        consulta.Show();
+                    }
                 }
             }
             catch (EndpointNotFoundException ex)

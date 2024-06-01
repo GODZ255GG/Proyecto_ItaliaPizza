@@ -75,6 +75,33 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="RegistrarStockProducto">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idProducto" type="xs:int" />
+        <xs:element minOccurs="0" name="cantidad" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegistrarStockProductoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RegistrarStockProductoResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InventarioDeProductos">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InventarioDeProductosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Logic" minOccurs="0" name="InventarioDeProductosResult" nillable="true" type="q3:ArrayOfInventarioDeProductos" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="IniciarSesion">
     <xs:complexType>
       <xs:sequence>
@@ -86,14 +113,14 @@
   <xs:element name="IniciarSesionResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Logic" minOccurs="0" name="IniciarSesionResult" nillable="true" type="q3:Empleados" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Logic" minOccurs="0" name="IniciarSesionResult" nillable="true" type="q4:Empleados" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="RegistrarEmpleado">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Logic" minOccurs="0" name="usuarios" nillable="true" type="q4:Empleados" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Logic" minOccurs="0" name="usuarios" nillable="true" type="q5:Empleados" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -107,7 +134,7 @@
   <xs:element name="RegistrarClientes">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Logic" minOccurs="0" name="usuarios" nillable="true" type="q5:Cliente" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Logic" minOccurs="0" name="usuarios" nillable="true" type="q6:Cliente" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -140,7 +167,7 @@
   <xs:element name="ObtenerListaUsuariosResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Logic" minOccurs="0" name="ObtenerListaUsuariosResult" nillable="true" type="q6:ArrayOfEmpleados" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Logic" minOccurs="0" name="ObtenerListaUsuariosResult" nillable="true" type="q7:ArrayOfEmpleados" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -166,7 +193,9 @@
         <xs:element minOccurs="0" name="apellidoPaterno" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="apellidoMaterno" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="correo" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="telefono" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="contraseña" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="rol" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -180,7 +209,7 @@
   <xs:element name="RegistrarProveedor">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Logic" minOccurs="0" name="proveedor" nillable="true" type="q7:Proveedor" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Logic" minOccurs="0" name="proveedor" nillable="true" type="q8:Proveedor" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -199,7 +228,7 @@
   <xs:element name="ObtenerListaProveedorResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Logic" minOccurs="0" name="ObtenerListaProveedorResult" nillable="true" type="q8:ArrayOfProveedor" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Logic" minOccurs="0" name="ObtenerListaProveedorResult" nillable="true" type="q9:ArrayOfProveedor" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -260,7 +289,7 @@
         <xs:element minOccurs="0" name="domicilio" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="tipoPedido" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="total" type="xs:decimal" />
-        <xs:element xmlns:q9="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="idProductos" nillable="true" type="q9:ArrayOfint" />
+        <xs:element xmlns:q10="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="idProductos" nillable="true" type="q10:ArrayOfint" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -277,7 +306,7 @@
   <xs:element name="RecuperarInformacionPedidosResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/Logic" minOccurs="0" name="RecuperarInformacionPedidosResult" nillable="true" type="q10:ArrayOfPedidos" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Logic" minOccurs="0" name="RecuperarInformacionPedidosResult" nillable="true" type="q11:ArrayOfPedidos" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -306,7 +335,7 @@
   <xs:element name="RecuperarInformacionProductosResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Logic" minOccurs="0" name="RecuperarInformacionProductosResult" nillable="true" type="q11:ArrayOfProductos" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/Logic" minOccurs="0" name="RecuperarInformacionProductosResult" nillable="true" type="q12:ArrayOfProductos" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -318,7 +347,7 @@
         <xs:element minOccurs="0" name="domicilio" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="tipoPedido" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="total" type="xs:decimal" />
-        <xs:element xmlns:q12="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="idProductos" nillable="true" type="q12:ArrayOfint" />
+        <xs:element xmlns:q13="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="idProductos" nillable="true" type="q13:ArrayOfint" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -337,7 +366,7 @@
   <xs:element name="RecuperarIdsProductosDePedidoResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q13="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="RecuperarIdsProductosDePedidoResult" nillable="true" type="q13:ArrayOfint" />
+        <xs:element xmlns:q14="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="RecuperarIdsProductosDePedidoResult" nillable="true" type="q14:ArrayOfint" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -351,7 +380,7 @@
   <xs:element name="RecuperarProductoPorIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/Logic" minOccurs="0" name="RecuperarProductoPorIdResult" nillable="true" type="q14:Productos" />
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/Logic" minOccurs="0" name="RecuperarProductoPorIdResult" nillable="true" type="q14:Productos" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -363,14 +392,14 @@
   <xs:element name="RecuperarIdsProductosDePedidosResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q15="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="RecuperarIdsProductosDePedidosResult" nillable="true" type="q15:ArrayOfint" />
+        <xs:element xmlns:q16="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="RecuperarIdsProductosDePedidosResult" nillable="true" type="q15:ArrayOfint" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="RegistrarInsumo">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/Logic" minOccurs="0" name="insumo" nillable="true" type="q16:Insumos" />
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/Logic" minOccurs="0" name="insumo" nillable="true" type="q16:Insumos" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -403,7 +432,7 @@
   <xs:element name="ObtenerListaInsumosResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/Logic" minOccurs="0" name="ObtenerListaInsumosResult" nillable="true" type="q17:ArrayOfInsumos" />
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/Logic" minOccurs="0" name="ObtenerListaInsumosResult" nillable="true" type="q17:ArrayOfInsumos" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -441,10 +470,37 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="RegistrarStockInsumo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idInsumo" type="xs:int" />
+        <xs:element minOccurs="0" name="cantidad" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegistrarStockInsumoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RegistrarStockInsumoResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InventarioDeInsumos">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InventarioDeInsumosResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/Logic" minOccurs="0" name="InventarioDeInsumosResult" nillable="true" type="q18:ArrayOfInventarioDelInsumo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="RegistrarReceta">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/Logic" minOccurs="0" name="receta" nillable="true" type="q18:Recetas" />
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/Logic" minOccurs="0" name="receta" nillable="true" type="q19:Recetas" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -477,7 +533,7 @@
   <xs:element name="ObtenerListaRecetaResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/Logic" minOccurs="0" name="ObtenerListaRecetaResult" nillable="true" type="q19:ArrayOfRecetas" />
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/Logic" minOccurs="0" name="ObtenerListaRecetaResult" nillable="true" type="q20:ArrayOfRecetas" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -534,7 +590,7 @@
   <xs:element name="RecuperarInformacionDeCortesDeCajaResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/Logic" minOccurs="0" name="RecuperarInformacionDeCortesDeCajaResult" nillable="true" type="q20:ArrayOfCorteDeCaja" />
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/Logic" minOccurs="0" name="RecuperarInformacionDeCortesDeCajaResult" nillable="true" type="q21:ArrayOfCorteDeCaja" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

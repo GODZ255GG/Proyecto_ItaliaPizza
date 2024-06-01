@@ -140,6 +140,83 @@ namespace ItaliaPizzaClient.ItaliaPizzaServer {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="InventarioDeProductos", Namespace="http://schemas.datacontract.org/2004/07/Logic")]
+    [System.SerializableAttribute()]
+    public partial class InventarioDeProductos : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CantidadTotalField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdInventarioDeProductosField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdProductosField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int CantidadTotal {
+            get {
+                return this.CantidadTotalField;
+            }
+            set {
+                if ((this.CantidadTotalField.Equals(value) != true)) {
+                    this.CantidadTotalField = value;
+                    this.RaisePropertyChanged("CantidadTotal");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IdInventarioDeProductos {
+            get {
+                return this.IdInventarioDeProductosField;
+            }
+            set {
+                if ((this.IdInventarioDeProductosField.Equals(value) != true)) {
+                    this.IdInventarioDeProductosField = value;
+                    this.RaisePropertyChanged("IdInventarioDeProductos");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IdProductos {
+            get {
+                return this.IdProductosField;
+            }
+            set {
+                if ((this.IdProductosField.Equals(value) != true)) {
+                    this.IdProductosField = value;
+                    this.RaisePropertyChanged("IdProductos");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Empleados", Namespace="http://schemas.datacontract.org/2004/07/Logic")]
     [System.SerializableAttribute()]
     public partial class Empleados : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -893,6 +970,83 @@ namespace ItaliaPizzaClient.ItaliaPizzaServer {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="InventarioDelInsumo", Namespace="http://schemas.datacontract.org/2004/07/Logic")]
+    [System.SerializableAttribute()]
+    public partial class InventarioDelInsumo : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CantidadTotalField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdInsumosField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdInventarioDelInsumoField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int CantidadTotal {
+            get {
+                return this.CantidadTotalField;
+            }
+            set {
+                if ((this.CantidadTotalField.Equals(value) != true)) {
+                    this.CantidadTotalField = value;
+                    this.RaisePropertyChanged("CantidadTotal");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IdInsumos {
+            get {
+                return this.IdInsumosField;
+            }
+            set {
+                if ((this.IdInsumosField.Equals(value) != true)) {
+                    this.IdInsumosField = value;
+                    this.RaisePropertyChanged("IdInsumos");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int IdInventarioDelInsumo {
+            get {
+                return this.IdInventarioDelInsumoField;
+            }
+            set {
+                if ((this.IdInventarioDelInsumoField.Equals(value) != true)) {
+                    this.IdInventarioDelInsumoField = value;
+                    this.RaisePropertyChanged("IdInventarioDelInsumo");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Recetas", Namespace="http://schemas.datacontract.org/2004/07/Logic")]
     [System.SerializableAttribute()]
     public partial class Recetas : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -1110,6 +1264,18 @@ namespace ItaliaPizzaClient.ItaliaPizzaServer {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductManager/ActualizarProducto", ReplyAction="http://tempuri.org/IProductManager/ActualizarProductoResponse")]
         System.Threading.Tasks.Task<bool> ActualizarProductoAsync(int idProducto, string nombre, string codigoProducto, string marca, string tipo, double precio);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductManager/RegistrarStockProducto", ReplyAction="http://tempuri.org/IProductManager/RegistrarStockProductoResponse")]
+        bool RegistrarStockProducto(int idProducto, int cantidad);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductManager/RegistrarStockProducto", ReplyAction="http://tempuri.org/IProductManager/RegistrarStockProductoResponse")]
+        System.Threading.Tasks.Task<bool> RegistrarStockProductoAsync(int idProducto, int cantidad);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductManager/InventarioDeProductos", ReplyAction="http://tempuri.org/IProductManager/InventarioDeProductosResponse")]
+        ItaliaPizzaClient.ItaliaPizzaServer.InventarioDeProductos[] InventarioDeProductos();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductManager/InventarioDeProductos", ReplyAction="http://tempuri.org/IProductManager/InventarioDeProductosResponse")]
+        System.Threading.Tasks.Task<ItaliaPizzaClient.ItaliaPizzaServer.InventarioDeProductos[]> InventarioDeProductosAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1178,6 +1344,22 @@ namespace ItaliaPizzaClient.ItaliaPizzaServer {
         public System.Threading.Tasks.Task<bool> ActualizarProductoAsync(int idProducto, string nombre, string codigoProducto, string marca, string tipo, double precio) {
             return base.Channel.ActualizarProductoAsync(idProducto, nombre, codigoProducto, marca, tipo, precio);
         }
+        
+        public bool RegistrarStockProducto(int idProducto, int cantidad) {
+            return base.Channel.RegistrarStockProducto(idProducto, cantidad);
+        }
+        
+        public System.Threading.Tasks.Task<bool> RegistrarStockProductoAsync(int idProducto, int cantidad) {
+            return base.Channel.RegistrarStockProductoAsync(idProducto, cantidad);
+        }
+        
+        public ItaliaPizzaClient.ItaliaPizzaServer.InventarioDeProductos[] InventarioDeProductos() {
+            return base.Channel.InventarioDeProductos();
+        }
+        
+        public System.Threading.Tasks.Task<ItaliaPizzaClient.ItaliaPizzaServer.InventarioDeProductos[]> InventarioDeProductosAsync() {
+            return base.Channel.InventarioDeProductosAsync();
+        }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1221,10 +1403,10 @@ namespace ItaliaPizzaClient.ItaliaPizzaServer {
         System.Threading.Tasks.Task<bool> EliminarEmpleadosAsync(int idEmpleados);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/ActualizarEmpleado", ReplyAction="http://tempuri.org/IUserManager/ActualizarEmpleadoResponse")]
-        bool ActualizarEmpleado(int idEmpleados, string nombre, string apellidoPaterno, string apellidoMaterno, string correo, string contraseña);
+        bool ActualizarEmpleado(int idEmpleados, string nombre, string apellidoPaterno, string apellidoMaterno, string correo, string telefono, string contraseña, string rol);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IUserManager/ActualizarEmpleado", ReplyAction="http://tempuri.org/IUserManager/ActualizarEmpleadoResponse")]
-        System.Threading.Tasks.Task<bool> ActualizarEmpleadoAsync(int idEmpleados, string nombre, string apellidoPaterno, string apellidoMaterno, string correo, string contraseña);
+        System.Threading.Tasks.Task<bool> ActualizarEmpleadoAsync(int idEmpleados, string nombre, string apellidoPaterno, string apellidoMaterno, string correo, string telefono, string contraseña, string rol);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1302,12 +1484,12 @@ namespace ItaliaPizzaClient.ItaliaPizzaServer {
             return base.Channel.EliminarEmpleadosAsync(idEmpleados);
         }
         
-        public bool ActualizarEmpleado(int idEmpleados, string nombre, string apellidoPaterno, string apellidoMaterno, string correo, string contraseña) {
-            return base.Channel.ActualizarEmpleado(idEmpleados, nombre, apellidoPaterno, apellidoMaterno, correo, contraseña);
+        public bool ActualizarEmpleado(int idEmpleados, string nombre, string apellidoPaterno, string apellidoMaterno, string correo, string telefono, string contraseña, string rol) {
+            return base.Channel.ActualizarEmpleado(idEmpleados, nombre, apellidoPaterno, apellidoMaterno, correo, telefono, contraseña, rol);
         }
         
-        public System.Threading.Tasks.Task<bool> ActualizarEmpleadoAsync(int idEmpleados, string nombre, string apellidoPaterno, string apellidoMaterno, string correo, string contraseña) {
-            return base.Channel.ActualizarEmpleadoAsync(idEmpleados, nombre, apellidoPaterno, apellidoMaterno, correo, contraseña);
+        public System.Threading.Tasks.Task<bool> ActualizarEmpleadoAsync(int idEmpleados, string nombre, string apellidoPaterno, string apellidoMaterno, string correo, string telefono, string contraseña, string rol) {
+            return base.Channel.ActualizarEmpleadoAsync(idEmpleados, nombre, apellidoPaterno, apellidoMaterno, correo, telefono, contraseña, rol);
         }
     }
     
@@ -1552,8 +1734,8 @@ namespace ItaliaPizzaClient.ItaliaPizzaServer {
         
         public int[] RecuperarIdsProductosDePedidos() {
             return base.Channel.RecuperarIdsProductosDePedidos();
-        }
-        
+    }
+    
         public System.Threading.Tasks.Task<int[]> RecuperarIdsProductosDePedidosAsync() {
             return base.Channel.RecuperarIdsProductosDePedidosAsync();
         }
@@ -1592,6 +1774,18 @@ namespace ItaliaPizzaClient.ItaliaPizzaServer {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInsumoManager/ActualizarInsumo", ReplyAction="http://tempuri.org/IInsumoManager/ActualizarInsumoResponse")]
         System.Threading.Tasks.Task<bool> ActualizarInsumoAsync(int idInsumo, string nombre, string codigoInsumo, string marca, string tipo, string cantidadDeEmpaque, string unidadDeMedida);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInsumoManager/RegistrarStockInsumo", ReplyAction="http://tempuri.org/IInsumoManager/RegistrarStockInsumoResponse")]
+        bool RegistrarStockInsumo(int idInsumo, int cantidad);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInsumoManager/RegistrarStockInsumo", ReplyAction="http://tempuri.org/IInsumoManager/RegistrarStockInsumoResponse")]
+        System.Threading.Tasks.Task<bool> RegistrarStockInsumoAsync(int idInsumo, int cantidad);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInsumoManager/InventarioDeInsumos", ReplyAction="http://tempuri.org/IInsumoManager/InventarioDeInsumosResponse")]
+        ItaliaPizzaClient.ItaliaPizzaServer.InventarioDelInsumo[] InventarioDeInsumos();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInsumoManager/InventarioDeInsumos", ReplyAction="http://tempuri.org/IInsumoManager/InventarioDeInsumosResponse")]
+        System.Threading.Tasks.Task<ItaliaPizzaClient.ItaliaPizzaServer.InventarioDelInsumo[]> InventarioDeInsumosAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1659,6 +1853,22 @@ namespace ItaliaPizzaClient.ItaliaPizzaServer {
         
         public System.Threading.Tasks.Task<bool> ActualizarInsumoAsync(int idInsumo, string nombre, string codigoInsumo, string marca, string tipo, string cantidadDeEmpaque, string unidadDeMedida) {
             return base.Channel.ActualizarInsumoAsync(idInsumo, nombre, codigoInsumo, marca, tipo, cantidadDeEmpaque, unidadDeMedida);
+        }
+        
+        public bool RegistrarStockInsumo(int idInsumo, int cantidad) {
+            return base.Channel.RegistrarStockInsumo(idInsumo, cantidad);
+        }
+        
+        public System.Threading.Tasks.Task<bool> RegistrarStockInsumoAsync(int idInsumo, int cantidad) {
+            return base.Channel.RegistrarStockInsumoAsync(idInsumo, cantidad);
+        }
+        
+        public ItaliaPizzaClient.ItaliaPizzaServer.InventarioDelInsumo[] InventarioDeInsumos() {
+            return base.Channel.InventarioDeInsumos();
+        }
+        
+        public System.Threading.Tasks.Task<ItaliaPizzaClient.ItaliaPizzaServer.InventarioDelInsumo[]> InventarioDeInsumosAsync() {
+            return base.Channel.InventarioDeInsumosAsync();
         }
     }
     

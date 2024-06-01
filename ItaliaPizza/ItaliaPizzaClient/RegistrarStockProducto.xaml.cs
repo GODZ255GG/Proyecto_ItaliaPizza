@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ServiceModel;
 using System.Text.RegularExpressions;
 using System.Windows;
+using Domain;
 
 namespace ItaliaPizzaClient
 {
@@ -23,10 +24,14 @@ namespace ItaliaPizzaClient
         
         private string codigo;
 
-        public RegistrarStockProducto(Productos producto)
+        public RegistrarStockProducto(Producto producto)
         {
             InitializeComponent();
 
+            if (producto == null)
+            {
+                throw new ArgumentNullException(nameof(producto), "El producto no puede ser null");
+            }
 
             idProducto = producto.IdProductos;
             nombre = producto.Nombre;
@@ -47,10 +52,14 @@ namespace ItaliaPizzaClient
         {
             if (!CamposVacios())
             {
-                if (StringValidos(nombre))
+                if (StringValidos(nombre) && NumeroValido(tbxCantidad.Text))
                 {
                     try
                     {
+                        // Aquí puedes guardar la cantidad en la base de datos
+                        int cantidad = int.Parse(tbxCantidad.Text);
+                        GuardarCantidadEnBaseDeDatos(idProducto, cantidad);
+
                         Utilidades.Utilidades.MostrarMensaje("Registro del stock exitoso; ", "Registro exitoso", MessageBoxImage.Information);
                         this.Close();
                     }
@@ -90,8 +99,7 @@ namespace ItaliaPizzaClient
 
         public bool CamposVacios()
         {
-            if (string.IsNullOrEmpty(tbxNombre.Text) ||  string.IsNullOrEmpty(tbxCodigoProducto.Text))
-               
+            if (string.IsNullOrEmpty(tbxNombre.Text) || string.IsNullOrEmpty(tbxCodigoProducto.Text) || string.IsNullOrEmpty(tbxCantidad.Text))
             {
                 return true;
             }
@@ -112,6 +120,24 @@ namespace ItaliaPizzaClient
 
             return true;
         }
+
+        private bool NumeroValido(string cantidad)
+        {
+            if (int.TryParse(cantidad, out int valor))
+            {
+                if (valor >= 1 && valor <= 999)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         #endregion
+
+        private void GuardarCantidadEnBaseDeDatos(int idProducto, int cantidad)
+        {
+            client.RegistrarStockProducto(idProducto, cantidad);
+        }
     }
 }

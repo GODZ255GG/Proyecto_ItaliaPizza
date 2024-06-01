@@ -17,5 +17,12 @@ namespace Services
         bool EliminarProducto(int idProducto);
         [OperationContract]
         bool ActualizarProducto(int idProducto, string nombre, string codigoProducto, string marca, string tipo, double precio);
+
+        [OperationContract]
+        bool RegistrarStockProducto(int idProducto, int cantidad);
+
+        [OperationContract]
+
+        List<InventarioDeProductos> InventarioDeProductos();
     }
 }

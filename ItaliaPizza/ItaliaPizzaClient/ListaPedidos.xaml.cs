@@ -33,7 +33,7 @@ namespace ItaliaPizzaClient
             if (rol == "Gerente")
             {
                 btnRegistrarPedido.Visibility = Visibility.Hidden;
-            }
+        }
         }
 
         private void ActualizarTablaPedidos(object sender, EventArgs e)
