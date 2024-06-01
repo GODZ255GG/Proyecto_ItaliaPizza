@@ -4,37 +4,37 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="c9df9e814bb6413081cc930be43f8808" Name="Diagram1" >
-        <EntityTypeShape EntityType="BDItaliaPizzaModel.Clientes" Width="1.5" PointX="10.75" PointY="0.75" />
-        <EntityTypeShape EntityType="BDItaliaPizzaModel.CorteDeCaja" Width="1.5" PointX="10.75" PointY="3.75" />
-        <EntityTypeShape EntityType="BDItaliaPizzaModel.DetallesPedido" Width="1.5" PointX="8" PointY="2.375" />
-        <EntityTypeShape EntityType="BDItaliaPizzaModel.Empleados" Width="1.5" PointX="5.75" PointY="7" />
-        <EntityTypeShape EntityType="BDItaliaPizzaModel.IngredientesReceta" Width="1.5" PointX="3" PointY="3.875" />
-        <EntityTypeShape EntityType="BDItaliaPizzaModel.InsumoReceta" Width="1.5" PointX="3" PointY="0.875" />
-        <EntityTypeShape EntityType="BDItaliaPizzaModel.Insumos" Width="1.5" PointX="0.75" PointY="7.625" />
-        <EntityTypeShape EntityType="BDItaliaPizzaModel.Inventario" Width="1.5" PointX="0.75" PointY="15.875" />
-        <EntityTypeShape EntityType="BDItaliaPizzaModel.InventarioDeInsumo" Width="1.5" PointX="6" PointY="11.625" />
-        <EntityTypeShape EntityType="BDItaliaPizzaModel.InventarioDeProductos" Width="1.5" PointX="3" PointY="11.875" />
-        <EntityTypeShape EntityType="BDItaliaPizzaModel.PedidoProducto" Width="1.5" PointX="8" PointY="7.25" />
-        <EntityTypeShape EntityType="BDItaliaPizzaModel.Pedidos" Width="1.5" PointX="5.75" PointY="2.25" />
-        <EntityTypeShape EntityType="BDItaliaPizzaModel.Productos" Width="1.5" PointX="0.75" PointY="11.5" />
-        <EntityTypeShape EntityType="BDItaliaPizzaModel.Proveedores" Width="1.5" PointX="10.75" PointY="6.75" />
-        <EntityTypeShape EntityType="BDItaliaPizzaModel.Receta" Width="1.5" PointX="0.75" PointY="3.875" />
-        <EntityTypeShape EntityType="BDItaliaPizzaModel.RecetasProductos" Width="1.5" PointX="3" PointY="6.875" />
-        <AssociationConnector Association="BDItaliaPizzaModel.FK_DetallesPedido_Empleados" />
-        <AssociationConnector Association="BDItaliaPizzaModel.FK_DetallesPedido_Pedidos" />
-        <AssociationConnector Association="BDItaliaPizzaModel.FK_IngredientesReceta_Insumos" />
-        <AssociationConnector Association="BDItaliaPizzaModel.FK_IngredientesReceta_Recetas" />
-        <AssociationConnector Association="BDItaliaPizzaModel.FK_InsumoReceta_Insumos" />
-        <AssociationConnector Association="BDItaliaPizzaModel.FK_InsumoReceta_Receta" />
-        <AssociationConnector Association="BDItaliaPizzaModel.FK_InventarioDeInsumo_Insumos" />
-        <AssociationConnector Association="BDItaliaPizzaModel.FK_InventarioDeInsumo_Inventario" />
-        <AssociationConnector Association="BDItaliaPizzaModel.FK_InventarioDeProductos_Inventario" />
-        <AssociationConnector Association="BDItaliaPizzaModel.FK_InventarioDeProductos_Productos" />
-        <AssociationConnector Association="BDItaliaPizzaModel.FK_PedidoProducto_Pedidos" />
-        <AssociationConnector Association="BDItaliaPizzaModel.FK_PedidoProducto_Productos" />
-        <AssociationConnector Association="BDItaliaPizzaModel.FK_RecetasProductos_Productos" />
-        <AssociationConnector Association="BDItaliaPizzaModel.FK_RecetasProductos_Receta" />
+      <Diagram DiagramId="a85d375454034a4982eabebe8291eb90" Name="Diagram1">
+        <EntityTypeShape EntityType="BDItaliaPizzaModel.Clientes" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDItaliaPizzaModel.CorteDeCaja" Width="1.5" PointX="10.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDItaliaPizzaModel.DetallesPedido" Width="1.5" PointX="8" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDItaliaPizzaModel.Empleados" Width="1.5" PointX="5.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDItaliaPizzaModel.IngredientesReceta" Width="1.5" PointX="3" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDItaliaPizzaModel.InsumoReceta" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDItaliaPizzaModel.Insumos" Width="1.5" PointX="0.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDItaliaPizzaModel.Inventario" Width="1.5" PointX="0.75" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDItaliaPizzaModel.InventarioDeInsumo" Width="1.5" PointX="6" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDItaliaPizzaModel.InventarioDeProductos" Width="1.5" PointX="3" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDItaliaPizzaModel.PedidoProducto" Width="1.5" PointX="8" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDItaliaPizzaModel.Pedidos" Width="1.5" PointX="5.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDItaliaPizzaModel.Productos" Width="1.5" PointX="0.75" PointY="11.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDItaliaPizzaModel.Proveedores" Width="1.5" PointX="10.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDItaliaPizzaModel.Receta" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BDItaliaPizzaModel.RecetasProductos" Width="1.5" PointX="3" PointY="6.875" IsExpanded="true" />
+        <AssociationConnector Association="BDItaliaPizzaModel.FK_DetallesPedido_Empleados" ManuallyRouted="false" />
+        <AssociationConnector Association="BDItaliaPizzaModel.FK_DetallesPedido_Pedidos" ManuallyRouted="false" />
+        <AssociationConnector Association="BDItaliaPizzaModel.FK_IngredientesReceta_Insumos" ManuallyRouted="false" />
+        <AssociationConnector Association="BDItaliaPizzaModel.FK_IngredientesReceta_Recetas" ManuallyRouted="false" />
+        <AssociationConnector Association="BDItaliaPizzaModel.FK_InsumoReceta_Insumos" ManuallyRouted="false" />
+        <AssociationConnector Association="BDItaliaPizzaModel.FK_InsumoReceta_Receta" ManuallyRouted="false" />
+        <AssociationConnector Association="BDItaliaPizzaModel.FK_InventarioDeInsumo_Insumos" ManuallyRouted="false" />
+        <AssociationConnector Association="BDItaliaPizzaModel.FK_InventarioDeInsumo_Inventario" ManuallyRouted="false" />
+        <AssociationConnector Association="BDItaliaPizzaModel.FK_InventarioDeProductos_Inventario" ManuallyRouted="false" />
+        <AssociationConnector Association="BDItaliaPizzaModel.FK_InventarioDeProductos_Productos" ManuallyRouted="false" />
+        <AssociationConnector Association="BDItaliaPizzaModel.FK_PedidoProducto_Pedidos" ManuallyRouted="false" />
+        <AssociationConnector Association="BDItaliaPizzaModel.FK_PedidoProducto_Productos" ManuallyRouted="false" />
+        <AssociationConnector Association="BDItaliaPizzaModel.FK_RecetasProductos_Productos" ManuallyRouted="false" />
+        <AssociationConnector Association="BDItaliaPizzaModel.FK_RecetasProductos_Receta" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
