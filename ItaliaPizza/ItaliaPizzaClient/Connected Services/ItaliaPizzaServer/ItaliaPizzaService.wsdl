@@ -1,0 +1,913 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tns="http://tempuri.org/" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" name="ItaliaPizzaService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="NetTcpBinding_IProductManager_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IUserManager_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_ISupplierManager_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IOrderManager_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IInsumoManager_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_IRecipeManager_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="NetTcpBinding_ICashRecord_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Logic" />
+      <xsd:import schemaLocation="http://localhost:8082/?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IProductManager_RegistrarProducto_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarProducto" />
+  </wsdl:message>
+  <wsdl:message name="IProductManager_RegistrarProducto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarProductoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductManager_ProductoYaRegistrado_InputMessage">
+    <wsdl:part name="parameters" element="tns:ProductoYaRegistrado" />
+  </wsdl:message>
+  <wsdl:message name="IProductManager_ProductoYaRegistrado_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ProductoYaRegistradoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductManager_ObtenerListaProductos_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerListaProductos" />
+  </wsdl:message>
+  <wsdl:message name="IProductManager_ObtenerListaProductos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerListaProductosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductManager_EliminarProducto_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarProducto" />
+  </wsdl:message>
+  <wsdl:message name="IProductManager_EliminarProducto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarProductoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductManager_ActualizarProducto_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarProducto" />
+  </wsdl:message>
+  <wsdl:message name="IProductManager_ActualizarProducto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarProductoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductManager_RegistrarStockProducto_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarStockProducto" />
+  </wsdl:message>
+  <wsdl:message name="IProductManager_RegistrarStockProducto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarStockProductoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductManager_InventarioDeProductos_InputMessage">
+    <wsdl:part name="parameters" element="tns:InventarioDeProductos" />
+  </wsdl:message>
+  <wsdl:message name="IProductManager_InventarioDeProductos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InventarioDeProductosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_IniciarSesion_InputMessage">
+    <wsdl:part name="parameters" element="tns:IniciarSesion" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_IniciarSesion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IniciarSesionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_RegistrarEmpleado_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarEmpleado" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_RegistrarEmpleado_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarEmpleadoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_RegistrarClientes_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarClientes" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_RegistrarClientes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarClientesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_UsuarioYaRegistrado_InputMessage">
+    <wsdl:part name="parameters" element="tns:UsuarioYaRegistrado" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_UsuarioYaRegistrado_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UsuarioYaRegistradoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_ObtenerListaUsuarios_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerListaUsuarios" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_ObtenerListaUsuarios_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerListaUsuariosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_EliminarEmpleados_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarEmpleados" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_EliminarEmpleados_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarEmpleadosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_ActualizarEmpleado_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarEmpleado" />
+  </wsdl:message>
+  <wsdl:message name="IUserManager_ActualizarEmpleado_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarEmpleadoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISupplierManager_RegistrarProveedor_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarProveedor" />
+  </wsdl:message>
+  <wsdl:message name="ISupplierManager_RegistrarProveedor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarProveedorResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISupplierManager_ObtenerListaProveedor_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerListaProveedor" />
+  </wsdl:message>
+  <wsdl:message name="ISupplierManager_ObtenerListaProveedor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerListaProveedorResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISupplierManager_EliminarProveedor_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarProveedor" />
+  </wsdl:message>
+  <wsdl:message name="ISupplierManager_EliminarProveedor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarProveedorResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISupplierManager_ActualizarProveedor_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarProveedor" />
+  </wsdl:message>
+  <wsdl:message name="ISupplierManager_ActualizarProveedor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarProveedorResponse" />
+  </wsdl:message>
+  <wsdl:message name="ISupplierManager_CompañiaYaExistente_InputMessage">
+    <wsdl:part name="parameters" element="tns:CompañiaYaExistente" />
+  </wsdl:message>
+  <wsdl:message name="ISupplierManager_CompañiaYaExistente_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CompañiaYaExistenteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManager_RegistrarNuevoPedido_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarNuevoPedido" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManager_RegistrarNuevoPedido_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarNuevoPedidoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManager_RecuperarInformacionPedidos_InputMessage">
+    <wsdl:part name="parameters" element="tns:RecuperarInformacionPedidos" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManager_RecuperarInformacionPedidos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RecuperarInformacionPedidosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManager_ModificarEstadoDePedido_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModificarEstadoDePedido" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManager_ModificarEstadoDePedido_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModificarEstadoDePedidoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManager_RecuperarInformacionProductos_InputMessage">
+    <wsdl:part name="parameters" element="tns:RecuperarInformacionProductos" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManager_RecuperarInformacionProductos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RecuperarInformacionProductosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManager_ActualizarPedido_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarPedido" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManager_ActualizarPedido_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarPedidoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManager_RecuperarIdsProductosDePedido_InputMessage">
+    <wsdl:part name="parameters" element="tns:RecuperarIdsProductosDePedido" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManager_RecuperarIdsProductosDePedido_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RecuperarIdsProductosDePedidoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManager_RecuperarProductoPorId_InputMessage">
+    <wsdl:part name="parameters" element="tns:RecuperarProductoPorId" />
+  </wsdl:message>
+  <wsdl:message name="IOrderManager_RecuperarProductoPorId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RecuperarProductoPorIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IInsumoManager_RegistrarInsumo_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarInsumo" />
+  </wsdl:message>
+  <wsdl:message name="IInsumoManager_RegistrarInsumo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarInsumoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IInsumoManager_InsumoYaRegistrado_InputMessage">
+    <wsdl:part name="parameters" element="tns:InsumoYaRegistrado" />
+  </wsdl:message>
+  <wsdl:message name="IInsumoManager_InsumoYaRegistrado_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InsumoYaRegistradoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IInsumoManager_ObtenerListaInsumos_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerListaInsumos" />
+  </wsdl:message>
+  <wsdl:message name="IInsumoManager_ObtenerListaInsumos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerListaInsumosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IInsumoManager_EliminarInsumo_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarInsumo" />
+  </wsdl:message>
+  <wsdl:message name="IInsumoManager_EliminarInsumo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarInsumoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IInsumoManager_ActualizarInsumo_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarInsumo" />
+  </wsdl:message>
+  <wsdl:message name="IInsumoManager_ActualizarInsumo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarInsumoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IInsumoManager_RegistrarStockInsumo_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarStockInsumo" />
+  </wsdl:message>
+  <wsdl:message name="IInsumoManager_RegistrarStockInsumo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarStockInsumoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IInsumoManager_InventarioDeInsumos_InputMessage">
+    <wsdl:part name="parameters" element="tns:InventarioDeInsumos" />
+  </wsdl:message>
+  <wsdl:message name="IInsumoManager_InventarioDeInsumos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InventarioDeInsumosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRecipeManager_RegistrarReceta_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarReceta" />
+  </wsdl:message>
+  <wsdl:message name="IRecipeManager_RegistrarReceta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarRecetaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRecipeManager_RecetaYaRegistrado_InputMessage">
+    <wsdl:part name="parameters" element="tns:RecetaYaRegistrado" />
+  </wsdl:message>
+  <wsdl:message name="IRecipeManager_RecetaYaRegistrado_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RecetaYaRegistradoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRecipeManager_ObtenerListaReceta_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerListaReceta" />
+  </wsdl:message>
+  <wsdl:message name="IRecipeManager_ObtenerListaReceta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerListaRecetaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRecipeManager_EliminarReceta_InputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarReceta" />
+  </wsdl:message>
+  <wsdl:message name="IRecipeManager_EliminarReceta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EliminarRecetaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRecipeManager_ActualizarReceta_InputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarReceta" />
+  </wsdl:message>
+  <wsdl:message name="IRecipeManager_ActualizarReceta_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ActualizarRecetaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICashRecord_RegistrarNuevoCorteDeCaja_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarNuevoCorteDeCaja" />
+  </wsdl:message>
+  <wsdl:message name="ICashRecord_RegistrarNuevoCorteDeCaja_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarNuevoCorteDeCajaResponse" />
+  </wsdl:message>
+  <wsdl:message name="ICashRecord_RecuperarInformacionDeCortesDeCaja_InputMessage">
+    <wsdl:part name="parameters" element="tns:RecuperarInformacionDeCortesDeCaja" />
+  </wsdl:message>
+  <wsdl:message name="ICashRecord_RecuperarInformacionDeCortesDeCaja_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RecuperarInformacionDeCortesDeCajaResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IProductManager">
+    <wsdl:operation name="RegistrarProducto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductManager/RegistrarProducto" message="tns:IProductManager_RegistrarProducto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductManager/RegistrarProductoResponse" message="tns:IProductManager_RegistrarProducto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ProductoYaRegistrado">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductManager/ProductoYaRegistrado" message="tns:IProductManager_ProductoYaRegistrado_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductManager/ProductoYaRegistradoResponse" message="tns:IProductManager_ProductoYaRegistrado_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerListaProductos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductManager/ObtenerListaProductos" message="tns:IProductManager_ObtenerListaProductos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductManager/ObtenerListaProductosResponse" message="tns:IProductManager_ObtenerListaProductos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarProducto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductManager/EliminarProducto" message="tns:IProductManager_EliminarProducto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductManager/EliminarProductoResponse" message="tns:IProductManager_EliminarProducto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarProducto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductManager/ActualizarProducto" message="tns:IProductManager_ActualizarProducto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductManager/ActualizarProductoResponse" message="tns:IProductManager_ActualizarProducto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarStockProducto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductManager/RegistrarStockProducto" message="tns:IProductManager_RegistrarStockProducto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductManager/RegistrarStockProductoResponse" message="tns:IProductManager_RegistrarStockProducto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InventarioDeProductos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductManager/InventarioDeProductos" message="tns:IProductManager_InventarioDeProductos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductManager/InventarioDeProductosResponse" message="tns:IProductManager_InventarioDeProductos_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IUserManager">
+    <wsdl:operation name="IniciarSesion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/IniciarSesion" message="tns:IUserManager_IniciarSesion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/IniciarSesionResponse" message="tns:IUserManager_IniciarSesion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarEmpleado">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/RegistrarEmpleado" message="tns:IUserManager_RegistrarEmpleado_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/RegistrarEmpleadoResponse" message="tns:IUserManager_RegistrarEmpleado_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarClientes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/RegistrarClientes" message="tns:IUserManager_RegistrarClientes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/RegistrarClientesResponse" message="tns:IUserManager_RegistrarClientes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UsuarioYaRegistrado">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/UsuarioYaRegistrado" message="tns:IUserManager_UsuarioYaRegistrado_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/UsuarioYaRegistradoResponse" message="tns:IUserManager_UsuarioYaRegistrado_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerListaUsuarios">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/ObtenerListaUsuarios" message="tns:IUserManager_ObtenerListaUsuarios_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/ObtenerListaUsuariosResponse" message="tns:IUserManager_ObtenerListaUsuarios_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarEmpleados">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/EliminarEmpleados" message="tns:IUserManager_EliminarEmpleados_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/EliminarEmpleadosResponse" message="tns:IUserManager_EliminarEmpleados_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarEmpleado">
+      <wsdl:input wsaw:Action="http://tempuri.org/IUserManager/ActualizarEmpleado" message="tns:IUserManager_ActualizarEmpleado_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IUserManager/ActualizarEmpleadoResponse" message="tns:IUserManager_ActualizarEmpleado_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ISupplierManager">
+    <wsdl:operation name="RegistrarProveedor">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISupplierManager/RegistrarProveedor" message="tns:ISupplierManager_RegistrarProveedor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISupplierManager/RegistrarProveedorResponse" message="tns:ISupplierManager_RegistrarProveedor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerListaProveedor">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISupplierManager/ObtenerListaProveedor" message="tns:ISupplierManager_ObtenerListaProveedor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISupplierManager/ObtenerListaProveedorResponse" message="tns:ISupplierManager_ObtenerListaProveedor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarProveedor">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISupplierManager/EliminarProveedor" message="tns:ISupplierManager_EliminarProveedor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISupplierManager/EliminarProveedorResponse" message="tns:ISupplierManager_EliminarProveedor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarProveedor">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISupplierManager/ActualizarProveedor" message="tns:ISupplierManager_ActualizarProveedor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISupplierManager/ActualizarProveedorResponse" message="tns:ISupplierManager_ActualizarProveedor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CompañiaYaExistente">
+      <wsdl:input wsaw:Action="http://tempuri.org/ISupplierManager/CompañiaYaExistente" message="tns:ISupplierManager_CompañiaYaExistente_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ISupplierManager/CompañiaYaExistenteResponse" message="tns:ISupplierManager_CompañiaYaExistente_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IOrderManager">
+    <wsdl:operation name="RegistrarNuevoPedido">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManager/RegistrarNuevoPedido" message="tns:IOrderManager_RegistrarNuevoPedido_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManager/RegistrarNuevoPedidoResponse" message="tns:IOrderManager_RegistrarNuevoPedido_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarInformacionPedidos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManager/RecuperarInformacionPedidos" message="tns:IOrderManager_RecuperarInformacionPedidos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManager/RecuperarInformacionPedidosResponse" message="tns:IOrderManager_RecuperarInformacionPedidos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModificarEstadoDePedido">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManager/ModificarEstadoDePedido" message="tns:IOrderManager_ModificarEstadoDePedido_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManager/ModificarEstadoDePedidoResponse" message="tns:IOrderManager_ModificarEstadoDePedido_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarInformacionProductos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManager/RecuperarInformacionProductos" message="tns:IOrderManager_RecuperarInformacionProductos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManager/RecuperarInformacionProductosResponse" message="tns:IOrderManager_RecuperarInformacionProductos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarPedido">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManager/ActualizarPedido" message="tns:IOrderManager_ActualizarPedido_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManager/ActualizarPedidoResponse" message="tns:IOrderManager_ActualizarPedido_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarIdsProductosDePedido">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManager/RecuperarIdsProductosDePedido" message="tns:IOrderManager_RecuperarIdsProductosDePedido_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManager/RecuperarIdsProductosDePedidoResponse" message="tns:IOrderManager_RecuperarIdsProductosDePedido_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarProductoPorId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrderManager/RecuperarProductoPorId" message="tns:IOrderManager_RecuperarProductoPorId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrderManager/RecuperarProductoPorIdResponse" message="tns:IOrderManager_RecuperarProductoPorId_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IInsumoManager">
+    <wsdl:operation name="RegistrarInsumo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInsumoManager/RegistrarInsumo" message="tns:IInsumoManager_RegistrarInsumo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInsumoManager/RegistrarInsumoResponse" message="tns:IInsumoManager_RegistrarInsumo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InsumoYaRegistrado">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInsumoManager/InsumoYaRegistrado" message="tns:IInsumoManager_InsumoYaRegistrado_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInsumoManager/InsumoYaRegistradoResponse" message="tns:IInsumoManager_InsumoYaRegistrado_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerListaInsumos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInsumoManager/ObtenerListaInsumos" message="tns:IInsumoManager_ObtenerListaInsumos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInsumoManager/ObtenerListaInsumosResponse" message="tns:IInsumoManager_ObtenerListaInsumos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarInsumo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInsumoManager/EliminarInsumo" message="tns:IInsumoManager_EliminarInsumo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInsumoManager/EliminarInsumoResponse" message="tns:IInsumoManager_EliminarInsumo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarInsumo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInsumoManager/ActualizarInsumo" message="tns:IInsumoManager_ActualizarInsumo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInsumoManager/ActualizarInsumoResponse" message="tns:IInsumoManager_ActualizarInsumo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarStockInsumo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInsumoManager/RegistrarStockInsumo" message="tns:IInsumoManager_RegistrarStockInsumo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInsumoManager/RegistrarStockInsumoResponse" message="tns:IInsumoManager_RegistrarStockInsumo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InventarioDeInsumos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInsumoManager/InventarioDeInsumos" message="tns:IInsumoManager_InventarioDeInsumos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInsumoManager/InventarioDeInsumosResponse" message="tns:IInsumoManager_InventarioDeInsumos_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IRecipeManager">
+    <wsdl:operation name="RegistrarReceta">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRecipeManager/RegistrarReceta" message="tns:IRecipeManager_RegistrarReceta_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRecipeManager/RegistrarRecetaResponse" message="tns:IRecipeManager_RegistrarReceta_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RecetaYaRegistrado">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRecipeManager/RecetaYaRegistrado" message="tns:IRecipeManager_RecetaYaRegistrado_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRecipeManager/RecetaYaRegistradoResponse" message="tns:IRecipeManager_RecetaYaRegistrado_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerListaReceta">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRecipeManager/ObtenerListaReceta" message="tns:IRecipeManager_ObtenerListaReceta_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRecipeManager/ObtenerListaRecetaResponse" message="tns:IRecipeManager_ObtenerListaReceta_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="EliminarReceta">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRecipeManager/EliminarReceta" message="tns:IRecipeManager_EliminarReceta_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRecipeManager/EliminarRecetaResponse" message="tns:IRecipeManager_EliminarReceta_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarReceta">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRecipeManager/ActualizarReceta" message="tns:IRecipeManager_ActualizarReceta_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRecipeManager/ActualizarRecetaResponse" message="tns:IRecipeManager_ActualizarReceta_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ICashRecord">
+    <wsdl:operation name="RegistrarNuevoCorteDeCaja">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICashRecord/RegistrarNuevoCorteDeCaja" message="tns:ICashRecord_RegistrarNuevoCorteDeCaja_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICashRecord/RegistrarNuevoCorteDeCajaResponse" message="tns:ICashRecord_RegistrarNuevoCorteDeCaja_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarInformacionDeCortesDeCaja">
+      <wsdl:input wsaw:Action="http://tempuri.org/ICashRecord/RecuperarInformacionDeCortesDeCaja" message="tns:ICashRecord_RecuperarInformacionDeCortesDeCaja_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ICashRecord/RecuperarInformacionDeCortesDeCajaResponse" message="tns:ICashRecord_RecuperarInformacionDeCortesDeCaja_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="NetTcpBinding_IProductManager" type="tns:IProductManager">
+    <wsp:PolicyReference URI="#NetTcpBinding_IProductManager_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="RegistrarProducto">
+      <soap12:operation soapAction="http://tempuri.org/IProductManager/RegistrarProducto" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ProductoYaRegistrado">
+      <soap12:operation soapAction="http://tempuri.org/IProductManager/ProductoYaRegistrado" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerListaProductos">
+      <soap12:operation soapAction="http://tempuri.org/IProductManager/ObtenerListaProductos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarProducto">
+      <soap12:operation soapAction="http://tempuri.org/IProductManager/EliminarProducto" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarProducto">
+      <soap12:operation soapAction="http://tempuri.org/IProductManager/ActualizarProducto" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarStockProducto">
+      <soap12:operation soapAction="http://tempuri.org/IProductManager/RegistrarStockProducto" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InventarioDeProductos">
+      <soap12:operation soapAction="http://tempuri.org/IProductManager/InventarioDeProductos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IUserManager" type="tns:IUserManager">
+    <wsp:PolicyReference URI="#NetTcpBinding_IUserManager_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="IniciarSesion">
+      <soap12:operation soapAction="http://tempuri.org/IUserManager/IniciarSesion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarEmpleado">
+      <soap12:operation soapAction="http://tempuri.org/IUserManager/RegistrarEmpleado" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarClientes">
+      <soap12:operation soapAction="http://tempuri.org/IUserManager/RegistrarClientes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UsuarioYaRegistrado">
+      <soap12:operation soapAction="http://tempuri.org/IUserManager/UsuarioYaRegistrado" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerListaUsuarios">
+      <soap12:operation soapAction="http://tempuri.org/IUserManager/ObtenerListaUsuarios" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarEmpleados">
+      <soap12:operation soapAction="http://tempuri.org/IUserManager/EliminarEmpleados" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarEmpleado">
+      <soap12:operation soapAction="http://tempuri.org/IUserManager/ActualizarEmpleado" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_ISupplierManager" type="tns:ISupplierManager">
+    <wsp:PolicyReference URI="#NetTcpBinding_ISupplierManager_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="RegistrarProveedor">
+      <soap12:operation soapAction="http://tempuri.org/ISupplierManager/RegistrarProveedor" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerListaProveedor">
+      <soap12:operation soapAction="http://tempuri.org/ISupplierManager/ObtenerListaProveedor" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarProveedor">
+      <soap12:operation soapAction="http://tempuri.org/ISupplierManager/EliminarProveedor" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarProveedor">
+      <soap12:operation soapAction="http://tempuri.org/ISupplierManager/ActualizarProveedor" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CompañiaYaExistente">
+      <soap12:operation soapAction="http://tempuri.org/ISupplierManager/CompañiaYaExistente" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IOrderManager" type="tns:IOrderManager">
+    <wsp:PolicyReference URI="#NetTcpBinding_IOrderManager_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="RegistrarNuevoPedido">
+      <soap12:operation soapAction="http://tempuri.org/IOrderManager/RegistrarNuevoPedido" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarInformacionPedidos">
+      <soap12:operation soapAction="http://tempuri.org/IOrderManager/RecuperarInformacionPedidos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarEstadoDePedido">
+      <soap12:operation soapAction="http://tempuri.org/IOrderManager/ModificarEstadoDePedido" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarInformacionProductos">
+      <soap12:operation soapAction="http://tempuri.org/IOrderManager/RecuperarInformacionProductos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarPedido">
+      <soap12:operation soapAction="http://tempuri.org/IOrderManager/ActualizarPedido" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarIdsProductosDePedido">
+      <soap12:operation soapAction="http://tempuri.org/IOrderManager/RecuperarIdsProductosDePedido" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarProductoPorId">
+      <soap12:operation soapAction="http://tempuri.org/IOrderManager/RecuperarProductoPorId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IInsumoManager" type="tns:IInsumoManager">
+    <wsp:PolicyReference URI="#NetTcpBinding_IInsumoManager_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="RegistrarInsumo">
+      <soap12:operation soapAction="http://tempuri.org/IInsumoManager/RegistrarInsumo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsumoYaRegistrado">
+      <soap12:operation soapAction="http://tempuri.org/IInsumoManager/InsumoYaRegistrado" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerListaInsumos">
+      <soap12:operation soapAction="http://tempuri.org/IInsumoManager/ObtenerListaInsumos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarInsumo">
+      <soap12:operation soapAction="http://tempuri.org/IInsumoManager/EliminarInsumo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarInsumo">
+      <soap12:operation soapAction="http://tempuri.org/IInsumoManager/ActualizarInsumo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarStockInsumo">
+      <soap12:operation soapAction="http://tempuri.org/IInsumoManager/RegistrarStockInsumo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InventarioDeInsumos">
+      <soap12:operation soapAction="http://tempuri.org/IInsumoManager/InventarioDeInsumos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_IRecipeManager" type="tns:IRecipeManager">
+    <wsp:PolicyReference URI="#NetTcpBinding_IRecipeManager_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="RegistrarReceta">
+      <soap12:operation soapAction="http://tempuri.org/IRecipeManager/RegistrarReceta" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecetaYaRegistrado">
+      <soap12:operation soapAction="http://tempuri.org/IRecipeManager/RecetaYaRegistrado" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerListaReceta">
+      <soap12:operation soapAction="http://tempuri.org/IRecipeManager/ObtenerListaReceta" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EliminarReceta">
+      <soap12:operation soapAction="http://tempuri.org/IRecipeManager/EliminarReceta" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ActualizarReceta">
+      <soap12:operation soapAction="http://tempuri.org/IRecipeManager/ActualizarReceta" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="NetTcpBinding_ICashRecord" type="tns:ICashRecord">
+    <wsp:PolicyReference URI="#NetTcpBinding_ICashRecord_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="RegistrarNuevoCorteDeCaja">
+      <soap12:operation soapAction="http://tempuri.org/ICashRecord/RegistrarNuevoCorteDeCaja" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RecuperarInformacionDeCortesDeCaja">
+      <soap12:operation soapAction="http://tempuri.org/ICashRecord/RecuperarInformacionDeCortesDeCaja" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ItaliaPizzaService">
+    <wsdl:port name="NetTcpBinding_IProductManager" binding="tns:NetTcpBinding_IProductManager">
+      <soap12:address location="net.tcp://localhost:8081/Services" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8081/Services</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IUserManager" binding="tns:NetTcpBinding_IUserManager">
+      <soap12:address location="net.tcp://localhost:8081/Services" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8081/Services</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_ISupplierManager" binding="tns:NetTcpBinding_ISupplierManager">
+      <soap12:address location="net.tcp://localhost:8081/Services" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8081/Services</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IOrderManager" binding="tns:NetTcpBinding_IOrderManager">
+      <soap12:address location="net.tcp://localhost:8081/Services" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8081/Services</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IInsumoManager" binding="tns:NetTcpBinding_IInsumoManager">
+      <soap12:address location="net.tcp://localhost:8081/Services" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8081/Services</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_IRecipeManager" binding="tns:NetTcpBinding_IRecipeManager">
+      <soap12:address location="net.tcp://localhost:8081/Services" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8081/Services</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="NetTcpBinding_ICashRecord" binding="tns:NetTcpBinding_ICashRecord">
+      <soap12:address location="net.tcp://localhost:8081/Services" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8081/Services</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
