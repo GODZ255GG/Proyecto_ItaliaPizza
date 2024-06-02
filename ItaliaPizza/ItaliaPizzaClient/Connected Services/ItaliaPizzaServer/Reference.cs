@@ -1276,6 +1276,12 @@ namespace ItaliaPizzaClient.ItaliaPizzaServer {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductManager/InventarioDeProductos", ReplyAction="http://tempuri.org/IProductManager/InventarioDeProductosResponse")]
         System.Threading.Tasks.Task<ItaliaPizzaClient.ItaliaPizzaServer.InventarioDeProductos[]> InventarioDeProductosAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductManager/ObtenerInventarioDeProducto", ReplyAction="http://tempuri.org/IProductManager/ObtenerInventarioDeProductoResponse")]
+        ItaliaPizzaClient.ItaliaPizzaServer.InventarioDeProductos ObtenerInventarioDeProducto(int idProducto);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IProductManager/ObtenerInventarioDeProducto", ReplyAction="http://tempuri.org/IProductManager/ObtenerInventarioDeProductoResponse")]
+        System.Threading.Tasks.Task<ItaliaPizzaClient.ItaliaPizzaServer.InventarioDeProductos> ObtenerInventarioDeProductoAsync(int idProducto);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1359,6 +1365,14 @@ namespace ItaliaPizzaClient.ItaliaPizzaServer {
         
         public System.Threading.Tasks.Task<ItaliaPizzaClient.ItaliaPizzaServer.InventarioDeProductos[]> InventarioDeProductosAsync() {
             return base.Channel.InventarioDeProductosAsync();
+        }
+        
+        public ItaliaPizzaClient.ItaliaPizzaServer.InventarioDeProductos ObtenerInventarioDeProducto(int idProducto) {
+            return base.Channel.ObtenerInventarioDeProducto(idProducto);
+        }
+        
+        public System.Threading.Tasks.Task<ItaliaPizzaClient.ItaliaPizzaServer.InventarioDeProductos> ObtenerInventarioDeProductoAsync(int idProducto) {
+            return base.Channel.ObtenerInventarioDeProductoAsync(idProducto);
         }
     }
     
@@ -1734,11 +1748,11 @@ namespace ItaliaPizzaClient.ItaliaPizzaServer {
         
         public int[] RecuperarIdsProductosDePedidos() {
             return base.Channel.RecuperarIdsProductosDePedidos();
-    }
-    
+        }
+        
         public System.Threading.Tasks.Task<int[]> RecuperarIdsProductosDePedidosAsync() {
             return base.Channel.RecuperarIdsProductosDePedidosAsync();
-    }
+        }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1786,6 +1800,12 @@ namespace ItaliaPizzaClient.ItaliaPizzaServer {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInsumoManager/InventarioDeInsumos", ReplyAction="http://tempuri.org/IInsumoManager/InventarioDeInsumosResponse")]
         System.Threading.Tasks.Task<ItaliaPizzaClient.ItaliaPizzaServer.InventarioDelInsumo[]> InventarioDeInsumosAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInsumoManager/ObtenerInventarioDeInsumo", ReplyAction="http://tempuri.org/IInsumoManager/ObtenerInventarioDeInsumoResponse")]
+        ItaliaPizzaClient.ItaliaPizzaServer.InventarioDelInsumo ObtenerInventarioDeInsumo(int idInsumo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IInsumoManager/ObtenerInventarioDeInsumo", ReplyAction="http://tempuri.org/IInsumoManager/ObtenerInventarioDeInsumoResponse")]
+        System.Threading.Tasks.Task<ItaliaPizzaClient.ItaliaPizzaServer.InventarioDelInsumo> ObtenerInventarioDeInsumoAsync(int idInsumo);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1869,6 +1889,14 @@ namespace ItaliaPizzaClient.ItaliaPizzaServer {
         
         public System.Threading.Tasks.Task<ItaliaPizzaClient.ItaliaPizzaServer.InventarioDelInsumo[]> InventarioDeInsumosAsync() {
             return base.Channel.InventarioDeInsumosAsync();
+        }
+        
+        public ItaliaPizzaClient.ItaliaPizzaServer.InventarioDelInsumo ObtenerInventarioDeInsumo(int idInsumo) {
+            return base.Channel.ObtenerInventarioDeInsumo(idInsumo);
+        }
+        
+        public System.Threading.Tasks.Task<ItaliaPizzaClient.ItaliaPizzaServer.InventarioDelInsumo> ObtenerInventarioDeInsumoAsync(int idInsumo) {
+            return base.Channel.ObtenerInventarioDeInsumoAsync(idInsumo);
         }
     }
     

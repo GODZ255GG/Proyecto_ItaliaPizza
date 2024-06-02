@@ -103,11 +103,7 @@ namespace ItaliaPizzaClient
             catch (Exception ex)
             {
                 Utilidades.Utilidades.MostrarMensaje($"Ocurrió un error inesperado: {ex.Message}", "Error", MessageBoxImage.Error);
-        }
-
-        private void dgListaProveedores_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
+            }
         }
     }
 }

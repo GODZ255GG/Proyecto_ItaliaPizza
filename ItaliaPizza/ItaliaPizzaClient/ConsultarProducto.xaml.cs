@@ -66,6 +66,12 @@ namespace ItaliaPizzaClient
                 return;
             }
 
+            if (!ValidarProductoConStock(idProducto))
+            {
+                Utilidades.Utilidades.MostrarMensaje("No se puede eliminar el producto porque tiene stock asociado.", "Eliminación no permitida", MessageBoxImage.Warning);
+                return;
+            }
+
             MessageBoxResult resultado = MessageBox.Show("¿Quieres eliminar el producto?", "Confirmar eliminación", 
                 MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (resultado == MessageBoxResult.Yes)
@@ -299,6 +305,44 @@ namespace ItaliaPizzaClient
             }
 
             return true;
+        }
+
+        private bool ValidarProductoConStock(int idProducto)
+        {
+            try
+            {
+                var inventario = client.ObtenerInventarioDeProducto(idProducto);
+                if (inventario != null && inventario.CantidadTotal > 0)
+                {
+                    return false; // No se puede eliminar si hay stock
+                }
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                Log.Error($"{ex.Message}");
+                Utilidades.Utilidades.MostrarMensajeEndpointNotFoundException();
+                return false;
+            }
+            catch (CommunicationException ex)
+            {
+                Log.Error($"{ex.Message}");
+                Utilidades.Utilidades.MostrarMensajeCommunicationException();
+                return false;
+            }
+            catch (TimeoutException ex)
+            {
+                Log.Error($"{ex.Message}");
+                Utilidades.Utilidades.MostrarMensajeTimeoutException();
+                return false;
+            }
+            catch (Exception ex)
+            {
+                Log.Error($"{ex.Message}");
+                Utilidades.Utilidades.MostrarMensaje($"Ocurrió un error inesperado: {ex.Message}", "Error", MessageBoxImage.Error);
+                return false;
+            }
+
+            return true; // Se puede eliminar si no hay stock
         }
     }
 }

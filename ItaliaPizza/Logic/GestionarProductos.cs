@@ -172,6 +172,33 @@ namespace Logic
             return resultado;
         }
 
+        public InventarioDeProductos ObtenerInventarioDeProducto(int idProducto)
+        {
+            try
+            {
+                using (var context = new BDItaliaPizzaEntities())
+                {
+                    var inventario = context.InventarioDeProductos
+                        .FirstOrDefault(i => i.Productos_idProductos == idProducto);
+
+                    if (inventario != null)
+                    {
+                        return new InventarioDeProductos
+                        {
+                            IdProductos = inventario.Productos_idProductos,
+                            CantidadTotal = inventario.cantidadTotal ?? 0
+                        };
+                    }
+                    return null; // Retorna null si no hay inventario para el producto
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al recuperar el inventario del producto: " + ex.Message);
+                return null;
+            }
+        }
+
         public bool ActualizarProducto(int idProducto, string nuevoNombre, string nuevoCodigo, string nuevaMarca, string nuevoTipo, double nuevoPrecio)
         {
             using (var context = new BDItaliaPizzaEntities())

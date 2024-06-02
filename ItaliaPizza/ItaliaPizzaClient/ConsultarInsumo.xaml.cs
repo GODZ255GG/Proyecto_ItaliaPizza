@@ -1,4 +1,5 @@
-﻿using ItaliaPizzaClient.ItaliaPizzaServer;
+﻿using Domain;
+using ItaliaPizzaClient.ItaliaPizzaServer;
 using log4net;
 using Logs;
 using System;
@@ -74,6 +75,11 @@ namespace ItaliaPizzaClient
 
         private void BtnEliminar_Click(object sender, RoutedEventArgs e)
         {
+            if (!ValidarInsumoConStock(idInsumos))
+            {
+                Utilidades.Utilidades.MostrarMensaje("No se puede eliminar el insumo porque tiene stock asociado.", "Eliminación no permitida", MessageBoxImage.Warning);
+                return;
+            }
             MessageBoxResult resultado = MessageBox.Show("¿Quieres eliminar el insumo?", "Confirmar eliminación",
                 MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (resultado == MessageBoxResult.Yes)
@@ -249,6 +255,44 @@ namespace ItaliaPizzaClient
         {
             Regex regex = new Regex("[^a-zA-Z]+");
             e.Handled = regex.IsMatch(e.Text);
+        }
+
+        private bool ValidarInsumoConStock(int idInsumo)
+        {
+            try
+            {
+                var inventario = client.ObtenerInventarioDeInsumo(idInsumo);
+                if (inventario != null && inventario.CantidadTotal > 0)
+                {
+                    return false; // No se puede eliminar si hay stock
+                }
+            }
+            catch (EndpointNotFoundException ex)
+            {
+                Log.Error($"{ex.Message}");
+                Utilidades.Utilidades.MostrarMensajeEndpointNotFoundException();
+                return false;
+            }
+            catch (CommunicationException ex)
+            {
+                Log.Error($"{ex.Message}");
+                Utilidades.Utilidades.MostrarMensajeCommunicationException();
+                return false;
+            }
+            catch (TimeoutException ex)
+            {
+                Log.Error($"{ex.Message}");
+                Utilidades.Utilidades.MostrarMensajeTimeoutException();
+                return false;
+            }
+            catch (Exception ex)
+            {
+                Log.Error($"{ex.Message}");
+                Utilidades.Utilidades.MostrarMensaje($"Ocurrió un error inesperado: {ex.Message}", "Error", MessageBoxImage.Error);
+                return false;
+            }
+
+            return true; // Se puede eliminar si no hay stock
         }
     }
 }

@@ -24,5 +24,8 @@ namespace Services
         [OperationContract]
 
         List<InventarioDelInsumo> InventarioDeInsumos();
+
+        [OperationContract]
+        InventarioDelInsumo ObtenerInventarioDeInsumo(int idInsumo);
     }
 }

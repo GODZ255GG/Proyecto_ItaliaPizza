@@ -78,6 +78,21 @@ namespace Services
             return productos;
         }
 
+        public InventarioDeProductos ObtenerInventarioDeProducto(int idProducto)
+        {
+            try
+            {
+                Logic.GestionarProductos gestionarProductos = new Logic.GestionarProductos();
+                return gestionarProductos.ObtenerInventarioDeProducto(idProducto);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al recuperar el inventario del producto: " + ex.Message);
+                return null;
+            }
+        }
+
+
         public List<InventarioDeProductos> InventarioDeProductos()
         {
             List<InventarioDeProductos> inventario = new List<InventarioDeProductos>();
@@ -493,6 +508,20 @@ namespace Services
 
             }
             return resultado;
+        }
+
+        public InventarioDelInsumo ObtenerInventarioDeInsumo(int idInsumo)
+        {
+            try
+            {
+                Logic.GestionarInsumos gestionarInsumos = new Logic.GestionarInsumos();
+                return gestionarInsumos.ObtenerInventarioDeInsumo(idInsumo);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al recuperar el inventario del insumo: " + ex.Message);
+                return null;
+            }
         }
 
         public bool InsumoYaRegistrado(string nombre)

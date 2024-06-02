@@ -22,7 +22,9 @@ namespace Services
         bool RegistrarStockProducto(int idProducto, int cantidad);
 
         [OperationContract]
-
         List<InventarioDeProductos> InventarioDeProductos();
+
+        [OperationContract]
+        InventarioDeProductos ObtenerInventarioDeProducto(int idProducto);
     }
 }
