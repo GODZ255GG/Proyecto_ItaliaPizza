@@ -1,6 +1,7 @@
 ﻿using DataAccess;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,10 +38,24 @@ namespace Logic
                     contrasena = usuario.Contraseña,
                     foto = usuario.Foto,
                     rol = usuario.Rol
-
                 };
+
                 context.Empleados.Add(nuevoUsuario);
-                status = context.SaveChanges() > 0;
+                try
+                {
+                    status = context.SaveChanges() > 0;
+                }
+                catch (DbEntityValidationException ex)
+                {
+                    foreach (var validationErrors in ex.EntityValidationErrors)
+                    {
+                        foreach (var validationError in validationErrors.ValidationErrors)
+                        {
+                            Console.WriteLine($"Property: {validationError.PropertyName} Error: {validationError.ErrorMessage}");
+                        }
+                    }
+                    throw;  // Rethrow the exception to see the stack trace if needed
+                }
             }
             return status;
         }
@@ -79,7 +94,7 @@ namespace Logic
             return result;
         }
 
-        public bool ActualizarEmpleado(int idEmpleados, string nombre, string apellidoPaterno, string apellidoMaterno, string correo, string contraseña)
+        public bool ActualizarEmpleado(int idEmpleados, string nombre, string apellidoPaterno, string apellidoMaterno, string correo, string telefono, string contraseña, string rol)
         {
             using (var context = new BDItaliaPizzaEntities())
             {
@@ -92,7 +107,9 @@ namespace Logic
                     query.apellidoPaterno = apellidoPaterno;
                     query.apellidoMaterno = apellidoMaterno;
                     query.correo = correo;
+                    query.telefono = telefono;
                     query.contrasena = contraseña;
+                    query.rol = rol;
                     context.SaveChanges();
                     return true;
                 }

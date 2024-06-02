@@ -37,11 +37,12 @@
         </Style>
     </Window.Resources>
     <Grid Background="#FFD2D2D2">
-        <Button x:Name="btnModificar" Content="Registrar" HorizontalAlignment="Left" Margin="336,429,0,0" VerticalAlignment="Top" Height="43" Width="198" Foreground="White" Background="#7CA886" FontSize="25" BorderThickness="0,0,0,0" Padding="10,10,10,10" UseLayoutRounding="True" ScrollViewer.CanContentScroll="True" FontWeight="Bold" Click="BtnAceptar_Click"/>
+        <Button x:Name="btnModificar" Content="Registrar" HorizontalAlignment="Left" Margin="346,414,0,0" VerticalAlignment="Top" Height="43" Width="198" Foreground="White" Background="#7CA886" FontSize="25" BorderThickness="0,0,0,0" Padding="10,10,10,10" UseLayoutRounding="True" ScrollViewer.CanContentScroll="True" FontWeight="Bold" Click="BtnAceptar_Click"/>
         <TextBox x:Name="tbxNombre" HorizontalAlignment="Left" Margin="44,235,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="214" Height="34" FontSize="16" VerticalContentAlignment="Center" IsReadOnly="True"/>
         <Label Content="Nombre: " HorizontalAlignment="Left" Margin="44,196,0,0" VerticalAlignment="Top" FontSize="18"/>
-        <TextBox x:Name="tbxMarca" HorizontalAlignment="Left" Margin="40,305,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="510" Height="114" FontSize="16" VerticalContentAlignment="Center" IsReadOnly="False"/>
-        <Label Content="Registrar algún incidente con el stock:  " HorizontalAlignment="Left" Margin="45,274,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <TextBox x:Name="tbxCantidad" HorizontalAlignment="Left" Margin="305,274,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="125" Height="39" FontSize="16" VerticalContentAlignment="Center" IsReadOnly="False"
+          MaxLength="3"/>
+        <Label Content="Registrar o actualiza el stock:  " HorizontalAlignment="Left" Margin="45,274,0,0" VerticalAlignment="Top" FontSize="18"/>
         <TextBox x:Name="tbxCodigoProducto" HorizontalAlignment="Left" Margin="50,155,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="214" Height="34" FontSize="16" VerticalContentAlignment="Center" IsReadOnly="True"/>
         <Label Content="Código del Producto:  " HorizontalAlignment="Left" Margin="47,110,0,0" VerticalAlignment="Top" FontSize="18"/>
         <Button x:Name="btnAceptar" Content="Aceptar" HorizontalAlignment="Left" Margin="405,420,0,0" VerticalAlignment="Top" Height="43" Width="133" Foreground="White" Background="#7CA886" FontSize="25" BorderThickness="0,0,0,0" Padding="10,10,10,10" UseLayoutRounding="True" FontWeight="Bold" Visibility="Hidden"  Click="BtnAceptar_Click"/>

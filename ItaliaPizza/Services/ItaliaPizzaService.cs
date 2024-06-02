@@ -33,6 +33,21 @@ namespace Services
             return resultado;
         }
 
+        public bool RegistrarStockProducto(int idProducto, int cantidad)
+        {
+            GestionarProductos gestionarProductos = new GestionarProductos();
+            var resultado = false;
+            try
+            {
+                resultado = gestionarProductos.RegistrarStockProducto(idProducto, cantidad);
+            }
+            catch (EntityException e)
+            {
+               
+            }
+            return resultado;
+        }
+
         public bool ProductoYaRegistrado(string nombre)
         {
             GestionarProductos registro = new GestionarProductos();
@@ -61,6 +76,36 @@ namespace Services
 
             }
             return productos;
+        }
+
+        public InventarioDeProductos ObtenerInventarioDeProducto(int idProducto)
+        {
+            try
+            {
+                Logic.GestionarProductos gestionarProductos = new Logic.GestionarProductos();
+                return gestionarProductos.ObtenerInventarioDeProducto(idProducto);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al recuperar el inventario del producto: " + ex.Message);
+                return null;
+            }
+        }
+
+
+        public List<InventarioDeProductos> InventarioDeProductos()
+        {
+            List<InventarioDeProductos> inventario = new List<InventarioDeProductos>();
+            try
+            {
+                GestionarProductos lista = new GestionarProductos();
+                inventario = lista.InventarioDeProductos();
+            }
+            catch (EntityException e)
+            {
+
+            }
+            return inventario;
         }
 
         public bool EliminarProducto(int idProducto)
@@ -208,13 +253,13 @@ namespace Services
             return status;
         }
 
-        public bool ActualizarEmpleado(int idEmpleados, string nombre, string apellidoPaterno, string apellidoMaterno, string correo, string contraseña)
+        public bool ActualizarEmpleado(int idEmpleados, string nombre, string apellidoPaterno, string apellidoMaterno, string correo, string telefono, string contraseña, string rol)
         {
             GestionarEmpleados actualizar = new GestionarEmpleados();
             var resultado = false;
             try
             {
-                resultado = actualizar.ActualizarEmpleado(idEmpleados, nombre, apellidoPaterno, apellidoMaterno, correo, contraseña);
+                resultado = actualizar.ActualizarEmpleado(idEmpleados, nombre, apellidoPaterno, apellidoMaterno, correo,telefono, contraseña, rol);
             }
             catch (EntityException e)
             {
@@ -450,6 +495,35 @@ namespace Services
             return resultado;
         }
 
+        public bool RegistrarStockInsumo(int idInsumo, int cantidad)
+        {
+            GestionarInsumos gestionarInsumos = new GestionarInsumos();
+            var resultado = false;
+            try
+            {
+                resultado = gestionarInsumos.RegistrarStockInsumo(idInsumo, cantidad);
+            }
+            catch (EntityException e)
+            {
+
+            }
+            return resultado;
+        }
+
+        public InventarioDelInsumo ObtenerInventarioDeInsumo(int idInsumo)
+        {
+            try
+            {
+                Logic.GestionarInsumos gestionarInsumos = new Logic.GestionarInsumos();
+                return gestionarInsumos.ObtenerInventarioDeInsumo(idInsumo);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error al recuperar el inventario del insumo: " + ex.Message);
+                return null;
+            }
+        }
+
         public bool InsumoYaRegistrado(string nombre)
         {
             GestionarInsumos registro = new GestionarInsumos();
@@ -479,6 +553,21 @@ namespace Services
 
             }
             return insumos;
+        }
+
+        public List<InventarioDelInsumo> InventarioDeInsumos()
+        {
+            List<InventarioDelInsumo> inventario = new List<InventarioDelInsumo>();
+            try
+            {
+                GestionarInsumos lista = new GestionarInsumos();
+                inventario = lista.InventarioDeInsumos();
+            }
+            catch (EntityException e)
+            {
+
+            }
+            return inventario;
         }
 
         public bool EliminarInsumo(int idInsumo)

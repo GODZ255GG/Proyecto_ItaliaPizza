@@ -17,6 +17,20 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfProductos" nillable="true" type="tns:ArrayOfProductos" />
+  <xs:complexType name="ArrayOfInventarioDeProductos">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="InventarioDeProductos" nillable="true" type="tns:InventarioDeProductos" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfInventarioDeProductos" nillable="true" type="tns:ArrayOfInventarioDeProductos" />
+  <xs:complexType name="InventarioDeProductos">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CantidadTotal" type="xs:int" />
+      <xs:element minOccurs="0" name="IdInventarioDeProductos" type="xs:int" />
+      <xs:element minOccurs="0" name="IdProductos" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="InventarioDeProductos" nillable="true" type="tns:InventarioDeProductos" />
   <xs:complexType name="Empleados">
     <xs:sequence>
       <xs:element minOccurs="0" name="ApellidoMaterno" nillable="true" type="xs:string" />
@@ -104,6 +118,20 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfInsumos" nillable="true" type="tns:ArrayOfInsumos" />
+  <xs:complexType name="ArrayOfInventarioDelInsumo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="InventarioDelInsumo" nillable="true" type="tns:InventarioDelInsumo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfInventarioDelInsumo" nillable="true" type="tns:ArrayOfInventarioDelInsumo" />
+  <xs:complexType name="InventarioDelInsumo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CantidadTotal" type="xs:int" />
+      <xs:element minOccurs="0" name="IdInsumos" type="xs:int" />
+      <xs:element minOccurs="0" name="IdInventarioDelInsumo" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="InventarioDelInsumo" nillable="true" type="tns:InventarioDelInsumo" />
   <xs:complexType name="Recetas">
     <xs:sequence>
       <xs:element minOccurs="0" name="DescripcionPreparación" nillable="true" type="xs:string" />

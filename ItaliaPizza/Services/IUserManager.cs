@@ -25,6 +25,6 @@ namespace Services
         [OperationContract]
         bool EliminarEmpleados(int idEmpleados);
         [OperationContract]
-        bool ActualizarEmpleado(int idEmpleados, string nombre, string apellidoPaterno, string apellidoMaterno, string correo, string contraseña);
+        bool ActualizarEmpleado(int idEmpleados, string nombre, string apellidoPaterno, string apellidoMaterno, string correo, string telefono, string contraseña, string rol);
     }
 }

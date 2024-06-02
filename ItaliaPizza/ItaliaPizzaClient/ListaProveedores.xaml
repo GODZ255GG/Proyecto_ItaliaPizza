@@ -52,7 +52,7 @@ CornerRadius="10">
     <ContentControl x:Name="contentControl">
         <Grid>
             <Rectangle HorizontalAlignment="Left" Height="834"  VerticalAlignment="Top" Width="960" Fill="White"/>
-            <Button x:Name="btnRegistrarProveed" Content="Registrar" HorizontalAlignment="Left" VerticalAlignment="Top" Height="64" Width="225" Foreground="White" Background="#7CA886" FontSize="30" BorderThickness="0,0,0,0" Padding="10,10,10,10" UseLayoutRounding="True" ScrollViewer.CanContentScroll="True" FontWeight="Bold" Margin="674,714,0,0" Click="BtnRegistrarProveedor_Click"/>
+            <Button x:Name="btnRegistrarProveed" Content="Registrar" HorizontalAlignment="Left" VerticalAlignment="Top" Height="64" Width="225" Foreground="White" Background="#7CA886" FontSize="30" BorderThickness="0,0,0,0" Padding="10,10,10,10" UseLayoutRounding="True" ScrollViewer.CanContentScroll="True" FontWeight="Bold" Margin="600,711,0,0" Click="BtnRegistrarProveedor_Click"/>
             <Label Content="Proveedores" HorizontalAlignment="Center" Margin="0,17,0,0" VerticalAlignment="Top" FontSize="40" FontFamily="Segoe UI Black" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
             <Rectangle HorizontalAlignment="Center" Height="4" Margin="0,85,0,0" VerticalAlignment="Top" Width="753" RenderTransformOrigin="0.5,0.5" Fill="#FF7CA886"/>
             <TextBox x:Name="tbBuscar" Style="{StaticResource RoundedTextBoxStyle}" HorizontalAlignment="Left" Margin="104,107,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="376"  VerticalContentAlignment="Center" Height="46" FontSize="16" TextChanged="TbBuscar_TextChanged" BorderThickness="5,5,5,5">

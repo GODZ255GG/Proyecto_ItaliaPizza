@@ -58,13 +58,13 @@
             <DataGrid x:Name="dgListaProductos" SelectionUnit="FullRow" AutoGenerateColumns="False" Margin="61,178,495,88" MouseDoubleClick="DgListaProductos_MouseDoubleClick" BorderThickness="5,5,5,5" IsReadOnly="True">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Nombre del Producto" Width="*" FontSize="15" Binding="{Binding Nombre}"/>
-                    <DataGridTextColumn Header="Stock" Width="*" FontSize="15" Binding="{Binding precio}"/>
+                    <DataGridTextColumn Header="Stock" Width="*" FontSize="15" Binding="{Binding CantidadTotal}"/>
                 </DataGrid.Columns>
             </DataGrid>
             <DataGrid x:Name="dgListaInsumos" SelectionUnit="FullRow" AutoGenerateColumns="False" Margin="501,180,55,86" MouseDoubleClick="DgListaInsumos_MouseDoubleClick" BorderThickness="5,5,5,5" IsReadOnly="True">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Nombre del Insumo" Width="*" FontSize="15" Binding="{Binding Nombre}"/>
-                    <DataGridTextColumn Header="Stock" Width="*" FontSize="15" Binding="{Binding CantidadDeEmpaque}"/>
+                    <DataGridTextColumn Header="Stock" Width="*" FontSize="15" Binding="{Binding CantidadTotal}"/>
                 </DataGrid.Columns>
             </DataGrid>
 

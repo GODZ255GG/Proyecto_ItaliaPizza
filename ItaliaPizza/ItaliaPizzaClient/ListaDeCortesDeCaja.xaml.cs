@@ -24,7 +24,7 @@ namespace ItaliaPizzaClient
     {
         ItaliaPizzaServer.CashRecordClient cortesDeCajaServer = new ItaliaPizzaServer.CashRecordClient();
         private string rol = Domain.Empleados.EmpleadosClient.Rol;
-
+        
 
         public ListaDeCortesDeCaja()
         {
@@ -34,7 +34,7 @@ namespace ItaliaPizzaClient
             if (rol == "Gerente")
             {
                 btnRegistrarCorteDeCaja.Visibility = Visibility.Hidden;
-            }
+        }
         }
 
         private void ActualizarTablaCortesDeCaja(object sender, EventArgs e)

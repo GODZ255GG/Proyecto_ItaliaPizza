@@ -94,6 +94,24 @@
   <wsdl:message name="IProductManager_ActualizarProducto_OutputMessage">
     <wsdl:part name="parameters" element="tns:ActualizarProductoResponse" />
   </wsdl:message>
+  <wsdl:message name="IProductManager_RegistrarStockProducto_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarStockProducto" />
+  </wsdl:message>
+  <wsdl:message name="IProductManager_RegistrarStockProducto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarStockProductoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductManager_InventarioDeProductos_InputMessage">
+    <wsdl:part name="parameters" element="tns:InventarioDeProductos" />
+  </wsdl:message>
+  <wsdl:message name="IProductManager_InventarioDeProductos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InventarioDeProductosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IProductManager_ObtenerInventarioDeProducto_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerInventarioDeProducto" />
+  </wsdl:message>
+  <wsdl:message name="IProductManager_ObtenerInventarioDeProducto_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerInventarioDeProductoResponse" />
+  </wsdl:message>
   <wsdl:message name="IUserManager_IniciarSesion_InputMessage">
     <wsdl:part name="parameters" element="tns:IniciarSesion" />
   </wsdl:message>
@@ -244,6 +262,24 @@
   <wsdl:message name="IInsumoManager_ActualizarInsumo_OutputMessage">
     <wsdl:part name="parameters" element="tns:ActualizarInsumoResponse" />
   </wsdl:message>
+  <wsdl:message name="IInsumoManager_RegistrarStockInsumo_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarStockInsumo" />
+  </wsdl:message>
+  <wsdl:message name="IInsumoManager_RegistrarStockInsumo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarStockInsumoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IInsumoManager_InventarioDeInsumos_InputMessage">
+    <wsdl:part name="parameters" element="tns:InventarioDeInsumos" />
+  </wsdl:message>
+  <wsdl:message name="IInsumoManager_InventarioDeInsumos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:InventarioDeInsumosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IInsumoManager_ObtenerInventarioDeInsumo_InputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerInventarioDeInsumo" />
+  </wsdl:message>
+  <wsdl:message name="IInsumoManager_ObtenerInventarioDeInsumo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ObtenerInventarioDeInsumoResponse" />
+  </wsdl:message>
   <wsdl:message name="IRecipeManager_RegistrarReceta_InputMessage">
     <wsdl:part name="parameters" element="tns:RegistrarReceta" />
   </wsdl:message>
@@ -306,6 +342,18 @@
     <wsdl:operation name="ActualizarProducto">
       <wsdl:input wsaw:Action="http://tempuri.org/IProductManager/ActualizarProducto" message="tns:IProductManager_ActualizarProducto_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IProductManager/ActualizarProductoResponse" message="tns:IProductManager_ActualizarProducto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarStockProducto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductManager/RegistrarStockProducto" message="tns:IProductManager_RegistrarStockProducto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductManager/RegistrarStockProductoResponse" message="tns:IProductManager_RegistrarStockProducto_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InventarioDeProductos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductManager/InventarioDeProductos" message="tns:IProductManager_InventarioDeProductos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductManager/InventarioDeProductosResponse" message="tns:IProductManager_InventarioDeProductos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerInventarioDeProducto">
+      <wsdl:input wsaw:Action="http://tempuri.org/IProductManager/ObtenerInventarioDeProducto" message="tns:IProductManager_ObtenerInventarioDeProducto_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IProductManager/ObtenerInventarioDeProductoResponse" message="tns:IProductManager_ObtenerInventarioDeProducto_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IUserManager">
@@ -415,6 +463,18 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IInsumoManager/ActualizarInsumo" message="tns:IInsumoManager_ActualizarInsumo_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IInsumoManager/ActualizarInsumoResponse" message="tns:IInsumoManager_ActualizarInsumo_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="RegistrarStockInsumo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInsumoManager/RegistrarStockInsumo" message="tns:IInsumoManager_RegistrarStockInsumo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInsumoManager/RegistrarStockInsumoResponse" message="tns:IInsumoManager_RegistrarStockInsumo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="InventarioDeInsumos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInsumoManager/InventarioDeInsumos" message="tns:IInsumoManager_InventarioDeInsumos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInsumoManager/InventarioDeInsumosResponse" message="tns:IInsumoManager_InventarioDeInsumos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerInventarioDeInsumo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IInsumoManager/ObtenerInventarioDeInsumo" message="tns:IInsumoManager_ObtenerInventarioDeInsumo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IInsumoManager/ObtenerInventarioDeInsumoResponse" message="tns:IInsumoManager_ObtenerInventarioDeInsumo_OutputMessage" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IRecipeManager">
     <wsdl:operation name="RegistrarReceta">
@@ -489,6 +549,33 @@
     </wsdl:operation>
     <wsdl:operation name="ActualizarProducto">
       <soap12:operation soapAction="http://tempuri.org/IProductManager/ActualizarProducto" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarStockProducto">
+      <soap12:operation soapAction="http://tempuri.org/IProductManager/RegistrarStockProducto" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InventarioDeProductos">
+      <soap12:operation soapAction="http://tempuri.org/IProductManager/InventarioDeProductos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerInventarioDeProducto">
+      <soap12:operation soapAction="http://tempuri.org/IProductManager/ObtenerInventarioDeProducto" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -730,6 +817,33 @@
     </wsdl:operation>
     <wsdl:operation name="ActualizarInsumo">
       <soap12:operation soapAction="http://tempuri.org/IInsumoManager/ActualizarInsumo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarStockInsumo">
+      <soap12:operation soapAction="http://tempuri.org/IInsumoManager/RegistrarStockInsumo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InventarioDeInsumos">
+      <soap12:operation soapAction="http://tempuri.org/IInsumoManager/InventarioDeInsumos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ObtenerInventarioDeInsumo">
+      <soap12:operation soapAction="http://tempuri.org/IInsumoManager/ObtenerInventarioDeInsumo" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

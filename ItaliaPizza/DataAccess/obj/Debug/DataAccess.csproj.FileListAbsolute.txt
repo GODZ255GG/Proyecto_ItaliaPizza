@@ -22,3 +22,15 @@ C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\DataAccess\obj\Debug\Data
 C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\DataAccess\obj\Debug\DataAccess.csproj.Up2Date
 C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\DataAccess\obj\Debug\DataAccess.dll
 C:\Users\reneu\Videos\Proyecto_ItaliaPizza\ItaliaPizza\DataAccess\obj\Debug\DataAccess.pdb
+D:\UV\Proyectos\pizza\Proyecto_ItaliaPizza-master\ItaliaPizza\DataAccess\bin\Debug\DataAccess.dll.config
+D:\UV\Proyectos\pizza\Proyecto_ItaliaPizza-master\ItaliaPizza\DataAccess\bin\Debug\DataAccess.dll
+D:\UV\Proyectos\pizza\Proyecto_ItaliaPizza-master\ItaliaPizza\DataAccess\bin\Debug\DataAccess.pdb
+D:\UV\Proyectos\pizza\Proyecto_ItaliaPizza-master\ItaliaPizza\DataAccess\bin\Debug\EntityFramework.dll
+D:\UV\Proyectos\pizza\Proyecto_ItaliaPizza-master\ItaliaPizza\DataAccess\bin\Debug\EntityFramework.SqlServer.dll
+D:\UV\Proyectos\pizza\Proyecto_ItaliaPizza-master\ItaliaPizza\DataAccess\bin\Debug\EntityFramework.xml
+D:\UV\Proyectos\pizza\Proyecto_ItaliaPizza-master\ItaliaPizza\DataAccess\bin\Debug\EntityFramework.SqlServer.xml
+D:\UV\Proyectos\pizza\Proyecto_ItaliaPizza-master\ItaliaPizza\DataAccess\obj\Debug\DataAccess.csproj.AssemblyReference.cache
+D:\UV\Proyectos\pizza\Proyecto_ItaliaPizza-master\ItaliaPizza\DataAccess\obj\Debug\DataAccess.csproj.CoreCompileInputs.cache
+D:\UV\Proyectos\pizza\Proyecto_ItaliaPizza-master\ItaliaPizza\DataAccess\obj\Debug\DataAccess.csproj.CopyComplete
+D:\UV\Proyectos\pizza\Proyecto_ItaliaPizza-master\ItaliaPizza\DataAccess\obj\Debug\DataAccess.dll
+D:\UV\Proyectos\pizza\Proyecto_ItaliaPizza-master\ItaliaPizza\DataAccess\obj\Debug\DataAccess.pdb

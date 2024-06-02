@@ -44,12 +44,17 @@
         <Button x:Name="btnCancelar" Content="Cancelar" HorizontalAlignment="Left" Margin="71,420,0,0" VerticalAlignment="Top" Height="43" Width="118" Foreground="White" Background="#7CA886" FontSize="25" BorderThickness="0,0,0,0" Padding="10,10,10,10" UseLayoutRounding="True" ScrollViewer.CanContentScroll="True" FontWeight="Bold" Click="BtnCancelar_Click" Grid.ColumnSpan="2"/>
         <Button x:Name="btnAceptar" Content="Aceptar" HorizontalAlignment="Left" Margin="325,420,0,0" VerticalAlignment="Top" Height="43" Width="118" Foreground="White" Background="#7CA886" FontSize="25" BorderThickness="0,0,0,0" Padding="10,10,10,10" UseLayoutRounding="True" ScrollViewer.CanContentScroll="True" FontWeight="Bold" Click="BtnAceptar_Click" Grid.Column="1"/>
         <TextBox x:Name="tbxNombre" HorizontalAlignment="Left" Margin="41,162,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="214" Height="34" FontSize="16" VerticalContentAlignment="Center" Grid.ColumnSpan="2"/>
-        <Label Content="Nombre: " HorizontalAlignment="Left" Margin="41,123,0,0" VerticalAlignment="Top" FontSize="18" Grid.ColumnSpan="2"/>
-        <TextBox x:Name="tbxDescripcion" HorizontalAlignment="Left" Margin="41,246,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="524" Height="137" FontSize="16" VerticalContentAlignment="Center" Grid.ColumnSpan="2"/>
-        <Label Content="Descripción: " HorizontalAlignment="Left" Margin="41,202,0,0" VerticalAlignment="Top" FontSize="18" Grid.ColumnSpan="2"/>
+        <Label Content="Nombre de la receta: " HorizontalAlignment="Left" Margin="41,123,0,0" VerticalAlignment="Top" FontSize="18" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="tbxDescripcion" HorizontalAlignment="Left" Margin="41,246,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="289" Height="148" FontSize="16" VerticalContentAlignment="Center" Grid.ColumnSpan="2"/>
+        <Label Content="Escribe los ingredientes y preparacion: " HorizontalAlignment="Right" Margin="0,205,245,0" VerticalAlignment="Top" FontSize="18" Grid.ColumnSpan="2"/>
         <Label Content="Registrar Receta" HorizontalAlignment="Left" Margin="52,8,0,0" VerticalAlignment="Top" FontSize="40" FontFamily="Segoe UI Black" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Grid.Column="1"/>
         <Rectangle HorizontalAlignment="Left" Height="4" Margin="35,76,0,0" VerticalAlignment="Top" Width="530" RenderTransformOrigin="0.5,0.5" Fill="#FF7CA886" Grid.ColumnSpan="2"/>
-        <TextBox Grid.Column="1" HorizontalAlignment="Left" Margin="233,123,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="245" Height="113"/>
-        <Label Grid.Column="1" Content="Insumos:" HorizontalAlignment="Left" Margin="233,87,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <Label Grid.Column="1" Content="Insumos existentes:" HorizontalAlignment="Left" Margin="279,93,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <DataGrid x:Name="dgInsumo" AutoGenerateColumns="False" Margin="279,119,15,83" IsReadOnly="True" SelectionUnit="FullRow" Grid.Column="1">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Nombre del insumo" Width="*" Binding="{Binding Nombre}"/>
+
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>

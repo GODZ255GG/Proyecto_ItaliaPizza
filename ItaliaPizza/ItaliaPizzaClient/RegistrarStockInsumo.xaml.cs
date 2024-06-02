@@ -1,4 +1,5 @@
-﻿using ItaliaPizzaClient.ItaliaPizzaServer;
+﻿using Domain;
+using ItaliaPizzaClient.ItaliaPizzaServer;
 using log4net;
 using Logs;
 using System;
@@ -19,23 +20,27 @@ namespace ItaliaPizzaClient
 
         private int idInsumos;
         private string nombre;
-        
-        private string cantidad;
+        private string cantidadEmpaque;
         
 
-        public RegistrarStockInsumo(Insumos insumo)
+        public RegistrarStockInsumo(Insumo insumo)
         {
             InitializeComponent();
-            
+
+            if (insumo == null)
+            {
+                throw new ArgumentNullException(nameof(insumo), "El insumo no puede ser null");
+            }
+
 
             idInsumos = insumo.IdInsumos;
             nombre = insumo.Nombre;
-            
-            cantidad = insumo.CantidadDeEmpaque;
+
+            cantidadEmpaque = insumo.CantidadDeEmpaque;
             
             tbxNombre.Text = nombre;
             
-            tbxCantidad.Text = cantidad;
+            tbxCantidad.Text = cantidadEmpaque;
            
             
         }
@@ -52,10 +57,14 @@ namespace ItaliaPizzaClient
         {
             if (!CamposVacios())
             {
-                if (StringValidos(nombre))
+                if (StringValidos(nombre) && NumeroValido(tbxCantidadTotal.Text))
                 {
                     try
                     {
+                        // Aquí puedes guardar la cantidad en la base de datos
+                        int cantidad = int.Parse(tbxCantidadTotal.Text);
+                        GuardarCantidadEnBaseDeDatos(idInsumos, cantidad);
+
                         Utilidades.Utilidades.MostrarMensaje("Registro del stock exitoso; ", "Registro exitoso", MessageBoxImage.Information);
                         this.Close();
                     }
@@ -95,15 +104,16 @@ namespace ItaliaPizzaClient
 
 
         #region Validaciones
+
         public bool CamposVacios()
         {
-            if (string.IsNullOrEmpty(tbxNombre.Text) || 
-                string.IsNullOrEmpty(tbxCantidad.Text))
+            if (string.IsNullOrEmpty(tbxNombre.Text) || string.IsNullOrEmpty(tbxCantidadTotal.Text) || string.IsNullOrEmpty(tbxCantidad.Text))
             {
                 return true;
             }
             return false;
         }
+
         private bool StringValidos(string nombre)
         {
             if (!Regex.IsMatch(nombre, @"^[a-zA-Z\s\-.,'()ñÑáéíóúÁÉÍÓÚ]+$"))
@@ -118,6 +128,26 @@ namespace ItaliaPizzaClient
 
             return true;
         }
+
+        private bool NumeroValido(string cantidad)
+        {
+            if (int.TryParse(cantidad, out int valor))
+            {
+                if (valor >= 1 && valor <= 999)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         #endregion
+
+        private void GuardarCantidadEnBaseDeDatos(int idInsumo, int cantidad)
+        {
+            // Lógica para guardar la cantidad de stock en la base de datos
+            // Por ejemplo, podrías llamar a un método en el servicio WCF:
+            client.RegistrarStockInsumo(idInsumo, cantidad);
+        }
     }
 }

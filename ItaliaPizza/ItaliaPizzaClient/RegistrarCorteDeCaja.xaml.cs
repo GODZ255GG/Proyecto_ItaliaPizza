@@ -66,6 +66,7 @@ namespace ItaliaPizzaClient
             try
             {
                 var pedidosDesdeBD = pedidosServer.RecuperarInformacionPedidos();
+                dgPedidos.ItemsSource = pedidosDesdeBD;
 
                 string turnoActual = lbTurno.Content.ToString();
                 DateTime inicioTurno, finTurno;
@@ -103,7 +104,7 @@ namespace ItaliaPizzaClient
             catch (Exception ex)
             {
                 Utilidades.Utilidades.MostrarMensaje($"Ocurrió un error inesperado: {ex.Message}", "Error", MessageBoxImage.Error);
-            }
+        }
         }
 
         private void CargarPedidos()
@@ -185,7 +186,7 @@ namespace ItaliaPizzaClient
                     return;
                 }
                 else if (corteExistente)
-                {
+            {
                     MessageBox.Show("Ya existe un corte de caja registrado el día de hoy.", "Corte de caja duplicado", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }

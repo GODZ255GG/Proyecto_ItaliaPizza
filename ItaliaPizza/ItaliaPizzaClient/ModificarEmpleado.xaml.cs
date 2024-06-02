@@ -1,10 +1,15 @@
 ﻿using ItaliaPizzaClient.ItaliaPizzaServer;
+using Logs;
+using log4net;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.ServiceModel;
 using System.Text.RegularExpressions;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Input;
+using static ItaliaPizzaClient.MainWindow;
 
 
 namespace ItaliaPizzaClient
@@ -22,6 +27,7 @@ namespace ItaliaPizzaClient
         private string Correo;
         private string Rol;
         private string contrasena;  // Mantén la contraseña existente aquí
+        private static readonly ILog Log = Logger.GetLogger();
 
         public ModificarEmpleado(Empleados usuarios)
         {
@@ -38,119 +44,234 @@ namespace ItaliaPizzaClient
 
         private void BtnEliminar_Click(object sender, RoutedEventArgs e)
         {
+            // Verifica si el ID del usuario autenticado es igual al ID del usuario que se intenta eliminar
+            if (idEmpleados == SesionActual.UsuarioId)
+            {
+                MessageBox.Show("No puede eliminar su propio usuario.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             MessageBoxResult resultado = MessageBox.Show("¿Está seguro que desea eliminar este Usuario?", "Confirmar eliminación", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (resultado == MessageBoxResult.Yes)
             {
-                usuario.EliminarEmpleados(idEmpleados);
-                MessageBox.Show("Usuario eliminado correctamente", "Eliminación exitosa", MessageBoxButton.OK, MessageBoxImage.Information);
-                this.Close();
-            }
-        }
-
-        private void BtnAceptar_Click(object sender, RoutedEventArgs e)
-        {
-            string nuevoNombre = tbxNombre.Text;
-            string nuevoApellidoP = tbxApellidoP.Text;
-            string nuevoApellidoM = tbxApellidoM.Text;
-            string nuevoRol = cbxTipo.Text;
-            string nuevoCorreo = tbxCorreo.Text;
-            string nuevaContrasena = txtPassword.Password;
-
-            Debug.WriteLine($"Nombre: {tbxNombre.Text}");
-            Debug.WriteLine($"Apellido Paterno: {tbxApellidoP.Text}");
-            Debug.WriteLine($"Apellido Materno: {tbxApellidoM.Text}");
-            Debug.WriteLine($"Correo: {tbxCorreo.Text}");
-            Debug.WriteLine($"Tipo: {cbxTipo.Text}");
-
-            if (CamposVacios())
-            {
-                if (StringValidos(nuevoNombre, nuevoApellidoP, nuevoApellidoM) && StringLargos(nuevoNombre, nuevoApellidoP, nuevoApellidoM))
+                try
                 {
-                    try
-                    {
-                        // Si no se ha ingresado una nueva contraseña, usa la contraseña existente
-                        if (string.IsNullOrWhiteSpace(nuevaContrasena))
-                        {
-                            nuevaContrasena = contrasena;
-                        }
-
-                        usuario.ActualizarEmpleado(idEmpleados, nuevoNombre, nuevoApellidoP, nuevoApellidoM, nuevoCorreo, nuevaContrasena);
-                        MessageBox.Show("El cliente se ha actualizado exitosamente", "Actualización exitosa", MessageBoxButton.OK, MessageBoxImage.Information);
-                        this.Close();
-                    }
-                    catch (EndpointNotFoundException ex)
-                    {
-                        MessageBox.Show("Por el momento no hay conexión con la base de datos, por favor inténtelo más tarde", "Error de conexión con base de datos", MessageBoxButton.OK, MessageBoxImage.Error);
-                    }
-                    catch (CommunicationException ex)
-                    {
-                        MessageBox.Show("Se produjo un error de comunicación al intentar acceder a un recurso remoto. Intente de nuevo", "Problema de comunicación", MessageBoxButton.OK, MessageBoxImage.Error);
-                    }
-                    catch (TimeoutException ex)
-                    {
-                        MessageBox.Show("La operación que intentaba realizar ha superado el tiempo de espera establecido y no pudo completarse en el tiempo especificado. Intente de nuevo", "Tiempo de espera agotado", MessageBoxButton.OK, MessageBoxImage.Error);
-                    }
+                    usuario.EliminarEmpleados(idEmpleados);
+                    MessageBox.Show("Usuario eliminado correctamente", "Eliminación exitosa", MessageBoxButton.OK, MessageBoxImage.Information);
+                    this.Close();
                 }
-                else
+                catch (EndpointNotFoundException ex)
                 {
-                    MessageBox.Show("Los datos ingresados no son validos. Verifique sus datos", "Datos Invalidos", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    Log.Error($"{ex.Message}");
+                    Utilidades.Utilidades.MostrarMensajeEndpointNotFoundException();
                 }
-            }
-            else
-            {
-                MessageBox.Show("Ingrese la información solicitada para continuar", "Campos Vacíos", MessageBoxButton.OK, MessageBoxImage.Warning);
+                catch (CommunicationException ex)
+                {
+                    Log.Error($"{ex.Message}");
+                    Utilidades.Utilidades.MostrarMensajeCommunicationException();
+                }
+                catch (TimeoutException ex)
+                {
+                    Log.Error($"{ex.Message}");
+                    Utilidades.Utilidades.MostrarMensajeTimeoutException();
+                }
+                catch (Exception ex)
+                {
+                    Utilidades.Utilidades.MostrarMensaje($"Ocurrió un error inesperado: {ex.Message}", "Error", MessageBoxImage.Error);
+                }
             }
         }
 
         private void CbxTipo_Loaded(object sender, RoutedEventArgs e)
         {
             List<string> items = new List<string>
-        {
-            "Gerente",
-            "Cajero",
-            "Cocinero",
-            "Cliente"
-        };
+            {
+                "Gerente",
+                "Cocinero",
+                "Cajero"
+            };
             cbxTipo.ItemsSource = items;
         }
 
-        #region Validaciones
-        public bool CamposVacios()
+        private void BtnAceptar_Click(object sender, RoutedEventArgs e)
         {
-            if (tbxNombre.Text == string.Empty || tbxApellidoP.Text == string.Empty || tbxApellidoM.Text == string.Empty
-                || tbxCorreo.Text == string.Empty || cbxTipo.Text == string.Empty)
+            string nombre = tbxNombre.Text;
+            string apellidoPaterno = tbxApellidoP.Text;
+            string apellidoMaterno = tbxApellidoM.Text;
+            string correo = tbxCorreo.Text;
+            string telefono = tbxTelefono.Text;
+            string contraseña = txtPassword.Password;
+            string rol = cbxTipo.Text;
+
+            string mensajeError;
+            if (StringValidos(nombre, apellidoPaterno, apellidoMaterno, correo, telefono, contraseña, rol, out mensajeError))
             {
+                try
+                {
+                    AccionActualizar(nombre, apellidoPaterno, apellidoMaterno, correo, telefono, rol, contraseña);
+                }
+                catch (EndpointNotFoundException ex)
+                {
+                    Log.Error($"{ex.Message}");
+                    Utilidades.Utilidades.MostrarMensajeEndpointNotFoundException();
+                }
+                catch (CommunicationException ex)
+                {
+                    Log.Error($"{ex.Message}");
+                    Utilidades.Utilidades.MostrarMensajeCommunicationException();
+                }
+                catch (TimeoutException ex)
+                {
+                    Log.Error($"{ex.Message}");
+                    Utilidades.Utilidades.MostrarMensajeTimeoutException();
+                }
+                catch (Exception ex)
+                {
+                    Utilidades.Utilidades.MostrarMensaje($"Ocurrió un error inesperado: {ex.Message}", "Error", MessageBoxImage.Error);
+                }
+            }
+            else
+            {
+                Utilidades.Utilidades.MostrarMensaje(mensajeError, "Datos Inválidos", MessageBoxImage.Warning);
+            }
+        }
+
+        
+
+        private void AccionActualizar(string nombre, string apellidoPaterno, string apellidoMaterno, string correo, string telefono, string rol, string contraseña)
+        {
+            if (string.IsNullOrEmpty(contraseña))
+            {
+                contraseña = this.contrasena; // Mantén la contraseña actual si no se proporciona una nueva
+            }
+
+            if (string.IsNullOrEmpty(telefono))
+            {
+                telefono = tbxTelefono.Text; // Mantén el teléfono actual si no se proporciona uno nuevo
+            }
+
+            usuario.ActualizarEmpleado(idEmpleados, nombre, apellidoPaterno, apellidoMaterno, correo, telefono, rol, contraseña);
+            Utilidades.Utilidades.MostrarMensaje("El Usuario se ha actualizado exitosamente", "Actualización exitosa", MessageBoxImage.Information);
+            this.Close();
+        }
+
+        #region Validaciones
+
+        private bool StringValidos(string nombre, string apellidoP, string apellidoM, string correo, string telefono, string contrasena, string rol, out string mensajeError)
+        {
+            mensajeError = string.Empty;
+
+            // Validación de nombres y apellidos
+            if (!Regex.IsMatch(nombre, @"^[a-zA-Z\s\-ñÑáéíóúÁÉÍÓÚ]+$"))
+            {
+                mensajeError = "El nombre solo puede contener letras.";
                 return false;
             }
+
+            if (!Regex.IsMatch(apellidoP, @"^[a-zA-Z\s\-ñÑáéíóúÁÉÍÓÚ]+$"))
+            {
+                mensajeError = "El apellido paterno solo puede contener letras.";
+                return false;
+            }
+
+            if (!Regex.IsMatch(apellidoM, @"^[a-zA-Z\s\-ñÑáéíóúÁÉÍÓÚ]+$"))
+            {
+                mensajeError = "El apellido materno solo puede contener letras.";
+                return false;
+            }
+
+            // Validación de longitud de nombres y apellidos
+            if (nombre.Length > 45)
+            {
+                mensajeError = "El nombre no puede tener más de 45 caracteres.";
+                return false;
+            }
+
+            if (apellidoP.Length > 45)
+            {
+                mensajeError = "El apellido paterno no puede tener más de 45 caracteres.";
+                return false;
+            }
+
+            if (apellidoM.Length > 45)
+            {
+                mensajeError = "El apellido materno no puede tener más de 45 caracteres.";
+                return false;
+            }
+
+            // Validación del correo
+            if (!Regex.IsMatch(correo, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
+            {
+                mensajeError = "El correo electrónico no es válido.";
+                return false;
+            }
+
+            // Validación del teléfono
+            if (!string.IsNullOrEmpty(telefono) && !Regex.IsMatch(telefono, @"^\d{10}$"))
+            {
+                mensajeError = "El teléfono debe contener exactamente 10 dígitos.";
+                return false;
+            }
+
+            // Validación de la contraseña
+            if (!string.IsNullOrEmpty(contrasena))
+            {
+                mensajeError = ContraseñaValida(contrasena);
+                if (!string.IsNullOrEmpty(mensajeError))
+                {
+                    return false;
+                }
+            }
+
+            // Validación del rol
+            if (string.IsNullOrEmpty(rol))
+            {
+                mensajeError = "Debe seleccionar un rol.";
+                return false;
+            }
+
             return true;
         }
 
-        public bool StringValidos(string nombre, string apellidoPaterno, string apellidoMaterno)
+        private string ContraseñaValida(string contrasena)
         {
-            if (nombre == null || apellidoPaterno == null || apellidoMaterno == null)
+            if (contrasena.Length < 8 || contrasena.Length > 12)
             {
-                return false; // Devuelve false si alguno es nulo.
+                return "La contraseña debe tener entre 8 y 12 caracteres.";
             }
 
-            // Comprobaciones de regex...
-            if (Regex.IsMatch(nombre, @"^[a-zA-Z0-9\s]+$") &&
-                Regex.IsMatch(apellidoPaterno, @"^[a-zA-Z0-9]+$") &&
-                Regex.IsMatch(apellidoMaterno, @"^[a-zA-Z\s\-.,'()ñÑáéíóúÁÉÍÓÚ]+$"))
+            if (!Regex.IsMatch(contrasena, @"[A-Z]"))
             {
-                return true;
+                return "La contraseña debe contener al menos una letra mayúscula.";
             }
 
-            return false;
+            if (!Regex.IsMatch(contrasena, @"[a-z]"))
+            {
+                return "La contraseña debe contener al menos una letra minúscula.";
+            }
+
+            if (!Regex.IsMatch(contrasena, @"[0-9]"))
+            {
+                return "La contraseña debe contener al menos un número.";
+            }
+
+            return string.Empty;
         }
 
-        private bool StringLargos(string nombre, string apellidoP, string apellidoM)
+        private void tbxTelefono_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            if (nombre.Length <= 45 || apellidoP.Length <= 45 || apellidoM.Length <= 45)
-            {
-                return true;
-            }
-            return false;
+            e.Handled = !Regex.IsMatch(e.Text, @"^[0-9]+$");
         }
+
+        private void tbxTelefono_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (tbxTelefono.Text.Length > 10)
+            {
+                tbxTelefono.Text = tbxTelefono.Text.Substring(0, 10);
+                tbxTelefono.CaretIndex = tbxTelefono.Text.Length;
+            }
+        }
+
         #endregion
     }
 }

@@ -81,6 +81,7 @@ namespace ItaliaPizzaClient
             var usuarioInicioSesion = client.IniciarSesion(correo, contraseña);
             if (usuarioInicioSesion != null && usuarioInicioSesion.Status)
             {
+                SesionActual.UsuarioId = usuarioInicioSesion.IdEmpleados;
                 Domain.Empleados.EmpleadosClient = new Domain.Empleados()
                 {
                     IdEmpleados = usuarioInicioSesion.IdEmpleados,
@@ -95,6 +96,7 @@ namespace ItaliaPizzaClient
 
                 string nombre = Domain.Empleados.EmpleadosClient.Nombre;
                 string usuarioRol = Domain.Empleados.EmpleadosClient.Rol;
+                
                 Utilidades.Utilidades.MostrarMensaje("Bienvenido " + nombre, "Inicio de Sesión exitoso", MessageBoxImage.Information);
 
                 MostrarVentanaPorRol(usuarioRol);
@@ -124,6 +126,13 @@ namespace ItaliaPizzaClient
                 pbxContraseña.Password = tbxContraseña.Text;
             }
         }
+
+        public static class SesionActual
+        {
+            public static int UsuarioId { get; set; }
+            // Puedes añadir más propiedades si es necesario
+        }
+
 
         public void MostrarVentanaPorRol(string Rol)
         {

@@ -64,6 +64,9 @@
     <Compile Include="GestionarProveedor.cs" />
     <Compile Include="GestionarRecetas.cs" />
     <Compile Include="Insumos.cs" />
+    <Compile Include="Inventario.cs" />
+    <Compile Include="InventarioDelInsumo.cs" />
+    <Compile Include="InventarioDeProductos.cs" />
     <Compile Include="Pedidos.cs" />
     <Compile Include="Productos.cs" />
     <Compile Include="GestionarProductos.cs" />
