@@ -40,7 +40,6 @@ namespace Logic
                     rol = usuario.Rol
                 };
 
-                };
                 context.Empleados.Add(nuevoUsuario);
                 try
                 {

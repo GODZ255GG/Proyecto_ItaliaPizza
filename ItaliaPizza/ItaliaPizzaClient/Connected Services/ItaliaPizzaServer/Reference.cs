@@ -1738,7 +1738,7 @@ namespace ItaliaPizzaClient.ItaliaPizzaServer {
     
         public System.Threading.Tasks.Task<int[]> RecuperarIdsProductosDePedidosAsync() {
             return base.Channel.RecuperarIdsProductosDePedidosAsync();
-        }
+    }
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]

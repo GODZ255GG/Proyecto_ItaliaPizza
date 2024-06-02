@@ -185,18 +185,6 @@ namespace ItaliaPizzaClient
 
 
 
-        private void BtnRegistrarInsumo_Click(object sender, RoutedEventArgs e)
-        {
-            RegistrarInsumo registrar = new RegistrarInsumo();
-            registrar.Closed += ActualizarTablaInsumos;
-            registrar.Show();
-        }
-
-        private void ActualizarTablaInsumos(object sender, EventArgs e)
-        {
-            MostrarInformacionInsumos();
-        }
-
         private void DgListaInsumos_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             try
